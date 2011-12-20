@@ -1,0 +1,10 @@
+<h1>YOU AGILED ME!!</h1>
+
+<% if @projects.present? %>
+<% @projects.each do |project| %>
+    Name: <%= project.name %>
+    Description: <%= project.description %>
+<% end %>
+<% else %>
+    You have not created any project as of now. <%= link_to "Create One Now", new_project_path %>
+<% end %>

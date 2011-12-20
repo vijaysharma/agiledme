@@ -1,0 +1,24 @@
+<%= form_for(@pending_invitation) do |f| %>
+  <% if @pending_invitation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pending_invitation.errors.count, "error") %> prohibited this pending_invitation from being saved:</h2>
+
+      <ul>
+      <% @pending_invitation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :project_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

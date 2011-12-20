@@ -12,5 +12,5 @@
 
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
-<%= link_to 'Add Members', projects_path %>
+<%= link_to 'Back', projects_path %> |
+<%= link_to 'Add Members', new_pending_invitation_path(:project => @project) %>

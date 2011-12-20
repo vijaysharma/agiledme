@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220085407) do
+ActiveRecord::Schema.define(:version => 20111220111115) do
 
   create_table "pending_invitations", :force => true do |t|
     t.string   "email"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20111220085407) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stories", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "requester"
+    t.integer  "owner"
+    t.integer  "project_id"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

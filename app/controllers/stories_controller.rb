@@ -25,6 +25,7 @@ class StoriesController < ApplicationController
   # GET /stories/new.xml
   def new
     @story = Story.new
+    @story.project = Project.find(params[:project])
 
     respond_to do |format|
       format.html # new.html.erb

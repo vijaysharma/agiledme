@@ -1,6 +1,8 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    aasm (3.0.0)
+      activerecord
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -78,6 +80,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   devise
   mysql2 (= 0.2.5)
   rails (= 3.0.3)

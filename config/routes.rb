@@ -1,5 +1,7 @@
 Agiledme::Application.routes.draw do
 
+  resources :story_histories
+
   resources :stories
 
   resources :pending_invitations

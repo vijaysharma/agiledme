@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220111115) do
+ActiveRecord::Schema.define(:version => 20111220125719) do
 
   create_table "pending_invitations", :force => true do |t|
     t.string   "email"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20111220111115) do
     t.integer  "owner"
     t.integer  "project_id"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "story_histories", :force => true do |t|
+    t.string   "event"
+    t.integer  "user_id"
+    t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

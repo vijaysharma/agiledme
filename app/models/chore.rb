@@ -1,0 +1,2 @@
+class Chore < WorkableItem
+end

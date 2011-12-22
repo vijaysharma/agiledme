@@ -10,11 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220125719) do
+ActiveRecord::Schema.define(:version => 20111222055210) do
 
-  create_table "pending_invitations", :force => true do |t|
+  create_table "project_member_invitations", :force => true do |t|
     t.string   "email"
     t.integer  "project_id"
+    t.integer  "invited_by"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,21 +28,12 @@ ActiveRecord::Schema.define(:version => 20111220125719) do
     t.datetime "updated_at"
   end
 
-  create_table "stories", :force => true do |t|
-    t.string   "title"
+  create_table "tasks", :force => true do |t|
     t.string   "description"
-    t.integer  "requester"
-    t.integer  "owner"
-    t.integer  "project_id"
+    t.integer  "workable_item_id"
+    t.integer  "created_by"
+    t.integer  "finished_by"
     t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "story_histories", :force => true do |t|
-    t.string   "event"
-    t.integer  "user_id"
-    t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,6 +59,27 @@ ActiveRecord::Schema.define(:version => 20111220125719) do
   create_table "users_projects", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "project_id"
+  end
+
+  create_table "workable_item_histories", :force => true do |t|
+    t.string   "event"
+    t.integer  "user_id"
+    t.integer  "workable_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "workable_items", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "requester"
+    t.integer  "owner"
+    t.integer  "project_id"
+    t.string   "status"
+    t.integer  "estimate"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

@@ -1,0 +1,2 @@
+module WorkableItemHistoriesHelper
+end

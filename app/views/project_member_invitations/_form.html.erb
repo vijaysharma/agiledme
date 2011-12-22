@@ -1,0 +1,25 @@
+<%= form_for(@project_member_invitation) do |f| %>
+  <% if @project_member_invitation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project_member_invitation.errors.count, "error") %> prohibited this member invitation from being sent:</h2>
+
+      <ul>
+      <% @project_member_invitation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :project_id %>
+    <%= f.hidden_field :invited_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

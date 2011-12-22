@@ -1,0 +1,27 @@
+<h1><%= @project.name %> : Member Invitations</h1>
+
+<table>
+  <tr>
+    <th>Invitee Email</th>
+    <th>Invited By</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @project_member_invitations.each do |project_member_invitation| %>
+  <tr>
+    <td><%= project_member_invitation.email %></td>
+    <td><%= User.find(project_member_invitation.invited_by).email %></td>
+    <td><%= project_member_invitation.status %></td>
+    <td><%= link_to 'Show', project_member_invitation %></td>
+    <td><%= link_to 'Edit', edit_project_member_invitation_path(project_member_invitation) %></td>
+    <td><%= link_to 'Destroy', project_member_invitation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add Member', new_project_member_invitation_path(:project => @project) %>

@@ -1,10 +1,16 @@
 Agiledme::Application.routes.draw do
 
-  resources :story_histories
+  resources :tasks
 
-  resources :stories
+  resources :workable_item_histories
 
-  resources :pending_invitations
+  resources :workable_items
+
+  resources :stories, :controller => 'workable_items'
+  resources :bugs, :controller => 'workable_items'
+  resources :chores, :controller => 'workable_items'
+
+  resources :project_member_invitations
 
   resources :projects
 

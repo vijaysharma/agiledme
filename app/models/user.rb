@@ -10,5 +10,6 @@ class User < ActiveRecord::Base
 
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, :on => :create
   has_and_belongs_to_many :projects, :join_table => "users_projects"
-  has_many :story_histories
+  has_many :workable_item_histories
+
 end

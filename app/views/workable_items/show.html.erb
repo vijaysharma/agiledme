@@ -1,0 +1,38 @@
+<p>
+  <b>Type:</b>
+  <%= @workable_item.type %>
+</p>
+<p>
+  <b>Title:</b>
+  <%= @workable_item.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @workable_item.description %>
+</p>
+
+<p>
+  <b>Requester:</b>
+  <%= User.find(@workable_item.requester).email %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @workable_item.owner %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @workable_item.project.name %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @workable_item.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_workable_item_path(@workable_item) %> |
+<%= link_to 'Back', workable_items_path %> |
+<%= link_to 'Add Task', new_task_path(:workable_item => @workable_item) %>

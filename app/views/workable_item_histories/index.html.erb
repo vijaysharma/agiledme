@@ -1,0 +1,27 @@
+<h1>Listing History</h1>
+
+<table>
+  <tr>
+    <th>Event</th>
+    <th>User</th>
+    <th>Story</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @story_histories.each do |workable_item_history| %>
+  <tr>
+    <td><%= workable_item_history.event %></td>
+    <td><%= workable_item_history.user_id %></td>
+    <td><%= workable_item_history.story_id %></td>
+    <td><%= link_to 'Show', workable_item_history %></td>
+    <td><%= link_to 'Edit', edit_story_history_path(workable_item_history) %></td>
+    <td><%= link_to 'Destroy', workable_item_history, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Story history', new_story_history_path %>

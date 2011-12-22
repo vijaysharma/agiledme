@@ -1,28 +1,36 @@
 <%= form_for(@workable_item) do |f| %>
-  <% if @workable_item.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@workable_item.errors.count, "error") %> prohibited this workable_item from being saved:</h2>
+    <% if @workable_item.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@workable_item.errors.count, "error") %> prohibited this workable_item from being
+            saved:</h2>
 
-      <ul>
-      <% @workable_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @workable_item.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %>
+      <br/>
+      <%= f.text_field :title %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
+    <div class="field">
+      <%= f.label :description %>
+      <br/>
+      <%= f.text_field :description %>
+    </div>
+    <div class="field">
+      <%= f.label :estimate %>
+      <br/>
+      <%= f.text_field :estimate %>
+    </div>
     <%= f.hidden_field :requester %>
     <%= f.hidden_field :project_id %>
     <%= f.hidden_field :type %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

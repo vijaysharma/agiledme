@@ -6,6 +6,7 @@ class WorkableItem < ActiveRecord::Base
   has_many :workable_item_histories, :dependent => :destroy
   has_many :tasks, :dependent => :destroy
   validates_presence_of :title
+  validates_numericality_of :estimate
 
   after_create :update_created_by
 

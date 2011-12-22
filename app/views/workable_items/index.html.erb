@@ -1,4 +1,4 @@
-<h1>Listing Items</h1>
+<h1>Work for <%= @project.name %></h1>
 
 <table>
   <tr>
@@ -7,7 +7,6 @@
     <th>Description</th>
     <th>Requester</th>
     <th>Owner</th>
-    <th>Project</th>
     <th>Status</th>
     <th></th>
     <th></th>
@@ -19,9 +18,8 @@
     <td><%= workable_item.type %></td>
     <td><%= workable_item.title %></td>
     <td><%= workable_item.description %></td>
-    <td><%= workable_item.requester %></td>
+    <td><%= User.find(workable_item.requester).email %></td>
     <td><%= workable_item.owner %></td>
-    <td><%= workable_item.project_id %></td>
     <td><%= workable_item.status %></td>
     <td><%= link_to 'Show', workable_item %></td>
     <td><%= link_to 'Edit', edit_workable_item_path(workable_item) %></td>
@@ -31,5 +29,6 @@
 </table>
 
 <br />
-
-<%= link_to 'New Story', new_workable_item_path %>
+<%= link_to 'Add Story', new_workable_item_path(:project => @project, :type => "Story") %> |
+<%= link_to 'Add Bug', new_workable_item_path(:project => @project, :type => "Bug") %> |
+<%= link_to 'Add Chore', new_workable_item_path(:project => @project, :type => "Chore") %>

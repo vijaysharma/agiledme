@@ -1,5 +1,5 @@
-<h1>New task</h1>
+<h1>New Task for <%= @task.workable_item.title %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', tasks_path %>
+<%= link_to "Back to #{@task.workable_item.type}", @task.workable_item %>

@@ -25,7 +25,7 @@
         <td><%= workable_item.type %></td>
         <td><%= workable_item.title %></td>
         <td><%= workable_item.description %></td>
-        <td><%= workable_item.requester %></td>
+        <td><%= User.find(workable_item.requester).email %></td>
         <td><%= workable_item.owner %></td>
         <td><%= workable_item.status %></td>
         <td><%= link_to 'Show', workable_item %></td>

@@ -1,3 +1,4 @@
+<h1><%= @workable_item.type %> for : <%= @workable_item.project.name %></h1>
 <p>
   <b>Type:</b>
   <%= @workable_item.type %>
@@ -32,7 +33,30 @@
   <%= @workable_item.status %>
 </p>
 
+<h2>Tasks for : <%= @workable_item.title %></h2>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Created by</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @workable_item.tasks.each do |task| %>
+  <tr>
+    <td><%= task.description %></td>
+    <td><%= User.find(task.created_by).email %></td>
+    <td><%= task.status %></td>
+    <td><%= link_to 'Show', task %></td>
+    <td><%= link_to 'Edit', edit_task_path(task) %></td>
+    <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
 
 <%= link_to 'Edit', edit_workable_item_path(@workable_item) %> |
-<%= link_to 'Back', workable_items_path %> |
+<%= link_to @workable_item.project.name, workable_items_path(:project => @workable_item.project) %> |
 <%= link_to 'Add Task', new_task_path(:workable_item => @workable_item) %>

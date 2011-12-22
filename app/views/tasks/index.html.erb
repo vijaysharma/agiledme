@@ -1,10 +1,10 @@
-<h1>Listing tasks</h1>
+<h1>Tasks for : <%= @workable_item.title %></h1>
 
 <table>
   <tr>
     <th>Description</th>
-    <th>Workable item</th>
     <th>Created by</th>
+    <th>Status</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,8 +13,8 @@
 <% @tasks.each do |task| %>
   <tr>
     <td><%= task.description %></td>
-    <td><%= task.workable_item_id %></td>
-    <td><%= task.created_by %></td>
+    <td><%= User.find(task.created_by).email %></td>
+    <td><%= task.status %></td>
     <td><%= link_to 'Show', task %></td>
     <td><%= link_to 'Edit', edit_task_path(task) %></td>
     <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -24,4 +24,5 @@
 
 <br />
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'Add Task', new_task_path(:workable_item => @workable_item) %> |
+<%= link_to @workable_item.project.name, workable_items_path(:project => @workable_item.project) %>

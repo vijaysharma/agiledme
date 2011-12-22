@@ -2,7 +2,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.xml
   def index
-    @tasks = Task.all
+    @workable_item = WorkableItem.find(params[:workable_item])
+    @tasks = @workable_item.tasks
 
     respond_to do |format|
       format.html # index.html.erb
@@ -75,10 +76,11 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.xml
   def destroy
     @task = Task.find(params[:id])
+    workable_item  = @task.workable_item
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tasks_url) }
+      format.html { redirect_to(tasks_url(:workable_item => workable_item)) }
       format.xml  { head :ok }
     end
   end

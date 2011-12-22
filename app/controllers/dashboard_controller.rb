@@ -1,8 +1,10 @@
 class DashboardController < ApplicationController
-  before_filter :authenticate_user!
 
   def index
     @projects = current_user.projects
-    render :index
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @projects }
+    end
   end
 end

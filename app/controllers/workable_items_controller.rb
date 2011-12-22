@@ -2,7 +2,8 @@ class WorkableItemsController < ApplicationController
   # GET /workable_items
   # GET /workable_items.xml
   def index
-    @workable_items = WorkableItem.all
+    @project = Project.find(params[:project])
+    @workable_items = @project.workable_items
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,7 +51,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.save
-        format.html { redirect_to(@workable_item, :notice => 'Story was successfully created.') }
+        format.html { redirect_to(@workable_item, :notice => @workable_item.type + ' was successfully created.') }
         format.xml { render :xml => @workable_item, :status => :created, :location => @workable_item }
       else
         format.html { render :action => "new" }
@@ -66,7 +67,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.update_attributes(params[:workable_item])
-        format.html { redirect_to(@workable_item, :notice => 'Story was successfully updated.') }
+        format.html { redirect_to(@workable_item, :notice => @workable_item.type + ' was successfully updated.') }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }
@@ -79,10 +80,11 @@ class WorkableItemsController < ApplicationController
   # DELETE /workable_items/1.xml
   def destroy
     @workable_item = WorkableItem.find(params[:id])
+    project = @workable_item.project
     @workable_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(stories_url) }
+      format.html { redirect_to(stories_url(:project => project)) }
       format.xml { head :ok }
     end
   end

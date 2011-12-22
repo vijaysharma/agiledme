@@ -1,20 +1,14 @@
-<p id="notice"><%= notice %></p>
-
+<h1>Task for <%= @task.workable_item.type %> ( <%= @task.workable_item.title %>) </h1>
 <p>
   <b>Description:</b>
   <%= @task.description %>
 </p>
 
 <p>
-  <b>Workable item:</b>
-  <%= @task.workable_item_id %>
-</p>
-
-<p>
   <b>Created by:</b>
-  <%= @task.created_by %>
+  <%= User.find(@task.created_by).email %>
 </p>
 
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to "Back to #{@task.workable_item.type}", @task.workable_item %>

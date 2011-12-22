@@ -3,8 +3,8 @@ class WorkableItem < ActiveRecord::Base
   include AASM
 
   belongs_to :project
-  has_many :workable_item_histories
-  has_many :tasks
+  has_many :workable_item_histories, :dependent => :destroy
+  has_many :tasks, :dependent => :destroy
   validates_presence_of :title
 
   after_create :update_created_by

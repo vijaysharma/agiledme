@@ -4,6 +4,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :description
       t.integer :workable_item_id
       t.integer :created_by
+      t.integer :started_by
       t.integer :finished_by
       t.string :status
 

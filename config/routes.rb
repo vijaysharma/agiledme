@@ -1,10 +1,18 @@
 Agiledme::Application.routes.draw do
 
-  resources :tasks
+  resources :tasks do
+    member do
+      get :start, :finish
+    end
+  end
 
   resources :workable_item_histories
 
-  resources :workable_items
+  resources :workable_items do
+    member do
+      get :start, :finish, :deliver, :accept, :reject, :restart
+    end
+  end
 
   resources :stories, :controller => 'workable_items'
   resources :bugs, :controller => 'workable_items'

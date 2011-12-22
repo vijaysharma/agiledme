@@ -60,6 +60,34 @@ class TasksController < ApplicationController
     end
   end
 
+  def finish
+    @task = Task.find(params[:id])
+
+    respond_to do |format|
+      if @task.finish!
+        format.html { redirect_to(workable_item_url(@task.workable_item), :notice => 'Task was successfully finished.') }
+        format.xml  { head :ok }
+      else
+        format.html { redirect_to(workable_item_url(@task.workable_item), :notice => 'Error finishing the task.') }
+        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def start
+    @task = Task.find(params[:id])
+
+    respond_to do |format|
+      if @task.start!
+        format.html { redirect_to(workable_item_url(@task.workable_item), :notice => 'Task was successfully started.') }
+        format.xml  { head :ok }
+      else
+        format.html { redirect_to(workable_item_url(@task.workable_item), :notice => 'Error starting the task.') }
+        format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /tasks/1
   # DELETE /tasks/1.xml
   def destroy

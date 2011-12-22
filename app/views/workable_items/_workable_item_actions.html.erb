@@ -1,0 +1,12 @@
+<% if workable_item.new? and workable_item.estimate.present? %>
+    <%= link_to "Start", start_workable_item_path(workable_item) %>
+<% elsif workable_item.started? %>
+    <%= link_to "Finish", finish_workable_item_path(workable_item) %>
+<% elsif workable_item.finished? %>
+    <%= link_to "Deliver", deliver_workable_item_path(workable_item) %>
+<% elsif workable_item.delivered? %>
+    <%= link_to "Accept", accept_workable_item_path(workable_item) %> /
+    <%= link_to "Reject", reject_workable_item_path(workable_item) %>
+<% elsif workable_item.rejected? %>
+    <%= link_to "Restart", restart_workable_item_path(workable_item) %>
+<% end %>

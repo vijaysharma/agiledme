@@ -8,7 +8,17 @@
   <b>Created by:</b>
   <%= User.find(@task.created_by).email %>
 </p>
+<p>
+  <b>Started by:</b>
+  <%= @task.started_by.present? ? User.find(@task.started_by).email : '-'%>
+</p>
+
+<p>
+  <b>Finished by:</b>
+  <%= @task.finished_by.present? ? User.find(@task.finished_by).email : '-'%>
+</p>
 
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to "Back to #{@task.workable_item.type}", @task.workable_item %>
+<%= link_to "Back to #{@task.workable_item.type}", @task.workable_item %> |
+<%= render :partial => 'task_actions', :locals => {:task => @task} %>

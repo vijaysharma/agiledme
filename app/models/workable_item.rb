@@ -49,6 +49,8 @@ class WorkableItem < ActiveRecord::Base
 
   def update_started_by
     update_history("started")
+    self.owner = User.current_user.id
+    self.save!
   end
 
   def update_created_by
@@ -69,6 +71,12 @@ class WorkableItem < ActiveRecord::Base
 
   def update_rejected_by
     update_history("rejected")
+  end
+
+  def update_restarted_by
+    update_history("restarted")
+    self.owner = User.current_user.id
+    self.save!
   end
 
   def update_history(event)

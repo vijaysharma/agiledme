@@ -20,7 +20,7 @@
 
 <p>
   <b>Owner:</b>
-  <%= @workable_item.owner %>
+  <%= @workable_item.owner.present? ? User.find(@workable_item.owner).email : '-' %>
 </p>
 
 <p>
@@ -39,7 +39,10 @@
   <tr>
     <th>Description</th>
     <th>Created by</th>
+    <th>Started by</th>
+    <th>Finished by</th>
     <th>Status</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -49,7 +52,10 @@
   <tr>
     <td><%= task.description %></td>
     <td><%= User.find(task.created_by).email %></td>
+    <td><%= task.started_by.present? ? User.find(task.started_by).email : '-'%></td>
+    <td><%= task.finished_by.present? ? User.find(task.finished_by).email : '-'%></td>
     <td><%= task.status %></td>
+    <td><%= render :partial => 'tasks/task_actions', :locals => {:task => task} %></td>
     <td><%= link_to 'Show', task %></td>
     <td><%= link_to 'Edit', edit_task_path(task) %></td>
     <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -59,4 +65,5 @@
 
 <%= link_to 'Edit', edit_workable_item_path(@workable_item) %> |
 <%= link_to @workable_item.project.name, project_path(@workable_item.project) %> |
-<%= link_to 'Add Task', new_task_path(:workable_item => @workable_item) %>
+<%= link_to 'Add Task', new_task_path(:workable_item => @workable_item) %> |
+<%= render :partial => 'workable_item_actions', :locals => {:workable_item => @workable_item} %>

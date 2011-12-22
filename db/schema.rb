@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20111222055210) do
     t.string   "description"
     t.integer  "workable_item_id"
     t.integer  "created_by"
+    t.integer  "started_by"
     t.integer  "finished_by"
     t.string   "status"
     t.datetime "created_at"

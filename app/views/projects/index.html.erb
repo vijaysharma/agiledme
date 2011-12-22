@@ -22,9 +22,6 @@
             <td><%= link_to 'Edit', edit_project_path(project) %></td>
             <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
             <td><%= link_to 'Add Members', new_project_member_invitation_path(:project => project) %></td>
-            <td><%= link_to 'Add Story', new_workable_item_path(:project => project, :type => "Story") %></td>
-            <td><%= link_to 'Add Bug', new_workable_item_path(:project => project, :type => "Bug") %></td>
-            <td><%= link_to 'Add Chore', new_workable_item_path(:project => project, :type => "Chore") %></td>
           </tr>
       <% end %>
     </table>

@@ -1,16 +1,4 @@
 class WorkableItemsController < ApplicationController
-  # GET /workable_items
-  # GET /workable_items.xml
-  def index
-    @project = Project.find(params[:project])
-    @workable_items = @project.workable_items
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml { render :xml => @workable_items }
-    end
-  end
-
   # GET /workable_items/1
   # GET /workable_items/1.xml
   def show
@@ -25,7 +13,6 @@ class WorkableItemsController < ApplicationController
   # GET /workable_items/new
   # GET /workable_items/new.xml
   def new
-#    @workable_item = initialize_workable_item(params[:type])
     @workable_item = WorkableItem.new
     @workable_item.type = params[:type]
     @workable_item.project = Project.find(params[:project])
@@ -51,7 +38,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.save
-        format.html { redirect_to(@workable_item, :notice => @workable_item.type + ' was successfully created.') }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully created.') }
         format.xml { render :xml => @workable_item, :status => :created, :location => @workable_item }
       else
         format.html { render :action => "new" }
@@ -67,7 +54,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.update_attributes(params[:workable_item])
-        format.html { redirect_to(@workable_item, :notice => @workable_item.type + ' was successfully updated.') }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully updated.') }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }

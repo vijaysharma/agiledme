@@ -1,16 +1,4 @@
 class TasksController < ApplicationController
-  # GET /tasks
-  # GET /tasks.xml
-  def index
-    @workable_item = WorkableItem.find(params[:workable_item])
-    @tasks = @workable_item.tasks
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @tasks }
-    end
-  end
-
   # GET /tasks/1
   # GET /tasks/1.xml
   def show
@@ -47,7 +35,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to(@task, :notice => 'Task was successfully created.') }
+        format.html { redirect_to(workable_item_url(@task.workable_item), :notice => 'Task was successfully created.') }
         format.xml  { render :xml => @task, :status => :created, :location => @task }
       else
         format.html { render :action => "new" }
@@ -63,7 +51,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to(@task, :notice => 'Task was successfully updated.') }
+        format.html { redirect_to(workable_item_url(@task.workable_item), :notice => 'Task was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,7 +68,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tasks_url(:workable_item => workable_item)) }
+      format.html { redirect_to(workable_item_url(workable_item), :notice => 'Task was successfully deleted.') }
       format.xml  { head :ok }
     end
   end

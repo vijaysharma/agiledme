@@ -47,7 +47,7 @@ class ProjectMemberInvitationsController < ApplicationController
 
     respond_to do |format|
       if @project_member_invitation.save
-        format.html { redirect_to(@project_member_invitation, :notice => 'Invitation was successfully created.') }
+        format.html { redirect_to(project_member_invitations_path(:project => @project_member_invitation.project), :notice => 'Invitation was successfully created.') }
         format.xml  { render :xml => @project_member_invitation, :status => :created, :location => @project_member_invitation }
       else
 
@@ -64,7 +64,7 @@ class ProjectMemberInvitationsController < ApplicationController
 
     respond_to do |format|
       if @project_member_invitation.update_attributes(params[:project_member_invitation])
-        format.html { redirect_to(@project_member_invitation, :notice => 'Invitation was successfully updated.') }
+        format.html { redirect_to(project_member_invitations_path(:project => @project_member_invitation.project), :notice => 'Invitation was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -77,9 +77,11 @@ class ProjectMemberInvitationsController < ApplicationController
   # DELETE /pending_invitations/1.xml
   def destroy
     @project_member_invitation = ProjectMemberInvitation.find(params[:id])
+    project = @project_member_invitation.project
     @project_member_invitation.destroy
 
     respond_to do |format|
+      format.html { redirect_to(project_member_invitations_url(:project => project), :notice => 'Invitation was successfully deleted.') }
       format.html { redirect_to(project_member_invitations_url) }
       format.xml  { head :ok }
     end

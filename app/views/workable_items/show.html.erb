@@ -58,5 +58,5 @@
 </table>
 
 <%= link_to 'Edit', edit_workable_item_path(@workable_item) %> |
-<%= link_to @workable_item.project.name, workable_items_path(:project => @workable_item.project) %> |
+<%= link_to @workable_item.project.name, project_path(@workable_item.project) %> |
 <%= link_to 'Add Task', new_task_path(:workable_item => @workable_item) %>

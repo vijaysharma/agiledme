@@ -1,5 +1,7 @@
 Agiledme::Application.routes.draw do
 
+  resources :comments
+
   resources :tasks do
     member do
       get :start, :finish

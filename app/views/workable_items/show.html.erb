@@ -33,37 +33,78 @@
   <%= @workable_item.status %>
 </p>
 
-<h2>Tasks for : <%= @workable_item.title %></h2>
+<h2>Tasks:</h2>
 
-<table>
-  <tr>
-    <th>Description</th>
-    <th>Created by</th>
-    <th>Started by</th>
-    <th>Finished by</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if @workable_item.tasks.present? %>
+    <table>
+      <tr>
+        <th>Description</th>
+        <th>Created by</th>
+        <th>Started by</th>
+        <th>Finished by</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-<% @workable_item.tasks.each do |task| %>
-  <tr>
-    <td><%= task.description %></td>
-    <td><%= User.find(task.created_by).email %></td>
-    <td><%= task.started_by.present? ? User.find(task.started_by).email : '-'%></td>
-    <td><%= task.finished_by.present? ? User.find(task.finished_by).email : '-'%></td>
-    <td><%= task.status %></td>
-    <td><%= render :partial => 'tasks/task_actions', :locals => {:task => task} %></td>
-    <td><%= link_to 'Show', task %></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+      <% @workable_item.tasks.each do |task| %>
+          <tr>
+            <td><%= task.description %></td>
+            <td><%= User.find(task.created_by).email %></td>
+            <td><%= task.started_by.present? ? User.find(task.started_by).email : '-' %></td>
+            <td><%= task.finished_by.present? ? User.find(task.finished_by).email : '-' %></td>
+            <td><%= task.status %></td>
+            <td><%= render :partial => 'tasks/task_actions', :locals => {:task => task} %></td>
+            <td><%= link_to 'Show', task %></td>
+            <td><%= link_to 'Edit', edit_task_path(task) %></td>
+            <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td>
+          </tr>
+      <% end %>
+    </table>
+<% else %>
+    No Tasks!
 <% end %>
-</table>
+<% if !@workable_item.accepted? %>
+    <%= link_to 'Add Task', new_task_path(:workable_item => @workable_item) %>
+<% end %>
 
-<%= link_to 'Edit', edit_workable_item_path(@workable_item) %> |
-<%= link_to @workable_item.project.name, project_path(@workable_item.project) %> |
-<%= link_to 'Add Task', new_task_path(:workable_item => @workable_item) %> |
-<%= render :partial => 'workable_item_actions', :locals => {:workable_item => @workable_item} %>
+<h2>Comments:</h2>
+
+<% if @workable_item.comments.present? %>
+    <table>
+      <tr>
+        <th>Comment</th>
+        <th>Workable item</th>
+        <th>Posted by</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @workable_item.comments.each do |comment| %>
+          <tr>
+            <td><%= comment.comment %></td>
+            <td><%= comment.workable_item_id %></td>
+            <td><%= comment.posted_by %></td>
+            <td><%= link_to 'Show', comment %></td>
+            <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+            <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
+          </tr>
+      <% end %>
+    </table>
+<% else %>
+    No Comments!
+<% end %>
+<% if !@workable_item.accepted? %>
+    <%= link_to 'Add Comment', new_comment_path(:workable_item => @workable_item) %>
+<% end %>
+
+<br/>
+<br/>
+<%= link_to @workable_item.project.name, project_path(@workable_item.project) %>
+<% if !@workable_item.accepted? %>
+    | <%= link_to 'Edit', edit_workable_item_path(@workable_item) %> |
+    <%= render :partial => 'workable_item_actions', :locals => {:workable_item => @workable_item} %>
+<% end %>

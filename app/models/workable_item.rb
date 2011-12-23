@@ -5,6 +5,7 @@ class WorkableItem < ActiveRecord::Base
   belongs_to :project
   has_many :workable_item_histories, :dependent => :destroy
   has_many :tasks, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   validates_presence_of :title
   validates_numericality_of :estimate
 

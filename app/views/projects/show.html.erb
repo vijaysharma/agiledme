@@ -18,6 +18,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
   <% @project.workable_items.each do |workable_item| %>
@@ -29,9 +30,11 @@
         <td><%= workable_item.owner.present? ? User.find(workable_item.owner).email : '-' %></td>
         <td><%= workable_item.status %></td>
         <td><%= render :partial => 'workable_items/workable_item_actions', :locals => {:workable_item => workable_item} %></td>
-        <td><%= link_to 'Show', workable_item %></td>
-        <td><%= link_to 'Edit', edit_workable_item_path(workable_item) %></td>
-        <td><%= link_to 'Destroy', workable_item, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% if !workable_item.accepted? %>
+            <td><%= link_to 'Show', workable_item %></td>
+            <td><%= link_to 'Edit', edit_workable_item_path(workable_item) %></td>
+            <td><%= link_to 'Destroy', workable_item, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
       </tr>
   <% end %>
 </table>

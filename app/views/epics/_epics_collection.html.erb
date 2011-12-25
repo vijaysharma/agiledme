@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Project</th>
+    <th>Status</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% epics.each do |epic| %>
+      <tr>
+        <td><%= epic.title %></td>
+        <td><%= epic.description %></td>
+        <td><%= epic.project.name %></td>
+        <td><%= epic.status %></td>
+        <td><%= epic.user.email %></td>
+        <td><%= link_to 'Show', epic %></td>
+        <td><%= link_to 'Edit', edit_epic_path(epic) %></td>
+        <td><%= link_to 'Destroy', epic, :confirm => 'Are you sure?', :method => :delete %></td>
+
+      </tr>
+  <% end %>
+</table>

@@ -25,32 +25,7 @@
 <%= link_to 'Add Epic', new_epic_path(:project => @project) %>
 <br/>
 <br/>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Project</th>
-    <th>Status</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @project.epics.each do |epic| %>
-      <tr>
-        <td><%= epic.title %></td>
-        <td><%= epic.description %></td>
-        <td><%= epic.project.name %></td>
-        <td><%= epic.status %></td>
-        <td><%= epic.user.email %></td>
-        <td><%= link_to 'Show', epic %></td>
-        <td><%= link_to 'Edit', edit_epic_path(epic) %></td>
-        <td><%= link_to 'Destroy', epic, :confirm => 'Are you sure?', :method => :delete %></td>
-
-      </tr>
-  <% end %>
-</table>
+<%= render :partial => 'epics/epics_collection', :locals => {:epics => @project.epics} %>
 
 <br/>
 

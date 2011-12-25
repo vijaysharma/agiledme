@@ -1,6 +1,10 @@
 Agiledme::Application.routes.draw do
 
-  resources :epics
+  resources :epics do
+    member do
+      get :finish
+    end
+  end
 
   resources :comments
 

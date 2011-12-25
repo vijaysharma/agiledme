@@ -3,6 +3,13 @@
   <b>Type:</b>
   <%= @workable_item.type %>
 </p>
+<% if @workable_item.epic.present? %>
+    <p>
+      <b>Related Epic:</b>
+      <%= link_to @workable_item.epic.title, epic_path(@workable_item.epic)%>
+
+    </p>
+<% end %>
 <p>
   <b>Title:</b>
   <%= @workable_item.title %>
@@ -25,11 +32,11 @@
 
 <p>
   <b>Present Under:</b>
-  <%= @workable_item.category%>
+  <%= @workable_item.category %>
 </p>
 <p>
   <b>Estimate Pts:</b>
-  <%= @workable_item.estimate%>
+  <%= @workable_item.estimate %>
 </p>
 
 <p>

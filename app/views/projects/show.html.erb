@@ -41,16 +41,12 @@
       <tr>
         <td><%= epic.title %></td>
         <td><%= epic.description %></td>
-        <td><%= epic.project_id %></td>
+        <td><%= epic.project.name %></td>
         <td><%= epic.status %></td>
-        <td><%= epic.user_id %></td>
+        <td><%= epic.user.email %></td>
         <td><%= link_to 'Show', epic %></td>
         <td><%= link_to 'Edit', edit_epic_path(epic) %></td>
-        <td><%= link_to 'Destroy', epic, :confirm => 'Are you sure?', :method => :delete %>
-          <% if !epic.finished? %>
-              | <%= link_to "Break it Down", new_workable_item_path(:project => @project,:epic => epic, :type => "Story") %>
-          <% end %>
-        </td>
+        <td><%= link_to 'Destroy', epic, :confirm => 'Are you sure?', :method => :delete %></td>
 
       </tr>
   <% end %>

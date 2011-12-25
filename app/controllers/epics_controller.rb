@@ -72,6 +72,20 @@ class EpicsController < ApplicationController
     end
   end
 
+  def finish
+    @epic = Epic.find(params[:id])
+
+    respond_to do |format|
+      if @epic.finish!
+        format.html { redirect_to(project_url(@epic.project), :notice => 'Epic was successfully finished.') }
+        format.xml { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml { render :xml => @epic.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /epics/1
   # DELETE /epics/1.xml
   def destroy

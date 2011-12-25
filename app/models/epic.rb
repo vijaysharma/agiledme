@@ -11,7 +11,7 @@ class Epic < ActiveRecord::Base
 
   aasm :column => :status do
     state :new
-    state :in_progress
+    state :split_in_progress
     state :finished
 
     event :start_splitting do
@@ -19,20 +19,7 @@ class Epic < ActiveRecord::Base
     end
 
     event :finish do
-      transitions :to => :finished, :from => [:in_progress]
+      transitions :to => :finished, :from => [:split_in_progress]
     end
   end
-
-  private
-
-  def update_started_by
-    self.update_attribute(:started_by, User.current_user.id)
-    self.save!
-  end
-
-  def update_finished_by
-    self.update_attribute(:finished_by, User.current_user.id)
-    self.save!
-  end
-
 end

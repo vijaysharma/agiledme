@@ -2,31 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/epics_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/epics_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/epic.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/epics/_form.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/epics/edit.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/epics/index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/epics/new.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/epics/show.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/workable_items/_workable_items_collection.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20111225133451_create_epics.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/epics.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/functional/epics_controller_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/epic_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/helpers/epics_helper_test.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/project_member_invitations_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/project_member_invitations_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/epics_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/epics_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/workable_items_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/workable_items_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/project.rb" afterPath="$PROJECT_DIR$/app/models/project.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/workable_item.rb" afterPath="$PROJECT_DIR$/app/models/workable_item.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/edit.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/epic.rb" afterPath="$PROJECT_DIR$/app/models/epic.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/epics/show.html.erb" afterPath="$PROJECT_DIR$/app/views/epics/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/show.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workable_items/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/workable_items/_form.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workable_items/show.html.erb" afterPath="$PROJECT_DIR$/app/views/workable_items/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20111220111115_create_workable_items.rb" afterPath="$PROJECT_DIR$/db/migrate/20111220111115_create_workable_items.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="agiledme.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,7 +36,16 @@
       <file leaf-file-name="workable_items_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/workable_items_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="18" selection-start="721" selection-end="721" vertical-scroll-proportion="0.0">
+            <state line="57" column="45" selection-start="1516" selection-end="1516" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="epics_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/epics_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="81" column="68" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -62,34 +54,52 @@
       <file leaf-file-name="epic.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/epic.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="26" selection-start="85" selection-end="99" vertical-scroll-proportion="0.0">
+            <state line="3" column="16" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/workable_items/_form.html.erb">
+      <file leaf-file-name="workable_item.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/workable_item.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="31" selection-start="1135" selection-end="1135" vertical-scroll-proportion="-10.625">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/epics/show.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="52" selection-start="88" selection-end="88" vertical-scroll-proportion="0.10576923">
+            <state line="4" column="29" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/workable_items/show.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="24" selection-start="154" selection-end="154" vertical-scroll-proportion="-3.125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/epics/show.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="22" selection-start="539" selection-end="548" vertical-scroll-proportion="-6.7083335">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="33" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="125" selection-start="1663" selection-end="1788" vertical-scroll-proportion="-9.208333">
+            <state line="62" column="25" selection-start="1478" selection-end="1478" vertical-scroll-proportion="3.041237">
               <folding />
             </state>
           </provider>
@@ -98,7 +108,7 @@
       <file leaf-file-name="_workable_items_collection.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_items_collection.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="42" selection-start="795" selection-end="795" vertical-scroll-proportion="-6.7916665">
+            <state line="26" column="59" selection-start="812" selection-end="812" vertical-scroll-proportion="-5.0416665">
               <folding />
             </state>
           </provider>
@@ -134,22 +144,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/project.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/project_member_invitations_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/epics/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/epics/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/epics/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/projects/edit.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/epics_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/workable_item.rb" />
-        <option value="$PROJECT_DIR$/app/models/epic.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20111220111115_create_workable_items.rb" />
         <option value="$PROJECT_DIR$/app/views/workable_items/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/workable_items_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/projects/_workable_items_collection.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/projects/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/workable_items/_workable_items_collection.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/epics_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/projects/show.html.erb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/epics/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/workable_items_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/epic.rb" />
+        <option value="$PROJECT_DIR$/app/views/workable_items/show.html.erb" />
       </list>
     </option>
   </component>
@@ -201,6 +211,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="agiledme" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agiledme" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agiledme" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -662,10 +686,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="738" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40557274" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40557274" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -697,7 +721,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="added the ability to estimate bugs and chores" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the ability to add and split the epics to a project" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -720,25 +744,12 @@
     <MESSAGE value="added the ability to take action on stories and tasks" />
     <MESSAGE value="added ability to comment on a story" />
     <MESSAGE value="added the ability to estimate bugs and chores" />
+    <MESSAGE value="added the ability to add and split the epics to a project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/projects/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="43" selection-start="583" selection-end="583" vertical-scroll-proportion="-14.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/epics/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="95" selection-end="95" vertical-scroll-proportion="-3.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/epics/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="17" selection-start="619" selection-end="619" vertical-scroll-proportion="-16.25">
@@ -767,37 +778,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/workable_item.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="18" selection-start="97" selection-end="97" vertical-scroll-proportion="0.2">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/workable_items/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/epics_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="2" selection-start="1814" selection-end="1814" vertical-scroll-proportion="0.8835443">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/workable_items_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="18" selection-start="721" selection-end="721" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/epic.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="26" selection-start="85" selection-end="99" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -809,6 +792,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="33" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_item_actions.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="61" selection-start="681" selection-end="681" vertical-scroll-proportion="0.0">
@@ -816,23 +806,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/epics/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="22" selection-start="539" selection-end="548" vertical-scroll-proportion="-6.7083335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/epics_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="68" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/workable_items_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="45" selection-start="1516" selection-end="1516" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/workable_items/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="24" selection-start="154" selection-end="154" vertical-scroll-proportion="-3.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/epic.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="16" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/workable_item.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="29" selection-start="78" selection-end="78" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_items_collection.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="42" selection-start="795" selection-end="795" vertical-scroll-proportion="-6.7916665">
+        <state line="26" column="59" selection-start="812" selection-end="812" vertical-scroll-proportion="-5.0416665">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="125" selection-start="1663" selection-end="1788" vertical-scroll-proportion="-9.208333">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/epics/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="52" selection-start="88" selection-end="88" vertical-scroll-proportion="0.10576923">
+        <state line="62" column="25" selection-start="1478" selection-end="1478" vertical-scroll-proportion="3.041237">
           <folding />
         </state>
       </provider>

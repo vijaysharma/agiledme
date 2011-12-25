@@ -28,3 +28,7 @@
 
 <%= link_to 'Edit', edit_epic_path(@epic) %> |
 <%= link_to 'Back', project_path(@epic.project) %>
+<% if !@epic.finished? %>
+    | <%= link_to "Break it Down", new_workable_item_path(:project => @epic.project, :epic => @epic, :type => "Story") %>
+    | <%= link_to "Finish Epic", finish_epic_path(@epic) %>
+<% end %>

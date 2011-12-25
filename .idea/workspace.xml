@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="added ability to comment on a story">
+    <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/projects_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/projects_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/workable_items_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/workable_items_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/bug.rb" afterPath="$PROJECT_DIR$/app/models/bug.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/chore.rb" afterPath="$PROJECT_DIR$/app/models/chore.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/project.rb" afterPath="$PROJECT_DIR$/app/models/project.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/workable_item.rb" afterPath="$PROJECT_DIR$/app/models/workable_item.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/_form.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/index.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/show.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workable_items/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/workable_items/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workable_items/_workable_item_actions.html.erb" afterPath="$PROJECT_DIR$/app/views/workable_items/_workable_item_actions.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workable_items/show.html.erb" afterPath="$PROJECT_DIR$/app/views/workable_items/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20111220061236_create_projects.rb" afterPath="$PROJECT_DIR$/db/migrate/20111220061236_create_projects.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20111220111115_create_workable_items.rb" afterPath="$PROJECT_DIR$/db/migrate/20111220111115_create_workable_items.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="agiledme.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,7 +48,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/projects/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="21" selection-start="310" selection-end="310" vertical-scroll-proportion="0.39267015">
+            <state line="23" column="43" selection-start="583" selection-end="583" vertical-scroll-proportion="0.60209423">
               <folding />
             </state>
           </provider>
@@ -828,7 +813,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ability to comment on a story" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the ability to estimate bugs and chores" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -850,6 +835,7 @@
     <MESSAGE value="fixed the member invitations as well" />
     <MESSAGE value="added the ability to take action on stories and tasks" />
     <MESSAGE value="added ability to comment on a story" />
+    <MESSAGE value="added the ability to estimate bugs and chores" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -962,7 +948,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="21" selection-start="310" selection-end="310" vertical-scroll-proportion="0.39267015">
+        <state line="23" column="43" selection-start="583" selection-end="583" vertical-scroll-proportion="0.60209423">
           <folding />
         </state>
       </provider>

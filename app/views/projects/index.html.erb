@@ -6,6 +6,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Estimate Bugs</th>
+        <th>Estimate Chores</th>
         <th>Start Date</th>
         <th></th>
         <th></th>
@@ -20,6 +21,7 @@
             <td><%= project.name %></td>
             <td><%= project.description %></td>
             <td><%= project.estimate_bugs? %></td>
+            <td><%= project.estimate_chores? %></td>
             <td><%= project.start_date %></td>
             <td><%= link_to 'Show', project %></td>
             <td><%= link_to 'Edit', edit_project_path(project) %></td>

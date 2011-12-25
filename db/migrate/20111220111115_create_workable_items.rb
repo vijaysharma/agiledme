@@ -9,6 +9,7 @@ class CreateWorkableItems < ActiveRecord::Migration
       t.string :status
       t.integer :estimate
       t.string :type
+      t.string :category
 
       t.timestamps
     end

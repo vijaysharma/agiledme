@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.xml
   def new
-    @project = Project.new
+    @project = Project.new(:estimate_bugs => false)
 
     respond_to do |format|
       format.html # new.html.erb

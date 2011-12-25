@@ -13,7 +13,16 @@ class WorkableItemsController < ApplicationController
   # GET /workable_items/new
   # GET /workable_items/new.xml
   def new
-    @workable_item = WorkableItem.new
+    if params[:type] == "Story"
+      @workable_item = Story.new
+    elsif params[:type] == "Bug"
+      @workable_item = Bug.new
+    elsif params[:type] == "Chore"
+      @workable_item = Chore.new
+    else
+      @workable_item = WorkableItem.new
+    end
+
     @workable_item.type = params[:type]
     @workable_item.project = Project.find(params[:project])
     @workable_item.requester = current_user.id
@@ -33,8 +42,13 @@ class WorkableItemsController < ApplicationController
   # POST /workable_items
   # POST /workable_items.xml
   def create
-    @workable_item = WorkableItem.new(params[:workable_item])
-    @workable_item.type = params[:workable_item][:type]
+    if params[:story].present?
+      @workable_item = Story.new(params[:story])
+    elsif params[:chore].present?
+      @workable_item = Chore.new(params[:chore])
+    elsif params[:bug].present?
+      @workable_item = Bug.new(params[:bug])
+    end
 
     respond_to do |format|
       if @workable_item.save
@@ -53,7 +67,7 @@ class WorkableItemsController < ApplicationController
     @workable_item = WorkableItem.find(params[:id])
 
     respond_to do |format|
-      if @workable_item.update_attributes(params[:workable_item])
+      if @workable_item.update_attributes(params[@workable_item.type.downcase])
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully updated.') }
         format.xml { head :ok }
       else

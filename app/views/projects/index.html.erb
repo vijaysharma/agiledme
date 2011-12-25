@@ -5,7 +5,8 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
-        <th></th>
+        <th>Estimate Bugs</th>
+        <th>Start Date</th>
         <th></th>
         <th></th>
         <th></th>
@@ -18,10 +19,11 @@
           <tr>
             <td><%= project.name %></td>
             <td><%= project.description %></td>
+            <td><%= project.estimate_bugs? %></td>
+            <td><%= project.start_date %></td>
             <td><%= link_to 'Show', project %></td>
             <td><%= link_to 'Edit', edit_project_path(project) %></td>
             <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
-            <td><%= link_to 'Add Members', new_project_member_invitation_path(:project => project) %></td>
           </tr>
       <% end %>
     </table>

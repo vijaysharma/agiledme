@@ -7,7 +7,7 @@ class WorkableItem < ActiveRecord::Base
   has_many :tasks, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   validates_presence_of :title
-  validates_numericality_of :estimate
+  validates_presence_of :category
 
   after_create :update_created_by
 
@@ -46,42 +46,51 @@ class WorkableItem < ActiveRecord::Base
     end
   end
 
+  def is_estimatable?
+    true;
+  end
+
   private
 
   def update_started_by
-    update_history("started")
-    self.owner = User.current_user.id
-    self.save!
+    add_history("started")
+    set_owner_as_current_user
   end
 
   def update_created_by
-    update_history("created")
+    add_history("created")
   end
 
   def update_finished_by
-    update_history("finished")
+    add_history("finished")
+    set_owner_as_current_user
   end
 
   def update_delivered_by
-    update_history("delivered")
+    add_history("delivered")
+    set_owner_as_current_user
   end
 
   def update_accepted_by
-    update_history("accepted")
+    add_history("accepted")
   end
 
   def update_rejected_by
-    update_history("rejected")
+    add_history("rejected")
   end
 
   def update_restarted_by
-    update_history("restarted")
-    self.owner = User.current_user.id
-    self.save!
+    add_history("restarted")
+    set_owner_as_current_user
   end
 
-  def update_history(event)
+  def add_history(event)
     WorkableItemHistory.new(:event => event, :user_id => User.current_user.id, :workable_item_id => self.id).save!
+  end
+
+  def set_owner_as_current_user
+    self.owner = User.current_user.id
+    self.save!
   end
 
 end

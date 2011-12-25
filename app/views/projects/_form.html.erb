@@ -19,6 +19,18 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+  <div class="field">
+    <%= f.label :estimate_bugs %><br />
+    <%= f.check_box :estimate_bugs %>
+  </div>
+  <div class="field">
+    <%= f.label :estimate_chores %><br />
+    <%= f.check_box :estimate_chores %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date, :start_year => DateTime.now.year, :order => [:day, :month, :year] %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

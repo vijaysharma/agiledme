@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(:version => 20111223051655) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "description"
+    t.integer  "sprint_length",   :default => 2
+    t.integer  "velocity",        :default => 10
+    t.boolean  "estimate_bugs",   :default => false
+    t.boolean  "estimate_chores", :default => false
+    t.datetime "start_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20111223051655) do
     t.string   "status"
     t.integer  "estimate"
     t.string   "type"
+    t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

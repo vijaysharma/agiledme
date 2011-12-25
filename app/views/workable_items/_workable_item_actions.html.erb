@@ -1,5 +1,5 @@
-<% if workable_item.new? and workable_item.estimate.present? %>
-    <%= link_to "Start", start_workable_item_path(workable_item) %>
+<% if workable_item.new? and (workable_item.is_estimatable? and workable_item.estimate.present?) %>
+        <%= link_to "Start", start_workable_item_path(workable_item) %>
 <% elsif workable_item.started? %>
     <%= link_to "Finish", finish_workable_item_path(workable_item) %>
 <% elsif workable_item.finished? %>

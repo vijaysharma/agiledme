@@ -22,10 +22,17 @@
       <br/>
       <%= f.text_field :description %>
     </div>
+    <% if @workable_item.is_estimatable? %>
+        <div class="field">
+          <%= f.label :estimate %>
+          <br/>
+          <%= f.text_field :estimate %>
+        </div>
+    <% end %>
     <div class="field">
-      <%= f.label :estimate %>
+      <%= f.label :category %>
       <br/>
-      <%= f.text_field :estimate %>
+      <%= f.select(:category, %w[icebox backlog current]) %>
     </div>
     <%= f.hidden_field :requester %>
     <%= f.hidden_field :project_id %>

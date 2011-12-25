@@ -6,6 +6,7 @@ class CreateWorkableItems < ActiveRecord::Migration
       t.integer :requester
       t.integer :owner
       t.integer :project_id
+      t.integer :epic_id
       t.string :status
       t.integer :estimate
       t.string :type

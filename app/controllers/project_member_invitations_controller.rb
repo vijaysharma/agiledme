@@ -82,7 +82,6 @@ class ProjectMemberInvitationsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(project_member_invitations_url(:project => project), :notice => 'Invitation was successfully deleted.') }
-      format.html { redirect_to(project_member_invitations_url) }
       format.xml  { head :ok }
     end
   end

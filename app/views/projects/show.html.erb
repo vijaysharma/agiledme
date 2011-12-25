@@ -1,5 +1,10 @@
 <h1> Project : <%= @project.name %></h1>
 
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'My Projects', projects_path %> |
+<%= link_to 'Members', project_member_invitations_path(:project => @project) %>
+
+
 <p>
   <b>Description:</b>
   <%= @project.description %>
@@ -15,49 +20,49 @@
   <%= @project.start_date %>
 </p>
 
-<h2>Items</h2>
+<h2>Epics</h2>
 
+<%= link_to 'Add Epic', new_epic_path(:project => @project) %>
+<br/>
+<br/>
 <table>
   <tr>
-    <th>Type</th>
     <th>Title</th>
     <th>Description</th>
-    <th>Requester</th>
-    <th>Owner</th>
+    <th>Project</th>
     <th>Status</th>
-    <th>Estimate Pt</th>
-    <th>Present Under</th>
-    <th></th>
+    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-  <% @project.workable_items.each do |workable_item| %>
+  <% @project.epics.each do |epic| %>
       <tr>
-        <td><%= workable_item.type %></td>
-        <td><%= workable_item.title %></td>
-        <td><%= workable_item.description %></td>
-        <td><%= User.find(workable_item.requester).email %></td>
-        <td><%= workable_item.owner.present? ? User.find(workable_item.owner).email : '-' %></td>
-        <td><%= workable_item.status %></td>
-        <td><%= workable_item.estimate %></td>
-        <td><%= workable_item.category%></td>
-        <td><%= render :partial => 'workable_items/workable_item_actions', :locals => {:workable_item => workable_item} %></td>
-        <% if !workable_item.accepted? %>
-            <td><%= link_to 'Show', workable_item %></td>
-            <td><%= link_to 'Edit', edit_workable_item_path(workable_item) %></td>
-            <td><%= link_to 'Destroy', workable_item, :confirm => 'Are you sure?', :method => :delete %></td>
-        <% end %>
+        <td><%= epic.title %></td>
+        <td><%= epic.description %></td>
+        <td><%= epic.project_id %></td>
+        <td><%= epic.status %></td>
+        <td><%= epic.user_id %></td>
+        <td><%= link_to 'Show', epic %></td>
+        <td><%= link_to 'Edit', edit_epic_path(epic) %></td>
+        <td><%= link_to 'Destroy', epic, :confirm => 'Are you sure?', :method => :delete %>
+          <% if !epic.finished? %>
+              | <%= link_to "Break it Down", new_workable_item_path(:project => @project,:epic => epic, :type => "Story") %>
+          <% end %>
+        </td>
+
       </tr>
   <% end %>
 </table>
 
 <br/>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'My Projects', projects_path %> |
-<%= link_to 'Members', project_member_invitations_path(:project => @project) %> |
+<h2>Stories Bugs And Chores</h2>
 <%= link_to 'Add Story', new_workable_item_path(:project => @project, :type => "Story") %> |
 <%= link_to 'Add Bug', new_workable_item_path(:project => @project, :type => "Bug") %> |
 <%= link_to 'Add Chore', new_workable_item_path(:project => @project, :type => "Chore") %>
+<br/>
+<br/>
+
+<%= render :partial => 'workable_items/workable_items_collection', :locals => {:workable_items => @project.workable_items} %>

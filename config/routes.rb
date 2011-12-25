@@ -1,5 +1,7 @@
 Agiledme::Application.routes.draw do
 
+  resources :epics
+
   resources :comments
 
   resources :tasks do

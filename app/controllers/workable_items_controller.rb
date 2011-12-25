@@ -15,6 +15,9 @@ class WorkableItemsController < ApplicationController
   def new
     if params[:type] == "Story"
       @workable_item = Story.new
+      if params[:epic].present?
+        @workable_item.epic = Epic.find(params[:epic])
+      end
     elsif params[:type] == "Bug"
       @workable_item = Bug.new
     elsif params[:type] == "Chore"

@@ -3,6 +3,7 @@ class WorkableItem < ActiveRecord::Base
   include AASM
 
   belongs_to :project
+  belongs_to :epic
   has_many :workable_item_histories, :dependent => :destroy
   has_many :tasks, :dependent => :destroy
   has_many :comments, :dependent => :destroy

@@ -1,0 +1,9 @@
+.grayToWhiteRoundBlocks,
+.greenButton,.grayButton,
+.greenButton:hover,.grayButton:hover,
+.header,
+.hovered,
+.hovered  li a:hover,
+.about,
+.blueBlock,.registration,.blueTab,.subMenu,ul.submenu > li:hover,
+.registration form input[type="text"],.registration form input[type="password"] {filter:none;}

@@ -1,0 +1,39 @@
+#fine_print {
+  padding: 20px;
+  font-family: Arial, Courier, Serif;
+  font-size: 16px;
+}
+#fine_print h1 {
+  font-family: Tahoma, Verdana, Serif;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#fine_print h2 {
+  font-family: Tahoma, Verdana, Serif;
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#fine_print h3 {
+  font-family: Tahoma, Verdana, Serif;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#fine_print ul {
+  margin: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#fine_print ul li { list-style: square inside; }
+#fine_print p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#fine_print ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+  margin-left: 36px;
+}
+#fine_print ol li { padding: 10px; }

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title><%= content_for?(:title) ?  yield(:title) + " - White Apple!!": "You Agiled Me!!" %></title>
+  <title><%= content_for?(:title) ? yield(:title) + " - White Apple!!" : "You Agiled Me!!" %></title>
   <%= stylesheet_link_tag 'application', :cache => true %>
   <!--[if gte IE 9]>
       <%= stylesheet_link_tag 'ie9' %>
@@ -29,23 +29,27 @@
           <div class="alert"><%= alert %></div>
       <% end %>
 
-      <p class="call" title="Call Us"><span></span>Call Us: +91-80-42414300</p>
+      <% if !user_signed_in? %>
+          <p class="call" title="Call Us"><span></span>Call Us: +91-80-42414300</p>
+      <% end %>
 
       <div class="main_menu_links">
         <% if user_signed_in? %>
             Welcome <%= current_user.email %> | <%= link_to 'Logout', destroy_user_session_path %>
         <% else %>
-            <%= link_to 'Login', new_user_session_path %>
-            <%= link_to 'Register', new_user_registration_path %>
+            <%= link_to 'Login', new_user_session_path, :class => current_page?(new_user_session_path) ? 'selected' :'not_selected' %>
+            <%= link_to 'Register', new_user_registration_path, :class => current_page?(new_user_registration_path) ? 'selected' :'not_selected' %>
         <% end %>
       </div>
       <ul class="navigation">
-        <li class="<%= current_page?(root_path) ? 'selected' :'not_selected' %>"><%= link_to "Home", root_path %></li>
-        <li class="<%= current_page?(projects_path) ? 'selected' :'not_selected' %>"><%= link_to "About", root_path %></li>
+        <% if user_signed_in? %>
+            <li class="<%= current_page?(root_path) ? 'selected' :'not_selected' %>"><%= link_to "Dashboard", root_path %></li>
+        <% end %>
       </ul>
     </div>
     <div class="content">
-    <%= yield %>
+      <%= yield %>
+      <div class="clear"></div>
     </div>
   </div>
   <div class="footerWrapper">

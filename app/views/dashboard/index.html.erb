@@ -1,24 +1,26 @@
 <% title "Dashboard" %>
-<div class="leftBlock">
+<div class="leftBlock dashboard_page">
   <h1>DASHBOARD</h1>
-  <h2>My Projects</h2>
+
+  <h2>My Projects
+    <%= link_to 'CREATE PROJECT +', new_project_path, :id => "create_new_project_button", :class=> "blueButton" %>
+  </h2>
+
 
   <% if @projects.present? %>
       <% @projects.each do |project| %>
-          <div class="project_box">
-            <td><%= project.name %></td>
-            <td><%= project.description %></td>
-            <td><%= project.estimate_bugs? %></td>
-            <td><%= project.estimate_chores? %></td>
-            <td><%= project.start_date %></td>
-            <td><%= link_to 'Show', project %></td>
-          </div>
+          <%= link_to project do %>
+              <div class="project_box">
+                <div class="project_title"><%= project.name.capitalize %></div>
+                <div class="project_box_hover_links">
+                  <%= link_to 'show', project, :class => "hover_link" %>
+                  <%= link_to 'members', project_member_invitations_path(:project => @project) %>
+                </div>
+              </div>
+          <% end %>
       <% end %>
   <% else %>
       You have not created any project as of now.
       <br/>
   <% end %>
-  <br/>
-
-  <%= link_to 'Create New Project', new_project_path %>
 </div>

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title><%= content_for?(:title) ? yield(:title) : "You Agiled Me!!" %></title>
+  <title><%= content_for?(:title) ?  yield(:title) + " - White Apple!!": "You Agiled Me!!" %></title>
   <%= stylesheet_link_tag 'application', :cache => true %>
   <!--[if gte IE 9]>
       <%= stylesheet_link_tag 'ie9' %>

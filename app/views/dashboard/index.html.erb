@@ -1,10 +1,24 @@
-<h1>YOU AGILED ME!!</h1>
+<% title "Dashboard" %>
+<div class="leftBlock">
+  <h1>DASHBOARD</h1>
+  <h2>My Projects</h2>
 
-<% if @projects.present? %>
-<% @projects.each do |project| %>
-    Name: <%= project.name %>
-    Description: <%= project.description %>
-<% end %>
-<% else %>
-    You have not created any project as of now. <%= link_to "Create One Now", new_project_path %>
-<% end %>
+  <% if @projects.present? %>
+      <% @projects.each do |project| %>
+          <div class="project_box">
+            <td><%= project.name %></td>
+            <td><%= project.description %></td>
+            <td><%= project.estimate_bugs? %></td>
+            <td><%= project.estimate_chores? %></td>
+            <td><%= project.start_date %></td>
+            <td><%= link_to 'Show', project %></td>
+          </div>
+      <% end %>
+  <% else %>
+      You have not created any project as of now.
+      <br/>
+  <% end %>
+  <br/>
+
+  <%= link_to 'Create New Project', new_project_path %>
+</div>

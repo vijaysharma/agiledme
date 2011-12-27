@@ -152,7 +152,7 @@ height:65px;position:relative;z-index:1;
   -moz-box-shadow:0 1px #4f910d inset,0 1px #256188;-webkit-box-shadow:0 1px #4f910d inset,0 1px #256188;-o-box-shadow:0 1px #4f910d inset,0 1px #256188;box-shadow:0 1px #4f910d inset,0 1px #256188;
 }
 .logo{float:left;padding:10px 0 0 20px;}
-.logo > a,.facebook > a ,.twitter > a,.call > span{background:url(../images/sprite.png) no-repeat 0 0;}
+.facebook > a ,.twitter > a,.call > span{background:url(../images/sprite.png) no-repeat 0 0;}
 .logo > a {text-decoration:none;color:#ffffff}
 .logo > a{background-position:-85px top;width:88px;height:60px;display:block;}
 .call{color:#ffffff;position:absolute;top:5px;right:25px;}

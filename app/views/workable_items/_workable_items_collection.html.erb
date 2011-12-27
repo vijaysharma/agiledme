@@ -4,22 +4,25 @@
       <div id="<%= item_unique_id %>_content" class="storyItem delivered notUnderEdit hoverable">
         <div class="storyPreviewHeader">
           <div class="storySelector notDblclickable">&nbsp;</div>
-          <div class="storyPreviewButtons" id="<%=item_unique_id%>_content_buttons">
+          <div class="storyPreviewButtons" id="<%= item_unique_id %>_content_buttons">
             <%= render :partial => 'workable_items/workable_item_actions', :locals => {:workable_item => workable_item} %>
           </div>
           <div class="icons">
-            <img id="backlog_itemList_story10941149_content_icons_editButton" class="toggleExpandedButton" src="https://cdn2-pivotaltracker.pantherssl.com/images/v7/application/stories_view/icons/story_collapsed.png" title="Expand">
+            <img id="<%= item_unique_id %>_content_icons_editButton" class="toggleExpandedButton" src="/images/story_collapsed.png" title="Expand">
 
             <div class="left">
-              <img class="storyTypeIcon" src="https://cdn2-pivotaltracker.pantherssl.com/images/v7/application/stories_view/icons/bug_external.png">
+              <img class="storyTypeIcon" src="/images/bug_external.png">
               <img width="6" class="estimateIcon" src="https://cdn1-pivotaltracker.pantherssl.com/images/v7/application/stories_view/icons/estimate_0pt_fibonacci.gif">
               <img class="flyoverIcon" src="/images/story_flyover_icon.png">
             </div>
           </div>
-          <div id="backlog_itemList_story10941149_content_details" class="storyPreviewText" style="cursor: move;">
-            <span id="backlog_itemList_story10941149_content_labels_story[label_list]" class="storyLabels empty"></span>
+          <div id="<%= item_unique_id %>_content_details" class="storyPreviewText" style="cursor: move;">
+            <span id="<%= item_unique_id %>_content_labels_story[label_list]" class="storyLabels empty"></span>
             <span>
-              (cannot repro on test bc universal is... (<a href="javascript:void(0);" title="CR Geissler" class="storyOwnerInitials">CRG</a>)
+              <%= workable_item.title %>
+              <% if User.find(workable_item.owner).present? %>
+                  (<a href="javascript:void(0);" title="<%= email = User.find(workable_item.owner).email %>" class="storyOwnerInitials"><%= email %></a>)
+                  <% end %>
             </span>
           </div>
         </div>
@@ -28,39 +31,3 @@
       </div>
     </div>
 <% end %>
-
-<table>
-  <tr>
-    <th>Type</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Requester</th>
-    <th>Owner</th>
-    <th>Status</th>
-    <th>Estimate Pt</th>
-    <th>Present Under</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% workable_items.each do |workable_item| %>
-      <tr>
-        <td><%= workable_item.type %></td>
-        <td><%= workable_item.title %></td>
-        <td><%= workable_item.description %></td>
-        <td><%= User.find(workable_item.requester).email %></td>
-        <td><%= workable_item.owner.present? ? User.find(workable_item.owner).email : '-' %></td>
-        <td><%= workable_item.status %></td>
-        <td><%= workable_item.estimate %></td>
-        <td><%= workable_item.category %></td>
-        <td><%= render :partial => 'workable_items/workable_item_actions', :locals => {:workable_item => workable_item} %></td>
-        <% if !workable_item.accepted? %>
-            <td><%= link_to 'Show', workable_item %></td>
-            <td><%= link_to 'Edit', edit_workable_item_path(workable_item) %></td>
-            <td><%= link_to 'Destroy', workable_item, :confirm => 'Are you sure?', :method => :delete %></td>
-        <% end %>
-      </tr>
-  <% end %>
-</table>

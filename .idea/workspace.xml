@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/accept.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/accept_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/create_project.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/deliver.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/deliver_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/finish.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/finish_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/panel_bg_btm.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/panel_bg_btm_corners.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/panel_bg_right.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/reject.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/reject_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/restart.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/restart_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/selectbox_off.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/selectbox_on.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/start.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/start_hover.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/story_flyover_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/stylesheets/project_view.css" />
+    <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="working on the project view">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/bug_external.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/close_panel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/close_panel_hover.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/story_collapsed.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/show.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workable_items/_workable_item_actions.html.erb" afterPath="$PROJECT_DIR$/app/views/workable_items/_workable_item_actions.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workable_items/_workable_items_collection.html.erb" afterPath="$PROJECT_DIR$/app/views/workable_items/_workable_items_collection.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/application.css" afterPath="$PROJECT_DIR$/public/stylesheets/application.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/project_view.css" afterPath="$PROJECT_DIR$/public/stylesheets/project_view.css" />
     </list>
     <ignored path="agiledme.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,19 +33,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="project_view.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="project_view.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/project_view.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="224" column="16" selection-start="4295" selection-end="4295" vertical-scroll-proportion="-18.423077">
+            <state line="330" column="45" selection-start="6264" selection-end="6264" vertical-scroll-proportion="0.38409474">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_workable_items_collection.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_workable_items_collection.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_items_collection.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="45" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.6583072">
+            <state line="32" column="9" selection-start="1870" selection-end="1870" vertical-scroll-proportion="-19.47826">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="66" selection-start="555" selection-end="555" vertical-scroll-proportion="-6.695652">
               <folding />
             </state>
           </provider>
@@ -107,10 +98,10 @@
         <option value="$PROJECT_DIR$/public/stylesheets/ie9.css" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/public/stylesheets/application.css" />
-        <option value="$PROJECT_DIR$/app/views/projects/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/workable_items/_workable_item_actions.html.erb" />
-        <option value="$PROJECT_DIR$/public/stylesheets/project_view.css" />
         <option value="$PROJECT_DIR$/app/views/workable_items/_workable_items_collection.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/projects/show.html.erb" />
+        <option value="$PROJECT_DIR$/public/stylesheets/project_view.css" />
       </list>
     </option>
   </component>
@@ -241,54 +232,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agiledme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agiledme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agiledme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agiledme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sessions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -693,10 +636,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="738" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40557274" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40557274" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -728,7 +671,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="done dashboard page" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on the project view" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -761,6 +704,7 @@
     <MESSAGE value="fixing the links on the registration box" />
     <MESSAGE value="added the dashboard projects page" />
     <MESSAGE value="done dashboard page" />
+    <MESSAGE value="working on the project view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -839,21 +783,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="65" selection-start="1428" selection-end="1428" vertical-scroll-proportion="-8.32">
-          <folding>
-            <element signature="tag#div#2;tag#td#0;tag#tr#0;tag#tbody#0;tag#table#0;tag#div#0" expanded="false" />
-            <element signature="tag#div#0;tag#div#3;tag#td#0;tag#tr#0;tag#tbody#0;tag#table#0;tag#div#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/project_view.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="16" selection-start="4295" selection-end="4295" vertical-scroll-proportion="-18.423077">
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/public/images/story_flyover_icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_item_actions.html.erb">
@@ -863,14 +795,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/story_flyover_icon.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_items_collection.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="45" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.6583072">
+        <state line="32" column="9" selection-start="1870" selection-end="1870" vertical-scroll-proportion="-19.47826">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="66" selection-start="555" selection-end="555" vertical-scroll-proportion="-6.695652">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/project_view.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="330" column="45" selection-start="6264" selection-end="6264" vertical-scroll-proportion="0.38409474">
           <folding />
         </state>
       </provider>

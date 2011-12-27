@@ -1,21 +1,20 @@
 <div class="story_content">
-  <table class="layout" cellspacing="16px">
+  <table id="layout" class="layout" cellspacing="16px">
     <tbody>
     <tr>
       <td class="panel">
         <div class="panelHeaderRight"></div>
         <div class="panelHeaderLeft"></div>
         <div class="panelHeader">
-          <div id="done3_title">
+          <div id="done_title">
             <a href="javascript:void(0);" class="closePanel panelLink" id="done3_close" title="Close panel"></a>
             <a href="#" class="panelLink cloneLink doneCloneLink" title="Clone Panel"></a>
-            <a href="javascript:void(0);" class="collapseAllPanel panelLink" title="Collapse All Iterations" id="done3_collapse_all"></a>
-            <a href="javascript:void(0);" class="expandAllPanel panelLink" title="Expand All Iterations" id="done3_expand_all"></a>
+            <a href="javascript:void(0);" class="collapseAllPanel panelLink" title="Collapse All Iterations" id="done_collapse_all"></a>
+            <a href="javascript:void(0);" class="expandAllPanel panelLink" title="Expand All Iterations" id="done_expand_all"></a>
             <span class="panelTitle">DONE</span>
             <span class="external_icon"></span>
             <span class="panelSubtitle">
-              displaying last 12 iterations (<a href="?include_all_iterations=true" class="showDoneStoriesLink">show
-              all</a>)
+              displaying last 12 iterations (<a href="?include_all_iterations=true" class="showDoneStoriesLink">show all</a>)
             </span>
           </div>
         </div>
@@ -38,43 +37,3 @@
     </tbody>
   </table>
 </div>
-
-<h1> Project : <%= @project.name %></h1>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'My Projects', projects_path %> |
-<%= link_to 'Members', project_member_invitations_path(:project => @project) %>
-
-
-<p>
-  <b>Description:</b>
-  <%= @project.description %>
-</p>
-
-<p>
-  <b>Estimate Bugs:</b>
-  <%= @project.estimate_bugs? %>
-</p>
-
-<p>
-  <b>Start Time:</b>
-  <%= @project.start_date %>
-</p>
-
-<h2>Epics</h2>
-
-<%= link_to 'Add Epic', new_epic_path(:project => @project) %>
-<br/>
-<br/>
-<%= render :partial => 'epics/epics_collection', :locals => {:epics => @project.epics} %>
-
-<br/>
-
-<h2>Stories Bugs And Chores</h2>
-<%= link_to 'Add Story', new_workable_item_path(:project => @project, :type => "Story") %> |
-<%= link_to 'Add Bug', new_workable_item_path(:project => @project, :type => "Bug") %> |
-<%= link_to 'Add Chore', new_workable_item_path(:project => @project, :type => "Chore") %>
-<br/>
-<br/>
-
-<%= render :partial => 'workable_items/workable_items_collection', :locals => {:workable_items => @project.workable_items} %>

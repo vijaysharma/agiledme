@@ -1,6 +1,13 @@
+.layout {
+    border-collapse: separate;
+    border-spacing: 5px 0;
+    padding: 0;
+    width: 100%;
+}
+
 .icons {
-    float: left;
-    padding-top: 2px;
+    /*float: left;*/
+    /*padding-top: 2px;*/
 }
 
 .toggleExpandedButton, .iterationHeaderToggleExpandedButton {
@@ -31,13 +38,6 @@ img {
 
 .flyoverIcon {
     margin-top: 2px;
-}
-
-.layout {
-    border-collapse: separate;
-    border-spacing: 5px 0;
-    padding: 0;
-    width: 100%;
 }
 
 .list {
@@ -107,6 +107,10 @@ img {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.story_content .panelSubtitle a {
+    color: #CFCFCF;
 }
 
 .storySelector {
@@ -327,11 +331,14 @@ img {
 }
 
 .story_content .panelLink.closePanel {
-    background:  no-repeat scroll 0 0 transparent;
+    background: url("/images/close_panel.png") no-repeat scroll 0 0 transparent;
     height: 16px;
     margin-left: 5px;
     margin-top: 5px;
     width: 16px;
+}
+.story_content .panelLink.closePanel:hover {
+    background: url("/images/close_panel_hover.png") no-repeat scroll 0 0 transparent;
 }
 
 .story_content a.panelLink {

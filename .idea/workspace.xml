@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="fixing login box">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/sprite.png" />
+    <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/passwords/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/users/passwords/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/passwords/new.html.erb" afterPath="$PROJECT_DIR$/app/views/users/passwords/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/users/registrations/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/shared/_links.erb" afterPath="$PROJECT_DIR$/app/views/users/shared/_links.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/application.css" afterPath="$PROJECT_DIR$/public/stylesheets/application.css" />
     </list>
     <ignored path="agiledme.iws" />
@@ -99,7 +93,7 @@
       <file leaf-file-name="application.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/application.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="153" column="24" selection-start="13694" selection-end="13694" vertical-scroll-proportion="0.33904108">
+            <state line="57" column="68" selection-start="2914" selection-end="2914" vertical-scroll-proportion="0.6746575">
               <folding />
             </state>
           </provider>
@@ -807,7 +801,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing login box" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing signup and forgot password boxes" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -836,6 +830,7 @@
     <MESSAGE value="added teh ability to have the title for different pages set by the helpr and to be able to use the custom view for user signup/singin" />
     <MESSAGE value="fixed header" />
     <MESSAGE value="fixing login box" />
+    <MESSAGE value="fixing signup and forgot password boxes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -946,7 +941,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/application.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="24" selection-start="13694" selection-end="13694" vertical-scroll-proportion="0.33904108">
+        <state line="57" column="68" selection-start="2914" selection-end="2914" vertical-scroll-proportion="0.6746575">
           <folding />
         </state>
       </provider>

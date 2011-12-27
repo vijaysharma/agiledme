@@ -52,9 +52,10 @@ h3.blueCaps{color:#2b8ab9;}
   -moz-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;border-radius:5px;
   -moz-box-shadow:0 1px 0 #0c598c inset;-webkit-box-shadow:0 1px 0 #0c598c inset;-o-box-shadow:0 1px 0 #0c598c inset;box-shadow:0 1px 0 #0c598c inset;
   color:#fff;
+  padding:0 10px 0 10px;
 }
 
-.registration p{padding:0 0 5px 10px;font-size:11px;}
+.registration p{font-size:12px; text-align:center;margin-bottom:10px}
 .registration p.pRight20{padding:0 20px 10px 0px;}
 .registration p > a{color:#fff;text-decoration:underline;}
 .registration p > a:hover{color:#fff;}

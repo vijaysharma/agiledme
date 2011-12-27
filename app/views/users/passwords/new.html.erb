@@ -1,5 +1,5 @@
 <div class="registration">
-  <h3>Forgot your password?</h3>
+  <h3>Send Password Instructions</h3>
 
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post}) do |f| %>
       <%= devise_error_messages! %>
@@ -7,7 +7,7 @@
       <div><%= f.label :email %>
         <%= f.email_field :email %></div>
 
-      <div><%= f.submit "Send me reset password instructions" %></div>
+      <span class="greenButton"><input type="submit" value="Send Instructions"/></span>
   <% end %>
 
   <%= render :partial => "users/shared/links" %>

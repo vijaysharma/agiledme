@@ -22,7 +22,15 @@
         <a href="/" title="AGILED">WHITE APPLE</a>
       </h1>
 
+      <% if notice.present? %>
+          <div class="notice"><%= notice %></div>
+      <% end %>
+      <% if alert.present? %>
+          <div class="alert"><%= alert %></div>
+      <% end %>
+
       <p class="call" title="Call Us"><span></span>Call Us: +91-80-42414300</p>
+
       <div class="main_menu_links">
         <% if user_signed_in? %>
             Welcome <%= current_user.email %> | <%= link_to 'Logout', destroy_user_session_path %>
@@ -32,15 +40,13 @@
         <% end %>
       </div>
       <ul class="navigation">
-        <li class="<%=  current_page?(root_path) ? 'selected':'not_selected'%>"><%= link_to "Home", root_path %></li>
-        <li class="<%=  current_page?(root_path) ? 'selected':'not_selected'%>"><%= link_to "Home", root_path %></li>
-        <li class="<%=  current_page?(root_path) ? 'selected':'not_selected'%>"><%= link_to "Home", root_path %></li>
-        <li class="<%=  current_page?(root_path) ? 'selected':'not_selected'%>"><%= link_to "Home", root_path %></li>
+        <li class="<%= current_page?(root_path) ? 'selected' :'not_selected' %>"><%= link_to "Home", root_path %></li>
+        <li class="<%= current_page?(projects_path) ? 'selected' :'not_selected' %>"><%= link_to "About", root_path %></li>
       </ul>
     </div>
-    <p id="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <div class="content">
     <%= yield %>
+    </div>
   </div>
   <div class="footerWrapper">
     <div class="footer">
@@ -66,8 +72,12 @@
         <div class="floatedBlock last">
           <h4>Follow us</h4>
           <ul>
-            <li class="facebook"><a href="http://www.facebook.com/SOLAROIndia" title="Follow us on Facebook" target="_blank">Facebook</a></li>
-            <li class="twitter"><a href="http://twitter.com/#!/solaroindia" title="Follow us on Twitter" target="_blank">Twitter</a></li>
+            <li class="facebook">
+              <a href="http://www.facebook.com/sanjusoftware" title="Follow us on Facebook" target="_blank">Facebook</a>
+            </li>
+            <li class="twitter">
+              <a href="http://twitter.com/#!/sanjusoftware" title="Follow us on Twitter" target="_blank">Twitter</a>
+            </li>
           </ul>
         </div>
         <p class="copyright">© 2011 Castle Rock Research Information Pvt. Ltd. All Rights Reserved</p>

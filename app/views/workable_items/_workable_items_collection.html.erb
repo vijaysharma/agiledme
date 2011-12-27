@@ -1,3 +1,34 @@
+<% workable_items.each do |workable_item| %>
+    <% item_unique_id = "#{workable_item.category}_itemList_#{workable_item.type.downcase}_#{workable_item.id}" %>
+    <div id="<%= item_unique_id %>" class="item">
+      <div id="<%= item_unique_id %>_content" class="storyItem delivered notUnderEdit hoverable">
+        <div class="storyPreviewHeader">
+          <div class="storySelector notDblclickable">&nbsp;</div>
+          <div class="storyPreviewButtons" id="<%=item_unique_id%>_content_buttons">
+            <%= render :partial => 'workable_items/workable_item_actions', :locals => {:workable_item => workable_item} %>
+          </div>
+          <div class="icons">
+            <img id="backlog_itemList_story10941149_content_icons_editButton" class="toggleExpandedButton" src="https://cdn2-pivotaltracker.pantherssl.com/images/v7/application/stories_view/icons/story_collapsed.png" title="Expand">
+
+            <div class="left">
+              <img class="storyTypeIcon" src="https://cdn2-pivotaltracker.pantherssl.com/images/v7/application/stories_view/icons/bug_external.png">
+              <img width="6" class="estimateIcon" src="https://cdn1-pivotaltracker.pantherssl.com/images/v7/application/stories_view/icons/estimate_0pt_fibonacci.gif">
+              <img class="flyoverIcon" src="/images/story_flyover_icon.png">
+            </div>
+          </div>
+          <div id="backlog_itemList_story10941149_content_details" class="storyPreviewText" style="cursor: move;">
+            <span id="backlog_itemList_story10941149_content_labels_story[label_list]" class="storyLabels empty"></span>
+            <span>
+              (cannot repro on test bc universal is... (<a href="javascript:void(0);" title="CR Geissler" class="storyOwnerInitials">CRG</a>)
+            </span>
+          </div>
+        </div>
+        <div class="storyDetailElement">
+        </div>
+      </div>
+    </div>
+<% end %>
+
 <table>
   <tr>
     <th>Type</th>

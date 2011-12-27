@@ -1,3 +1,44 @@
+<div class="story_content">
+  <table class="layout" cellspacing="16px">
+    <tbody>
+    <tr>
+      <td class="panel">
+        <div class="panelHeaderRight"></div>
+        <div class="panelHeaderLeft"></div>
+        <div class="panelHeader">
+          <div id="done3_title">
+            <a href="javascript:void(0);" class="closePanel panelLink" id="done3_close" title="Close panel"></a>
+            <a href="#" class="panelLink cloneLink doneCloneLink" title="Clone Panel"></a>
+            <a href="javascript:void(0);" class="collapseAllPanel panelLink" title="Collapse All Iterations" id="done3_collapse_all"></a>
+            <a href="javascript:void(0);" class="expandAllPanel panelLink" title="Expand All Iterations" id="done3_expand_all"></a>
+            <span class="panelTitle">DONE</span>
+            <span class="external_icon"></span>
+            <span class="panelSubtitle">
+              displaying last 12 iterations (<a href="?include_all_iterations=true" class="showDoneStoriesLink">show
+              all</a>)
+            </span>
+          </div>
+        </div>
+        <div class="list">
+          <div class="btm">
+            <div class="right"></div>
+            <div class="left"></div>
+            <div class="mid"></div>
+          </div>
+          <div class="items">
+            <div class="inner scrolling_item_list">
+              <div>
+                  <%= render :partial => 'workable_items/workable_items_collection', :locals => {:workable_items => @project.workable_items} %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
 <h1> Project : <%= @project.name %></h1>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |

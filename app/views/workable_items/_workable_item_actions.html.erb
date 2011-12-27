@@ -1,12 +1,14 @@
+<% item_unique_id = "#{workable_item.category}_itemList_#{workable_item.type.downcase}_#{workable_item.id}" %>
+
 <% if workable_item.new? and (workable_item.is_estimatable? and workable_item.estimate.present?) %>
-        <%= link_to "Start", start_workable_item_path(workable_item) %>
+    <%= link_to "Start", start_workable_item_path(workable_item), :id => "#{item_unique_id}_content_buttons_startButton", :class => "stateChangeButton notDblclickable start" %>
 <% elsif workable_item.started? %>
-    <%= link_to "Finish", finish_workable_item_path(workable_item) %>
+    <%= link_to "Finish", finish_workable_item_path(workable_item), :id => "#{item_unique_id}_content_buttons_finishButton", :class => "stateChangeButton notDblclickable finish" %>
 <% elsif workable_item.finished? %>
-    <%= link_to "Deliver", deliver_workable_item_path(workable_item) %>
+    <%= link_to "Deliver", deliver_workable_item_path(workable_item), :id => "#{item_unique_id}_content_buttons_deliverButton", :class => "stateChangeButton notDblclickable deliver" %>
 <% elsif workable_item.delivered? %>
-    <%= link_to "Accept", accept_workable_item_path(workable_item) %> /
-    <%= link_to "Reject", reject_workable_item_path(workable_item) %>
+    <%= link_to "Accept", accept_workable_item_path(workable_item), :id => "#{item_unique_id}_content_buttons_acceptButton", :class => "stateChangeButton notDblclickable accept" %>
+    <%= link_to "Reject", reject_workable_item_path(workable_item), :id => "#{item_unique_id}_content_buttons_rejectButton", :class => "stateChangeButton notDblclickable reject" %>
 <% elsif workable_item.rejected? %>
-    <%= link_to "Restart", restart_workable_item_path(workable_item) %>
+    <%= link_to "Restart", restart_workable_item_path(workable_item), :id => "#{item_unique_id}_content_buttons_restartButton", :class => "stateChangeButton notDblclickable restart" %>
 <% end %>

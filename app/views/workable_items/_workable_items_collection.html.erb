@@ -12,7 +12,11 @@
 
             <div class="left">
               <img class="storyTypeIcon" src="/images/bug_external.png">
-              <img width="6" class="estimateIcon" src="https://cdn1-pivotaltracker.pantherssl.com/images/v7/application/stories_view/icons/estimate_0pt_fibonacci.gif">
+              <span width="6" class="estimateIcon">
+                <% if workable_item.is_estimatable? %>
+                <%= workable_item.estimate %>
+                <% end %>
+              </span>
               <img class="flyoverIcon" src="/images/story_flyover_icon.png">
             </div>
           </div>

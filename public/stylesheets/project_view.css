@@ -34,6 +34,8 @@ img {
     margin: 0 7px 3px;
     vertical-align: bottom;
     width: 6px;
+    line-height:22px;
+    font-size:0.8em;
 }
 
 .flyoverIcon {

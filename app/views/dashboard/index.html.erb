@@ -1,26 +1,74 @@
 <% title "Dashboard" %>
-<div class="leftBlock dashboard_page">
+<div class="dashboard_page">
   <h1>DASHBOARD</h1>
 
-  <h2>My Projects
-    <%= link_to 'CREATE PROJECT +', new_project_path, :id => "create_new_project_button", :class=> "blueButton" %>
-  </h2>
+  <div id="my_projects" class="content_selection left_column">
+    <span class="inner">
+      <div id="my_projects_list">
+        <h2>My Projects
+          <%= link_to 'CREATE PROJECT +', new_project_path, :id => "create_new_project_button", :class=> "blueButton" %>
+        </h2>
 
-
-  <% if @projects.present? %>
-      <% @projects.each do |project| %>
-          <%= link_to project do %>
-              <div class="project_box">
-                <div class="project_title"><%= project.name.capitalize %></div>
-                <div class="project_box_hover_links">
-                  <%= link_to 'show', project, :class => "hover_link" %>
-                  <%= link_to 'members', project_member_invitations_path(:project => @project) %>
-                </div>
-              </div>
+        <div class="project_list">
+          <% if @projects.present? %>
+              <% @projects.each do |project| %>
+                  <%= link_to project, :class => "project_name" do %>
+                      <div class="project_box">
+                        <div class="project_title"><%= project.name.capitalize %></div>
+                        <div class="project_box_hover_links">
+                          <%= link_to 'show', project, :class => "hover_link" %>
+                          <%= link_to 'members', project_member_invitations_path(:project => project) %>
+                        </div>
+                      </div>
+                  <% end %>
+              <% end %>
+          <% else %>
+              You have not created any project as of now.
+              <br/>
           <% end %>
-      <% end %>
-  <% else %>
-      You have not created any project as of now.
-      <br/>
-  <% end %>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div id="activity_feed" class="content_selection right_column">
+    <div id="activity_feed_items">
+      <h2>
+        <span>Recent Activities</span>
+        <a class="activity_feed_subscribe_link" href="#">subscribe</a>
+      </h2>
+      <ul class="list">
+        <% user_project_activities = current_user.all_workable_item_histories_for_all_my_projects %>
+        <% if user_project_activities.present? %>
+            <% user_project_activities.each do |workable_item_history| %>
+                <li>
+                  <div class="secondary_details">
+                    <% workable_item_type = workable_item_history.workable_item.type.downcase %>
+                    <img src=<%= "/images/#{workable_item_type}.png" %> alt=<%= workable_item_type %>>
+                    <span class="activity_occurred_at">
+                      <%= distance_of_time_in_words(Time.now, workable_item_history.created_at, true) %> ago
+                    </span>
+                  </div>
+                  <div class="main_details">
+                    <h3 class="project_name">
+                      <%= link_to workable_item_history.workable_item.project.name, workable_item_history.workable_item.project %>
+                    </h3>
+                    <span title="<%= workable_item_history.event %>" class="activity_description">
+                      <%= "#{workable_item_history.user.email} #{truncate(workable_item_history.event, :length => 23)}" %>
+                    </span>
+
+                    <p>
+                      <%= link_to truncate(workable_item_history.workable_item.title, :length => 63),
+                                  workable_item_history.workable_item.project,
+                                  :class => "story_name",
+                                  :title => workable_item_history.workable_item.title %>
+                    </p>
+                  </div>
+                </li>
+            <% end %>
+        <% else %>
+            <li>No activities for any of your projects!!</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

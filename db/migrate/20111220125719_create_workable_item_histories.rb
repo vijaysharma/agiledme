@@ -4,6 +4,7 @@ class CreateWorkableItemHistories < ActiveRecord::Migration
       t.string :event
       t.integer :user_id
       t.integer :workable_item_id
+      t.integer :project_id
 
       t.timestamps
     end

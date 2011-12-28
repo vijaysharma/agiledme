@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20111225133451) do
     t.string   "event"
     t.integer  "user_id"
     t.integer  "workable_item_id"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

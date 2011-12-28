@@ -1,37 +1,39 @@
 <% title @project.name.camelcase %>
+<%= render :partial => 'control_panel' %>
 <div class="story_content">
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
     <tr>
-      <% %w[done current backlog icebox].each do |category|%>
-      <td id="<%= category %>" class="<%="#{category} panel"%>">
-        <div class="panelHeaderRight"></div>
-        <div class="panelHeaderLeft"></div>
-        <div class="panelHeader">
-          <div id=<%="#{category}_title"%>>
-            <a href="#" class="closePanel panelLink" id='<%="#{category}_close"%>' title="Close panel"></a>
-            <span class="panelTitle"><%= category.upcase %> </span>
-            <span class="external_icon"></span>
+      <% %w[done current backlog icebox].each do |category| %>
+          <td id="<%= category %>" class="<%= "#{category} panel" %>">
+            <div class="panelHeaderRight"></div>
+            <div class="panelHeaderLeft"></div>
+            <div class="panelHeader">
+              <div id=<%= "#{category}_title" %>>
+                <a href="#" class="closePanel panelLink" id='<%= "#{category}_close" %>' title="Close panel"></a>
+                <span class="panelTitle"><%= category.upcase %> </span>
+                <span class="external_icon"></span>
             <span class="panelSubtitle">
-              displaying last 12 iterations (<a href="?include_all_iterations=true" class=<%="show#{category.capitalize}StoriesLink"%>>show all</a>)
+              displaying last 12 iterations (<a href="?include_all_iterations=true" class=<%= "show#{category.capitalize}StoriesLink" %>>show
+              all</a>)
             </span>
-          </div>
-        </div>
-        <div id="<%="#{category}_itemList"%>" class="list">
-          <div class="btm">
-            <div class="right"></div>
-            <div class="left"></div>
-            <div class="mid"></div>
-          </div>
-          <div id="<%="#{category}_itemList_items"%>" class="items">
-            <div class="inner scrolling_item_list">
-              <div>
-                  <%= render :partial => 'workable_items/workable_items_collection', :locals => {:workable_items => @project.workable_items.select{|wi| wi.category == category}} %>
               </div>
             </div>
-          </div>
-        </div>
-      </td>
+            <div id="<%= "#{category}_itemList" %>" class="list">
+              <div class="btm">
+                <div class="right"></div>
+                <div class="left"></div>
+                <div class="mid"></div>
+              </div>
+              <div id="<%= "#{category}_itemList_items" %>" class="items">
+                <div class="inner scrolling_item_list">
+                  <div>
+                    <%= render :partial => 'workable_items/workable_items_collection', :locals => {:workable_items => @project.workable_items.select { |wi| wi.category == category }} %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
       <% end %>
     </tr>
     </tbody>
@@ -40,15 +42,15 @@
 
 <script>
     $("#backlog_close").click(function () {
-      $("#backlog").hide();
+        $("#backlog").hide();
     });
     $("#current_close").click(function () {
-      $("#current").hide();
+        $("#current").hide();
     });
     $("#done_close").click(function () {
-      $("#done").hide();
+        $("#done").hide();
     });
     $("#icebox_close").click(function () {
-      $("#icebox").hide();
+        $("#icebox").hide();
     });
 </script>

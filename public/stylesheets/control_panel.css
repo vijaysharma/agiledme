@@ -1,0 +1,176 @@
+
+#controlPanel.tabs {
+    border-top: medium none;
+}
+
+#controlPanel {
+    background: #dedcdc;
+    border-top: 2px solid #BBBBBB;
+    height: 69px;
+    margin-bottom: 11px;
+    min-width: 930px;
+}
+
+#controlPanel.tabs #project_name_row {
+    background: url("/images/control_panel_tabs.png") repeat-x scroll left bottom #256188;
+    padding-top: 0;
+}
+
+#controlPanel #project_name_row {
+    overflow: hidden;
+    padding: 5px 20px 0 19px;
+}
+
+#controlPanel.tabs #project_name_row #project_tabs {
+    overflow: hidden;
+    width: 100%;
+}
+
+#controlPanel #project_name_row .projectName {
+    float: left;
+}
+
+#controlPanel.tabs #project_name_row #project_tabs ul {
+    float: left;
+    height: 24px;
+    overflow: hidden;
+}
+
+#controlPanel.tabs #project_name_row #project_tabs ul li.current {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-radius: 4px 4px 0 0;
+}
+
+#controlPanel.tabs #project_name_row #project_tabs ul li {
+    color: #333333;
+    float: left;
+    margin-right: 15px;
+}
+
+#controlPanel.tabs #project_name_row #project_tabs ul li.current span {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 11px 4px;
+    text-shadow: 1px 1px 1px #999999;
+}
+
+#controlPanel.tabs #project_name_row #project_tabs ul li a {
+    color: #EEEEEE;
+}
+
+#controlPanel.tabs #project_name_row #project_tabs ul li a {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 11px 4px;
+    text-shadow: 1px 1px 1px #333333;
+}
+
+#controlPanel #project_name_row .projectName a {
+    color: #000000;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+}
+
+#controlPanel.tabs #controls_search_velocity_row {
+    padding-bottom: 6px;
+    padding-top: 7px;
+}
+
+#controlPanel #controls_search_velocity_row {
+    margin-top: 3px;
+    padding: 0 20px 0 19px;
+}
+
+#controlPanel.tabs #controls_search_velocity_row > div.right {
+    margin-top: -3px;
+}
+
+#controlPanel #controls_search_velocity_row > div.right {
+    float: right;
+    margin-top: -7px;
+}
+
+.clearfix {
+    display: block;
+}
+
+#controlPanel #controls_search_velocity_row > div.right a#addstory_control_button {
+    background: url("/images/add_story.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    height: 30px;
+    margin-right: 7px;
+    text-indent: -9999em;
+    width: 102px;
+}
+
+#controlPanel #controls_search_velocity_row > div.right .ieInputWrapper {
+    float: left;
+}
+
+#controlPanel.tabs #controls_search_velocity_row > div.right .searchField {
+    margin-right: 12px;
+}
+
+#controlPanel #controls_search_velocity_row > div.right .searchField {
+    background: url("/images/search.png") no-repeat scroll 161px 5px #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    float: left;
+    font-size: 1.1em;
+    padding: 6px 26px 5px 6px;
+    width: 150px;
+}
+
+#controlPanel.tabs #controls_search_velocity_row > div.right #velocity {
+    margin-top: 2px;
+}
+
+#controlPanel div#velocity {
+    cursor: pointer;
+    float: right;
+}
+
+#controlPanel div#velocity {
+    cursor: pointer;
+}
+
+#controlPanel div#velocity .velocityLabel {
+    background: url("/images/arrow_dropdown_grey.png") no-repeat scroll left center transparent;
+    color: #B9B9B9;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 2px;
+}
+
+#controlPanel div#velocity .projectVelocity {
+    color: #000000;
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: -2px;
+}
+
+#controlPanel #controls_search_velocity_row ul#buttonPanel #panelList > li {
+    float: left;
+    margin-right: 10px;
+}
+
+#controlPanel #controls_search_velocity_row ul#buttonPanel ul#panelList li a.selected {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #256188;
+}
+
+#controlPanel #controls_search_velocity_row ul#buttonPanel a.button {
+    border-radius: 4px 4px 4px 4px;
+    color: #999999;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    height: 22px;
+    line-height: 23px;
+    padding: 0 6px;
+    text-transform: uppercase;
+}

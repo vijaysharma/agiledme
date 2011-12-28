@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <title><%= content_for?(:title) ? yield(:title) + " - White Apple!!" : "You Agiled Me!!" %></title>
-  <%= stylesheet_link_tag 'application', 'project_view', :cache => true %>
+  <%= stylesheet_link_tag 'application', 'project_view', 'control_panel', :cache => true %>
   <!--[if gte IE 9]>
       <%= stylesheet_link_tag 'ie9' %>
     <![endif]-->
@@ -15,42 +15,40 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<div class="mainWrapper">
-  <div class="contentWrapper">
-    <div class="header">
-      <h1 class="logo">
-        <a href="/" title="AGILED">WHITE APPLE</a>
-      </h1>
+<div class="main">
+  <div class="header">
+    <h1 class="logo">
+      <a href="/" title="AGILED">WHITE APPLE</a>
+    </h1>
 
-      <% if notice.present? %>
-          <div class="notice"><%= notice %></div>
-      <% end %>
-      <% if alert.present? %>
-          <div class="alert"><%= alert %></div>
-      <% end %>
+    <% if notice.present? %>
+        <div class="notice"><%= notice %></div>
+    <% end %>
+    <% if alert.present? %>
+        <div class="alert"><%= alert %></div>
+    <% end %>
 
-      <% if !user_signed_in? %>
-          <p class="call" title="Call Us"><span></span>Call Us: +91-80-42414300</p>
-      <% end %>
+    <% if !user_signed_in? %>
+        <p class="call" title="Call Us"><span></span>Call Us: +91-80-42414300</p>
+    <% end %>
 
-      <div class="main_menu_links">
-        <% if user_signed_in? %>
-            Welcome <%= current_user.email %> | <%= link_to 'Logout', destroy_user_session_path %>
-        <% else %>
-            <%= link_to 'Login', new_user_session_path, :class => current_page?(new_user_session_path) ? 'selected' :'not_selected' %>
-            <%= link_to 'Register', new_user_registration_path, :class => current_page?(new_user_registration_path) ? 'selected' :'not_selected' %>
-        <% end %>
-      </div>
-      <ul class="navigation">
-        <% if user_signed_in? %>
-            <li class="<%= current_page?(root_path) ? 'selected' :'not_selected' %>"><%= link_to "Dashboard", root_path %></li>
-        <% end %>
-      </ul>
+    <div class="main_menu_links">
+      <% if user_signed_in? %>
+          Welcome <%= current_user.email %> | <%= link_to 'Logout', destroy_user_session_path %>
+      <% else %>
+          <%= link_to 'Login', new_user_session_path, :class => current_page?(new_user_session_path) ? 'selected' :'not_selected' %>
+          <%= link_to 'Register', new_user_registration_path, :class => current_page?(new_user_registration_path) ? 'selected' :'not_selected' %>
+      <% end %>
     </div>
-    <div class="content">
-      <%= yield %>
-      <div class="clear"></div>
-    </div>
+    <ul class="navigation">
+      <% if user_signed_in? %>
+          <li class="<%= current_page?(root_path) ? 'selected' :'not_selected' %>"><%= link_to "Dashboard", root_path %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="content">
+    <%= yield %>
+    <div class="clear"></div>
   </div>
   <div class="footerWrapper">
     <div class="footer">

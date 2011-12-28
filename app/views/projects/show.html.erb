@@ -25,7 +25,7 @@
             <div class="left"></div>
             <div class="mid"></div>
           </div>
-          <div class="items">
+          <div id="<%="#{category}_itemList_items"%>" class="items">
             <div class="inner scrolling_item_list">
               <div>
                   <%= render :partial => 'workable_items/workable_items_collection', :locals => {:workable_items => @project.workable_items.select{|wi| wi.category == category}} %>

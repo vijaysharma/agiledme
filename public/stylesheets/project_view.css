@@ -329,8 +329,8 @@ img {
 }
 
 .panelHeaderLeft, .panelHeaderRight {
-    margin-left: -1px;
-    margin-right: -1px;
+    /*margin-left: -1px;*/
+    /*margin-right: -1px;*/
     width: 10px;
 }
 
@@ -372,7 +372,7 @@ img {
 }
 
 .panelTitle {
-    font-size: 1.1em;
+    font-size: 0.9em;
     line-height: 16px;
     position: relative;
     top: 5px;

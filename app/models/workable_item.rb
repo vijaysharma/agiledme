@@ -74,6 +74,8 @@ class WorkableItem < ActiveRecord::Base
 
   def update_accepted_by
     add_history("accepted")
+    self.category = "done"
+    self.save!
   end
 
   def update_rejected_by

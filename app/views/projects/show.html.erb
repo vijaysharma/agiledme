@@ -4,7 +4,7 @@
     <tbody>
     <tr>
       <% %w[icebox backlog current done].each do |category|%>
-      <td id=<%= category %> class=<%="#{category} panel"%>>
+      <td id="<%= category %>" class="<%="#{category} panel"%>">
         <div class="panelHeaderRight"></div>
         <div class="panelHeaderLeft"></div>
         <div class="panelHeader">
@@ -19,7 +19,7 @@
             </span>
           </div>
         </div>
-        <div class="list">
+        <div id="<%="#{category}_itemList"%>" class="list">
           <div class="btm">
             <div class="right"></div>
             <div class="left"></div>
@@ -28,7 +28,7 @@
           <div class="items">
             <div class="inner scrolling_item_list">
               <div>
-                  <%= render :partial => 'workable_items/workable_items_collection', :locals => {:workable_items => @project.workable_items} %>
+                  <%= render :partial => 'workable_items/workable_items_collection', :locals => {:workable_items => @project.workable_items.select{|wi| wi.category == category}} %>
               </div>
             </div>
           </div>

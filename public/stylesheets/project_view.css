@@ -178,7 +178,33 @@ img {
     border-top: 1px solid #EEFCE2;
 }
 
+.story_content .item .rejected {
+    background-color: #F3F3D1;
+    border-bottom: 1px solid #DBDBB0;
+    border-top: 1px solid #FFFFFF;
+}
+
 .story_content .item .delivered {
+    background-color: #F3F3D1;
+    border-bottom: 1px solid #DBDBB0;
+    border-top: 1px solid #FFFFFF;
+}
+
+.story_content .item .unstarted {
+    background-color: #F4F4F4;
+}
+
+.story_content .item .unscheduled {
+    background-color: #E4EFF7;
+}
+
+.story_content .item .finished {
+    background-color: #F3F3D1;
+    border-bottom: 1px solid #DBDBB0;
+    border-top: 1px solid #FFFFFF;
+}
+
+.story_content .item .started {
     background-color: #F3F3D1;
     border-bottom: 1px solid #DBDBB0;
     border-top: 1px solid #FFFFFF;

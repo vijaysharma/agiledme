@@ -56,6 +56,7 @@ class WorkableItem < ActiveRecord::Base
   def update_started_by
     add_history("started")
     set_owner_as_current_user
+    update_category("current")
   end
 
   def update_created_by
@@ -74,8 +75,7 @@ class WorkableItem < ActiveRecord::Base
 
   def update_accepted_by
     add_history("accepted")
-    self.category = "done"
-    self.save!
+    update_category("done")
   end
 
   def update_rejected_by
@@ -93,6 +93,11 @@ class WorkableItem < ActiveRecord::Base
 
   def set_owner_as_current_user
     self.owner = User.current_user.id
+    self.save!
+  end
+
+  def update_category(category)
+    self.category = category
     self.save!
   end
 

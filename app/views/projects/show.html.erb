@@ -3,7 +3,7 @@
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
     <tr>
-      <% %w[icebox backlog current done].each do |category|%>
+      <% %w[done current backlog icebox].each do |category|%>
       <td id="<%= category %>" class="<%="#{category} panel"%>">
         <div class="panelHeaderRight"></div>
         <div class="panelHeaderLeft"></div>

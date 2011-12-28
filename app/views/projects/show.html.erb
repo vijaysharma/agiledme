@@ -9,9 +9,7 @@
         <div class="panelHeaderLeft"></div>
         <div class="panelHeader">
           <div id=<%="#{category}_title"%>>
-            <a href="javascript:void(0);" class="closePanel panelLink" id='<%="#{category}_close"%>' title="Close panel"></a>
-            <a href="javascript:void(0);" class="collapseAllPanel panelLink" title="Collapse All Iterations" id=<%="#{category}_collapse_all"%>></a>
-            <a href="javascript:void(0);" class="expandAllPanel panelLink" title="Expand All Iterations" id=<%="#{category}_expand_all"%>></a>
+            <a href="#" class="closePanel panelLink" id='<%="#{category}_close"%>' title="Close panel"></a>
             <span class="panelTitle"><%= category.upcase %> </span>
             <span class="external_icon"></span>
             <span class="panelSubtitle">
@@ -39,3 +37,18 @@
     </tbody>
   </table>
 </div>
+
+<script>
+    $("#backlog_close").click(function () {
+      $("#backlog").hide();
+    });
+    $("#current_close").click(function () {
+      $("#current").hide();
+    });
+    $("#done_close").click(function () {
+      $("#done").hide();
+    });
+    $("#icebox_close").click(function () {
+      $("#icebox").hide();
+    });
+</script>

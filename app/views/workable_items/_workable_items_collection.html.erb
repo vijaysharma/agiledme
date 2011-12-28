@@ -1,23 +1,15 @@
 <% workable_items.each do |workable_item| %>
-    <% item_unique_id = "#{workable_item.category}_itemList_#{workable_item.type.downcase}_#{workable_item.id}" %>
-    <% class_for_item = "unscheduled"
+    <% item_unique_id = "#{workable_item.category}_itemList_#{workable_item.type.downcase}_#{workable_item.id}"
+       class_for_item = "unscheduled"
        if workable_item.new? and (workable_item.is_estimatable? and workable_item.estimate.present?)
            class_for_item = "unstarted"
-       elsif workable_item.started?
-           class_for_item = "started"
-       elsif workable_item.finished?
-           class_for_item = "finished"
-       elsif workable_item.delivered?
-           class_for_item = "delivered"
-       elsif workable_item.rejected?
-           class_for_item = "rejected"
-       elsif workable_item.accepted?
-           class_for_item = "accepted"
+       elsif workable_item.started? or workable_item.finished? or workable_item.delivered? or workable_item.rejected? or workable_item.accepted?
+           class_for_item = workable_item.status
        end
     %>
 
     <div id="<%= item_unique_id %>" class="item">
-      <div id="<%= item_unique_id %>_content" class="<%="storyItem #{class_for_item} notUnderEdit hoverable"%>">
+      <div id="<%= item_unique_id %>_content" class="<%= "storyItem #{class_for_item} notUnderEdit hoverable" %>">
         <div class="storyPreviewHeader">
           <div class="storySelector notDblclickable">&nbsp;</div>
           <div class="storyPreviewButtons" id="<%= item_unique_id %>_content_buttons">

@@ -49,6 +49,13 @@ img {
     position: relative;
 }
 
+.list {
+    background: url("/images/panel_bg_left.png") repeat-y scroll left top #FFFFFF;
+    height: 100%;
+    padding-left: 3px;
+    position: relative;
+}
+
 .list > .btm {
     bottom: -3px;
     left: 0;

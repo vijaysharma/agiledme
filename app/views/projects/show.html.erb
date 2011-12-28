@@ -2,19 +2,19 @@
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
     <tr>
-      <td class="panel">
+      <% %w[icebox backlog current done].each do |category|%>
+      <td id=<%= category %> class=<%="#{category} panel"%>>
         <div class="panelHeaderRight"></div>
         <div class="panelHeaderLeft"></div>
         <div class="panelHeader">
-          <div id="done_title">
-            <a href="javascript:void(0);" class="closePanel panelLink" id="done3_close" title="Close panel"></a>
-            <a href="#" class="panelLink cloneLink doneCloneLink" title="Clone Panel"></a>
-            <a href="javascript:void(0);" class="collapseAllPanel panelLink" title="Collapse All Iterations" id="done_collapse_all"></a>
-            <a href="javascript:void(0);" class="expandAllPanel panelLink" title="Expand All Iterations" id="done_expand_all"></a>
-            <span class="panelTitle">DONE</span>
+          <div id=<%="#{category}_title"%>>
+            <a href="javascript:void(0);" class="closePanel panelLink" id='<%="#{category}_close"%>' title="Close panel"></a>
+            <a href="javascript:void(0);" class="collapseAllPanel panelLink" title="Collapse All Iterations" id=<%="#{category}_collapse_all"%>></a>
+            <a href="javascript:void(0);" class="expandAllPanel panelLink" title="Expand All Iterations" id=<%="#{category}_expand_all"%>></a>
+            <span class="panelTitle"><%= category.upcase %> </span>
             <span class="external_icon"></span>
             <span class="panelSubtitle">
-              displaying last 12 iterations (<a href="?include_all_iterations=true" class="showDoneStoriesLink">show all</a>)
+              displaying last 12 iterations (<a href="?include_all_iterations=true" class=<%="show#{category.capitalize}StoriesLink"%>>show all</a>)
             </span>
           </div>
         </div>
@@ -33,6 +33,7 @@
           </div>
         </div>
       </td>
+      <% end %>
     </tr>
     </tbody>
   </table>

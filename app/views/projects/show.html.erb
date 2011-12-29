@@ -1,5 +1,5 @@
 <% title @project.name.camelcase %>
-<%= render :partial => 'control_panel' %>
+<%= render :partial => 'control_panel', :locals => {:current_project => @project} %>
 <div class="story_content">
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
@@ -28,7 +28,8 @@
               <div id="<%= "#{category}_itemList_items" %>" class="items">
                 <div class="inner scrolling_item_list">
                   <div>
-                    <%= render :partial => 'workable_items/workable_items_collection', :locals => {:workable_items => @project.workable_items.select { |wi| wi.category == category }} %>
+                    <%= render :partial => 'workable_items/workable_items_collection',
+                               :locals => {:workable_items => @project.workable_items.select { |wi| wi.category == category }} %>
                   </div>
                 </div>
               </div>

@@ -2,9 +2,18 @@
   <div class="row" id="project_name_row">
     <div class="projectName" id="project_tabs">
       <ul>
-        <li class="current"><span>CRRI | SOLARO  Europa (Ganesh)</span></li>
-        <li originalwidth="132"><a href="/projects/130485">CRRI | SOLARO API</a><span></span></li>
-        <li originalwidth="179"><a href="/projects/86493">CRRI | SOLARO Deployment</a><span></span></li>
+        <% current_user.projects.each do |project| %>
+            <% if project.eql?(current_project) %>
+                <li class="current">
+                  <span><%= project.name %></span>
+                </li>
+            <% else %>
+                <li originalwidth="132">
+                  <%= link_to project.name, project_path(project) %>
+                  <span></span>
+                </li>
+            <% end %>
+        <% end %>
       </ul>
     </div>
   </div>

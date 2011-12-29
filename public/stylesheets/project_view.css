@@ -215,6 +215,15 @@ body.mozilla #content .item .storyItem textarea {
     padding-right: 1px;
 }
 
+div.storyDetails .section textArea.textAreaFocus {
+    color: black;
+    font-weight: normal;
+}
+
+div.storyDetails .storyDescriptionTable textArea {
+    margin-top: 3px;
+}
+
 .story_content .item .storyPreviewInput .titleInputField {
     resize: none;
 }
@@ -251,10 +260,6 @@ div.storyDetails .storyDetailsButton {
     padding: 0;
 }
 
-.storyDetails input {
-    font-size: 12px;
-}
-
 div.storyDetails .storyDetailsTable {
     border-collapse: separate;
     border-spacing: 0 0;
@@ -266,11 +271,11 @@ div.storyDetails .storyDetailsTable td.letContentExpand {
 }
 
 .storyDetails select {
-    font-size: 12px;
     width:150px;
+    font-family: Arial,Helvetica,sans-serif;
 }
 
-.storyDetails label {
+.storyDetails label, .storyDetails input, .storyDetails select {
     font-size: 12px;
 }
 

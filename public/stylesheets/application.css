@@ -43,6 +43,12 @@ img.fRight{margin:0 0 20px 20px;}
 .fRight{float:right;}
 .clear{clear:both;}
 
+select{padding:2px;}
+select, input, textarea {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+}
+
 .notice, .alert { background-color: #ffd900;
     border-radius: 5px;
     margin-left: 446px;
@@ -428,7 +434,6 @@ registration label{color:#fff;width:85px;text-align:right;display:inline-block;m
   }
 .registration input[type="checkbox"] {margin:0px}
 .registration input:focus{border:1px solid #62a817;background:#ffffff;}
-select{padding:2px;}
 .registration input[type="submit"]{background:none;filter:none;border:0;font:bold 14px/26px "Lucida Grande", "Lucida Sans Unicode", sans-serif;color:#fff;}
 .registration input[type="submit"]:hover{cursor:pointer;}
 span.redButton{margin:0 10px 0 0;float:right;}

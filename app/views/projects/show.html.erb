@@ -4,44 +4,56 @@
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
     <tr>
-      <% if @project.workable_items.present? %>
-          <% %w[icebox].each do |category| %>
-              <td id="<%= category %>" class="<%= "#{category} panel" %>">
-                <div class="panelHeaderRight"></div>
-                <div class="panelHeaderLeft"></div>
-                <div class="panelHeader">
-                  <div id=<%= "#{category}_title" %>>
-                    <a href="#" class="closePanel panelLink" id='<%= "#{category}_close" %>' title="Close panel"></a>
-                    <span class="panelTitle"><%= category.upcase %> </span>
-                    <span class="external_icon"></span>
+      <% if !@project.workable_items.present?
+             category_display_class = "none"
+             width = 25
+         end %>
+      <% %w[done current backlog icebox].each do |category| %>
+          <% if category.eql?('icebox')
+                 category_display_class = 'block'
+                 width = 100
+             end %>
+          <td id="<%= category %>" class="<%= "#{category} panel" %>" style="display:<%= "#{category_display_class}" %>" width="<%="#{width}"%>%">
+            <div class="panelHeaderRight"></div>
+            <div class="panelHeaderLeft"></div>
+            <div class="panelHeader">
+              <div id=<%= "#{category}_title" %>>
+                <a href="#" class="closePanel panelLink" id='<%= "#{category}_close" %>' title="Close panel"></a>
+                <span class="panelTitle"><%= category.upcase %> </span>
+                <span class="external_icon"></span>
             <span class="panelSubtitle">
               displaying last 12 iterations (<a href="?include_all_iterations=true" class=<%= "show#{category.capitalize}StoriesLink" %>>show
               all</a>)
             </span>
-                  </div>
-                </div>
-                <div id="<%= "#{category}_itemList" %>" class="list">
-                  <div class="btm">
-                    <div class="right"></div>
-                    <div class="left"></div>
-                    <div class="mid"></div>
-                  </div>
-                  <div id="<%= "#{category}_itemList_items" %>" class="items">
-                    <div class="inner scrolling_item_list">
-                      <div>
-                        <% if category.eql?('icebox') %>
-                            <%= render :partial => 'workable_items/new_workable_item' %>
-                        <% end %>
+              </div>
+            </div>
+            <div id="<%= "#{category}_itemList" %>" class="list">
+              <div class="btm">
+                <div class="right"></div>
+                <div class="left"></div>
+                <div class="mid"></div>
+              </div>
+              <div id="<%= "#{category}_itemList_items" %>" class="items">
+                <div class="inner scrolling_item_list">
+                  <div>
+                    <% if category.eql?('icebox') %>
+                        <%= render :partial => 'workable_items/new_workable_item' %>
+                    <% end %>
+                    <% if @project.workable_items.present? %>
                         <%= render :partial => 'workable_items/workable_items_collection',
                                    :locals => {:workable_items => @project.workable_items.select { |wi| wi.category == category }} %>
-                      </div>
-                    </div>
+                    <% else %>
+                        <% if category.eql?('icebox') %>
+                            <div id="no_workable_items" style="margin:5px">You have not got any work to do in this
+                              project yet. Hurry, and start working!!
+                            </div>
+                        <% end %>
+                    <% end %>
                   </div>
                 </div>
-              </td>
-          <% end %>
-      <% else %>
-          You have not got any work to do in this project yet. Hurry, and start working!!
+              </div>
+            </div>
+          </td>
       <% end %>
     </tr>
     </tbody>
@@ -83,6 +95,8 @@
         $("#icebox_control_button").toggleClass('selected');
     });
     $("#add_new_workable_control_button").click(function () {
+        $("#icebox").show();
+        $("#no_workable_items").hide();
         $("#icebox_itemList_new_workable_item").show();
     });
 </script>

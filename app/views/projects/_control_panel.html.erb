@@ -20,7 +20,6 @@
   <div class="row" id="controls_search_velocity_row">
     <div class="right clearfix">
 
-      <!--<a id="addstory_control_button" href="#">Add Story</a>-->
       <%= link_to 'Add Story +', new_workable_item_path(:project => current_project), :id => "addstory_control_button" %>
 
       <span class="ieInputWrapper">
@@ -43,9 +42,10 @@
     </div>
     <ul class="clearfix" id="buttonPanel">
       <ul class="clearfix" id="panelList">
+        <li><a id="done_control_button" href="#" class="button selected">Done</a></li>
+        <li><a id="current_control_button" href="#" class="button selected">Current</a></li>
         <li><a id="backlog_control_button" href="#" class="button selected">Backlog</a></li>
-        <li><a id="icebox_control_button" href="#" class="button">Icebox</a></li>
-        <li><a id="done_control_button" href="#" class="button">Done</a></li>
+        <li><a id="icebox_control_button" href="#" class="button selected">Icebox</a></li>
       </ul>
     </ul>
   </div>

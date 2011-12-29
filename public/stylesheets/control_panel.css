@@ -4,15 +4,15 @@
 }
 
 #controlPanel {
-    background: #dedcdc;
+    background: #EEEEEE;
     border-top: 2px solid #BBBBBB;
     height: 69px;
     margin-bottom: 11px;
     min-width: 930px;
+    border-bottom:1px solid #BBBBBB;
 }
-
 #controlPanel.tabs #project_name_row {
-    background: url("/images/control_panel_tabs.png") repeat-x scroll left bottom #256188;
+    background: #0c598c;
     padding-top: 0;
 }
 
@@ -140,7 +140,7 @@
 #controlPanel div#velocity .velocityLabel {
     background: url("/images/arrow_dropdown_grey.png") no-repeat scroll left center transparent;
     color: #B9B9B9;
-    font-size: 1.2em;
+    font-size: 0.9em;
     font-weight: bold;
     padding-left: 10px;
     padding-right: 2px;
@@ -148,7 +148,7 @@
 
 #controlPanel div#velocity .projectVelocity {
     color: #000000;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
     margin-top: -2px;
 }

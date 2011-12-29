@@ -32,7 +32,7 @@ body{font:normal 12px/16px "Lucida Grande","Arial",sans-serif;color:#000000;}
 
 .content{background: #FAFAFA;overflow:visible;}
 .content ul{list-style:outside;margin-top:5px;}
-.content{padding:10px 0px 10px 0px;}
+.content{padding:0 0 10px 0;}
 .content h2{color:#0C598C;margin-bottom:20px;line-height:25px;}
 
 img.fLeft{margin:0 20px 20px 0;}
@@ -57,6 +57,7 @@ img.fRight{margin:0 0 20px 20px;}
 .dashboard_page {
     margin-left: 125px;
     margin-right: 125px;
+    margin-top: 15px;
 }
 
 .dashboard_page .left_column {

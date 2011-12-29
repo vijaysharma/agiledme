@@ -3,401 +3,329 @@
 <div class="attachment_drop_area">
   <img src="/images/dragdrop_here.png" style="display:none">
 </div>
-<div class="storyPreviewHeader">
-  <div class="storyPreviewInput">
-    <textarea name="title_input" cols="1" rows="1" class="titleInputField autoresize expand17-99999" id="icebox_itemList_new_workable_item_content_title_input" style="height: 18px; overflow: hidden;" autocomplete="off">
-    </textarea>
+<%= form_for(workable_item) do |f| %>
+    <% if workable_item.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(workable_item.errors.count, "error") %> prohibited this workable_item from being
+            saved:</h2>
 
-    <div class="clear">
-    </div>
-  </div>
-</div>
-<div class="storyDetailElement">
-<div class="storyDetails" id="story_newStory_details">
-<form action="#">
-<div class="buttons">
-  <div class="storyDetailsButton">
-    <input type="submit" value="Save" id="story_newStory_details_story[save_button]">
-  </div>
-  <div class="storyDetailsButton">
-    <input type="submit" value="Cancel" id="story_newStory_details_story[cancel_button]">
-  </div>
-  <div class="storyDetailsButton">
-    <input type="submit" value="Delete" id="story_newStory_details_story[delete_button]" disabled="">
-  </div>
-  <div class="storyDetailsButton">
-    <input type="submit" value="View history" id="story_newStory_details_story[view_history_button]" disabled="">
-  </div>
-</div>
-<table class="storyDetailsTable">
-<tbody>
-<tr>
-  <td colspan="1" class="letContentExpand">
-    <div>
-      <select name="story[story_type]" class="storyDetailsField" id="story_newStory_details_story[story_type]">
-        <option value="feature" selected="true">Feature</option>
-        <option value="bug">Bug</option>
-        <option value="chore">Chore</option>
-        <option value="release">Release</option>
-      </select>
-    </div>
-  </td>
-  <td colspan="1" class="storyDetailsLabelIcon">
-    <div class="storyDetailsLabelIcon">
-      <img id="story_newStory_details_story[story_type]_image" src="/images/story.png">
-    </div>
-  </td>
-  <td colspan="1" class="helpIcon lastCell">
-    <div id="story_newStory_details_help_story_types" class="helpIcon">
-      <img src="/images/question_mark.gif">
-    </div>
-  </td>
-</tr>
-<tr style="display: none;">
-  <td>
-    <div>
-      <div class="deadlineLabel">
-        <label id="story[deadline]_label" for="story[deadline]">Deadline:</label>
-      </div>
-      <div class="dateEditField">
-        <input type="text" value="NONE" name="story[deadline]" id="icebox_deadline_newStory_story[deadline]" size="11" class="valid">
+          <ul>
+            <% workable_item.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="storyPreviewHeader">
+      <div class="storyPreviewInput">
+        <%= f.text_area :title, :cols => 1, :rows => 1, :class => 'titleInputField autoresize expand17-99999' %>
+        <div class="clear">
+        </div>
       </div>
     </div>
-  </td>
-  <td>
-    <div class="storyDetailsLabelIcon">
-      <img src="/images/calendar.png" id="icebox_deadline_newStory_icon">
-    </div>
-  </td>
-  <td>
-    <div id="icebox_deadline_newStory_help_deadlines" class="helpIcon">
-      <img src="/images/question_mark.gif">
-    </div>
-  </td>
-  <td>
-    <div>
-      <a href="javascript:void(0);" id="icebox_deadline_newStory_dateClear" style="display: none;">[clear]</a>
-    </div>
-  </td>
-</tr>
-<tr>
-  <td colspan="1">
-    <div>
-      <select name="story[estimate]" class="storyDetailsField" id="story_newStory_details_story[estimate]">
-        <option value="-1" selected="true">Unestimated</option>
-        <option value="0">0 points</option>
-        <option value="1">1 point</option>
-        <option value="2">2 points</option>
-        <option value="3">3 points</option>
-        <option value="5">5 points</option>
-        <option value="8">8 points</option>
-      </select>
-    </div>
-  </td>
-  <td colspan="1" class="storyDetailsLabelIcon">
-    <div class="storyDetailsLabelIcon">
-      <img id="story_newStory_details_story[estimate]_image" src="/images/estimate_unestimated_fibonacci.gif">
-    </div>
-  </td>
-  <td colspan="1" class="helpIcon">
-    <div id="story_newStory_details_help_estimates" class="helpIcon">
-      <img src="/images/question_mark.gif">
-    </div>
-  </td>
-</tr>
-<tr>
-  <td>
-    <input type="hidden" value="unscheduled" name="story[current_state]" id="story_newStory_details_story[current_state]">
-  </td>
-</tr>
-<tr>
-  <td>
-    <div>
-      <select name="story[requested_by_id]" class="storyDetailsField" id="story_newStory_details_story[requested_by_id]">
-        <option value="-1">none</option>
-        <option value="30715">Adam Elliot</option>
-        <option value="27575">Amitava Basak</option>
-        <option value="36778">Anupam Choudhury</option>
-        <option value="27342">Arjun</option>
-        <option value="201361">Arunmozhi Santhanam</option>
-        <option value="107678">Bratish Goswami</option>
-        <option value="28625">Christopher Manning</option>
-        <option value="25575">CR Geissler</option>
-        <option value="80176">Dan Mercier</option>
-        <option value="320309">David Aldana</option>
-        <option value="28823">Debashis</option>
-        <option value="37040">Debashree Roy</option>
-        <option value="56628">Ganesh</option>
-        <option value="92094">Girish</option>
-        <option value="43219">Jeff Kam</option>
-        <option value="45692">Julie May</option>
-        <option value="28819">Karunakar</option>
-        <option value="40803">Kelly Michetti</option>
-        <option value="53703">Kempanna holya</option>
-        <option value="72611">Krista Ball</option>
-        <option value="162783">Luis Castro</option>
-        <option value="201359">Manoj Kumar</option>
-        <option value="43225">Marcel Ball</option>
-        <option value="27341">Mark Madsen</option>
-        <option value="27343">Mat Lavoie</option>
-        <option value="52193">Mitesh Jain</option>
-        <option value="63689">Morgan Routledge</option>
-        <option value="28824">Nandan</option>
-        <option value="284285">Neeta</option>
-        <option value="123649">pchatterjee</option>
-        <option value="130136">Pivotal Integration</option>
-        <option value="506861">Prasath Venkatraman</option>
-        <option value="28821">Prem</option>
-        <option value="28818">Raghu</option>
-        <option value="28820">Rajib Chowdhury</option>
-        <option value="101821">Ram Naresh</option>
-        <option value="167543">Ranjan Kumar</option>
-        <option value="74270">Sanath Kumar</option>
-        <option value="52196" selected="true">Sanjeev Kumar Mishra</option>
-        <option value="201357">Shivakumaran Marimuthu</option>
-        <option value="28816">Soham</option>
-        <option value="112695">Sukeerthi Adiga</option>
-        <option value="268295">Suman Guha</option>
-        <option value="34398">surajit dey</option>
-        <option value="35204">Tripurari Singh</option>
-        <option value="32100">Tushar Bhattacharyya</option>
-        <option value="43218">Vance Schamehorn</option>
-        <option value="267105">vigram</option>
-        <option value="28822">Vijay</option>
-        <option value="108970">Vijaya Kannusamy</option>
-        <option value="52192">Vishnu kumar sharma</option>
-      </select>
-    </div>
-  </td>
-  <td colspan="3">
-    <label id="story_newStory_details_story[requested_by_id]_label" for="story_newStory_details_story[requested_by_id]">
-      <div>
-        <div class="emphasizedFieldLabel">requested</div>
-        <div class="fieldLabel" id="story_newStory_details_story[created_at_date]">this story</div>
+    <div class="storyDetailElement">
+    <div class="storyDetails" id="story_newStory_details">
+    <div class="buttons">
+      <div class="storyDetailsButton">
+        <%= f.submit('Save') %>
       </div>
-    </label>
-  </td>
-</tr>
-<tr>
-  <td colspan="1">
-    <div>
-      <select name="story[owned_by_id]" class="storyDetailsField" id="story_newStory_details_story[owned_by_id]">
-        <option value="-1" selected="true">none</option>
-        <option value="30715">Adam Elliot</option>
-        <option value="27575">Amitava Basak</option>
-        <option value="36778">Anupam Choudhury</option>
-        <option value="27342">Arjun</option>
-        <option value="201361">Arunmozhi Santhanam</option>
-        <option value="107678">Bratish Goswami</option>
-        <option value="28625">Christopher Manning</option>
-        <option value="25575">CR Geissler</option>
-        <option value="80176">Dan Mercier</option>
-        <option value="320309">David Aldana</option>
-        <option value="28823">Debashis</option>
-        <option value="37040">Debashree Roy</option>
-        <option value="56628">Ganesh</option>
-        <option value="92094">Girish</option>
-        <option value="43219">Jeff Kam</option>
-        <option value="45692">Julie May</option>
-        <option value="28819">Karunakar</option>
-        <option value="40803">Kelly Michetti</option>
-        <option value="53703">Kempanna holya</option>
-        <option value="72611">Krista Ball</option>
-        <option value="162783">Luis Castro</option>
-        <option value="201359">Manoj Kumar</option>
-        <option value="43225">Marcel Ball</option>
-        <option value="27341">Mark Madsen</option>
-        <option value="27343">Mat Lavoie</option>
-        <option value="52193">Mitesh Jain</option>
-        <option value="63689">Morgan Routledge</option>
-        <option value="28824">Nandan</option>
-        <option value="284285">Neeta</option>
-        <option value="123649">pchatterjee</option>
-        <option value="130136">Pivotal Integration</option>
-        <option value="506861">Prasath Venkatraman</option>
-        <option value="28821">Prem</option>
-        <option value="28818">Raghu</option>
-        <option value="28820">Rajib Chowdhury</option>
-        <option value="101821">Ram Naresh</option>
-        <option value="167543">Ranjan Kumar</option>
-        <option value="74270">Sanath Kumar</option>
-        <option value="52196">Sanjeev Kumar Mishra</option>
-        <option value="201357">Shivakumaran Marimuthu</option>
-        <option value="28816">Soham</option>
-        <option value="112695">Sukeerthi Adiga</option>
-        <option value="268295">Suman Guha</option>
-        <option value="34398">surajit dey</option>
-        <option value="35204">Tripurari Singh</option>
-        <option value="32100">Tushar Bhattacharyya</option>
-        <option value="43218">Vance Schamehorn</option>
-        <option value="267105">vigram</option>
-        <option value="28822">Vijay</option>
-        <option value="108970">Vijaya Kannusamy</option>
-        <option value="52192">Vishnu kumar sharma</option>
-      </select>
-    </div>
-  </td>
-  <td colspan="3">
-    <label id="story_newStory_details_story[owned_by_id]_label" for="story_newStory_details_story[owned_by_id]">
-      <div>
-        <div class="emphasizedFieldLabel">owns</div>
-        <div class="fieldLabel">this story</div>
+      <div class="storyDetailsButton">
+        <input type="submit" value="Cancel" id="new_workable_item_cancel_button">
       </div>
-    </label>
-  </td>
-</tr>
-</tbody>
-</table>
-<div class="section">
-  <div class="header">
-    <div class="label">Labels</div>
-  </div>
-  <div class="wrapper">
-    <input class="labels" name="story[labels]" style="display: none;">
+      <div class="storyDetailsButton">
+        <% if workable_item.new_record? %>
+            <input type="submit" value="Delete" id="story_newStory_details_story[delete_button]" disabled="disabled">
+        <% else %>
+            <input type="submit" value="Delete" id="story_newStory_details_story[delete_button]">
+        <% end %>
+      </div>
+      <div class="storyDetailsButton">
+        <% if workable_item.new_record? %>
+            <input type="submit" value="View history" id="story_newStory_details_story[view_history_button]" disabled="">
+        <% else %>
+            <input type="submit" value="View history" id="story_newStory_details_story[view_history_button]" >
+        <% end %>
 
-    <div class="labels saveable">
-      <img src="/images/labels_dropdown.png" class="labels_dropdown_arrow">
-      <ul>
-        <li style="position: relative;" data-value="solaro.in" class="">
-          <a class="text">
-            <span>solaro.in</span>
-          </a>
-          <a class="remove">
-            <span>x</span>
-          </a>
-          <input tabindex="-1" style="width: 0pt; height: 0pt; position: absolute; left: -10000em;">
-        </li>
-      </ul>
-      <input type="text" class="create ui-autocomplete-input" placeholder="" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+      </div>
+    </div>
+    <table class="storyDetailsTable">
+      <tbody>
+      <tr>
+        <td colspan="1" class="letContentExpand">
+          <div>
+            <select name="story[story_type]" class="storyDetailsField" id="story_newStory_details_story[story_type]">
+              <option value="feature" selected="true">Feature</option>
+              <option value="bug">Bug</option>
+              <option value="chore">Chore</option>
+              <option value="release">Release</option>
+            </select>
+          </div>
+        </td>
+        <td colspan="1" class="storyDetailsLabelIcon">
+          <div class="storyDetailsLabelIcon">
+            <img id="story_newStory_details_story[story_type]_image" src="/images/story.png">
+          </div>
+        </td>
+        <td colspan="1" class="helpIcon lastCell">
+          <div id="story_newStory_details_help_story_types" class="helpIcon">
+            <img src="/images/question_mark.gif">
+          </div>
+        </td>
+      </tr>
+      <tr style="display: none;">
+        <td>
+          <div>
+            <div class="deadlineLabel">
+              <label id="story[deadline]_label" for="story[deadline]">Deadline:</label>
+            </div>
+            <div class="dateEditField">
+              <input type="text" value="NONE" name="story[deadline]" id="icebox_deadline_newStory_story[deadline]" size="11" class="valid">
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="storyDetailsLabelIcon">
+            <img src="/images/calendar.png" id="icebox_deadline_newStory_icon">
+          </div>
+        </td>
+        <td>
+          <div id="icebox_deadline_newStory_help_deadlines" class="helpIcon">
+            <img src="/images/question_mark.gif">
+          </div>
+        </td>
+        <td>
+          <div>
+            <a href="javascript:void(0);" id="icebox_deadline_newStory_dateClear" style="display: none;">[clear]</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1">
+          <div>
+            <select name="story[estimate]" class="storyDetailsField" id="story_newStory_details_story[estimate]">
+              <option value="-1" selected="true">Unestimated</option>
+              <option value="0">0 points</option>
+              <option value="1">1 point</option>
+              <option value="2">2 points</option>
+              <option value="3">3 points</option>
+              <option value="5">5 points</option>
+              <option value="8">8 points</option>
+            </select>
+          </div>
+        </td>
+        <td colspan="1" class="storyDetailsLabelIcon">
+          <div class="storyDetailsLabelIcon">
+            <img id="story_newStory_details_story[estimate]_image" src="/images/estimate_unestimated_fibonacci.gif">
+          </div>
+        </td>
+        <td colspan="1" class="helpIcon">
+          <div id="story_newStory_details_help_estimates" class="helpIcon">
+            <img src="/images/question_mark.gif">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="hidden" value="unscheduled" name="story[current_state]" id="story_newStory_details_story[current_state]">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <select name="story[requested_by_id]" class="storyDetailsField" id="story_newStory_details_story[requested_by_id]">
+              <option value="-1">none</option>
+              <option value="52192">Vishnu kumar sharma</option>
+            </select>
+          </div>
+        </td>
+        <td colspan="3">
+          <label id="story_newStory_details_story[requested_by_id]_label" for="story_newStory_details_story[requested_by_id]">
+            <div>
+              <div class="emphasizedFieldLabel">requested</div>
+              <div class="fieldLabel" id="story_newStory_details_story[created_at_date]">this story</div>
+            </div>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1">
+          <div>
+            <select name="story[owned_by_id]" class="storyDetailsField" id="story_newStory_details_story[owned_by_id]">
+              <option value="-1" selected="true">none</option>
+              <option value="30715">Adam Elliot</option>
+            </select>
+          </div>
+        </td>
+        <td colspan="3">
+          <label id="story_newStory_details_story[owned_by_id]_label" for="story_newStory_details_story[owned_by_id]">
+            <div>
+              <div class="emphasizedFieldLabel">owns</div>
+              <div class="fieldLabel">this story</div>
+            </div>
+          </label>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="section">
+      <div class="header">
+        <div class="label">Labels</div>
+      </div>
+      <div class="wrapper">
+        <input class="labels" name="story[labels]" style="display: none;">
+
+        <div class="labels saveable">
+          <img src="/images/labels_dropdown.png" class="labels_dropdown_arrow">
+          <ul>
+            <li style="position: relative;" data-value="solaro.in" class="">
+              <a class="text">
+                <span>solaro.in</span>
+              </a>
+              <a class="remove">
+                <span>x</span>
+              </a>
+              <input tabindex="-1" style="width: 0pt; height: 0pt; position: absolute; left: -10000em;">
+            </li>
+          </ul>
+          <input type="text" class="create ui-autocomplete-input" placeholder="" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
 <span style="position: absolute; top: -10000em; left: -10000em; width: auto; font-size: 12px; font-family: Arial,Helvetica,sans-serif; font-weight: 400; letter-spacing: normal; white-space: nowrap;">
 </span>
-    </div>
-    <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 28px; left: 0px; display: none; width: 1196px;">
-      <li class="ui-menu-item" role="menuitem">
-        <a class="ui-corner-all" tabindex="-1">admin</a>
-      </li>
-      <li class="ui-menu-item" role="menuitem">
-        <a class="ui-corner-all" tabindex="-1">android</a>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="section">
-  <div class="storyDescriptionTable">
-    <div class="header">
-      <div class="label">Description</div>
-      <div id="story_newStory_details_help_story_newStory_details_help" class="helpIcon">
-        <img src="/images/question_mark.gif">
-      </div>
-      <div class="clear">
-      </div>
-    </div>
-    <div>
-      <textarea name="story[description]" cols="20" rows="1" id="story_newStory_details_story[description]" class="textAreaFocus description_area autoresize expand17-99999" style="height: 18px; overflow: hidden;">
-      </textarea>
-    </div>
-    <div id="story_newStory_details_story_readonly_description" class="formatted_text_area" style="display: none;">
-    </div>
-  </div>
-</div>
-<div class="taskTableDiv">
-  <div class="section">
-    <div id="story_newStory_details_story[tasks_header]" class="header">Tasks <span class="count">(1)</span>
-    </div>
-    <ol class="task_list ui-sortable" style="">
-      <li class="task_temp1 ">
-
-        <input type="checkbox" disabled="disabled" value="1" name="task[complete_temp1]">
-
-        <div style="display: none;">
-          <textarea name="task[description_temp1]" class="autoresize expand17-10000">test</textarea>
         </div>
+        <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 28px; left: 0px; display: none; width: 1196px;">
+          <li class="ui-menu-item" role="menuitem">
+            <a class="ui-corner-all" tabindex="-1">admin</a>
+          </li>
+          <li class="ui-menu-item" role="menuitem">
+            <a class="ui-corner-all" tabindex="-1">android</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="section">
+      <div class="storyDescriptionTable">
+        <div class="header">
+          <div class="label">Description</div>
+          <div id="story_newStory_details_help_story_newStory_details_help" class="helpIcon">
+            <img src="/images/question_mark.gif">
+          </div>
+          <div class="clear">
+          </div>
+        </div>
+        <div>
+          <textarea name="story[description]" cols="20" rows="1" id="story_newStory_details_story[description]" class="textAreaFocus description_area autoresize expand17-99999" style="height: 18px; overflow: hidden;">
+          </textarea>
+        </div>
+        <div id="story_newStory_details_story_readonly_description" class="formatted_text_area" style="display: none;">
+        </div>
+      </div>
+    </div>
+    <div class="taskTableDiv">
+      <div class="section">
+        <div id="story_newStory_details_story[tasks_header]" class="header">Tasks <span class="count">(1)</span>
+        </div>
+        <ol class="task_list ui-sortable" style="">
+          <li class="task_temp1 ">
 
-        <label>test</label>
+            <input type="checkbox" disabled="disabled" value="1" name="task[complete_temp1]">
 
-      </li>
-    </ol>
-    <div>
-      <form class="add_task">
-        <textarea name="task[description]" cols="1" rows="1" id="story_newStory_details_task[description]" class="tasksTextArea autoresize expand17-99999" style="height: 18px; overflow: hidden;">add
-          a task</textarea>
-        <input type="submit" value="Add">
+            <div style="display: none;">
+              <textarea name="task[description_temp1]" class="autoresize expand17-10000">test</textarea>
+            </div>
+
+            <label>test</label>
+
+          </li>
+        </ol>
+        <div>
+          <form class="add_task">
+            <textarea name="task[description]" cols="1" rows="1" id="story_newStory_details_task[description]" class="tasksTextArea autoresize expand17-99999" style="height: 18px; overflow: hidden;">add
+              a task</textarea>
+            <input type="submit" value="Add">
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="attachmentWidget">
+      <div>
+        <div class="section attachments" id="attachment_field_for_newStory">
+          <div class="header">Attachments <span class="count">(1)</span>
+          </div>
+          <ol class="attachments_list">
+            <li>
+              <div class="attachment_thumbnail">
+
+                <a tabindex="-1" data-new-window="true" href="/resource/download/4251343?inline=true">
+                  <img class="resource_image" alt="bug_step1.jpg" src="https://s3.amazonaws.com/prod.tracker2/resource/4251343/bug_step1_thumb.jpg?AWSAccessKeyId=AKIAIKWOAN6H4H3QMJ6Q&amp;Expires=1325750055&amp;Signature=3V%2FEoKu6Dwm8GTRUp7eB4Evoh1E%3D">
+                </a>
+
+              </div>
+              <div class="attachment_details_container clearfix">
+                <ul class="attachment_details">
+                  <li class="name">bug_step1.jpg
+                  </li>
+                  <li class="description" style="display: list-item;">
+                    <a class="edit" href="#">add a description</a>
+                  </li>
+                  <li class="edit_description" style="display: none;">
+                    <input type="text" maxlength="255" name="description">
+                    <button>Save</button>
+                    or <a class="cancel" href="#">cancel</a>
+                  </li>
+                  <li class="uploader">Uploaded by Sanjeev Kumar Mishra</li>
+                  <li class="metadata">77 KB<span> on 29 Dec 2011, 1:24pm</span>
+                  </li>
+                  <li class="actions">
+                    <a href="/resource/download/4251343">Download</a>
+
+                    | <a href="#" class="remove">Remove</a>
+
+                  </li>
+
+                </ul>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <form class="attachment_form jquery_file_upload" enctype="multipart/form-data" method="POST" action="/api/resource/upload?project_id=68195">
+        <div class="attachment_controls_wrapper">
+          <input type="file" multiple="" name="Filedata">
+        </div>
+        <div class="attach_files">
+          <span class="upload_button">Upload Files</span>
+
+          <span class="text">or, drag them onto this story</span>
+        </div>
+        <div style="display: none;" class="error_message">
+        </div>
       </form>
     </div>
-  </div>
-</div>
-</form>
-<div class="attachmentWidget">
-  <div>
-    <div class="section attachments" id="attachment_field_for_newStory">
-      <div class="header">Attachments <span class="count">(1)</span>
-      </div>
-      <ol class="attachments_list">
-        <li>
-          <div class="attachment_thumbnail">
-
-            <a tabindex="-1" data-new-window="true" href="/resource/download/4251343?inline=true">
-              <img class="resource_image" alt="bug_step1.jpg" src="https://s3.amazonaws.com/prod.tracker2/resource/4251343/bug_step1_thumb.jpg?AWSAccessKeyId=AKIAIKWOAN6H4H3QMJ6Q&amp;Expires=1325750055&amp;Signature=3V%2FEoKu6Dwm8GTRUp7eB4Evoh1E%3D">
-            </a>
-
-          </div>
-          <div class="attachment_details_container clearfix">
-            <ul class="attachment_details">
-              <li class="name">bug_step1.
-                <wbr>
-                </wbr>
-                jpg
-              </li>
-
-              <li class="description" style="display: list-item;">
-
-
-                <a class="edit" href="#">add a description</a>
-
-
-              </li>
-
-
-              <li class="edit_description" style="display: none;">
-                <input type="text" maxlength="255" name="description">
-                <button>Save</button>
-                or <a class="cancel" href="#">cancel</a>
-              </li>
-
-
-              <li class="uploader">Uploaded by Sanjeev Kumar Mishra</li>
-
-              <li class="metadata">77 KB<span> on 29 Dec 2011, 1:24pm</span>
-              </li>
-
-
-              <li class="actions">
-                <a href="/resource/download/4251343">Download</a>
-
-                | <a href="#" class="remove">Remove</a>
-
-              </li>
-
-            </ul>
-          </div>
-        </li>
-      </ol>
     </div>
-  </div>
-  <form class="attachment_form jquery_file_upload" enctype="multipart/form-data" method="POST" action="/api/resource/upload?project_id=68195">
-    <div class="attachment_controls_wrapper">
-      <input type="file" multiple="" name="Filedata">
     </div>
-    <div class="attach_files">
-      <span class="upload_button">Upload Files</span>
-
-      <span class="text">or, drag them onto this story</span>
+    <div class="field">
+      <%= f.label :description %>
+      <br/>
+      <%= f.text_field :description %>
     </div>
-    <div style="display: none;" class="error_message">
+    <% if workable_item.is_estimatable? %>
+        <div class="field">
+          <%= f.label :estimate %>
+          <br/>
+          <%= f.text_field :estimate %>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :category %>
+      <br/>
+      <%= f.select(:category, %w[icebox backlog current]) %>
     </div>
-  </form>
-</div>
-</div>
-</div>
+    <%= f.hidden_field :requester %>
+    <%= f.hidden_field :project_id %>
+    <%= f.hidden_field :type %>
+    <%= f.hidden_field :epic_id %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
 </div>
 </div>

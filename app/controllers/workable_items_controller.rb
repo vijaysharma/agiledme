@@ -25,7 +25,7 @@ class WorkableItemsController < ApplicationController
     else
       @workable_item = WorkableItem.new
     end
-
+    @workable_item = WorkableItem.new
     @workable_item.type = params[:type]
     @workable_item.project = Project.find(params[:project])
     @workable_item.requester = current_user.id

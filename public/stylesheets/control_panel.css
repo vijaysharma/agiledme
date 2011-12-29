@@ -96,7 +96,7 @@
     display: block;
 }
 
-#controlPanel #controls_search_velocity_row > div.right a#addstory_control_button {
+#controlPanel #controls_search_velocity_row > div.right a#add_new_workable_control_button {
     background: url("/images/add_story.png") no-repeat scroll 0 0 transparent;
     display: block;
     float: left;
@@ -104,6 +104,10 @@
     margin-right: 7px;
     text-indent: -9999em;
     width: 102px;
+}
+
+#controlPanel #controls_search_velocity_row > div.right a#add_new_workable_control_button:hover {
+    background-position: 0 -30px;
 }
 
 #controlPanel #controls_search_velocity_row > div.right .ieInputWrapper {
@@ -163,6 +167,10 @@
     color: #256188;
 }
 
+#controlPanel #controls_search_velocity_row ul#buttonPanel ul#panelList li a.selected:hover {
+    color: #153B5C;
+}
+
 #controlPanel #controls_search_velocity_row ul#buttonPanel a.button {
     border-radius: 4px 4px 4px 4px;
     color: #999999;
@@ -173,4 +181,5 @@
     line-height: 23px;
     padding: 0 6px;
     text-transform: uppercase;
+    text-decoration:none;
 }

@@ -174,6 +174,521 @@ img {
     -moz-user-select: none;
 }
 
+.fieldLabel {
+    color: gray;
+    display: inline;
+}
+
+.emphasizedFieldLabel {
+    display: inline;
+    margin-left: 5px;
+}
+
+.underEdit {
+    background-color: white;
+}
+
+.underEdit .storyPreviewHeader {
+    background-color: #FFEDA1;
+}
+
+.unestimatedText .storyPreviewHeader {
+    font-style: italic;
+}
+
+.story_content .item .storyPreviewInput {
+    margin: 0 37px 0 25px;
+    padding: 3px 0;
+}
+
+body.mozilla #content .item .storyItem textarea {
+    padding-left: 4px;
+    padding-right: 1px;
+}
+
+.story_content .item .storyPreviewInput .titleInputField {
+    resize: none;
+}
+
+.story_content .item .storyItem textarea {
+    border: 1px solid #9A9A9A;
+    border-radius: 3px 3px 3px 3px;
+    display: block;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 2px 1px 1px 4px;
+    width: 100%;
+}
+
+.underEdit .storyDetails {
+    background-color: #FFF8D7;
+    padding-bottom: 6px;
+    padding-left: 25px;
+    padding-right: 36px;
+}
+
+div.storyDetails {
+    background-color: #FFF8D7;
+    padding: 2px 20px 6px 26px;
+}
+
+div.storyDetails .buttons {
+    min-width: 236px;
+    padding-top: 7px;
+}
+
+div.storyDetails .storyDetailsButton {
+    display: inline;
+    padding: 0;
+}
+
+.storyDetails input {
+    font-size: 12px;
+}
+
+div.storyDetails .storyDetailsTable {
+    border-collapse: separate;
+    border-spacing: 0 0;
+    padding-top: 10px;
+}
+
+div.storyDetails .storyDetailsTable td.letContentExpand {
+    width: 1px;
+}
+
+.storyDetails select {
+    font-size: 12px;
+}
+
+.storyDetails label {
+    font-size: 12px;
+}
+
+.storyDetailsField, .storyDeadlineField, .storyDetailsTextField {
+    margin-bottom: 1px;
+    margin-top: 1px;
+    width: 150px;
+}
+
+.deadlineLabel {
+    display: inline;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 13px;
+    margin-right: 4px;
+    margin-top: 4px;
+    text-align: left;
+}
+
+.dateEditField {
+    display: inline;
+    line-height: 22px;
+}
+
+.storyDetailsLabelIcon {
+    text-align: center;
+    width: 25px;
+}
+
+div.storyDetails .section {
+    color: #333333;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 14px;
+    margin-top: 15px;
+}
+
+div.storyDetails .section .header {
+    background: none repeat scroll 0 0 transparent;
+    color: #3F3D35;
+    font-size: 13px;
+    font-weight: bold;
+    height: 18px;
+    margin-bottom: 0;
+}
+
+div.storyDetails div.wrapper {
+    position: relative;
+}
+
+div.storyDetails div.labels {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #FFFFFF;
+    background-image: none;
+    background-origin: content-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border: 1px solid #999999;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 0 #FFFFFF;
+    color: #FFFFFF;
+    cursor: text;
+    margin: 4px 0 0;
+    overflow: hidden;
+    padding: 4px 4px 0;
+    width: 100%;
+}
+
+div.storyDetails div.labels .labels_dropdown_arrow {
+    cursor: pointer;
+    float: right;
+    padding: 7px 0 10px 4px;
+}
+
+div.storyDetails div.labels ul {
+    margin-right: 12px;
+}
+
+div.storyDetails div.labels input.create {
+    border: medium none;
+    color: #333333;
+    float: left;
+    font-size: 12px;
+    height: 17px;
+    line-height: 17px;
+    margin-bottom: 3px;
+    margin-right: 12px;
+    margin-top: 2px;
+    outline: medium none;
+    padding: 0 3px;
+    white-space: nowrap;
+    width: 100px;
+}
+
+div.storyDetails div.labels input.create:-moz-placeholder {
+    color: #CCCCCC;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+ul.ui-autocomplete {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color #999999 #999999;
+    border-radius: 0 0 3px 3px;
+    border-right: 1px solid #999999;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    box-shadow: 0 2px 4px #999999;
+    max-height: 180px;
+    overflow: auto;
+    z-index: 10;
+}
+
+.ui-menu {
+    background: none repeat scroll 0 0 white;
+    display: block;
+    float: left;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+
+.ui-autocomplete {
+    cursor: default;
+    position: absolute;
+}
+
+.ui-menu .ui-menu-item:first-child {
+    border-top: medium none;
+}
+
+.ui-menu .ui-menu-item {
+    border-top: 1px solid #CCCCCC;
+    clear: left;
+    float: left;
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.ui-menu .ui-menu-item a {
+    color: #333333;
+    cursor: pointer;
+    display: block;
+    line-height: 1.5;
+    padding: 0.2em 0.7em;
+    text-decoration: none;
+}
+
+div.storyDetails div.labels a {
+    border-radius: inherit;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 11px;
+    padding: 1px 0;
+}
+
+div.storyDetails div.labels a.text {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: inherit;
+    border-top-right-radius: 0;
+    padding-left: 7px;
+    padding-right: 4px;
+}
+
+div.storyDetails div.labels a.remove {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: inherit;
+    border-top-left-radius: 0;
+    border-top-right-radius: inherit;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    text-indent: -9999em;
+    top: 0;
+}
+
+div.storyDetails div.labels a.remove > span {
+    background: url("/images/labels_close_icon.png") no-repeat scroll 4px center transparent;
+    border-left: 1px solid #B2D165;
+    display: block;
+    height: 9px;
+    margin: 3px 0;
+    text-indent: -9999em;
+    width: 14px;
+}
+
+div.storyDetails div.labels ul > li {
+    background: -moz-linear-gradient(center top , #88AF0A, #729A07) repeat scroll 0 0 transparent;
+    border: 1px solid #447200;
+    border-radius: 11px 11px 11px 11px;
+    cursor: pointer;
+    float: left;
+    font-size: 11px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    padding: 0 14px 0 0;
+    position: relative;
+}
+
+div.storyDetails .section .storyDescriptionTable .header {
+    margin-bottom: 4px;
+}
+
+div.storyDetails .section .storyDescriptionTable .header .label {
+    float: left;
+}
+
+div.storyDetails .section .storyDescriptionTable .header .helpIcon {
+    margin-left: 8px;
+}
+
+div.storyDetails .section .storyDescriptionTable .header .helpIcon {
+    float: left;
+}
+
+body.mozilla #content .item .storyItem div.formatted_text_area {
+    padding-left: 5px;
+    padding-right: 0;
+}
+
+.story_content .item .storyItem div.formatted_text_area {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+
+.formatted_text_area {
+    border: 1px solid #9A9A9A;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 2px 1px 1px 4px;
+    width: 100%;
+}
+
+.storyDetails .taskTableDiv {
+    position: relative;
+}
+
+.story_content .item ol.task_list > li {
+    font-size: 12px;
+    overflow: hidden;
+    padding: 3px 2px 1px 3px;
+    position: relative;
+}
+.story_content .item ol.task_list > li:hover {
+    background:none repeat scroll 0 0 #EBE29C;
+}
+
+.story_content .item ol.task_list * {
+    cursor: pointer;
+}
+
+.story_content .item ol.task_list > li input[type="checkbox"] {
+    display: block;
+    float: left;
+    margin: 2px 0 0;
+    padding: 0;
+}
+
+.story_content .item ol.task_list > li > div {
+    margin-right: 50px;
+    padding-left: 14px;
+}
+
+.story_content .item ol.task_list > li textarea {
+    border: 1px solid #9A9A9A;
+    border-radius: 3px 3px 3px 3px;
+    color: #000000;
+    cursor: default;
+    display: block;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 18px;
+    margin: -1px 0 0 1px;
+    overflow: hidden;
+    padding: 1px 5px 1px 4px;
+    width: 100%;
+}
+
+div.storyDetails .section textArea {
+    color: #CCCCCC;
+    font-size: 104%;
+    font-weight: bold;
+    margin-top: 5px;
+    overflow: auto;
+    padding: 0 3px;
+    width: 100%;
+}
+
+div.storyDetails .section input[type="submit"] {
+    display: block;
+    margin-top: 4px;
+}
+
+div.storyDetails .attachmentWidget .attachments .header {
+    padding-bottom: 10px;
+}
+
+.storyDetails div.attachments ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.storyDetails div.attachments ol.attachments_list {
+    overflow: hidden;
+}
+
+.storyDetails div.attachments ol.attachments_list > li {
+    margin-bottom: 13px;
+    overflow: hidden;
+}
+
+.storyDetails div.attachments ol.attachments_list > li > div.attachment_thumbnail {
+    float: left;
+    margin-right: 18px;
+    min-width: 72px;
+}
+
+.storyDetails .attachmentWidget a {
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.storyDetails div.attachments ol.attachments_list > li > div.attachment_details_container {
+    padding-left: 90px;
+}
+
+.storyDetails div.attachments ol.attachments_list > li ul.attachment_details {
+    float: left;
+    font-size: 11px;
+}
+
+.storyDetails div.attachments ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.storyDetails div.attachments ol.attachments_list > li ul.attachment_details li.name {
+    color: #222222;
+    font-weight: bold;
+}
+
+.storyDetails div.attachments ol.attachments_list > li ul.attachment_details li {
+    margin-bottom: 2px;
+}
+
+.storyDetails div.attachments ol.attachments_list > li ul.attachment_details li.uploader {
+    color: #666666;
+}
+
+.storyDetails div.attachments ol.attachments_list > li ul.attachment_details li.edit_description input {
+    width: 20em;
+}
+
+.storyDetails div.attachments ol.attachments_list > li ul.attachment_details li.metadata {
+    font-style: italic;
+    color: #888888;
+}
+
+.storyDetails div.attachments ol.attachments_list > li ul.attachment_details li.actions {
+    color: #888888;
+}
+
+.storyDetails div.attachments ol.attachments_list > li ul.attachment_details li.actions a {
+    font-size: 11px;
+}
+
+div.storyDetails .attachmentWidget .resource_image {
+    cursor: pointer;
+}
+
+div.storyDetails .attachmentWidget form {
+    position: relative;
+}
+
+div.storyDetails .attachmentWidget .attachment_controls_wrapper {
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 75px;
+}
+
+div.storyDetails .attachmentWidget .attachment_controls_wrapper input {
+    font-size: 16px;
+}
+
+div.storyDetails .attachmentWidget .attach_files {
+    margin-top: 5px;
+}
+
+div.storyDetails .attachmentWidget .attach_files .upload_button {
+    background: none repeat scroll 0 0 #333333;
+    border: 1px solid #24364C;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 0 1px #999999 inset;
+    color: #EEEEEE;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 5px;
+    margin-top: -2px;
+    padding: 3px 6px;
+}
+
+div.storyDetails .attachmentWidget .attach_files .text {
+    color: #666666;
+}
+
+.error_message {
+    color: red;
+    font-weight: bold;
+}
+
 .story_content .item .accepted {
     background-color: #DAEBCF;
     border-bottom: 1px solid #C3D5B4;
@@ -215,6 +730,12 @@ img {
 .storyPreviewButtons {
     float: right;
     text-align: center;
+}
+
+.story_content .item .storyItem {
+    border-bottom: 1px solid #DDDDDD;
+    border-top: 1px solid #FFFFFF;
+    min-height: 21px;
 }
 
 .story_content .item .storyItem a.accept {
@@ -281,7 +802,7 @@ img {
     width: 49px;
 }
 
-.story_content a {
+.story_content a, .story_content a:hover {
     color: #0957A4;
     font-weight: normal;
     text-decoration: none;
@@ -295,12 +816,6 @@ img {
 .stateChangeButton, .disabledStateChangeButton {
     margin-left: 4px;
     vertical-align: bottom;
-}
-
-.story_content .item .storyItem {
-    border-bottom: 1px solid #DDDDDD;
-    border-top: 1px solid #FFFFFF;
-    min-height: 21px;
 }
 
 .storyPreviewHeader, .epicPreviewHeader {

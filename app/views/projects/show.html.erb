@@ -5,7 +5,7 @@
     <tbody>
     <tr>
       <% if @project.workable_items.present? %>
-          <% %w[done current backlog icebox].each do |category| %>
+          <% %w[icebox].each do |category| %>
               <td id="<%= category %>" class="<%= "#{category} panel" %>">
                 <div class="panelHeaderRight"></div>
                 <div class="panelHeaderLeft"></div>
@@ -29,6 +29,9 @@
                   <div id="<%= "#{category}_itemList_items" %>" class="items">
                     <div class="inner scrolling_item_list">
                       <div>
+                        <% if category.eql?('icebox') %>
+                            <%= render :partial => 'workable_items/new_workable_item' %>
+                        <% end %>
                         <%= render :partial => 'workable_items/workable_items_collection',
                                    :locals => {:workable_items => @project.workable_items.select { |wi| wi.category == category }} %>
                       </div>
@@ -78,5 +81,8 @@
     $("#icebox_control_button").click(function () {
         $("#icebox").toggle();
         $("#icebox_control_button").toggleClass('selected');
+    });
+    $("#add_new_workable_control_button").click(function () {
+        $("#icebox_itemList_new_workable_item").show();
     });
 </script>

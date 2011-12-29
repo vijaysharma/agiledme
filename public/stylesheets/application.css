@@ -30,8 +30,8 @@ a:hover{color:#327A9F;text-decoration:underline;}
 
 body{font:normal 12px/16px "Lucida Grande","Arial",sans-serif;color:#000000;}
 
-.content{background: #FAFAFA;overflow:visible;padding:0 0 10px 0;min-height:339px}
-.content ul{list-style:outside;margin-top:5px;}
+.content{background: #FAFAFA;overflow:visible;padding:0 0 10px 0;min-height:550px}
+.content ul{list-style:outside;}
 .content h2{color:#0C598C;margin-bottom:20px;line-height:25px;}
 
 img.fLeft{margin:0 20px 20px 0;}
@@ -401,21 +401,19 @@ left:0;
 color:#fff;text-decoration:none;
 -moz-text-shadow:0 1px 0 #666;-webkit-text-shadow:0 1px 0 #666;-o-text-shadow:0 1px 0 #666;text-shadow:0 1px 0 #666;
 }
-/*.navigation .selected > a{color:#08a3d5;}*/
-.navigation .sfHover > a{color:#08a3d5;}
-.navigation .dropdown_menu.sfHover{background:#fff;padding:10px 5px 10px 10px;top:-10px;
--moz-border-radius:5px 5px 0 0;-webkit-border-radius:5px 5px 0 0;-o-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;
--moz-box-shadow:0 -1px 1px #999;-webkit-box-shadow:0 -1px 1px #999;-o-box-shadow:0 -1px 1px #999;box-shadow:0 -1px 1px #999;
-}
-.navigation .dropdown_menu.sfHover > a{background:url(../images/dropArrow.png) no-repeat right 4px;padding-right:15px;color:#08a3d5;}
 
-.registration{width:355px;height:217px;float:left;position:relative;
-  -moz-border-radius:10px;-webkit-border-radius:10px;-o-border-radius:10px;border-radius:10px;
+.registration{
+    width:355px;
+    height:217px;
+    float:left;
+    position:relative;
+    -moz-border-radius:10px;-webkit-border-radius:10px;-o-border-radius:10px;border-radius:10px;
+    margin-left:340px;
+    margin-top:170px;
   }
-.content .registration{margin-left:400px;margin-top:135px;}
-label{color:#fff;width:85px;text-align:right;display:inline-block;margin:0 5px 12px 0;display:inline-block;vertical-align:top;}
-input[type="text"],input[type="password"],input[type="email"] {height:20px;width:245px;margin-bottom:8px;padding-left:5px;font-size:1em;font-weight:bold}
-input[type="text"],input[type="password"],input[type="email"] , textarea{
+registration label{color:#fff;width:85px;text-align:right;display:inline-block;margin:0 5px 12px 0;display:inline-block;vertical-align:top;}
+.registration input[type="text"], .registration input[type="password"],.registration input[type="email"] {height:20px;width:245px;margin-bottom:8px;padding-left:5px;font-size:1em;font-weight:bold}
+.registration input[type="text"],.registration input[type="password"],.registration input[type="email"] , textarea{
   background: #f2f2f2; /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YyZjJmMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
@@ -428,11 +426,11 @@ input[type="text"],input[type="password"],input[type="email"] , textarea{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=0 ); /* IE6-8 */
   border:1px solid #29a2cf;
   }
-input[type="checkbox"] {margin:0px}
-input:focus{border:1px solid #62a817;background:#ffffff;}
+.registration input[type="checkbox"] {margin:0px}
+.registration input:focus{border:1px solid #62a817;background:#ffffff;}
 select{width:142px;height:22px;border:1px solid #29a2cf;padding:2px;}
-input[type="submit"]{background:none;filter:none;border:0;font:bold 14px/26px "Lucida Grande", "Lucida Sans Unicode", sans-serif;color:#fff;}
-input[type="submit"]:hover{cursor:pointer;}
+.registration input[type="submit"]{background:none;filter:none;border:0;font:bold 14px/26px "Lucida Grande", "Lucida Sans Unicode", sans-serif;color:#fff;}
+.registration input[type="submit"]:hover{cursor:pointer;}
 span.redButton{margin:0 10px 0 0;float:right;}
 
 .about{border:1px solid #dbdada;border-left:0;border-right:0;padding:20px 0 20px 20px;overflow:hidden;

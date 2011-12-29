@@ -450,7 +450,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfbfb', end
 .footer{background-color:#fcfcfc;
 -moz-box-shadow:0 -1px 2px #d1d1d1;-webkit-box-shadow:0 -1px 2px #d1d1d1;-o-box-shadow:0 -1px 2px #d1d1d1;box-shadow:0 -1px 2px #d1d1d1;
 }
-.footerContent{width:930px;margin:0 auto;overflow:auto;padding:25px;}
+.footerContent {
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0;
+    width: 1213px;
+}
 .floatedBlock{float:left;width:200px;}
 .floatedBlock.last{width:100px;}
 .footerContent a {color:#7d7d7d;line-height:18px;}
@@ -460,4 +465,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfbfb', end
 .facebook > a{background-position:-86px -63px;}
 .twitter > a{background-position:-126px -63px;}
 
-.copyright{font-size:11px;clear:both;text-align:center;padding-top:40px;}
+.copyright{font-size:11px;clear:both;text-align:center;padding-top:25px;}

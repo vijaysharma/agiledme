@@ -5,15 +5,14 @@
     <tbody>
     <tr>
       <% if !@project.workable_items.present?
-             category_display_class = "none"
-             width = 25
-         end %>
+             category_display_class = 'display:none'
+         end
+      %>
       <% %w[done current backlog icebox].each do |category| %>
           <% if category.eql?('icebox')
-                 category_display_class = 'block'
-                 width = 100
+                 category_display_class = "";
              end %>
-          <td id="<%= category %>" class="<%= "#{category} panel" %>" style="display:<%= "#{category_display_class}" %>" width="<%="#{width}"%>%">
+          <td id="<%= category %>" class="<%= "#{category} panel" %>" style="<%= category_display_class %>" width="25%">
             <div class="panelHeaderRight"></div>
             <div class="panelHeaderLeft"></div>
             <div class="panelHeader">
@@ -44,7 +43,8 @@
                                    :locals => {:workable_items => @project.workable_items.select { |wi| wi.category == category }} %>
                     <% else %>
                         <% if category.eql?('icebox') %>
-                            <div id="no_workable_items" style="margin:5px">You have not got any work to do in this
+                            <div id="no_workable_items" class="no_workable_items">You have not got any work to do in
+                              this
                               project yet. Hurry, and start working!!
                             </div>
                         <% end %>

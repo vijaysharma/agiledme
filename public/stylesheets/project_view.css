@@ -5,6 +5,11 @@
     width: 100%;
 }
 
+.no_workable_items{
+    margin:5px;
+    text-align:center;
+}
+
 .toggleExpandedButton, .iterationHeaderToggleExpandedButton {
     cursor: pointer;
     display: block;

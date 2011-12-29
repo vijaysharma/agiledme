@@ -267,6 +267,7 @@ div.storyDetails .storyDetailsTable td.letContentExpand {
 
 .storyDetails select {
     font-size: 12px;
+    width:150px;
 }
 
 .storyDetails label {

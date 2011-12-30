@@ -6,10 +6,7 @@
 %>
 
 <div id="<%= "#{item_unique_id}_detail" %>" class="item" style="display:none">
-<div id="icebox_itemList_new_workable_item_content" class="storyItem story_item_newStory unscheduled unestimatedText underEdit jquery_file_upload">
-<div class="attachment_drop_area">
-  <img src="/images/dragdrop_here.png" style="display:none">
-</div>
+<div id="<%= "#{item_unique_id}_content" %>" class="storyItem unscheduled unestimated underEdit jquery_file_upload">
 <%= form_for(workable_item) do |f| %>
     <% project_users = workable_item.project.users %>
     <% if workable_item.errors.any? %>
@@ -25,6 +22,12 @@
         </div>
     <% end %>
     <div class="storyPreviewHeader">
+      <% if !workable_item.new_record? %>
+          <div class="storySelector notDblclickable">&nbsp;</div>
+          <div class="icons">
+            <img id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="toggleExpandedButton cancelEditButton" src="/images/story_expanded.png" title="Collapse">
+          </div>
+      <% end %>
       <div class="storyPreviewInput">
         <%= f.text_area :title, :cols => 1, :rows => 1, :class => 'titleInputField autoresize expand17-99999' %>
         <div class="clear">
@@ -58,12 +61,10 @@
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
-          <div class="storyDetailsLabelIcon">
-            <img id="story_newStory_details_story[story_type]_image" src="/images/story.png">
-          </div>
+          <img id="story_newStory_details_story[story_type]_image" src="/images/story.png">
         </td>
         <td colspan="1" class="helpIcon lastCell">
-          <div id="story_newStory_details_help_story_types" class="helpIcon">
+          <div id="<%= "#{item_unique_id}_help_story_types" %>" class="helpIcon">
             <img src="/images/question_mark.gif">
           </div>
         </td>
@@ -75,9 +76,7 @@
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
-          <div class="storyDetailsLabelIcon">
-            <img id="story_newStory_details_story[estimate]_image" src="/images/estimate_unestimated_fibonacci.gif">
-          </div>
+          <img id="story_newStory_details_story[estimate]_image" src="/images/estimate_unestimated_fibonacci.gif">
         </td>
         <td colspan="1" class="helpIcon">
           <div id="story_newStory_details_help_estimates" class="helpIcon">

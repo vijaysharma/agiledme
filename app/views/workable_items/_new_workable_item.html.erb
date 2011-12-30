@@ -1,7 +1,9 @@
 <% if workable_item.new_record?
        item_unique_id = "icebox_new_workable_item"
+       image_source = "/images/Story.png"
    else
        item_unique_id = "#{workable_item.category}_#{workable_item.type.downcase}_#{workable_item.id}"
+       image_source = "/images/#{workable_item.type}.png"
    end
 %>
 
@@ -57,11 +59,12 @@
       <tr>
         <td colspan="1" class="letContentExpand">
           <div>
-            <%= f.select(:type, WorkableItem.types, :class => "storyDetailsField") %>
+            <%= f.select(:type, WorkableItem.types, {:prompt => "Select the Type"},
+                         {:class => "storyDetailsField workable_item_type_select", :id => "#{item_unique_id}_type"}) %>
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
-          <img id="story_newStory_details_story[story_type]_image" src="/images/story.png">
+          <img id="<%= "#{item_unique_id}_type_image" %>" src="<%= image_source %>">
         </td>
         <td colspan="1" class="helpIcon lastCell">
           <div id="<%= "#{item_unique_id}_help_story_types" %>" class="helpIcon">

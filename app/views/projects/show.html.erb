@@ -107,12 +107,16 @@
     });
     $(".toggleExpandedButton").click(function() {
         var id = $(this).attr('id');
-        $("#"+id.replace('editButton', 'preview')).hide();
-        $("#"+id.replace('editButton', 'detail')).show();
+        $("#" + id.replace('editButton', 'preview')).hide();
+        $("#" + id.replace('editButton', 'detail')).show();
     });
     $(".cancelEditButton").click(function() {
         var id = $(this).attr('id');
-        $("#"+id.replace('cancel_edit_button', 'preview')).show();
-        $("#"+id.replace('cancel_edit_button', 'detail')).hide();
+        $("#" + id.replace('cancel_edit_button', 'preview')).show();
+        $("#" + id.replace('cancel_edit_button', 'detail')).hide();
+    });
+    $('.workable_item_type_select').change(function() {
+        var id = $(this).attr('id');
+        $("#"+id+"_image").attr('src', "/images/"+$(this).attr('value')+".png");
     });
 </script>

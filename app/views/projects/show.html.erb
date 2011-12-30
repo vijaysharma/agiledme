@@ -112,7 +112,6 @@
     });
     $(".cancelEditButton").click(function() {
         var id = $(this).attr('id');
-
         $("#"+id.replace('cancel_edit_button', 'preview')).show();
         $("#"+id.replace('cancel_edit_button', 'detail')).hide();
     });

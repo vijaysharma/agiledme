@@ -103,10 +103,17 @@
     $("#add_new_workable_control_button").click(function () {
         $("#icebox").show();
         $("#no_workable_items").hide();
-        $("#icebox_itemList_new_workable_item").show();
+        $("#icebox_new_workable_item_detail").show();
     });
-    $("#new_workable_item_cancel_button").click(function () {
-        $("#icebox_itemList_new_workable_item").hide();
-        return false;
+    $(".toggleExpandedButton").click(function() {
+        var id = $(this).attr('id');
+        $("#"+id.replace('editButton', 'preview')).hide();
+        $("#"+id.replace('editButton', 'detail')).show();
+    });
+    $(".cancelEditButton").click(function() {
+        var id = $(this).attr('id');
+
+        $("#"+id.replace('cancel_edit_button', 'preview')).show();
+        $("#"+id.replace('cancel_edit_button', 'detail')).hide();
     });
 </script>

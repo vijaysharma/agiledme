@@ -1,24 +1,29 @@
 <% workable_items.each do |workable_item| %>
-    <% item_unique_id = "#{workable_item.category}_itemList_#{workable_item.type.downcase}_#{workable_item.id}"
-       class_for_item = "unscheduled"
+    <% item_unique_id = "#{workable_item.category}_#{workable_item.type.downcase}_#{workable_item.id}"
+       class_for_item = "unscheduled hoverable"
+       cursor_style = "cursor: move;"
        if workable_item.new? and (workable_item.is_ready?)
-           class_for_item = "unstarted"
+           class_for_item = "unstarted hoverable"
        elsif workable_item.started? or workable_item.finished? or workable_item.delivered? or workable_item.rejected? or workable_item.accepted?
            class_for_item = workable_item.status
+           if !workable_item.accepted?
+               class_for_item = class_for_item + " hoverable"
+           else
+               cursor_style = "cursor: default;"
+           end
        end
     %>
-    <div id="<%= item_unique_id %>" class="item">
-      <div id="<%= item_unique_id %>_content" class="<%= "storyItem #{class_for_item} notUnderEdit hoverable" %>">
+    <div id="<%= "#{item_unique_id}_preview" %>" class="item">
+      <div id="<%= item_unique_id %>_content" class="<%= "storyItem #{class_for_item} notUnderEdit " %>">
         <div class="storyPreviewHeader">
           <div class="storySelector notDblclickable">&nbsp;</div>
           <div class="storyPreviewButtons" id="<%= item_unique_id %>_content_buttons">
             <%= render :partial => 'workable_items/workable_item_actions', :locals => {:workable_item => workable_item} %>
           </div>
           <div class="icons">
-            <img id="<%= item_unique_id %>_content_icons_editButton" class="toggleExpandedButton" src="/images/story_collapsed.png" title="Expand">
-
+            <img id="<%= item_unique_id %>_editButton" class="toggleExpandedButton" src="/images/story_collapsed.png" title="Expand">
             <div class="left">
-              <img class="storyTypeIcon" src=<%="/images/#{workable_item.type}.png"%>>
+              <img class="storyTypeIcon" src=<%= "/images/#{workable_item.type}.png" %>>
               <span width="6" class="estimateIcon">
                 <% if workable_item.is_ready? and workable_item.is_estimatable? %>
                 <%= workable_item.estimate %>
@@ -27,7 +32,7 @@
               <img class="flyoverIcon" src="/images/story_flyover_icon.png">
             </div>
           </div>
-          <div id="<%= item_unique_id %>_content_details" class="storyPreviewText" style="cursor: move;">
+          <div id="<%= item_unique_id %>_content_details" class="storyPreviewText" style="<%= cursor_style %>">
             <span id="<%= item_unique_id %>_content_labels_story[label_list]" class="storyLabels empty"></span>
             <span>
               <%= workable_item.title %>
@@ -41,5 +46,6 @@
         </div>
       </div>
     </div>
+    <%= render :partial => 'workable_items/new_workable_item', :locals => {:workable_item => workable_item} %>
 <% end %>
 <div id="<%= "#{workable_items.first.category}_itemList_endOfList" %>" class="endOfList"></div>

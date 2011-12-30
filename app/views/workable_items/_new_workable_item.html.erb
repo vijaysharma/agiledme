@@ -1,10 +1,17 @@
-<div id="icebox_itemList_new_workable_item" class="item" style="display:none">
+<% if workable_item.new_record?
+       item_unique_id = "icebox_new_workable_item"
+   else
+       item_unique_id = "#{workable_item.category}_#{workable_item.type.downcase}_#{workable_item.id}"
+   end
+%>
+
+<div id="<%= "#{item_unique_id}_detail" %>" class="item" style="display:none">
 <div id="icebox_itemList_new_workable_item_content" class="storyItem story_item_newStory unscheduled unestimatedText underEdit jquery_file_upload">
 <div class="attachment_drop_area">
   <img src="/images/dragdrop_here.png" style="display:none">
 </div>
 <%= form_for(workable_item) do |f| %>
-<% project_users = workable_item.project.users %>
+    <% project_users = workable_item.project.users %>
     <% if workable_item.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(workable_item.errors.count, "error") %> prohibited this workable_item from being
@@ -29,18 +36,12 @@
     <div class="buttons">
       <div class="storyDetailsButton">
         <%= f.submit('Save') %>
-      </div>
-      <div class="storyDetailsButton">
-        <input type="submit" value="Cancel" id="new_workable_item_cancel_button">
-      </div>
-      <div class="storyDetailsButton">
+        <input id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="cancelEditButton" type="button" value="Cancel">
         <% if workable_item.new_record? %>
             <input type="submit" value="Delete" id="story_newStory_details_story[delete_button]" disabled="disabled">
         <% else %>
             <input type="submit" value="Delete" id="story_newStory_details_story[delete_button]">
         <% end %>
-      </div>
-      <div class="storyDetailsButton">
         <% if workable_item.new_record? %>
             <input type="submit" value="View history" id="story_newStory_details_story[view_history_button]" disabled="">
         <% else %>
@@ -117,38 +118,38 @@
       </tbody>
     </table>
     <!--<div class="section">-->
-      <!--<div class="header">-->
-        <!--<div class="label">Labels</div>-->
-      <!--</div>-->
-      <!--<div class="wrapper">-->
-        <!--<input class="labels" name="story[labels]" style="display: none;">-->
+    <!--<div class="header">-->
+    <!--<div class="label">Labels</div>-->
+    <!--</div>-->
+    <!--<div class="wrapper">-->
+    <!--<input class="labels" name="story[labels]" style="display: none;">-->
 
-        <!--<div class="labels saveable">-->
-          <!--<img src="/images/labels_dropdown.png" class="labels_dropdown_arrow">-->
-          <!--<ul>-->
-            <!--<li style="position: relative;" data-value="solaro.in" class="">-->
-              <!--<a class="text">-->
-                <!--<span>solaro.in</span>-->
-              <!--</a>-->
-              <!--<a class="remove">-->
-                <!--<span>x</span>-->
-              <!--</a>-->
-              <!--<input tabindex="-1" style="width: 0pt; height: 0pt; position: absolute; left: -10000em;">-->
-            <!--</li>-->
-          <!--</ul>-->
-          <!--<input type="text" class="create ui-autocomplete-input" placeholder="" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">-->
-<!--<span style="position: absolute; top: -10000em; left: -10000em; width: auto; font-size: 12px; font-family: Arial,Helvetica,sans-serif; font-weight: 400; letter-spacing: normal; white-space: nowrap;">-->
-<!--</span>-->
-        <!--</div>-->
-        <!--<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 28px; left: 0px; display: none; width: 1196px;">-->
-          <!--<li class="ui-menu-item" role="menuitem">-->
-            <!--<a class="ui-corner-all" tabindex="-1">admin</a>-->
-          <!--</li>-->
-          <!--<li class="ui-menu-item" role="menuitem">-->
-            <!--<a class="ui-corner-all" tabindex="-1">android</a>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
+    <!--<div class="labels saveable">-->
+    <!--<img src="/images/labels_dropdown.png" class="labels_dropdown_arrow">-->
+    <!--<ul>-->
+    <!--<li style="position: relative;" data-value="solaro.in" class="">-->
+    <!--<a class="text">-->
+    <!--<span>solaro.in</span>-->
+    <!--</a>-->
+    <!--<a class="remove">-->
+    <!--<span>x</span>-->
+    <!--</a>-->
+    <!--<input tabindex="-1" style="width: 0pt; height: 0pt; position: absolute; left: -10000em;">-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--<input type="text" class="create ui-autocomplete-input" placeholder="" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">-->
+    <!--<span style="position: absolute; top: -10000em; left: -10000em; width: auto; font-size: 12px; font-family: Arial,Helvetica,sans-serif; font-weight: 400; letter-spacing: normal; white-space: nowrap;">-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 28px; left: 0px; display: none; width: 1196px;">-->
+    <!--<li class="ui-menu-item" role="menuitem">-->
+    <!--<a class="ui-corner-all" tabindex="-1">admin</a>-->
+    <!--</li>-->
+    <!--<li class="ui-menu-item" role="menuitem">-->
+    <!--<a class="ui-corner-all" tabindex="-1">android</a>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
     <!--</div>-->
     <div class="section">
       <div class="storyDescriptionTable">
@@ -166,85 +167,85 @@
       </div>
     </div>
     <!--<div class="taskTableDiv">-->
-      <!--<div class="section">-->
-        <!--<div id="story_newStory_details_story[tasks_header]" class="header">Tasks <span class="count">(1)</span>-->
-        <!--</div>-->
-        <!--<ol class="task_list ui-sortable" style="">-->
-          <!--<li class="task_temp1 ">-->
+    <!--<div class="section">-->
+    <!--<div id="story_newStory_details_story[tasks_header]" class="header">Tasks <span class="count">(1)</span>-->
+    <!--</div>-->
+    <!--<ol class="task_list ui-sortable" style="">-->
+    <!--<li class="task_temp1 ">-->
 
-            <!--<input type="checkbox" disabled="disabled" value="1" name="task[complete_temp1]">-->
+    <!--<input type="checkbox" disabled="disabled" value="1" name="task[complete_temp1]">-->
 
-            <!--<div style="display: none;">-->
-              <!--<textarea name="task[description_temp1]" class="autoresize expand17-10000">test</textarea>-->
-            <!--</div>-->
+    <!--<div style="display: none;">-->
+    <!--<textarea name="task[description_temp1]" class="autoresize expand17-10000">test</textarea>-->
+    <!--</div>-->
 
-            <!--<label>test</label>-->
+    <!--<label>test</label>-->
 
-          <!--</li>-->
-        <!--</ol>-->
-        <!--<div>-->
-          <!--<form class="add_task">-->
-            <!--<textarea name="task[description]" cols="1" rows="1" id="story_newStory_details_task[description]" class="tasksTextArea autoresize expand17-99999" style="height: 18px; overflow: hidden;">add-->
-              <!--a task</textarea>-->
-            <!--<input type="submit" value="Add">-->
-          <!--</form>-->
-        <!--</div>-->
-      <!--</div>-->
+    <!--</li>-->
+    <!--</ol>-->
+    <!--<div>-->
+    <!--<form class="add_task">-->
+    <!--<textarea name="task[description]" cols="1" rows="1" id="story_newStory_details_task[description]" class="tasksTextArea autoresize expand17-99999" style="height: 18px; overflow: hidden;">add-->
+    <!--a task</textarea>-->
+    <!--<input type="submit" value="Add">-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
     <!--</div>-->
     <!--<div class="attachmentWidget">-->
-      <!--<div>-->
-        <!--<div class="section attachments" id="attachment_field_for_newStory">-->
-          <!--<div class="header">Attachments <span class="count">(1)</span>-->
-          <!--</div>-->
-          <!--<ol class="attachments_list">-->
-            <!--<li>-->
-              <!--<div class="attachment_thumbnail">-->
+    <!--<div>-->
+    <!--<div class="section attachments" id="attachment_field_for_newStory">-->
+    <!--<div class="header">Attachments <span class="count">(1)</span>-->
+    <!--</div>-->
+    <!--<ol class="attachments_list">-->
+    <!--<li>-->
+    <!--<div class="attachment_thumbnail">-->
 
-                <!--<a tabindex="-1" data-new-window="true" href="/resource/download/4251343?inline=true">-->
-                  <!--<img class="resource_image" alt="bug_step1.jpg" src="https://s3.amazonaws.com/prod.tracker2/resource/4251343/bug_step1_thumb.jpg?AWSAccessKeyId=AKIAIKWOAN6H4H3QMJ6Q&amp;Expires=1325750055&amp;Signature=3V%2FEoKu6Dwm8GTRUp7eB4Evoh1E%3D">-->
-                <!--</a>-->
+    <!--<a tabindex="-1" data-new-window="true" href="/resource/download/4251343?inline=true">-->
+    <!--<img class="resource_image" alt="bug_step1.jpg" src="https://s3.amazonaws.com/prod.tracker2/resource/4251343/bug_step1_thumb.jpg?AWSAccessKeyId=AKIAIKWOAN6H4H3QMJ6Q&amp;Expires=1325750055&amp;Signature=3V%2FEoKu6Dwm8GTRUp7eB4Evoh1E%3D">-->
+    <!--</a>-->
 
-              <!--</div>-->
-              <!--<div class="attachment_details_container clearfix">-->
-                <!--<ul class="attachment_details">-->
-                  <!--<li class="name">bug_step1.jpg-->
-                  <!--</li>-->
-                  <!--<li class="description" style="display: list-item;">-->
-                    <!--<a class="edit" href="#">add a description</a>-->
-                  <!--</li>-->
-                  <!--<li class="edit_description" style="display: none;">-->
-                    <!--<input type="text" maxlength="255" name="description">-->
-                    <!--<button>Save</button>-->
-                    <!--or <a class="cancel" href="#">cancel</a>-->
-                  <!--</li>-->
-                  <!--<li class="uploader">Uploaded by Sanjeev Kumar Mishra</li>-->
-                  <!--<li class="metadata">77 KB<span> on 29 Dec 2011, 1:24pm</span>-->
-                  <!--</li>-->
-                  <!--<li class="actions">-->
-                    <!--<a href="/resource/download/4251343">Download</a>-->
+    <!--</div>-->
+    <!--<div class="attachment_details_container clearfix">-->
+    <!--<ul class="attachment_details">-->
+    <!--<li class="name">bug_step1.jpg-->
+    <!--</li>-->
+    <!--<li class="description" style="display: list-item;">-->
+    <!--<a class="edit" href="#">add a description</a>-->
+    <!--</li>-->
+    <!--<li class="edit_description" style="display: none;">-->
+    <!--<input type="text" maxlength="255" name="description">-->
+    <!--<button>Save</button>-->
+    <!--or <a class="cancel" href="#">cancel</a>-->
+    <!--</li>-->
+    <!--<li class="uploader">Uploaded by Sanjeev Kumar Mishra</li>-->
+    <!--<li class="metadata">77 KB<span> on 29 Dec 2011, 1:24pm</span>-->
+    <!--</li>-->
+    <!--<li class="actions">-->
+    <!--<a href="/resource/download/4251343">Download</a>-->
 
-                    <!--| <a href="#" class="remove">Remove</a>-->
+    <!--| <a href="#" class="remove">Remove</a>-->
 
-                  <!--</li>-->
+    <!--</li>-->
 
-                <!--</ul>-->
-              <!--</div>-->
-            <!--</li>-->
-          <!--</ol>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<form class="attachment_form jquery_file_upload" enctype="multipart/form-data" method="POST" action="/api/resource/upload?project_id=68195">-->
-        <!--<div class="attachment_controls_wrapper">-->
-          <!--<input type="file" multiple="" name="Filedata">-->
-        <!--</div>-->
-        <!--<div class="attach_files">-->
-          <!--<span class="upload_button">Upload Files</span>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--</li>-->
+    <!--</ol>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<form class="attachment_form jquery_file_upload" enctype="multipart/form-data" method="POST" action="/api/resource/upload?project_id=68195">-->
+    <!--<div class="attachment_controls_wrapper">-->
+    <!--<input type="file" multiple="" name="Filedata">-->
+    <!--</div>-->
+    <!--<div class="attach_files">-->
+    <!--<span class="upload_button">Upload Files</span>-->
 
-          <!--<span class="text">or, drag them onto this story</span>-->
-        <!--</div>-->
-        <!--<div style="display: none;" class="error_message">-->
-        <!--</div>-->
-      <!--</form>-->
+    <!--<span class="text">or, drag them onto this story</span>-->
+    <!--</div>-->
+    <!--<div style="display: none;" class="error_message">-->
+    <!--</div>-->
+    <!--</form>-->
     <!--</div>-->
     </div>
     </div>

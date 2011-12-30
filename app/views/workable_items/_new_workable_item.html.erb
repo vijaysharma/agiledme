@@ -53,7 +53,7 @@
       <tr>
         <td colspan="1" class="letContentExpand">
           <div>
-            <%= f.select(:type, %w[Story Bug Chore], :class => "storyDetailsField") %>
+            <%= f.select(:type, WorkableItem.types, :class => "storyDetailsField") %>
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
@@ -70,7 +70,7 @@
       <tr>
         <td colspan="1">
           <div>
-            <%= f.select(:estimate, {"Unestimated" => -1, "0 Points" => 0, "1 Points" => 1, "2 Points" => 2, "3 Points" => 3, "5 Points" => 5, "8 Points" => 8}, :class => "storyDetailsField") %>
+            <%= f.select(:estimate, WorkableItem.estimates, :class => "storyDetailsField") %>
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
@@ -116,40 +116,40 @@
       </tr>
       </tbody>
     </table>
-    <div class="section">
-      <div class="header">
-        <div class="label">Labels</div>
-      </div>
-      <div class="wrapper">
-        <input class="labels" name="story[labels]" style="display: none;">
+    <!--<div class="section">-->
+      <!--<div class="header">-->
+        <!--<div class="label">Labels</div>-->
+      <!--</div>-->
+      <!--<div class="wrapper">-->
+        <!--<input class="labels" name="story[labels]" style="display: none;">-->
 
-        <div class="labels saveable">
-          <img src="/images/labels_dropdown.png" class="labels_dropdown_arrow">
-          <ul>
-            <li style="position: relative;" data-value="solaro.in" class="">
-              <a class="text">
-                <span>solaro.in</span>
-              </a>
-              <a class="remove">
-                <span>x</span>
-              </a>
-              <input tabindex="-1" style="width: 0pt; height: 0pt; position: absolute; left: -10000em;">
-            </li>
-          </ul>
-          <input type="text" class="create ui-autocomplete-input" placeholder="" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
-<span style="position: absolute; top: -10000em; left: -10000em; width: auto; font-size: 12px; font-family: Arial,Helvetica,sans-serif; font-weight: 400; letter-spacing: normal; white-space: nowrap;">
-</span>
-        </div>
-        <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 28px; left: 0px; display: none; width: 1196px;">
-          <li class="ui-menu-item" role="menuitem">
-            <a class="ui-corner-all" tabindex="-1">admin</a>
-          </li>
-          <li class="ui-menu-item" role="menuitem">
-            <a class="ui-corner-all" tabindex="-1">android</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+        <!--<div class="labels saveable">-->
+          <!--<img src="/images/labels_dropdown.png" class="labels_dropdown_arrow">-->
+          <!--<ul>-->
+            <!--<li style="position: relative;" data-value="solaro.in" class="">-->
+              <!--<a class="text">-->
+                <!--<span>solaro.in</span>-->
+              <!--</a>-->
+              <!--<a class="remove">-->
+                <!--<span>x</span>-->
+              <!--</a>-->
+              <!--<input tabindex="-1" style="width: 0pt; height: 0pt; position: absolute; left: -10000em;">-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--<input type="text" class="create ui-autocomplete-input" placeholder="" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">-->
+<!--<span style="position: absolute; top: -10000em; left: -10000em; width: auto; font-size: 12px; font-family: Arial,Helvetica,sans-serif; font-weight: 400; letter-spacing: normal; white-space: nowrap;">-->
+<!--</span>-->
+        <!--</div>-->
+        <!--<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 28px; left: 0px; display: none; width: 1196px;">-->
+          <!--<li class="ui-menu-item" role="menuitem">-->
+            <!--<a class="ui-corner-all" tabindex="-1">admin</a>-->
+          <!--</li>-->
+          <!--<li class="ui-menu-item" role="menuitem">-->
+            <!--<a class="ui-corner-all" tabindex="-1">android</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
     <div class="section">
       <div class="storyDescriptionTable">
         <div class="header">
@@ -165,91 +165,92 @@
         </div>
       </div>
     </div>
-    <div class="taskTableDiv">
-      <div class="section">
-        <div id="story_newStory_details_story[tasks_header]" class="header">Tasks <span class="count">(1)</span>
-        </div>
-        <ol class="task_list ui-sortable" style="">
-          <li class="task_temp1 ">
+    <!--<div class="taskTableDiv">-->
+      <!--<div class="section">-->
+        <!--<div id="story_newStory_details_story[tasks_header]" class="header">Tasks <span class="count">(1)</span>-->
+        <!--</div>-->
+        <!--<ol class="task_list ui-sortable" style="">-->
+          <!--<li class="task_temp1 ">-->
 
-            <input type="checkbox" disabled="disabled" value="1" name="task[complete_temp1]">
+            <!--<input type="checkbox" disabled="disabled" value="1" name="task[complete_temp1]">-->
 
-            <div style="display: none;">
-              <textarea name="task[description_temp1]" class="autoresize expand17-10000">test</textarea>
-            </div>
+            <!--<div style="display: none;">-->
+              <!--<textarea name="task[description_temp1]" class="autoresize expand17-10000">test</textarea>-->
+            <!--</div>-->
 
-            <label>test</label>
+            <!--<label>test</label>-->
 
-          </li>
-        </ol>
-        <div>
-          <form class="add_task">
-            <textarea name="task[description]" cols="1" rows="1" id="story_newStory_details_task[description]" class="tasksTextArea autoresize expand17-99999" style="height: 18px; overflow: hidden;">add
-              a task</textarea>
-            <input type="submit" value="Add">
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="attachmentWidget">
-      <div>
-        <div class="section attachments" id="attachment_field_for_newStory">
-          <div class="header">Attachments <span class="count">(1)</span>
-          </div>
-          <ol class="attachments_list">
-            <li>
-              <div class="attachment_thumbnail">
+          <!--</li>-->
+        <!--</ol>-->
+        <!--<div>-->
+          <!--<form class="add_task">-->
+            <!--<textarea name="task[description]" cols="1" rows="1" id="story_newStory_details_task[description]" class="tasksTextArea autoresize expand17-99999" style="height: 18px; overflow: hidden;">add-->
+              <!--a task</textarea>-->
+            <!--<input type="submit" value="Add">-->
+          <!--</form>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="attachmentWidget">-->
+      <!--<div>-->
+        <!--<div class="section attachments" id="attachment_field_for_newStory">-->
+          <!--<div class="header">Attachments <span class="count">(1)</span>-->
+          <!--</div>-->
+          <!--<ol class="attachments_list">-->
+            <!--<li>-->
+              <!--<div class="attachment_thumbnail">-->
 
-                <a tabindex="-1" data-new-window="true" href="/resource/download/4251343?inline=true">
-                  <img class="resource_image" alt="bug_step1.jpg" src="https://s3.amazonaws.com/prod.tracker2/resource/4251343/bug_step1_thumb.jpg?AWSAccessKeyId=AKIAIKWOAN6H4H3QMJ6Q&amp;Expires=1325750055&amp;Signature=3V%2FEoKu6Dwm8GTRUp7eB4Evoh1E%3D">
-                </a>
+                <!--<a tabindex="-1" data-new-window="true" href="/resource/download/4251343?inline=true">-->
+                  <!--<img class="resource_image" alt="bug_step1.jpg" src="https://s3.amazonaws.com/prod.tracker2/resource/4251343/bug_step1_thumb.jpg?AWSAccessKeyId=AKIAIKWOAN6H4H3QMJ6Q&amp;Expires=1325750055&amp;Signature=3V%2FEoKu6Dwm8GTRUp7eB4Evoh1E%3D">-->
+                <!--</a>-->
 
-              </div>
-              <div class="attachment_details_container clearfix">
-                <ul class="attachment_details">
-                  <li class="name">bug_step1.jpg
-                  </li>
-                  <li class="description" style="display: list-item;">
-                    <a class="edit" href="#">add a description</a>
-                  </li>
-                  <li class="edit_description" style="display: none;">
-                    <input type="text" maxlength="255" name="description">
-                    <button>Save</button>
-                    or <a class="cancel" href="#">cancel</a>
-                  </li>
-                  <li class="uploader">Uploaded by Sanjeev Kumar Mishra</li>
-                  <li class="metadata">77 KB<span> on 29 Dec 2011, 1:24pm</span>
-                  </li>
-                  <li class="actions">
-                    <a href="/resource/download/4251343">Download</a>
+              <!--</div>-->
+              <!--<div class="attachment_details_container clearfix">-->
+                <!--<ul class="attachment_details">-->
+                  <!--<li class="name">bug_step1.jpg-->
+                  <!--</li>-->
+                  <!--<li class="description" style="display: list-item;">-->
+                    <!--<a class="edit" href="#">add a description</a>-->
+                  <!--</li>-->
+                  <!--<li class="edit_description" style="display: none;">-->
+                    <!--<input type="text" maxlength="255" name="description">-->
+                    <!--<button>Save</button>-->
+                    <!--or <a class="cancel" href="#">cancel</a>-->
+                  <!--</li>-->
+                  <!--<li class="uploader">Uploaded by Sanjeev Kumar Mishra</li>-->
+                  <!--<li class="metadata">77 KB<span> on 29 Dec 2011, 1:24pm</span>-->
+                  <!--</li>-->
+                  <!--<li class="actions">-->
+                    <!--<a href="/resource/download/4251343">Download</a>-->
 
-                    | <a href="#" class="remove">Remove</a>
+                    <!--| <a href="#" class="remove">Remove</a>-->
 
-                  </li>
+                  <!--</li>-->
 
-                </ul>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </div>
-      <form class="attachment_form jquery_file_upload" enctype="multipart/form-data" method="POST" action="/api/resource/upload?project_id=68195">
-        <div class="attachment_controls_wrapper">
-          <input type="file" multiple="" name="Filedata">
-        </div>
-        <div class="attach_files">
-          <span class="upload_button">Upload Files</span>
+                <!--</ul>-->
+              <!--</div>-->
+            <!--</li>-->
+          <!--</ol>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<form class="attachment_form jquery_file_upload" enctype="multipart/form-data" method="POST" action="/api/resource/upload?project_id=68195">-->
+        <!--<div class="attachment_controls_wrapper">-->
+          <!--<input type="file" multiple="" name="Filedata">-->
+        <!--</div>-->
+        <!--<div class="attach_files">-->
+          <!--<span class="upload_button">Upload Files</span>-->
 
-          <span class="text">or, drag them onto this story</span>
-        </div>
-        <div style="display: none;" class="error_message">
-        </div>
-      </form>
-    </div>
+          <!--<span class="text">or, drag them onto this story</span>-->
+        <!--</div>-->
+        <!--<div style="display: none;" class="error_message">-->
+        <!--</div>-->
+      <!--</form>-->
+    <!--</div>-->
     </div>
     </div>
     <%= f.hidden_field :category, {:value => 'icebox'} %>
     <%= f.hidden_field :epic_id %>
+    <%= f.hidden_field :project_id, {:value => workable_item.project.id} %>
 <% end %>
 </div>
 </div>

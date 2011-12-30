@@ -1,7 +1,7 @@
 <% workable_items.each do |workable_item| %>
     <% item_unique_id = "#{workable_item.category}_itemList_#{workable_item.type.downcase}_#{workable_item.id}"
        class_for_item = "unscheduled"
-       if workable_item.new? and (workable_item.is_estimatable? and workable_item.estimate.present?)
+       if workable_item.new? and (workable_item.is_ready?)
            class_for_item = "unstarted"
        elsif workable_item.started? or workable_item.finished? or workable_item.delivered? or workable_item.rejected? or workable_item.accepted?
            class_for_item = workable_item.status
@@ -18,9 +18,9 @@
             <img id="<%= item_unique_id %>_content_icons_editButton" class="toggleExpandedButton" src="/images/story_collapsed.png" title="Expand">
 
             <div class="left">
-              <img class="storyTypeIcon" src="/images/bug_external.png">
+              <img class="storyTypeIcon" src=<%="/images/#{workable_item.type}.png"%>>
               <span width="6" class="estimateIcon">
-                <% if workable_item.is_estimatable? %>
+                <% if workable_item.is_ready? and workable_item.is_estimatable? %>
                 <%= workable_item.estimate %>
                 <% end %>
               </span>
@@ -31,7 +31,7 @@
             <span id="<%= item_unique_id %>_content_labels_story[label_list]" class="storyLabels empty"></span>
             <span>
               <%= workable_item.title %>
-              <% if User.find(workable_item.owner).present? %>
+              <% if workable_item.owner.present? %>
                   (<a href="javascript:void(0);" title="<%= email = User.find(workable_item.owner).email %>" class="storyOwnerInitials"><%= email %></a>)
                   <% end %>
             </span>
@@ -42,4 +42,4 @@
       </div>
     </div>
 <% end %>
-<div id="<%="#{workable_items.first.category}_itemList_endOfList"%>" class="endOfList"></div>
+<div id="<%= "#{workable_items.first.category}_itemList_endOfList" %>" class="endOfList"></div>

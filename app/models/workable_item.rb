@@ -47,6 +47,22 @@ class WorkableItem < ActiveRecord::Base
     end
   end
 
+  def self.types
+    %w[Story Bug Chore]
+  end
+
+  def self.categories
+    %w[done current backlog icebox]
+  end
+
+  def self.estimates
+    {"Unestimated" => -1, "0 Points" => 0, "1 Points" => 1, "2 Points" => 2, "3 Points" => 3, "5 Points" => 5, "8 Points" => 8}
+  end
+
+  def is_ready?
+    !is_estimatable? or (is_estimatable?and self.estimate != -1)
+  end
+
   def is_estimatable?
     true;
   end

@@ -8,7 +8,7 @@
              category_display_class = 'display:none'
          end
       %>
-      <% %w[done current backlog icebox].each do |category| %>
+      <% WorkableItem.categories.each do |category| %>
           <% if category.eql?('icebox')
                  category_display_class = "";
              end %>
@@ -43,7 +43,8 @@
                         %>
                         <%= render :partial => 'workable_items/new_workable_item', :locals => {:workable_item => @workable_item} %>
                     <% end %>
-                    <% if @project.workable_items.present? %>
+                    <% workable_items_in_category = @project.workable_items.select { |wi| wi.category == category } %>
+                    <% if workable_items_in_category.present? %>
                         <%= render :partial => 'workable_items/workable_items_collection',
                                    :locals => {:workable_items => @project.workable_items.select { |wi| wi.category == category }} %>
                     <% else %>

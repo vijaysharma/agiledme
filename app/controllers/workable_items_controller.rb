@@ -45,13 +45,8 @@ class WorkableItemsController < ApplicationController
   # POST /workable_items
   # POST /workable_items.xml
   def create
-    if params[:story].present?
-      @workable_item = Story.new(params[:story])
-    elsif params[:chore].present?
-      @workable_item = Chore.new(params[:chore])
-    elsif params[:bug].present?
-      @workable_item = Bug.new(params[:bug])
-    end
+    @workable_item = WorkableItem.new(params[:workable_item])
+    @workable_item.type = params[:workable_item][:type]
 
     respond_to do |format|
       if @workable_item.save

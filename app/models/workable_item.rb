@@ -7,6 +7,9 @@ class WorkableItem < ActiveRecord::Base
   has_many :workable_item_histories, :dependent => :destroy
   has_many :tasks, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+
+  accepts_nested_attributes_for :tasks, :allow_destroy => true
+
   validates_presence_of :title
   validates_presence_of :category
 

@@ -184,7 +184,7 @@ class WorkableItemsController < ApplicationController
     @workable_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(stories_url(:project => project)) }
+      format.html { redirect_to(project_url(project), :notice => @workable_item.type + ' was successfully deleted.') }
       format.xml { head :ok }
     end
   end

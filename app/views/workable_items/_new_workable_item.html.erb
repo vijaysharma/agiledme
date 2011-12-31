@@ -44,8 +44,12 @@
       <div class="storyDetailsButton">
         <%= f.submit('Save') %>
         <input id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="cancelEditButton" type="button" value="Cancel">
-        <input type="submit" value="Delete" id="<%= "#{item_unique_id}_delete_button" %>" <%= workable_item.new_record? ? 'disabled="disabled"' : '' %>>
-        <input type="submit" value="View history" id="<%= "#{item_unique_id}_view_history_button" %>" <%= workable_item.new_record? ? 'disabled="disabled"' : '' %>>
+        <% if !workable_item.new_record? %>
+            <%= button_to "Delete", {:action => "destroy", :id => workable_item.id}, :confirm => "Are you sure?", :method => :delete %>
+        <% else %>
+            <input type="submit" value="Delete" disabled="disabled">
+            <input type="submit" value="View history" disabled="disabled">
+        <% end %>
       </div>
     </div>
     <table class="storyDetailsTable">

@@ -255,10 +255,11 @@ div.storyDetails .buttons {
     padding-top: 7px;
 }
 
-div.storyDetails .storyDetailsButton {
+div.storyDetails .storyDetailsButton, .storyDetailsButton > div {
     display: inline;
     padding: 0;
 }
+
 
 div.storyDetails .storyDetailsTable {
     border-collapse: separate;

@@ -69,6 +69,7 @@ class WorkableItemsController < ApplicationController
       destroy
     else
       @workable_item = WorkableItem.find(params[:id])
+      @workable_item.type = params[@workable_item.type.downcase][:type]
 
       respond_to do |format|
         if @workable_item.update_attributes!(params[@workable_item.type.downcase])

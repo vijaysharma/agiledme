@@ -101,6 +101,10 @@ img {
     float: left;
 }
 
+.left {
+    float: left;
+}
+
 .list > .btm .left {
     height: 3px;
 }

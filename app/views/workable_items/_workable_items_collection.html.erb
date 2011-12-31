@@ -23,13 +23,16 @@
           <div class="icons">
             <img id="<%= item_unique_id %>_editButton" class="toggleExpandedButton" src="/images/story_collapsed.png" title="Expand">
             <div class="left">
-              <img class="storyTypeIcon" src=<%= "/images/#{workable_item.type}.png" %>>
-              <span width="6" class="estimateIcon">
-                <% if workable_item.is_ready? and workable_item.is_estimatable? %>
-                <%= workable_item.estimate %>
-                <% end %>
-              </span>
-              <img class="flyoverIcon" src="/images/story_flyover_icon.png">
+              <img class="storyTypeIcon" src="<%= "/images/#{workable_item.type}.png" %>">
+              <% if workable_item.is_estimatable? and workable_item.estimate != -1 %>
+                  <img width="6" class="estimateIcon" title="<%= "Estimate: #{workable_item.estimate} points" %>"
+                       src="<%= "/images/estimate#{workable_item.estimate}pt.gif" %>">
+              <% else %>
+                  <img width="6" class="estimateIcon" src="<%= "/images/estimate0pt.gif" %>">
+              <% end %>
+              <% if workable_item.description.present? or workable_item.comments.present? or workable_item.tasks.present? %>
+                  <img class="flyoverIcon" src="/images/story_flyover_icon.png">
+              <% end %>
             </div>
           </div>
           <div id="<%= item_unique_id %>_content_details" class="storyPreviewText" style="<%= cursor_style %>">

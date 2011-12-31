@@ -45,7 +45,7 @@
         <%= f.submit('Save') %>
         <input id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="cancelEditButton" type="button" value="Cancel">
         <% if !workable_item.new_record? %>
-            <%= button_to "Delete", {:action => "destroy", :id => workable_item.id}, :confirm => "Are you sure?", :method => :delete %>
+            <%= f.submit('Delete') %>
         <% else %>
             <input type="submit" value="Delete" disabled="disabled">
             <input type="submit" value="View history" disabled="disabled">

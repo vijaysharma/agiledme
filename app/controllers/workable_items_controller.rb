@@ -65,15 +65,19 @@ class WorkableItemsController < ApplicationController
   # PUT /workable_items/1
   # PUT /workable_items/1.xml
   def update
-    @workable_item = WorkableItem.find(params[:id])
+    if params[:commit] == 'Delete'
+      destroy
+    else
+      @workable_item = WorkableItem.find(params[:id])
 
-    respond_to do |format|
-      if @workable_item.update_attributes(params[@workable_item.type.downcase])
-        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully updated.') }
-        format.xml { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @workable_item.update_attributes!(params[@workable_item.type.downcase])
+          format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully updated.') }
+          format.xml { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

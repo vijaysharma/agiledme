@@ -92,6 +92,20 @@ class WorkableItemsController < ApplicationController
     end
   end
 
+  def estimate
+    @workable_item = WorkableItem.find(params[:id])
+
+    respond_to do |format|
+#      if @workable_item.update_attributes(params[@workable_item.type.downcase])
+#        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully started.') }
+#        format.xml { head :ok }
+#      else
+#        format.html { render :action => "edit" }
+#        format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
+#      end
+    end
+  end
+
   def finish
     @workable_item = WorkableItem.find(params[:id])
 

@@ -1,6 +1,13 @@
 <% item_unique_id = "#{workable_item.category}_itemList_#{workable_item.type.downcase}_#{workable_item.id}" %>
 
-<% if workable_item.new? and (workable_item.is_ready?) %>
+<% if workable_item.is_unestimated? %>
+    <div class="storyPreviewButtons" id="<%= "#{item_unique_id}" %>_content_buttons">
+      <% WorkableItem.fibonacci_estimates.each do |estimate| %>
+          <%= link_to image_tag("/images/estimate#{estimate}pt.gif", :class => "estimateButton notDblclickable", :title => "Estimate: #{estimate} point"),
+                      estimate_workable_item_path(workable_item, {:estimate => estimate}), :id => "#{item_unique_id}_estimate#{estimate}Button" %>
+      <% end %>
+    </div>
+<% elsif workable_item.new? and workable_item.is_ready? %>
     <%= link_to "Start", start_workable_item_path(workable_item), :id => "#{item_unique_id}_content_buttons_startButton", :class => "stateChangeButton notDblclickable start" %>
 <% elsif workable_item.started? %>
     <%= link_to "Finish", finish_workable_item_path(workable_item), :id => "#{item_unique_id}_content_buttons_finishButton", :class => "stateChangeButton notDblclickable finish" %>

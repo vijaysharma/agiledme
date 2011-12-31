@@ -18,7 +18,7 @@ Agiledme::Application.routes.draw do
 
   resources :workable_items do
     member do
-      get :start, :finish, :deliver, :accept, :reject, :restart
+      get :start, :finish, :deliver, :accept, :reject, :restart, :estimate
     end
   end
 

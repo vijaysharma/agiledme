@@ -51,6 +51,10 @@ class WorkableItem < ActiveRecord::Base
     %w[Story Bug Chore]
   end
 
+  def self.fibonacci_estimates
+    %w[0 1 2 3 5 8]
+  end
+
   def self.categories
     %w[done current backlog icebox]
   end
@@ -60,7 +64,11 @@ class WorkableItem < ActiveRecord::Base
   end
 
   def is_ready?
-    !is_estimatable? or (is_estimatable?and self.estimate != -1)
+    !is_estimatable? or (is_estimatable? and self.estimate != -1)
+  end
+
+  def is_unestimated?
+    is_estimatable? and self.estimate < 0
   end
 
   def is_estimatable?

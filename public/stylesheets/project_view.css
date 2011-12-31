@@ -753,9 +753,18 @@ div.storyDetails .attachmentWidget .attach_files .text {
     min-height: 21px;
 }
 
+.estimateButton {
+    border-bottom: 1px solid #888888;
+    cursor: pointer;
+    margin-left: 4px;
+    padding-bottom: 2px;
+    vertical-align: bottom;
+}
+
 .story_content .item .storyItem a.accept {
     background-image: url("/images/accept.png");
 }
+
 
 .story_content .item .storyItem a.accept:hover {
     background-image: url("/images/accept_hover.png");

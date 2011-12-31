@@ -96,13 +96,13 @@ class WorkableItemsController < ApplicationController
     @workable_item = WorkableItem.find(params[:id])
 
     respond_to do |format|
-#      if @workable_item.update_attributes(params[@workable_item.type.downcase])
-#        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully started.') }
-#        format.xml { head :ok }
-#      else
-#        format.html { render :action => "edit" }
-#        format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
-#      end
+      if @workable_item.update_attributes(:estimate => params[:estimate])
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully estimated as a ' + params[:estimate] +" pointer.") }
+        format.xml { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
+      end
     end
   end
 

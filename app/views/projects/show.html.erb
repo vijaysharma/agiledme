@@ -121,4 +121,8 @@
         var id = $(this).attr('id');
         $("#" + id + "_image").attr('src', "/images/" + $(this).attr('value') + ".png");
     });
+    $('.workable_item_estimate_select').change(function() {
+        var id = $(this).attr('id');
+        $("#" + id + "_image").attr('src', "/images/estimate" + $(this).attr('value') + "pt.gif");
+    });
 </script>

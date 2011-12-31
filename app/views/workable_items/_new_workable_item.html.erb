@@ -1,9 +1,11 @@
 <% if workable_item.new_record?
        item_unique_id = "icebox_new_workable_item"
-       image_source = "/images/Story.png"
+       item_type_image_source = "/images/Story.png"
+       item_estimate_image_source = "/images/estimate-1pt.gif"
    else
        item_unique_id = "#{workable_item.category}_#{workable_item.type.downcase}_#{workable_item.id}"
-       image_source = "/images/#{workable_item.type}.png"
+       item_type_image_source = "/images/#{workable_item.type}.png"
+       item_estimate_image_source = "/images/estimate#{workable_item.estimate}pt.gif"
    end
 %>
 
@@ -42,16 +44,8 @@
       <div class="storyDetailsButton">
         <%= f.submit('Save') %>
         <input id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="cancelEditButton" type="button" value="Cancel">
-        <% if workable_item.new_record? %>
-            <input type="submit" value="Delete" id="story_newStory_details_story[delete_button]" disabled="disabled">
-        <% else %>
-            <input type="submit" value="Delete" id="story_newStory_details_story[delete_button]">
-        <% end %>
-        <% if workable_item.new_record? %>
-            <input type="submit" value="View history" id="story_newStory_details_story[view_history_button]" disabled="">
-        <% else %>
-            <input type="submit" value="View history" id="story_newStory_details_story[view_history_button]">
-        <% end %>
+        <input type="submit" value="Delete" id="<%= "#{item_unique_id}_delete_button" %>" <%= workable_item.new_record? ? 'disabled="disabled"' : '' %>>
+        <input type="submit" value="View history" id="<%= "#{item_unique_id}_view_history_button" %>" <%= workable_item.new_record? ? 'disabled="disabled"' : '' %>>
       </div>
     </div>
     <table class="storyDetailsTable">
@@ -59,12 +53,14 @@
       <tr>
         <td colspan="1" class="letContentExpand">
           <div>
-            <%= f.select(:type, WorkableItem.types, {:selected => workable_item.new_record? ? "Story" : workable_item.type, :prompt => "Please Select the Type"},
-                         {:class => "storyDetailsField workable_item_type_select", :id => "#{item_unique_id}_type"}) %>
+            <%= f.select(:type, WorkableItem.types,
+                         {:selected => workable_item.new_record? ? 'Story' : workable_item.type},
+                         {:class => "storyDetailsField workable_item_type_select",
+                          :id => "#{item_unique_id}_type"}) %>
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
-          <img id="<%= "#{item_unique_id}_type_image" %>" src="<%= image_source %>">
+          <img id="<%= "#{item_unique_id}_type_image" %>" src="<%= item_type_image_source %>">
         </td>
         <td colspan="1" class="helpIcon lastCell">
           <div id="<%= "#{item_unique_id}_help_story_types" %>" class="helpIcon">
@@ -75,14 +71,20 @@
       <tr>
         <td colspan="1">
           <div>
-            <%= f.select(:estimate, WorkableItem.estimates, :class => "storyDetailsField") %>
+            <%= f.select(:estimate, WorkableItem.estimates,
+                         {:selected => workable_item.new_record? ? -1 : workable_item.estimate},
+                         {:class => "storyDetailsField workable_item_estimate_select",
+                          :id => "#{item_unique_id}_estimate",
+                          :disabled => (!workable_item.new_record? and !workable_item.is_estimatable?)}) %>
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
-          <img id="story_newStory_details_story[estimate]_image" src="/images/estimate_unestimated_fibonacci.gif">
+          <% if workable_item.new_record? or workable_item.is_estimatable? %>
+              <img id="<%= "#{item_unique_id}_estimate_image" %>" src="<%= item_estimate_image_source %>">
+          <% end %>
         </td>
         <td colspan="1" class="helpIcon">
-          <div id="story_newStory_details_help_estimates" class="helpIcon">
+          <div id="<%= "#{item_unique_id}_help_estimates" %>" class="helpIcon">
             <img src="/images/question_mark.gif">
           </div>
         </td>

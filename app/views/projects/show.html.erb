@@ -40,6 +40,7 @@
                            @workable_item = WorkableItem.new
                            @workable_item.project = @project
                            @workable_item.requester = current_user.id
+                           @workable_item.category = 'icebox'
                         %>
                         <%= render :partial => 'workable_items/new_workable_item', :locals => {:workable_item => @workable_item} %>
                     <% end %>

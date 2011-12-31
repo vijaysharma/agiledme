@@ -181,8 +181,9 @@
         </div>
         <ol class="task_list ui-sortable">
           <% workable_item.tasks.each do |task| %>
-              <li id = "<%="#{task.id}_task" %>" class="workable_item_tasks">
+              <li id="<%= "#{task.id}_task" %>" class="workable_item_tasks">
                 <input type="checkbox" value="1" name="task[complete_temp]">
+
                 <div style="display: none;">
                   <textarea name="task[description_temp]" class="autoresize expand17-10000"><%= task.description %></textarea>
                 </div>
@@ -191,12 +192,12 @@
                   <li class="edit">
                     <a title="Edit Task" href="#">
                       <img src="/images/task_edit.png">
-                      </a>
+                    </a>
                   </li>
                   <li class="delete">
                     <a title="Delete Task" href="#">
                       <img src="/images/task_delete.png">
-                      </a>
+                    </a>
                   </li>
                 </ul>
               </li>

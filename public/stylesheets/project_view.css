@@ -548,6 +548,22 @@ body.mozilla #content .item .storyItem div.formatted_text_area {
     padding: 0;
 }
 
+.story_content .item ol.task_list > li label {
+    color: #333333;
+    display: block;
+    line-height: 1.3em;
+    padding: 0 5px 1px 19px;
+}
+
+.story_content .item ol.task_list > li > ul {
+    height: 16px;
+    margin-top: 3px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 .story_content .item ol.task_list > li > div {
     margin-right: 50px;
     padding-left: 14px;

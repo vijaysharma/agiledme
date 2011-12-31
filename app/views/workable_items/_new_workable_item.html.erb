@@ -174,32 +174,31 @@
         </div>
       </div>
     </div>
-    <!--<div class="taskTableDiv">-->
-    <!--<div class="section">-->
-    <!--<div id="story_newStory_details_story[tasks_header]" class="header">Tasks <span class="count">(1)</span>-->
-    <!--</div>-->
-    <!--<ol class="task_list ui-sortable" style="">-->
-    <!--<li class="task_temp1 ">-->
+    <div class="taskTableDiv">
+      <div class="section">
+        <div id="<%= "#{item_unique_id}_tasks_header" %>" class="header">
+          Tasks <span class="count">(<%= workable_item.tasks.count %>)</span>
+        </div>
+        <ol class="task_list ui-sortable">
+          <li class="task_temp">
+            <input type="checkbox" value="1" name="task[complete_temp]">
+            <div style="display: none;">
+              <textarea name="task[description_temp1]" class="autoresize expand17-10000">test</textarea>
+            </div>
 
-    <!--<input type="checkbox" disabled="disabled" value="1" name="task[complete_temp1]">-->
+            <label>test</label>
 
-    <!--<div style="display: none;">-->
-    <!--<textarea name="task[description_temp1]" class="autoresize expand17-10000">test</textarea>-->
-    <!--</div>-->
-
-    <!--<label>test</label>-->
-
-    <!--</li>-->
-    <!--</ol>-->
-    <!--<div>-->
-    <!--<form class="add_task">-->
-    <!--<textarea name="task[description]" cols="1" rows="1" id="story_newStory_details_task[description]" class="tasksTextArea autoresize expand17-99999" style="height: 18px; overflow: hidden;">add-->
-    <!--a task</textarea>-->
-    <!--<input type="submit" value="Add">-->
-    <!--</form>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
+          </li>
+        </ol>
+        <div>
+          <form class="add_task">
+            <textarea name="task[description]" cols="1" rows="1" id="story_newStory_details_task[description]" class="tasksTextArea autoresize expand17-99999" style="height: 18px; overflow: hidden;">add
+              a task</textarea>
+            <input type="submit" value="Add">
+          </form>
+        </div>
+      </div>
+    </div>
     <!--<div class="attachmentWidget">-->
     <!--<div>-->
     <!--<div class="section attachments" id="attachment_field_for_newStory">-->

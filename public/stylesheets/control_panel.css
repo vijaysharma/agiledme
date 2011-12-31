@@ -6,7 +6,7 @@
 #controlPanel {
     background: #EEEEEE;
     border-top: 2px solid #BBBBBB;
-    height: 69px;
+    height: 65px;
     margin-bottom: 11px;
     min-width: 930px;
     border-bottom:1px solid #BBBBBB;
@@ -124,7 +124,7 @@
     border-radius: 4px 4px 4px 4px;
     float: left;
     font-size: 1em;
-    padding: 2px 26px 2px 6px;
+    padding: 2px 26px 8px 6px;
     width: 150px;
 }
 

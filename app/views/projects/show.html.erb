@@ -127,4 +127,8 @@
         var id = $(this).attr('id');
         $("#" + id + "_image").attr('src', "/images/estimate" + $(this).attr('value') + "pt.gif");
     });
+    $('.workable_item_tasks').hover(function() {
+        var id = $(this).attr('id');
+        $("#" + id + "_actions").toggle();
+    });
 </script>

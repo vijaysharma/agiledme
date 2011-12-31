@@ -569,6 +569,12 @@ body.mozilla #content .item .storyItem div.formatted_text_area {
     padding-left: 14px;
 }
 
+.story_content .item ol.task_list > li > ul li {
+    display: block;
+    float: left;
+    margin-left: 5px;
+}
+
 .story_content .item ol.task_list > li textarea {
     border: 1px solid #9A9A9A;
     border-radius: 3px 3px 3px 3px;

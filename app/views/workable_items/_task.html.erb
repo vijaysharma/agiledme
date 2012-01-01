@@ -1,20 +1,3 @@
-<% project_form.fields_for :tasks, task do |task_form| %>
-    <li id="<%= "#{task_form.object.id}_task" %>" class="workable_item_tasks">
-      <%= task_form.check_box :status, {:title => "Finish Task"}, "finished", "new" %>
-      <%= task_form.hidden_field :finished_by %>
-      <%= task_form.text_area :description, :cols => 1, :rows => 1, :class => "autoresize expand17-10000", :style => 'display:none;' %>
-      <label><%= task_form.object.description %></label>
-      <ul id="<%= "#{task_form.object.id}_task_actions" %>" class="actions" style="display: none;">
-        <li class="edit">
-          <a title="Edit Task" href="#">
-            <img src="/images/task_edit.png">
-          </a>
-        </li>
-        <li class="delete">
-          <a title="Delete Task" href="#">
-            <img src="/images/task_delete.png">
-          </a>
-        </li>
-      </ul>
-    </li>
+<% project_form.fields_for :tasks, task do |form| %>
+    <%= render :partial => 'workable_items/single_task_list', :locals => {:task_form => form} %>
 <% end %>

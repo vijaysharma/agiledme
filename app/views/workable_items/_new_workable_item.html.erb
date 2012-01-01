@@ -11,7 +11,7 @@
 
 <div id="<%= "#{item_unique_id}_detail" %>" class="item" style="display:none">
 <div id="<%= "#{item_unique_id}_content" %>" class="storyItem unscheduled unestimated underEdit jquery_file_upload">
-<%= form_for(workable_item) do |f| %>
+<%= form_for(workable_item) do |project_form| %>
     <% project_users = workable_item.project.users %>
     <% if workable_item.errors.any? %>
         <div id="error_explanation">
@@ -33,7 +33,7 @@
           </div>
       <% end %>
       <div class="storyPreviewInput">
-        <%= f.text_area :title, :cols => 1, :rows => 1, :class => 'titleInputField autoresize expand17-99999' %>
+        <%= project_form.text_area :title, :cols => 1, :rows => 1, :class => 'titleInputField autoresize expand17-99999' %>
         <div class="clear">
         </div>
       </div>
@@ -42,10 +42,10 @@
     <div class="storyDetails" id="story_newStory_details">
     <div class="buttons">
       <div class="storyDetailsButton">
-        <%= f.submit('Save') %>
+        <%= project_form.submit('Save') %>
         <input id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="cancelEditButton" type="button" value="Cancel">
         <% if !workable_item.new_record? %>
-            <%= f.submit('Delete') %>
+            <%= project_form.submit('Delete') %>
         <% else %>
             <input type="submit" value="Delete" disabled="disabled">
             <input type="submit" value="View history" disabled="disabled">
@@ -57,7 +57,7 @@
       <tr>
         <td colspan="1" class="letContentExpand">
           <div>
-            <%= f.select(:type, WorkableItem.types,
+            <%= project_form.select(:type, WorkableItem.types,
                          {:selected => workable_item.new_record? ? 'Story' : workable_item.type},
                          {:class => "storyDetailsField workable_item_type_select",
                           :id => "#{item_unique_id}_type"}) %>
@@ -75,7 +75,7 @@
       <tr>
         <td colspan="1">
           <div>
-            <%= f.select(:estimate, WorkableItem.estimates,
+            <%= project_form.select(:estimate, WorkableItem.estimates,
                          {:selected => workable_item.new_record? ? -1 : workable_item.estimate},
                          {:class => "storyDetailsField workable_item_estimate_select",
                           :id => "#{item_unique_id}_estimate",
@@ -96,7 +96,7 @@
       <tr>
         <td>
           <div>
-            <%= f.collection_select(:requester, project_users, :user_id, :email, :class => "storyDetailsField") %>
+            <%= project_form.collection_select(:requester, project_users, :user_id, :email, :class => "storyDetailsField") %>
           </div>
         </td>
         <td colspan="3">
@@ -111,7 +111,7 @@
       <tr>
         <td colspan="1">
           <div>
-            <%= f.collection_select(:owner, project_users, :user_id, :email, :prompt => true) %>
+            <%= project_form.collection_select(:owner, project_users, :user_id, :email, :prompt => true) %>
           </div>
         </td>
         <td colspan="3">
@@ -170,7 +170,7 @@
           </div>
         </div>
         <div>
-          <%= f.text_area :description, :cols => 1, :rows => 1, :class => 'textAreaFocus description_area autoresize expand17-99999' %>
+          <%= project_form.text_area :description, :cols => 1, :rows => 1, :class => 'textAreaFocus description_area autoresize expand17-99999' %>
         </div>
       </div>
     </div>
@@ -179,8 +179,8 @@
         <div id="<%= "#{item_unique_id}_tasks_header" %>" class="header">
           Tasks <span class="count">(<%= workable_item.tasks.count %>)</span>
         </div>
-        <ol class="task_list ui-sortable">
-          <% f.fields_for :tasks do |task_form| %>
+        <ol id ="tasks" class="task_list ui-sortable">
+          <% project_form.fields_for :tasks do |task_form| %>
               <li id="<%= "#{task_form.object.id}_task" %>" class="workable_item_tasks">
                 <%= task_form.check_box :status, {:title => "Finish Task"}, "finished", "new"  %>
                 <%= task_form.hidden_field :finished_by %>
@@ -200,14 +200,13 @@
                 </ul>
               </li>
           <% end %>
-
         </ol>
         <div>
-          <form class="add_task">
-            <textarea name="task[description]" cols="1" rows="1" id="story_newStory_details_task[description]" class="tasksTextArea autoresize expand17-99999" style="height: 18px; overflow: hidden;">add
-              a task</textarea>
-            <input type="submit" value="Add">
-          </form>
+          <div class="add_task">
+            <textarea name="new_task_description" cols="1" rows="1" id="new_task_description" class="tasksTextArea autoresize expand17-99999">
+              add a task</textarea>
+          </div>
+          <%= add_task_link "Add a task", project_form %>
         </div>
       </div>
     </div>
@@ -268,9 +267,9 @@
     <!--</div>-->
     </div>
     </div>
-    <%= f.hidden_field :category %>
-    <%= f.hidden_field :epic_id %>
-    <%= f.hidden_field :project_id, {:value => workable_item.project.id} %>
+    <%= project_form.hidden_field :category %>
+    <%= project_form.hidden_field :epic_id %>
+    <%= project_form.hidden_field :project_id, {:value => workable_item.project.id} %>
 <% end %>
 </div>
 </div>

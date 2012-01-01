@@ -7,31 +7,22 @@ class Task < ActiveRecord::Base
 
   aasm_initial_state :new
 
+  before_save :update_finished_by
+
   aasm :column => :status do
     state :new
-    state :started, :enter => :update_started_by
-    state :finished, :enter => :update_finished_by
-
-    event :start do
-      transitions :to => :started, :from => [:new]
-    end
-
-    event :finish do
-      transitions :to => :finished, :from => [:started]
-    end
+    state :finished
   end
 
   private
 
-  def update_started_by
-    self.update_attribute(:started_by, User.current_user.id)
-    self.save!
-  end
-
   def update_finished_by
-    self.update_attribute(:finished_by, User.current_user.id)
-    self.save!
+    if changed_attributes["status"].present?
+      if changed_attributes["status"].eql?("new")
+        self.finished_by = User.current_user.id
+      else
+        self.finished_by = nil
+      end
+    end
   end
-
-
 end

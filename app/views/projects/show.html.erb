@@ -132,5 +132,10 @@
         $("#" + id + "_actions").toggle();
     });
 
+    $('.delete_task').click(function() {
+        $($(this).children("input:checkbox")[0]).attr('checked', true);
+        $(this).parent().parent().addClass('to_delete_task');
+    });
+
 
 </script>

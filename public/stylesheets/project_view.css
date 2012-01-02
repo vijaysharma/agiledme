@@ -10,6 +10,15 @@
     text-align:center;
 }
 
+.story_content .item ol.task_list > li > ul li a:first-child {
+    margin-top: -1px;
+}
+
+.to_delete_task {
+    text-decoration:line-through;
+    background-color: #ff9999
+}
+
 .expand17-99999{
     height: 18px; overflow: hidden;
 }

@@ -182,17 +182,18 @@
         <ol id="tasks" class="task_list ui-sortable">
           <% project_form.fields_for :tasks do |task_form| %>
               <li id="<%= "#{task_form.object.id}_task" %>" class="workable_item_tasks">
-                <%= task_form.check_box :status, {:title => "Finish Task"}, "finished", "new" %>
+                <%= task_form.check_box :status, {:title => "Finish Task", :id => ""}, "finished", "new" %>
                 <%= task_form.hidden_field :finished_by %>
                 <%= task_form.text_area :description, :cols => 1, :rows => 1, :class => "autoresize expand17-10000", :style => 'display:none;' %>
                 <label><%= task_form.object.description %></label>
                 <ul id="<%= "#{task_form.object.id}_task_actions" %>" class="actions" style="display: none;">
-                  <li class="edit">
+                  <li class="edit_task">
                     <a title="Edit Task" href="#">
                       <img src="/images/task_edit.png">
                     </a>
                   </li>
-                  <li class="delete">
+                  <li class="delete_task">
+                    <%= task_form.check_box :_destroy, :id => "delete_task", :title => "Delete Task", :style => "display:none;" %>
                     <a title="Delete Task" href="#">
                       <img src="/images/task_delete.png">
                     </a>

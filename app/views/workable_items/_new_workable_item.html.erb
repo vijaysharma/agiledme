@@ -58,9 +58,9 @@
         <td colspan="1" class="letContentExpand">
           <div>
             <%= project_form.select(:type, WorkableItem.types,
-                         {:selected => workable_item.new_record? ? 'Story' : workable_item.type},
-                         {:class => "storyDetailsField workable_item_type_select",
-                          :id => "#{item_unique_id}_type"}) %>
+                                    {:selected => workable_item.new_record? ? 'Story' : workable_item.type},
+                                    {:class => "storyDetailsField workable_item_type_select",
+                                     :id => "#{item_unique_id}_type"}) %>
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
@@ -76,10 +76,10 @@
         <td colspan="1">
           <div>
             <%= project_form.select(:estimate, WorkableItem.estimates,
-                         {:selected => workable_item.new_record? ? -1 : workable_item.estimate},
-                         {:class => "storyDetailsField workable_item_estimate_select",
-                          :id => "#{item_unique_id}_estimate",
-                          :disabled => (!workable_item.new_record? and !workable_item.is_estimatable?)}) %>
+                                    {:selected => workable_item.new_record? ? -1 : workable_item.estimate},
+                                    {:class => "storyDetailsField workable_item_estimate_select",
+                                     :id => "#{item_unique_id}_estimate",
+                                     :disabled => (!workable_item.new_record? and !workable_item.is_estimatable?)}) %>
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
@@ -179,14 +179,31 @@
         <div id="<%= "#{item_unique_id}_tasks_header" %>" class="header">
           Tasks <span class="count">(<%= workable_item.tasks.count %>)</span>
         </div>
-        <ol id ="tasks" class="task_list ui-sortable">
+        <ol id="tasks" class="task_list ui-sortable">
           <% project_form.fields_for :tasks do |task_form| %>
-              <%= render :partial => 'workable_items/single_task_list', :locals => {:task_form => task_form} %>
+              <li id="<%= "#{task_form.object.id}_task" %>" class="workable_item_tasks">
+                <%= task_form.check_box :status, {:title => "Finish Task"}, "finished", "new" %>
+                <%= task_form.hidden_field :finished_by %>
+                <%= task_form.text_area :description, :cols => 1, :rows => 1, :class => "autoresize expand17-10000", :style => 'display:none;' %>
+                <label><%= task_form.object.description %></label>
+                <ul id="<%= "#{task_form.object.id}_task_actions" %>" class="actions" style="display: none;">
+                  <li class="edit">
+                    <a title="Edit Task" href="#">
+                      <img src="/images/task_edit.png">
+                    </a>
+                  </li>
+                  <li class="delete">
+                    <a title="Delete Task" href="#">
+                      <img src="/images/task_delete.png">
+                    </a>
+                  </li>
+                </ul>
+              </li>
           <% end %>
         </ol>
         <div>
           <div class="add_task">
-            <textarea name="new_task_description" cols="1" rows="1" id="new_task_description" class="tasksTextArea autoresize expand17-99999">
+            <textarea cols="1" rows="1" id="latest_task_description" class="tasksTextArea autoresize expand17-99999">
               add a task</textarea>
           </div>
           <%= add_task_link "Add task", project_form %>

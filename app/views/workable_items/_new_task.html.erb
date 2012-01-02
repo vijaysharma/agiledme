@@ -1,0 +1,22 @@
+<% project_form.fields_for :tasks, task do |task_form| %>
+<li id="new_task" class="workable_item_tasks">
+  <%= task_form.check_box :status, {:title => "Finish Task"}, "finished", "new" %>
+  <%= task_form.text_area :description, {:value => "new_task_description", :cols => 1, :rows => 1, :class => "autoresize expand17-10000",
+                          :id =>"new_task_description", :style => 'display:none;'} %>
+  <label id="new_task_description_label">
+    new_task_description
+  </label>
+  <ul id="new_task_actions" class="actions" style="display: none;">
+    <li class="edit">
+      <a title="Edit Task" href="#">
+        <img src="/images/task_edit.png">
+      </a>
+    </li>
+    <li class="delete">
+      <a title="Delete Task" href="#">
+        <img src="/images/task_delete.png">
+      </a>
+    </li>
+  </ul>
+</li>
+<% end %>

@@ -28,6 +28,10 @@
     height: 18px; overflow: hidden;
 }
 
+.add_task {
+    padding-top:5px;display:block;
+}
+
 .toggleExpandedButton, .iterationHeaderToggleExpandedButton {
     cursor: pointer;
     display: block;

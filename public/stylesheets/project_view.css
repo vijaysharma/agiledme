@@ -14,9 +14,14 @@
     margin-top: -1px;
 }
 
-.to_delete_task {
+.task_to_delete {
     text-decoration:line-through;
-    background-color: #ff9999
+    background-color: #ffcccc
+}
+
+.finished_task {
+    text-decoration:line-through;
+    background-color: #ccffcc
 }
 
 .expand17-99999{

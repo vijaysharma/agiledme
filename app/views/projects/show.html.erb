@@ -127,14 +127,43 @@
         var id = $(this).attr('id');
         $("#" + id + "_image").attr('src', "/images/estimate" + $(this).attr('value') + "pt.gif");
     });
-    $('.workable_item_tasks').hover(function() {
+    $('.workable_item_tasks').mouseenter(function() {
         var id = $(this).attr('id');
-        $("#" + id + "_actions").toggle();
+        if(!$("#" + id.replace("_task", "_finish_task")).attr('checked')){
+            $("#" + id + "_actions").show();
+        }
+    });
+
+    $('.workable_item_tasks').mouseleave(function() {
+        var id = $(this).attr('id');
+        $("#" + id + "_actions").hide();
     });
 
     $('.delete_task').click(function() {
-        $($(this).children("input:checkbox")[0]).attr('checked', true);
-        $(this).parent().parent().addClass('to_delete_task');
+        var finish_task_id = $(this).attr('id').replace('delete_task', 'finish_task');
+
+        if ($($(this).children("input:checkbox")[0]).attr('checked'))
+        {
+            $("#" + finish_task_id).attr('disabled', false);
+            $($(this).children("input:checkbox")[0]).attr('checked', false);
+        }else{
+            $("#" + finish_task_id).attr('disabled', true);
+            $($(this).children("input:checkbox")[0]).attr('checked', true);
+        }
+        $(this).parent().parent().toggleClass('task_to_delete');
+    });
+
+    $('.finish_task').click(function() {
+        var task_actions_id = $(this).attr('id').replace('finish_task', 'task_actions');
+        if ($(this).attr('checked'))
+        {
+            $("#" + task_actions_id).attr('disabled', false);
+            $(this).attr('checked', true)
+        }else{
+            $("#" + task_actions_id).attr('disabled', true);
+            $(this).attr('checked', false)
+        }
+        $(this).parent().toggleClass('finished_task');
     });
 
 

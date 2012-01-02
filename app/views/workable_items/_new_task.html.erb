@@ -3,6 +3,7 @@
   <%= task_form.check_box :status, {:title => "Finish Task"}, "finished", "new" %>
   <%= task_form.text_area :description, {:value => "new_task_description", :cols => 1, :rows => 1, :class => "autoresize expand17-10000",
                           :id =>"new_task_description", :style => 'display:none;'} %>
+  <%= task_form.hidden_field :created_by, {:value => current_user.id} %>
   <label id="new_task_description_label">
     new_task_description
   </label>

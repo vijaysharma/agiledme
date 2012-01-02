@@ -5,7 +5,6 @@ module ProjectsHelper
       page << %{
     alert($('#latest_task_description').val());
     $("#{ escape_javascript task }").appendTo('#tasks');
-    alert($('#new_task_description_label').val());
   }
     end
   end

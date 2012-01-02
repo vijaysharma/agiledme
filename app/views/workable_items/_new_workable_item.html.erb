@@ -185,7 +185,6 @@
                 <%= task_form.check_box :status,
                                         {:title => "Finish Task",
                                          :class => "finish_task",
-                                         #                                         :disabled => task_form.object.finished?,
                                          :id => "#{task_form.object.id}_finish_task"},
                                         "finished", "new" %>
                 <%= task_form.hidden_field :finished_by %>

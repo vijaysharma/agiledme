@@ -14,7 +14,7 @@ class WorkableItemsController < ApplicationController
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully created.') }
         format.xml { render :xml => @workable_item, :status => :created, :location => @workable_item }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
         format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end
     end
@@ -34,7 +34,7 @@ class WorkableItemsController < ApplicationController
           format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully updated.') }
           format.xml { head :ok }
         else
-          format.html { render :action => "edit" }
+          format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
           format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
         end
       end
@@ -49,7 +49,7 @@ class WorkableItemsController < ApplicationController
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully started.') }
         format.xml { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
         format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end
     end
@@ -63,7 +63,7 @@ class WorkableItemsController < ApplicationController
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully estimated as a ' + params[:estimate] +" pointer.") }
         format.xml { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
         format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end
     end
@@ -77,7 +77,7 @@ class WorkableItemsController < ApplicationController
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully finished.') }
         format.xml { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
         format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end
     end
@@ -91,7 +91,7 @@ class WorkableItemsController < ApplicationController
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully delivered.') }
         format.xml { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
         format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end
     end
@@ -105,7 +105,7 @@ class WorkableItemsController < ApplicationController
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully accepted.') }
         format.xml { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
         format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end
     end
@@ -119,7 +119,7 @@ class WorkableItemsController < ApplicationController
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was rejected.') }
         format.xml { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
         format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end
     end
@@ -133,7 +133,7 @@ class WorkableItemsController < ApplicationController
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully restarted.') }
         format.xml { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
         format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end
     end

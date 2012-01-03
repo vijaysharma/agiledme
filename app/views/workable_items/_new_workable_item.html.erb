@@ -183,17 +183,13 @@
             <% project_form.fields_for :tasks do |task_builder| %>
                 <%= render :partial => 'workable_items/task_fields', :locals => {:f => task_builder} %>
             <% end %>
-
-            <%= link_to_add_fields "Add New Task", project_form, :tasks %>
           </ol>
-          <div>
-            <div class="add_task">
-              <textarea cols="1" rows="1" id="latest_task_description" class="tasksTextArea autoresize expand17-99999">
-                add a task</textarea>
+          <div class="add_task">
+            <textarea id="<%="#{item_unique_id}_new_task_description"%>" cols="1" rows="1" id="latest_task_description" class="tasksTextArea autoresize expand17-99999">
+              add a task</textarea>
               <span class="add_task">
-
+                <%= link_to_add_fields "Add New Task", project_form, :tasks, item_unique_id %>
               </span>
-            </div>
           </div>
         </div>
       </div>

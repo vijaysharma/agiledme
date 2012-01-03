@@ -11,12 +11,10 @@
             <%= distance_of_time_in_words(Time.now, f.object.new_record? ? Time.now : f.object.created_at, true) %> ago
           </span>
       </div>
-      <div id="<%= "#{comment_id}_delete_comment" %>" class="delete_comment" style="display: none;">
-        <%= f.check_box :_destroy, :id => "delete_comment", :style => "display:none;" %>
-        <a title="Delete Task" href="#">
-          <img src="/images/delete.png">
-        </a>
-      </div>
+      <%= f.check_box :_destroy, :id => "delete_comment", :style => "display:none;" %>
+      <a id="<%= "#{comment_id}_delete_comment" %>" href="#" title="Delete Task" class="deleteLink">
+        <img src="/images/delete.png">
+      </a>
     </div>
   </td>
   <td>

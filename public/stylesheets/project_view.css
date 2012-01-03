@@ -355,12 +355,14 @@ div.storyDetails .section .notesTable tr:first-child td {
 
 div.storyDetails .section .notesTable td.noteInfo div {
     float: left;
-    margin-bottom:-8px;
+}
+
+div.storyDetails .section .notesTable td.noteInfo div:hover {
+    background-color:#EBE29C
 }
 
 .commentText {
-    margin-top: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 div.storyDetails .section tr.noteTextRow + tr.noteInfoRow > td.noteInfo {

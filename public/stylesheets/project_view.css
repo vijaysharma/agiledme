@@ -355,6 +355,12 @@ div.storyDetails .section .notesTable tr:first-child td {
 
 div.storyDetails .section .notesTable td.noteInfo div {
     float: left;
+    margin-bottom:-8px;
+}
+
+.commentText {
+    padding-bottom:10px;
+    font-size:0.9em
 }
 
 div.storyDetails .section tr.noteTextRow + tr.noteInfoRow > td.noteInfo {

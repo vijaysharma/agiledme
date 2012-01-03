@@ -169,6 +169,33 @@
 
     });
 
+    $(".new_task_text").focusin(function() {
+        $(this).val('');
+        $(this).addClass("textAreaFocus");
+        var add_link_id = $(this).attr('id').replace('new_task_description', 'new_task_add_link');
+        $("#" + add_link_id).show();
+    });
+
+    $(".new_task_text").focusout(function() {
+        if ($(this).val() == '') {
+            alert("came in");
+            $(this).val('add new task');
+            $(this).removeClass("textAreaFocus");
+            var add_link_id = $(this).attr('id').replace('new_task_description', 'new_task_add_link');
+            $("#" + add_link_id).hide();
+        }
+    });
+
+    $(".new_task_text").focusin(function() {
+        $(this).val('');
+    });
+
+    $(".new_task_text").focusout(function() {
+        if ($(this).val('')) {
+            $(this).val('add new task')
+        }
+    });
+
     function add_fields(link, association, content) {
         var new_id = new Date().getTime();
         var id_regexp = new RegExp("new_" + association, "g");

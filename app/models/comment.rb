@@ -2,6 +2,10 @@ class Comment < ActiveRecord::Base
   belongs_to :workable_item
   after_create :add_workable_item_history
 
+  def owner
+    User.find(self.posted_by)
+  end
+
   private
 
   def add_workable_item_history

@@ -1,0 +1,26 @@
+<% comment_id = f.object.new_record? ? "new" : f.object.id %>
+
+<tr class="noteInfoRow">
+  <td class="noteInfo" id="<%= "#{comment_id}_comment" %>">
+    <div class="hightlight_row">
+      <div>
+                      <span id="<%= "#{comment_id}_comment_owner" %>" class="highlight">
+                        <%= f.object.new_record? ? current_user.email : f.object.owner.email %>
+                      </span>
+                      <span id="<%= "#{comment_id}_comment_date" %>" class="italic">
+                        <%= distance_of_time_in_words(Time.now, Time.now, true) %> ago
+                      </span>
+      </div>
+      <a href="#" id="<%= "#{comment_id}_comment_delete_link" %>" class="deleteLink">
+        <img src="/images/delete.png">
+      </a>
+    </div>
+  </td>
+  <td>
+  </td>
+</tr>
+<tr class="noteTextRow">
+  <td class="noteText" id="<%= "#{comment_id}_comment_comment" %>">
+    <%= f.object.comment %>
+  </td>
+</tr>

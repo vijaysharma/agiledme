@@ -1,5 +1,0 @@
-<% if task.new? %>
-    <%= link_to "Start", start_task_path(task) %>
-<% elsif task.started? %>
-    <%= link_to "Finish", finish_task_path(task) %>
-<% end %>

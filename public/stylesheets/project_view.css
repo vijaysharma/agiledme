@@ -345,9 +345,57 @@ div.storyDetails .section .header {
     margin-bottom: 0;
 }
 
-div.storyDetails div.wrapper {
-    position: relative;
+div.storyDetails .section .notesTable {
+    width: 100%;
 }
+
+div.storyDetails .section .notesTable tr:first-child td {
+    padding-top: 4px;
+}
+
+div.storyDetails .section .notesTable td.noteInfo div {
+    float: left;
+}
+
+div.storyDetails .section tr.noteTextRow + tr.noteInfoRow > td.noteInfo {
+    padding-top: 10px;
+}
+
+div.storyDetails .section .highlight {
+    color: #333333;
+    font-size: 103%;
+    font-weight: bold;
+}
+
+div.storyDetails .section .notesTable .italic {
+    margin-left: 8px;
+}
+
+div.storyDetails .section .italic {
+    color: #7C7B76;
+    font-size: 0.85em;
+    font-style: italic;
+}
+
+div.storyDetails .section .notesTable td.noteInfo a.deleteLink {
+    display: block;
+    float: left;
+    opacity: 0;
+    padding-left: 10px;
+}
+div.storyDetails .section .notesTable td.noteInfo a.deleteLink img {
+    display: block;
+}
+
+div.storyDetails .section input[type="submit"] {
+    display: block;
+    margin-top: 4px;
+}
+
+div.storyDetails div.wrapper {
+position: relative;
+    }
+
 
 div.storyDetails div.labels {
     background-attachment: scroll;
@@ -974,6 +1022,10 @@ div.storyDetails .attachmentWidget .attach_files .text {
     color: #0957A4;
     font-weight: normal;
     text-decoration: none;
+}
+
+.storyDetails a {
+    font-size: 12px;
 }
 
 .panelLink {

@@ -359,8 +359,8 @@ div.storyDetails .section .notesTable td.noteInfo div {
 }
 
 .commentText {
-    padding-bottom:10px;
-    font-size:0.9em
+    margin-top: 15px;
+    padding-bottom: 15px;
 }
 
 div.storyDetails .section tr.noteTextRow + tr.noteInfoRow > td.noteInfo {

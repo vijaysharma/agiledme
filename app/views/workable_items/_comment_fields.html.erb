@@ -4,23 +4,32 @@
   <td class="noteInfo" id="<%= "#{comment_id}_comment" %>">
     <div class="hightlight_row">
       <div>
-                      <span id="<%= "#{comment_id}_comment_owner" %>" class="highlight">
-                        <%= f.object.new_record? ? current_user.email : f.object.owner.email %>
-                      </span>
-                      <span id="<%= "#{comment_id}_comment_date" %>" class="italic">
-                        <%= distance_of_time_in_words(Time.now, Time.now, true) %> ago
-                      </span>
+          <span id="<%= "#{comment_id}_comment_owner" %>" class="highlight">
+            <%= f.object.new_record? ? current_user.email : f.object.owner.email %>
+          </span>
+          <span id="<%= "#{comment_id}_comment_date" %>" class="italic">
+            <%= distance_of_time_in_words(Time.now, f.object.new_record? ? Time.now : f.object.created_at, true) %> ago
+          </span>
       </div>
-      <a href="#" id="<%= "#{comment_id}_comment_delete_link" %>" class="deleteLink">
-        <img src="/images/delete.png">
-      </a>
+      <div id="<%= "#{comment_id}_delete_comment" %>" class="delete_comment" style="display: none;">
+        <%= f.check_box :_destroy, :id => "delete_comment", :style => "display:none;" %>
+        <a title="Delete Task" href="#">
+          <img src="/images/delete.png">
+        </a>
+      </div>
     </div>
   </td>
   <td>
   </td>
 </tr>
 <tr class="noteTextRow">
-  <td class="noteText commentText" id="<%= "#{comment_id}_comment_comment" %>">
-    <%= f.object.comment %>
+  <td class="noteText">
+    <div class="commentText">
+      <%= f.text_field :comment,
+                       :id=>"#{comment_id}_comment_description",
+                       :style => 'display:none;' %>
+
+      <label id="<%= "#{comment_id}_comment_label" %>"><%= f.object.comment %></label>
+    </div>
   </td>
 </tr>

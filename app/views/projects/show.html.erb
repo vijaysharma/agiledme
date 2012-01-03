@@ -132,7 +132,7 @@
         var id = $(this).attr('id');
         var task_description_id = $(this).attr('id').replace("task", "task_description");
         if (!$("#" + id.replace("task", "task_finish")).attr('checked')) {
-            if($("#" + task_description_id).is(":hidden")) {
+            if ($("#" + task_description_id).is(":hidden")) {
                 $("#" + id + "_actions").show();
             }
 
@@ -207,17 +207,23 @@
         }
     });
 
-    $(".new_task_text").focusin(function() {
+    $(".new_comment_text").focusin(function() {
         $(this).val('');
+        $(this).addClass("textAreaFocus");
+        var add_link_id = $(this).attr('id').replace('new_comment_description', 'new_comment_add_link');
+        $("#" + add_link_id).show();
     });
 
-    $(".new_task_text").focusout(function() {
-        if ($(this).val('')) {
-            $(this).val('add new task')
+    $(".new_comment_text").focusout(function() {
+        if ($(this).val() == '') {
+            $(this).val('add new comment');
+            $(this).removeClass("textAreaFocus");
+            var add_link_id = $(this).attr('id').replace('new_comment_description', 'new_comment_add_link');
+            $("#" + add_link_id).hide();
         }
     });
 
-    function add_fields(link, association, content) {
+    function add_task_fields(link, association, content) {
         var new_id = new Date().getTime();
         var id_regexp = new RegExp("new_" + association, "g");
 
@@ -229,6 +235,21 @@
 
         var new_task_label_id = $(link).attr('id').replace("add_task", "task_label");
         $("#" + new_id + "_task_label").text($("#" + new_task_description_id).val());
+    }
+
+
+    function add_comment_fields(link, association, content) {
+        var new_id = new Date().getTime();
+        var id_regexp = new RegExp("new_" + association, "g");
+
+        var comments_list_id = $(link).attr('id').replace("add_comment", "comments");
+        $("#" + comments_list_id).prepend(content.replace(id_regexp, new_id + "_" + association));
+
+        var new_comment_description_id = $(link).attr('id').replace("add_comment", "new_comment_description");
+        $("#" + new_id + "_comment_description").val($("#" + new_comment_description_id).val());
+
+        var new_comment_label_id = $(link).attr('id').replace("add_comment", "comment_label");
+        $("#" + new_id + "_comment_label").text($("#" + new_comment_description_id).val());
     }
 
 

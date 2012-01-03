@@ -188,7 +188,7 @@
             <textarea id="<%= "#{item_unique_id}_new_task_description" %>" cols="1" rows="1" class="tasksTextArea autoresize expand17-99999 new_task_text">add
               new task</textarea>
               <span id="<%= "#{item_unique_id}_new_task_add_link" %>" class="add_task" style="display:none;">
-                <%= link_to_add_fields "Add", project_form, :tasks, item_unique_id %>
+                <%= link_to_add_task_fields "Add", project_form, :tasks, item_unique_id %>
               </span>
           </div>
         </div>
@@ -199,19 +199,19 @@
             Comments <span class="commentCount">(<%= workable_item.comments.count %>)</span>
           </div>
           <table class="notesTable">
-            <tbody>
+            <tbody id="<%= "#{item_unique_id}_comments" %>">
             <% project_form.fields_for :comments do |comment_builder| %>
                 <%= render :partial => 'workable_items/comment_fields', :locals => {:f => comment_builder} %>
             <% end %>
             </tbody>
           </table>
           <div class="add_comment">
-            <textarea id="<%= "#{item_unique_id}_new_comment_comment" %>" cols="20" rows="1" class="tasksTextArea autoresize expand17-99999 new_comment_text">add
+            <textarea id="<%= "#{item_unique_id}_new_comment_description" %>" cols="20" rows="1" class="tasksTextArea autoresize expand17-99999 new_comment_text">add
               a comment</textarea>
 
             <div class="noteText">(Format using *<b>bold</b>* and _<i>italic</i>_ text.)</div>
-              <span id="<%= "#{item_unique_id}_new_comment_add_link" %>" class="add_comment">
-                <%= link_to_add_fields "Add Comment", project_form, :comments, item_unique_id %>
+              <span id="<%= "#{item_unique_id}_new_comment_add_link" %>" class="add_comment" style="display:none;">
+                <%= link_to_add_comment_fields "Add", project_form, :comments, item_unique_id %>
               </span>
           </div>
         </div>

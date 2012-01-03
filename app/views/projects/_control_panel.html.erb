@@ -42,12 +42,10 @@
     </div>
     <ul class="clearfix" id="buttonPanel">
       <ul class="clearfix" id="panelList">
-        <% if current_project.workable_items.present?
-        button_class = 'selected'
-         end %>
-        <li><a id="done_control_button" href="#" class="<%= "button #{button_class}"%>">Done</a></li>
-        <li><a id="current_control_button" href="#" class="<%= "button #{button_class}"%>">Current</a></li>
-        <li><a id="backlog_control_button" href="#" class="<%= "button #{button_class}"%>">Backlog</a></li>
+        <% button_class = current_project.workable_items.present? ? 'selected' : '' %>
+        <li><a id="done_control_button" href="#" class="<%= "button #{button_class}" %>">Done</a></li>
+        <li><a id="current_control_button" href="#" class="<%= "button #{button_class}" %>">Current</a></li>
+        <li><a id="backlog_control_button" href="#" class="<%= "button #{button_class}" %>">Backlog</a></li>
         <li><a id="icebox_control_button" href="#" class="button selected">Icebox</a></li>
       </ul>
     </ul>

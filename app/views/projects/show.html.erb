@@ -42,7 +42,7 @@
                            @workable_item.requester = current_user.id
                            @workable_item.category = 'icebox'
                         %>
-                        <%= render :partial => 'workable_items/new_workable_item', :locals => {:workable_item => @workable_item} %>
+                        <%= render :partial => 'workable_items/workable_item', :locals => {:workable_item => @workable_item} %>
                     <% end %>
                     <% workable_items_in_category = @project.workable_items.select { |wi| wi.category == category } %>
                     <% if workable_items_in_category.present? %>

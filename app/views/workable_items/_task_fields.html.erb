@@ -1,18 +1,19 @@
-<li id="new_tasks" class="workable_item_tasks">
-  <%= f.check_box :status, {:title => "Finish Task"}, "finished", "new" %>
-  <%= f.text_area :description, {:value => "new_task_description", :cols => 1, :rows => 1, :class => "autoresize expand17-10000",
-                                 :id =>"new_task_description", :style => 'display:none;'} %>
-  <%= f.hidden_field :created_by, {:value => current_user.id} %>
-  <label id="new_task_description_label">
-    new_task_description
-  </label>
-  <ul id="new_task_actions" class="actions" style="display: none;">
-    <li class="edit">
+<li id="<%= "#{f.object.new_record? ? "new" : f.object.id}_task" %>" class="workable_item_tasks <%= f.object.finished? ? "finished_task" : "" %>">
+  <%= f.check_box :status,
+                  {:title => "Finish Task",
+                   :class => "finish_task",
+                   :id => "#{f.object.id}_finish_task"},
+                  "finished", "new" %>
+  <%= f.text_area :description, :cols => 1, :rows => 1, :class => "autoresize expand17-10000", :style => 'display:none;' %>
+  <label><%= f.object.description %></label>
+  <ul id="<%= "#{f.object.id}_task_actions" %>" class="actions" style="display: none;">
+    <li id="<%= "#{f.object.id}_edit_task" %>" class="edit_task">
       <a title="Edit Task" href="#">
         <img src="/images/task_edit.png">
       </a>
     </li>
-    <li class="delete">
+    <li id="<%= "#{f.object.id}_delete_task" %>" class="delete_task">
+      <%= f.check_box :_destroy, :id => "delete_task", :title => "Delete Task", :style => "display:none;" %>
       <a title="Delete Task" href="#">
         <img src="/images/task_delete.png">
       </a>

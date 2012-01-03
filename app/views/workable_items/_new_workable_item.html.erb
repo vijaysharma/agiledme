@@ -180,30 +180,8 @@
             Tasks <span class="count">(<%= workable_item.tasks.count %>)</span>
           </div>
           <ol id="<%= "#{item_unique_id}_tasks" %>" class="task_list ui-sortable">
-            <% project_form.fields_for :tasks do |task_form| %>
-                <li id="<%= "#{task_form.object.id}_task" %>" class="workable_item_tasks <%= task_form.object.finished? ? "finished_task" : "" %>">
-                  <%= task_form.check_box :status,
-                                          {:title => "Finish Task",
-                                           :class => "finish_task",
-                                           :id => "#{task_form.object.id}_finish_task"},
-                                          "finished", "new" %>
-                  <%= task_form.hidden_field :finished_by %>
-                  <%= task_form.text_area :description, :cols => 1, :rows => 1, :class => "autoresize expand17-10000", :style => 'display:none;' %>
-                  <label><%= task_form.object.description %></label>
-                  <ul id="<%= "#{task_form.object.id}_task_actions" %>" class="actions" style="display: none;">
-                    <li id="<%= "#{task_form.object.id}_edit_task" %>" class="edit_task">
-                      <a title="Edit Task" href="#">
-                        <img src="/images/task_edit.png">
-                      </a>
-                    </li>
-                    <li id="<%= "#{task_form.object.id}_delete_task" %>" class="delete_task">
-                      <%= task_form.check_box :_destroy, :id => "delete_task", :title => "Delete Task", :style => "display:none;" %>
-                      <a title="Delete Task" href="#">
-                        <img src="/images/task_delete.png">
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+            <% project_form.fields_for :tasks do |task_builder| %>
+                <%= render :partial => 'workable_items/task_fields', :locals => {:f => task_builder} %>
             <% end %>
 
             <%= link_to_add_fields "Add New Task", project_form, :tasks %>

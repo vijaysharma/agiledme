@@ -6,12 +6,14 @@
                        :id => "#{f.object.new_record? ? "new" : f.object.id}_task_finish"},
                       "finished", "new" %>
   <% end %>
-  <%= f.text_area :description,
-                  :id=>"#{f.object.new_record? ? "new" : f.object.id}_task_description",
-                  :cols => 1,
-                  :rows => 1,
-                  :class => "autoresize expand17-10000",
-                  :style => 'display:none;' %>
+  <div>
+    <%= f.text_area :description,
+                    :id=>"#{f.object.new_record? ? "new" : f.object.id}_task_description",
+                    :cols => 1,
+                    :rows => 1,
+                    :class => "autoresize expand17-10000",
+                    :style => 'display:none;' %>
+  </div>
   <label id="<%= "#{f.object.new_record? ? "new" : f.object.id}_task_label" %>"><%= f.object.description %></label>
   <% if !f.object.finished? %>
       <ul id="<%= "#{f.object.new_record? ? "new" : f.object.id}_task_actions" %>" class="actions" style="display: none;">

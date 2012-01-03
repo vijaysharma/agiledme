@@ -130,8 +130,12 @@
 
     $(document).delegate(".workable_item_tasks", "mouseenter", function() {
         var id = $(this).attr('id');
-        if (!$("#" + id.replace("_task", "_finish_task")).attr('checked')) {
-            $("#" + id + "_actions").show();
+        var task_description_id = $(this).attr('id').replace("task", "task_description");
+        if (!$("#" + id.replace("task", "task_finish")).attr('checked')) {
+            if($("#" + task_description_id).is(":hidden")) {
+                $("#" + id + "_actions").show();
+            }
+
         }
     });
 
@@ -141,30 +145,48 @@
     });
 
     $(document).delegate(".delete_task", "click", function() {
-        var finish_task_id = $(this).attr('id').replace('delete_task', 'finish_task');
+        var finish_task_id = $(this).attr('id').replace('delete_task', 'task_finish');
+        var edit_task_id = $(this).attr('id').replace('delete_task', 'edit_task');
 
         if ($($(this).children("input:checkbox")[0]).attr('checked')) {
             //trying to mark task for non deletion
-            $("#" + finish_task_id).attr('disabled', false);
+            $("#" + finish_task_id).show();
+            $("#" + edit_task_id).show();
             $($(this).children("input:checkbox")[0]).attr('checked', false);
             $(this).parent().parent().removeClass('task_to_delete');
         } else {
             //trying to mark task for deletion
-            $("#" + finish_task_id).attr('disabled', true);
+            $("#" + finish_task_id).hide();
+            $("#" + edit_task_id).hide();
             $($(this).children("input:checkbox")[0]).attr('checked', true);
             $(this).parent().parent().removeClass('finished_task');
             $(this).parent().parent().addClass('task_to_delete');
         }
     });
 
+    $(document).delegate(".edit_task", "click", function() {
+        var task_description_id = $(this).attr('id').replace("edit_task", "task_description");
+        $("#" + task_description_id).show();
+
+        var task_label_id = $(this).attr('id').replace("edit_task", "task_label");
+        $("#" + task_label_id).hide();
+
+        var task_id = $(this).attr('id').replace("edit_task", "task");
+
+        var task_actions_id = $(this).attr('id').replace('edit_task', 'task_actions');
+        $("#" + task_actions_id).hide();
+    });
+
     $(document).delegate(".finish_task", "click", function() {
-        var task_actions_id = $(this).attr('id').replace('finish_task', 'task_actions');
+        var task_actions_id = $(this).attr('id').replace('task_finish', 'task_actions');
         if ($(this).attr('checked')) {
             $(this).attr('checked', true);
             $(this).parent().addClass('finished_task');
+            $("#" + task_actions_id).hide();
         } else {
             $(this).attr('checked', false);
             $(this).parent().removeClass('finished_task');
+            $("#" + task_actions_id).show();
         }
 
     });

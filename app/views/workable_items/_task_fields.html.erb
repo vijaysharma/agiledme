@@ -1,27 +1,31 @@
 <li id="<%= "#{f.object.new_record? ? "new" : f.object.id}_task" %>" class="workable_item_tasks <%= f.object.finished? ? "finished_task" : "" %>">
-  <%= f.check_box :status,
-                  {:title => "Finish Task",
-                   :class => "finish_task",
-                   :id => "#{f.object.id}_finish_task"},
-                  "finished", "new" %>
+  <% if !f.object.finished? %>
+      <%= f.check_box :status,
+                      {:title => "Finish Task",
+                       :class => "finish_task",
+                       :id => "#{f.object.new_record? ? "new" : f.object.id}_task_finish"},
+                      "finished", "new" %>
+  <% end %>
   <%= f.text_area :description,
                   :id=>"#{f.object.new_record? ? "new" : f.object.id}_task_description",
                   :cols => 1,
                   :rows => 1,
                   :class => "autoresize expand17-10000",
                   :style => 'display:none;' %>
-  <label id="<%= "#{f.object.new_record? ? "new" : f.object.id}_task_label" %>" ><%= f.object.description %></label>
-  <ul id="<%= "#{f.object.id}_task_actions" %>" class="actions" style="display: none;">
-    <li id="<%= "#{f.object.id}_edit_task" %>" class="edit_task">
-      <a title="Edit Task" href="#">
-        <img src="/images/task_edit.png">
-      </a>
-    </li>
-    <li id="<%= "#{f.object.id}_delete_task" %>" class="delete_task">
-      <%= f.check_box :_destroy, :id => "delete_task", :title => "Delete Task", :style => "display:none;" %>
-      <a title="Delete Task" href="#">
-        <img src="/images/task_delete.png">
-      </a>
-    </li>
-  </ul>
+  <label id="<%= "#{f.object.new_record? ? "new" : f.object.id}_task_label" %>"><%= f.object.description %></label>
+  <% if !f.object.finished? %>
+      <ul id="<%= "#{f.object.new_record? ? "new" : f.object.id}_task_actions" %>" class="actions" style="display: none;">
+        <li id="<%= "#{f.object.new_record? ? "new" : f.object.id}_edit_task" %>" class="edit_task">
+          <a title="Edit Task" href="#">
+            <img src="/images/task_edit.png">
+          </a>
+        </li>
+        <li id="<%= "#{f.object.new_record? ? "new" : f.object.id}_delete_task" %>" class="delete_task">
+          <%= f.check_box :_destroy, :id => "delete_task", :style => "display:none;" %>
+          <a title="Delete Task" href="#">
+            <img src="/images/task_delete.png">
+          </a>
+        </li>
+      </ul>
+  <% end %>
 </li>

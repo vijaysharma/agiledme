@@ -127,56 +127,60 @@
         var id = $(this).attr('id');
         $("#" + id + "_image").attr('src', "/images/estimate" + $(this).attr('value') + "pt.gif");
     });
-    $('.workable_item_tasks').mouseenter(function() {
+
+    $(document).delegate(".workable_item_tasks", "mouseenter", function() {
         var id = $(this).attr('id');
         if (!$("#" + id.replace("_task", "_finish_task")).attr('checked')) {
             $("#" + id + "_actions").show();
         }
     });
 
-    $('.workable_item_tasks').mouseleave(function() {
+    $(document).delegate(".workable_item_tasks", "mouseleave", function() {
         var id = $(this).attr('id');
         $("#" + id + "_actions").hide();
     });
 
-    $('.delete_task').click(function() {
+    $(document).delegate(".delete_task", "click", function() {
         var finish_task_id = $(this).attr('id').replace('delete_task', 'finish_task');
 
         if ($($(this).children("input:checkbox")[0]).attr('checked')) {
+            //trying to mark task for non deletion
             $("#" + finish_task_id).attr('disabled', false);
             $($(this).children("input:checkbox")[0]).attr('checked', false);
+            $(this).parent().parent().removeClass('task_to_delete');
         } else {
+            //trying to mark task for deletion
             $("#" + finish_task_id).attr('disabled', true);
             $($(this).children("input:checkbox")[0]).attr('checked', true);
+            $(this).parent().parent().removeClass('finished_task');
+            $(this).parent().parent().addClass('task_to_delete');
         }
-        $(this).parent().parent().toggleClass('task_to_delete');
     });
 
-    $('.finish_task').click(function() {
+    $(document).delegate(".finish_task", "click", function() {
         var task_actions_id = $(this).attr('id').replace('finish_task', 'task_actions');
         if ($(this).attr('checked')) {
-            $("#" + task_actions_id).attr('disabled', false);
-            $(this).attr('checked', true)
+            $(this).attr('checked', true);
+            $(this).parent().addClass('finished_task');
         } else {
-            $("#" + task_actions_id).attr('disabled', true);
-            $(this).attr('checked', false)
+            $(this).attr('checked', false);
+            $(this).parent().removeClass('finished_task');
         }
-        $(this).parent().toggleClass('finished_task');
+
     });
 
     function add_fields(link, association, content) {
         var new_id = new Date().getTime();
         var id_regexp = new RegExp("new_" + association, "g");
-        var desc_regexp = new RegExp("new_" + association +"_description", "g");
 
         var tasks_list_id = $(link).attr('id').replace("add_task", "tasks");
-        $("#"+tasks_list_id).prepend(content.replace(id_regexp, new_id).replace(desc_regexp, new_id+"_task_description"));
+        $("#" + tasks_list_id).prepend(content.replace(id_regexp, new_id + "_" + association));
 
         var new_task_description_id = $(link).attr('id').replace("add_task", "new_task_description");
-        $("#"+new_id+"_description").val($("#"+new_task_description_id).val());
+        $("#" + new_id + "_task_description").val($("#" + new_task_description_id).val());
 
         var new_task_label_id = $(link).attr('id').replace("add_task", "task_label");
-        $("#"+new_id+"_label").text($("#"+new_task_description_id).val());
+        $("#" + new_id + "_task_label").text($("#" + new_task_description_id).val());
     }
 
 

@@ -5,7 +5,7 @@ class WorkableItem < ActiveRecord::Base
   belongs_to :project
   belongs_to :epic
   has_many :workable_item_histories, :dependent => :destroy
-  has_many :tasks, :dependent => :destroy
+  has_many :tasks, :order=>"updated_at DESC", :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
   accepts_nested_attributes_for :tasks, :allow_destroy => true, :reject_if => :all_blank

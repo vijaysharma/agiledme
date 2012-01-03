@@ -5,11 +5,12 @@
                    :id => "#{f.object.id}_finish_task"},
                   "finished", "new" %>
   <%= f.text_area :description,
+                  :id=>"#{f.object.new_record? ? "new" : f.object.id}_task_description",
                   :cols => 1,
                   :rows => 1,
                   :class => "autoresize expand17-10000",
                   :style => 'display:none;' %>
-  <label><%= f.object.description %></label>
+  <label id="<%= "#{f.object.new_record? ? "new" : f.object.id}_task_label" %>" ><%= f.object.description %></label>
   <ul id="<%= "#{f.object.id}_task_actions" %>" class="actions" style="display: none;">
     <li id="<%= "#{f.object.id}_edit_task" %>" class="edit_task">
       <a title="Edit Task" href="#">

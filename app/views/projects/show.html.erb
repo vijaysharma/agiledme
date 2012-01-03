@@ -166,10 +166,18 @@
 
     function add_fields(link, association, content) {
         var new_id = new Date().getTime();
-        var regexp = new RegExp("new_" + association, "g");
+        var id_regexp = new RegExp("new_" + association, "g");
+        var desc_regexp = new RegExp("new_" + association +"_description", "g");
 
         var tasks_list_id = $(link).attr('id').replace("add_task", "tasks");
-        $("#"+tasks_list_id).prepend(content.replace(regexp, new_id));
+        $("#"+tasks_list_id).prepend(content.replace(id_regexp, new_id).replace(desc_regexp, new_id+"_task_description"));
+
+        var new_task_description_id = $(link).attr('id').replace("add_task", "new_task_description");
+        $("#"+new_id+"_description").val($("#"+new_task_description_id).val());
+
+        var new_task_label_id = $(link).attr('id').replace("add_task", "task_label");
+        $("#"+new_id+"_label").text($("#"+new_task_description_id).val());
+        alert($("#"+new_id+"_label").text());
     }
 
 

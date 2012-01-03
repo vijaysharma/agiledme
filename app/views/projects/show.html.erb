@@ -49,7 +49,7 @@
                         <%= render :partial => 'workable_items/workable_items_collection',
                                    :locals => {:workable_items => @project.workable_items.select { |wi| wi.category == category }} %>
                     <% else %>
-                        <% if category.eql?('icebox') and !@project.workable_items.present?%>
+                        <% if category.eql?('icebox') and !@project.workable_items.present? %>
                             <div id="no_workable_items" class="no_workable_items">You have not got any work to do in
                               this
                               project yet. Hurry, and start working!!
@@ -129,7 +129,7 @@
     });
     $('.workable_item_tasks').mouseenter(function() {
         var id = $(this).attr('id');
-        if(!$("#" + id.replace("_task", "_finish_task")).attr('checked')){
+        if (!$("#" + id.replace("_task", "_finish_task")).attr('checked')) {
             $("#" + id + "_actions").show();
         }
     });
@@ -142,11 +142,10 @@
     $('.delete_task').click(function() {
         var finish_task_id = $(this).attr('id').replace('delete_task', 'finish_task');
 
-        if ($($(this).children("input:checkbox")[0]).attr('checked'))
-        {
+        if ($($(this).children("input:checkbox")[0]).attr('checked')) {
             $("#" + finish_task_id).attr('disabled', false);
             $($(this).children("input:checkbox")[0]).attr('checked', false);
-        }else{
+        } else {
             $("#" + finish_task_id).attr('disabled', true);
             $($(this).children("input:checkbox")[0]).attr('checked', true);
         }
@@ -155,16 +154,21 @@
 
     $('.finish_task').click(function() {
         var task_actions_id = $(this).attr('id').replace('finish_task', 'task_actions');
-        if ($(this).attr('checked'))
-        {
+        if ($(this).attr('checked')) {
             $("#" + task_actions_id).attr('disabled', false);
             $(this).attr('checked', true)
-        }else{
+        } else {
             $("#" + task_actions_id).attr('disabled', true);
             $(this).attr('checked', false)
         }
         $(this).parent().toggleClass('finished_task');
     });
+
+    function add_fields(link, association, content) {
+        var new_id = new Date().getTime();
+        var regexp = new RegExp("new_" + association, "g");
+        $(link).parent().before(content.replace(regexp, new_id));
+    }
 
 
 </script>

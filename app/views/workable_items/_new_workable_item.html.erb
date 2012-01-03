@@ -179,7 +179,7 @@
           <div id="<%= "#{item_unique_id}_tasks_header" %>" class="header">
             Tasks <span class="count">(<%= workable_item.tasks.count %>)</span>
           </div>
-          <ol id="tasks" class="task_list ui-sortable">
+          <ol id="<%= "#{item_unique_id}_tasks" %>" class="task_list ui-sortable">
             <% project_form.fields_for :tasks do |task_form| %>
                 <li id="<%= "#{task_form.object.id}_task" %>" class="workable_item_tasks <%= task_form.object.finished? ? "finished_task" : "" %>">
                   <%= task_form.check_box :status,
@@ -205,13 +205,15 @@
                   </ul>
                 </li>
             <% end %>
+
+            <%= link_to_add_fields "Add New Task", project_form, :tasks %>
           </ol>
           <div>
             <div class="add_task">
               <textarea cols="1" rows="1" id="latest_task_description" class="tasksTextArea autoresize expand17-99999">
                 add a task</textarea>
               <span class="add_task">
-              <%= add_task_link "Add task", project_form %>
+
               </span>
             </div>
           </div>

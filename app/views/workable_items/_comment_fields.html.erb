@@ -1,7 +1,7 @@
 <% comment_id = f.object.new_record? ? "new" : f.object.id %>
 
-<tr class="noteInfoRow">
-  <td class="noteInfo" id="<%= "#{comment_id}_comment" %>">
+<tr class="commentInfoRow">
+  <td class="commentInfo" id="<%= "#{comment_id}_comment" %>">
     <div class="hightlight_row">
       <div>
           <span id="<%= "#{comment_id}_comment_owner" %>" class="highlight">
@@ -22,8 +22,8 @@
   <td>
   </td>
 </tr>
-<tr class="noteTextRow">
-  <td class="noteText">
+<tr class="commentTextRow">
+  <td class="commentText">
     <div class="commentText">
       <%= f.text_field :comment,
                        :id=>"#{comment_id}_comment_description",

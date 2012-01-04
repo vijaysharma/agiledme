@@ -145,11 +145,11 @@
     });
 
 
-    $(document).delegate(".noteInfo", "mouseenter", function() {
+    $(document).delegate(".commentInfo", "mouseenter", function() {
         $("#" + $(this).attr('id').replace("comment", "delete_comment")).show();
     });
 
-    $(document).delegate(".noteInfo", "mouseleave", function() {
+    $(document).delegate(".commentInfo", "mouseleave", function() {
         $("#" + $(this).attr('id').replace("comment", "delete_comment")).hide();
     });
 

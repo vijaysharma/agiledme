@@ -345,19 +345,19 @@ div.storyDetails .section .header {
     margin-bottom: 0;
 }
 
-div.storyDetails .section .notesTable {
+div.storyDetails .section .commentsTable {
     width: 100%;
 }
 
-div.storyDetails .section .notesTable tr:first-child td {
+div.storyDetails .section .commentsTable tr:first-child td {
     padding-top: 4px;
 }
 
-div.storyDetails .section .notesTable td.noteInfo div {
+div.storyDetails .section .commentsTable td.commentInfo div {
     float: left;
 }
 
-div.storyDetails .section .notesTable td.noteInfo div:hover {
+div.storyDetails .section .commentsTable td.commentInfo div:hover {
     background-color:#EBE29C
 }
 
@@ -365,7 +365,7 @@ div.storyDetails .section .notesTable td.noteInfo div:hover {
     padding-bottom: 10px;
 }
 
-div.storyDetails .section tr.noteTextRow + tr.noteInfoRow > td.noteInfo {
+div.storyDetails .section tr.commentTextRow + tr.commentInfoRow > td.commentInfo {
     padding-top: 10px;
 }
 
@@ -375,7 +375,7 @@ div.storyDetails .section .highlight {
     font-weight: bold;
 }
 
-div.storyDetails .section .notesTable .italic {
+div.storyDetails .section .commentsTable .italic {
     margin-left: 8px;
 }
 
@@ -385,12 +385,12 @@ div.storyDetails .section .italic {
     font-style: italic;
 }
 
-div.storyDetails .section .notesTable td.noteInfo a.delete_comment {
+div.storyDetails .section .commentsTable td.commentInfo a.delete_comment {
     display: block;
     float: left;
     padding-left: 10px;
 }
-div.storyDetails .section .notesTable td.noteInfo a.delete_comment img {
+div.storyDetails .section .commentsTable td.commentInfo a.delete_comment img {
     display: block;
 }
 

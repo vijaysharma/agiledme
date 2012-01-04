@@ -193,12 +193,12 @@
           </div>
         </div>
       </div>
-      <div class="noteTableDiv">
+      <div class="commentTableDiv">
         <div class="section">
           <div id="<%= "#{item_unique_id}_comments_header" %>" class="header">
             Comments <span class="commentCount">(<%= workable_item.comments.count %>)</span>
           </div>
-          <table class="notesTable">
+          <table class="commentsTable">
             <tbody id="<%= "#{item_unique_id}_comments" %>">
             <% project_form.fields_for :comments do |comment_builder| %>
                 <%= render :partial => 'workable_items/comment_fields', :locals => {:f => comment_builder} %>
@@ -209,7 +209,7 @@
             <textarea id="<%= "#{item_unique_id}_new_comment_description" %>" cols="20" rows="1" class="tasksTextArea autoresize expand17-99999 new_comment_text">add
               a comment</textarea>
 
-            <div class="noteText">(Format using *<b>bold</b>* and _<i>italic</i>_ text.)</div>
+            <div class="commentText">(Format using *<b>bold</b>* and _<i>italic</i>_ text.)</div>
               <span id="<%= "#{item_unique_id}_new_comment_add_link" %>" class="add_comment" style="display:none;">
                 <%= link_to_add_comment_fields "Add", project_form, :comments, item_unique_id %>
               </span>

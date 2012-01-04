@@ -179,9 +179,9 @@ $(document).ready(function () {
         }
     });
 
-    $(".item").draggable();
+    $(".draggable").draggable();
 
-    $(".item").droppable({
+    $(".draggable").droppable({
         drop: function(event, ui) {
             $(this)
                     .addClass("finished_task")

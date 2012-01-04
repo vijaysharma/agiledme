@@ -14,7 +14,7 @@
     margin-top: -1px;
 }
 
-.task_to_delete {
+.item_to_delete {
     text-decoration:line-through;
     background-color: #ffcccc
 }
@@ -385,13 +385,12 @@ div.storyDetails .section .italic {
     font-style: italic;
 }
 
-div.storyDetails .section .notesTable td.noteInfo a.deleteLink {
+div.storyDetails .section .notesTable td.noteInfo a.delete_comment {
     display: block;
     float: left;
-    opacity: 0;
     padding-left: 10px;
 }
-div.storyDetails .section .notesTable td.noteInfo a.deleteLink img {
+div.storyDetails .section .notesTable td.noteInfo a.delete_comment img {
     display: block;
 }
 

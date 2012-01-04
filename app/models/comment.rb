@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
   validates_presence_of :comment
 
   def owner
-    User.find(self.posted_by)
+    self.posted_by.present? ? User.find(self.posted_by) : nil
   end
 
   private

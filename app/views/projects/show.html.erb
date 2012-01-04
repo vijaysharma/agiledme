@@ -144,6 +144,31 @@
         $("#" + id + "_actions").hide();
     });
 
+
+    $(document).delegate(".noteInfo", "mouseenter", function() {
+        $("#" + $(this).attr('id').replace("comment", "delete_comment")).show();
+    });
+
+    $(document).delegate(".noteInfo", "mouseleave", function() {
+        $("#" + $(this).attr('id').replace("comment", "delete_comment")).hide();
+    });
+
+
+    $(document).delegate(".delete_comment", "click", function() {
+
+        var delete_comment_checkbox = $("#"+$(this).attr('id').replace("delete_comment", "delete_comment_checkbox"));
+
+        if (delete_comment_checkbox.attr('checked')) {
+            //trying to mark comment for non deletion
+            $(delete_comment_checkbox).attr('checked', false);
+            $(this).parent().parent().removeClass('item_to_delete');
+        } else {
+            //trying to mark task for deletion
+            $(delete_comment_checkbox).attr('checked', true);
+            $(this).parent().parent().addClass('item_to_delete');
+        }
+    });
+
     $(document).delegate(".delete_task", "click", function() {
         var finish_task_id = $(this).attr('id').replace('delete_task', 'task_finish');
         var edit_task_id = $(this).attr('id').replace('delete_task', 'edit_task');
@@ -153,14 +178,14 @@
             $("#" + finish_task_id).show();
             $("#" + edit_task_id).show();
             $($(this).children("input:checkbox")[0]).attr('checked', false);
-            $(this).parent().parent().removeClass('task_to_delete');
+            $(this).parent().parent().removeClass('item_to_delete');
         } else {
             //trying to mark task for deletion
             $("#" + finish_task_id).hide();
             $("#" + edit_task_id).hide();
             $($(this).children("input:checkbox")[0]).attr('checked', true);
             $(this).parent().parent().removeClass('finished_task');
-            $(this).parent().parent().addClass('task_to_delete');
+            $(this).parent().parent().addClass('item_to_delete');
         }
     });
 

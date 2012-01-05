@@ -189,6 +189,7 @@ $(document).ready(function () {
 
     $(".droppable").droppable({
         drop: function(event, ui) {
+            var droppable_id = $(this).attr('id');
             $.ajax({
                 url: "http://localhost:3000/projects",
                 dataType: "script",
@@ -197,7 +198,7 @@ $(document).ready(function () {
                     category: $(this).attr('id').split('_')[0]
                 },
                 success: function(data) {
-                    alert('success');
+                    $(ui.draggable).insertBefore($("#"+droppable_id));
                 }
             })
         },

@@ -1,6 +1,9 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+var estimate_bugs = false;
+var estimate_chores = false;
+
 $(document).ready(function () {
     $("#backlog_close").click(function () {
         $("#backlog").hide();
@@ -52,12 +55,15 @@ $(document).ready(function () {
         $("#" + id.replace('cancel_edit_button', 'detail')).hide();
     });
 
-    var estimate_bugs = false;
     $('.workable_item_type_select').change(function() {
         var id = $(this).attr('id');
+        var item_type = $(this).attr('value');
         $("#" + id + "_image").attr('src', "/images/" + $(this).attr('value') + ".png");
-        if(!estimate_bugs){
-            alert(estimate_bugs);
+        var estimate_id = id.replace("type", "estimate");
+        if ((item_type == "Bug" && !estimate_bugs) || (item_type == "Chore" && !estimate_chores)) {
+            $("#" + estimate_id).attr("disabled", true);
+        } else {
+            $("#" + estimate_id).attr("disabled", false);
         }
     });
 

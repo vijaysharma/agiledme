@@ -51,10 +51,16 @@ $(document).ready(function () {
         $("#" + id.replace('cancel_edit_button', 'preview')).show();
         $("#" + id.replace('cancel_edit_button', 'detail')).hide();
     });
+
+    var estimate_bugs = false;
     $('.workable_item_type_select').change(function() {
         var id = $(this).attr('id');
         $("#" + id + "_image").attr('src', "/images/" + $(this).attr('value') + ".png");
+        if(!estimate_bugs){
+            alert(estimate_bugs);
+        }
     });
+
     $('.workable_item_estimate_select').change(function() {
         var id = $(this).attr('id');
         $("#" + id + "_image").attr('src', "/images/estimate" + $(this).attr('value') + "pt.gif");
@@ -147,6 +153,8 @@ $(document).ready(function () {
 
     });
 
+    $(document).delegate(".notice", flash_notice());
+
     $(".new_task_text").focusin(function() {
         $(this).val('');
         $(this).addClass("textAreaFocus");
@@ -190,15 +198,17 @@ $(document).ready(function () {
     $(".droppable").droppable({
         drop: function(event, ui) {
             var droppable_id = $(this).attr('id');
+            var id = $(ui.draggable).attr('id').split('_')[2];
             $.ajax({
-                url: "http://localhost:3000/projects",
+                type: "PUT",
+                url: "/workable_items/" + id + "/update_category",
                 dataType: "script",
                 data: {
-                    id: $(ui.draggable).attr('id').split('_')[2],
+                    id: id,
                     category: $(this).attr('id').split('_')[0]
                 },
                 success: function(data) {
-                    $(ui.draggable).insertBefore($("#"+droppable_id));
+                    $(ui.draggable).insertBefore($("#" + droppable_id));
                 }
             })
         },
@@ -237,4 +247,14 @@ function add_comment_fields(link, association, content) {
 
     var new_comment_label_id = $(link).attr('id').replace("add_comment", "comment_label");
     $("#" + new_id + "_comment_label").text($("#" + new_comment_description_id).val());
+}
+
+function ajax_flash_notice(message) {
+    $(".notice").text(message);
+    $(".notice").show();
+    flash_notice();
+}
+
+function flash_notice() {
+    $('.notice').fadeOut(4000);
 }

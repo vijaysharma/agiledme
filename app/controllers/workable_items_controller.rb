@@ -41,6 +41,19 @@ class WorkableItemsController < ApplicationController
     end
   end
 
+  def update_category
+    @workable_item = WorkableItem.find(params[:id])
+
+    respond_to do |format|
+      if @workable_item.update_attributes(:category => params[:category])
+        format.js {render :js => "ajax_flash_notice('#{params[:category]} updated successfully!!');"}
+      else
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
+        format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   def start
     @workable_item = WorkableItem.find(params[:id])
 

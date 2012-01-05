@@ -179,15 +179,34 @@ $(document).ready(function () {
         }
     });
 
-    $(".draggable").draggable();
-
-    $(".draggable").droppable({
-        drop: function(event, ui) {
-            $(this)
-                    .addClass("finished_task")
-                    .html("Dropped!");
-        }
+    $(".draggable").draggable({
+        zIndex: 9999,
+        containment: "#containment-wrapper",
+        opacity: 0.7,
+        helper: "clone",
+        cursor: "move"
     });
+
+    $(".droppable").droppable({
+        drop: function(event, ui) {
+            $.ajax({
+                url: "http://localhost:3000/projects",
+                dataType: "script",
+                data: {
+                    id: $(ui.draggable).attr('id').split('_')[2],
+                    category: $(this).attr('id').split('_')[0]
+                },
+                success: function(data) {
+                    alert('success');
+                }
+            })
+        },
+        hoverClass: "drop_target",
+        tolerance
+                :
+                'intersect'
+    });
+
 });
 
 function add_task_fields(link, association, content) {

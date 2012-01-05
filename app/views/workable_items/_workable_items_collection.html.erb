@@ -1,19 +1,21 @@
 <% workable_items.each do |workable_item| %>
     <% item_unique_id = "#{workable_item.category}_#{workable_item.type.downcase}_#{workable_item.id}"
-       class_for_item = "unscheduled hoverable"
+       class_for_item = "unscheduled"
+       draggable_droppable = ""
        cursor_style = "cursor: move;"
        if workable_item.new? and (workable_item.is_ready?)
-           class_for_item = "unstarted hoverable"
+           class_for_item = "unstarted"
        elsif workable_item.started? or workable_item.finished? or workable_item.delivered? or workable_item.rejected? or workable_item.accepted?
            class_for_item = workable_item.status
-           if !workable_item.accepted?
-               class_for_item = class_for_item + " hoverable"
-           else
-               cursor_style = "cursor: default;"
-           end
        end
+       if workable_item.accepted?
+           cursor_style = "cursor: default;"
+       else
+           draggable_droppable = " draggable droppable"
+       end
+
     %>
-    <div id="<%= "#{item_unique_id}_preview" %>" class="item draggable">
+    <div id="<%= "#{item_unique_id}_preview" %>" class="<%= "item #{draggable_droppable}" %>">
       <div id="<%= item_unique_id %>_content" class="<%= "storyItem #{class_for_item} notUnderEdit" %>">
         <div class="storyPreviewHeader">
           <div class="storySelector notDblclickable">&nbsp;</div>
@@ -22,6 +24,7 @@
           </div>
           <div class="icons">
             <img id="<%= item_unique_id %>_editButton" class="toggleExpandedButton" src="/images/story_collapsed.png" title="Expand">
+
             <div class="left">
               <img class="storyTypeIcon" src="<%= "/images/#{workable_item.type}.png" %>">
               <% if workable_item.is_estimatable? and workable_item.estimate != -1 %>

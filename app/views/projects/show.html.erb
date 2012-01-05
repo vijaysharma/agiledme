@@ -3,7 +3,7 @@
 <div class="story_content">
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
-    <tr>
+    <tr id="containment-wrapper">
       <% if !@project.workable_items.present?
              category_display_class = 'display:none'
          end

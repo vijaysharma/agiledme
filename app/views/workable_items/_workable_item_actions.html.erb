@@ -7,7 +7,7 @@
                       estimate_workable_item_path(workable_item, {:estimate => estimate}), :id => "#{item_unique_id}_estimate#{estimate}Button" %>
       <% end %>
     </div>
-<% elsif workable_item.new? and workable_item.is_ready? %>
+<% elsif workable_item.not_yet_started? and workable_item.is_ready? %>
     <%= link_to "Start", start_workable_item_path(workable_item), :id => "#{item_unique_id}_content_buttons_startButton", :class => "stateChangeButton notDblclickable start" %>
 <% elsif workable_item.started? %>
     <%= link_to "Finish", finish_workable_item_path(workable_item), :id => "#{item_unique_id}_content_buttons_finishButton", :class => "stateChangeButton notDblclickable finish" %>

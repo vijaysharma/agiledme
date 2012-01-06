@@ -3,7 +3,7 @@
        class_for_item = "unscheduled"
        draggable_droppable = ""
        cursor_style = "cursor: move;"
-       if workable_item.new? and (workable_item.is_ready?)
+       if workable_item.not_yet_started? and (workable_item.is_ready?)
            class_for_item = "unstarted"
        elsif workable_item.started? or workable_item.finished? or workable_item.delivered? or workable_item.rejected? or workable_item.accepted?
            class_for_item = workable_item.status

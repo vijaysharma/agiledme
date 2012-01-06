@@ -16,11 +16,12 @@ class WorkableItem < ActiveRecord::Base
   validates_presence_of :category
 
   after_create :update_created_by
+  before_update :add_status_history
 
-  aasm_initial_state :new
+  aasm_initial_state :not_yet_started
 
   aasm :column => :status do
-    state :new
+    state :not_yet_started
     state :started, :enter => :update_started_by
     state :finished, :enter => :update_finished_by
     state :delivered, :enter => :update_delivered_by
@@ -28,7 +29,7 @@ class WorkableItem < ActiveRecord::Base
     state :rejected, :enter => :update_rejected_by
 
     event :start do
-      transitions :to => :started, :from => [:new]
+      transitions :to => :started, :from => [:not_yet_started]
     end
 
     event :finish do
@@ -80,6 +81,13 @@ class WorkableItem < ActiveRecord::Base
     true;
   end
 
+  def add_status_history
+    if changed_attributes["status"].present?
+      action = (self.not_yet_started? ? "un started" : self.status)
+      add_history(action + " this "+ self.type.downcase)
+    end
+  end
+
   def add_history(event)
     WorkableItemHistory.new(:event => event,
                             :user_id => User.current_user.id,
@@ -112,7 +120,6 @@ class WorkableItem < ActiveRecord::Base
 
   def update_accepted_by
     add_history("accepted this "+ self.type.downcase)
-    update_category("done")
   end
 
   def update_rejected_by

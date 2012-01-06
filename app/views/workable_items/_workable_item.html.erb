@@ -43,182 +43,195 @@
     </div>
     <div class="storyDetailElement">
     <div class="storyDetails" id="story_newStory_details">
-      <div class="buttons">
-        <div class="storyDetailsButton">
-          <%= project_form.submit('Save') %>
-          <input id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="cancelEditButton" type="button" value="Cancel">
-          <% if !workable_item.new_record? %>
-              <%= project_form.submit('Delete') %>
-          <% else %>
-              <input type="submit" value="Delete" disabled="disabled">
-              <input type="submit" value="View history" disabled="disabled">
-          <% end %>
-        </div>
+    <div class="buttons">
+      <div class="storyDetailsButton">
+        <%= project_form.submit('Save') %>
+        <input id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="cancelEditButton" type="button" value="Cancel">
+        <% if !workable_item.new_record? %>
+            <%= project_form.submit('Delete') %>
+        <% else %>
+            <input type="submit" value="Delete" disabled="disabled">
+            <input type="submit" value="View history" disabled="disabled">
+        <% end %>
       </div>
-      <table class="storyDetailsTable">
-        <tbody>
-        <tr>
-          <td colspan="1" class="letContentExpand">
-            <div>
-              <%= project_form.select(:type, WorkableItem.types,
-                                      {:selected => workable_item.new_record? ? 'Story' : workable_item.type},
-                                      {:class => "storyDetailsField workable_item_type_select",
-                                       :id => "#{item_unique_id}_type"}) %>
-            </div>
-          </td>
-          <td colspan="1" class="storyDetailsLabelIcon">
-            <img id="<%= "#{item_unique_id}_type_image" %>" src="<%= item_type_image_source %>">
-          </td>
-          <td colspan="1" class="helpIcon lastCell">
-            <div id="<%= "#{item_unique_id}_help_story_types" %>" class="helpIcon">
-              <img src="/images/question_mark.gif">
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="1">
-            <div>
-              <%= project_form.select(:estimate, WorkableItem.estimates,
-                                      {:selected => workable_item.new_record? ? -1 : workable_item.estimate},
-                                      {:class => "storyDetailsField workable_item_estimate_select",
-                                       :id => "#{item_unique_id}_estimate",
-                                       :disabled => (!workable_item.new_record? and !workable_item.is_estimatable?)}) %>
-            </div>
-          </td>
-          <td colspan="1" class="storyDetailsLabelIcon">
-            <% if workable_item.new_record? or workable_item.is_estimatable? %>
-                <img id="<%= "#{item_unique_id}_estimate_image" %>" src="<%= item_estimate_image_source %>">
-            <% end %>
-          </td>
-          <td colspan="1" class="helpIcon">
-            <div id="<%= "#{item_unique_id}_help_estimates" %>" class="helpIcon">
-              <img src="/images/question_mark.gif">
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div>
-              <%= project_form.collection_select(:requester, project_users, :user_id, :email, :class => "storyDetailsField") %>
-            </div>
-          </td>
-          <td colspan="3">
-            <label id="workable_item_requester_label" for="workable_item_requester">
-              <div>
-                <div class="emphasizedFieldLabel">requested</div>
-                <div class="fieldLabel">this story</div>
-              </div>
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="1">
-            <div>
-              <%= project_form.collection_select(:owner, project_users, :user_id, :email, :prompt => true) %>
-            </div>
-          </td>
-          <td colspan="3">
-            <label id="workable_item_owner_label" for="workable_item_owner">
-              <div>
-                <div class="emphasizedFieldLabel">owns</div>
-                <div class="fieldLabel">this story</div>
-              </div>
-            </label>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-      <!--<div class="section">-->
-      <!--<div class="header">-->
-      <!--<div class="label">Labels</div>-->
-      <!--</div>-->
-      <!--<div class="wrapper">-->
-      <!--<input class="labels" name="story[labels]" style="display: none;">-->
-
-      <!--<div class="labels saveable">-->
-      <!--<img src="/images/labels_dropdown.png" class="labels_dropdown_arrow">-->
-      <!--<ul>-->
-      <!--<li style="position: relative;" data-value="solaro.in" class="">-->
-      <!--<a class="text">-->
-      <!--<span>solaro.in</span>-->
-      <!--</a>-->
-      <!--<a class="remove">-->
-      <!--<span>x</span>-->
-      <!--</a>-->
-      <!--<input tabindex="-1" style="width: 0pt; height: 0pt; position: absolute; left: -10000em;">-->
-      <!--</li>-->
-      <!--</ul>-->
-      <!--<input type="text" class="create ui-autocomplete-input" placeholder="" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">-->
-      <!--<span style="position: absolute; top: -10000em; left: -10000em; width: auto; font-size: 12px; font-family: Arial,Helvetica,sans-serif; font-weight: 400; letter-spacing: normal; white-space: nowrap;">-->
-      <!--</span>-->
-      <!--</div>-->
-      <!--<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 28px; left: 0px; display: none; width: 1196px;">-->
-      <!--<li class="ui-menu-item" role="menuitem">-->
-      <!--<a class="ui-corner-all" tabindex="-1">admin</a>-->
-      <!--</li>-->
-      <!--<li class="ui-menu-item" role="menuitem">-->
-      <!--<a class="ui-corner-all" tabindex="-1">android</a>-->
-      <!--</li>-->
-      <!--</ul>-->
-      <!--</div>-->
-      <!--</div>-->
-      <div class="section">
-        <div class="storyDescriptionTable">
-          <div class="header">
-            <div class="label">Description</div>
-            <div id="workable_item_description_details_help" class="helpIcon">
-              <img src="/images/question_mark.gif">
-            </div>
-            <div class="clear">
-            </div>
-          </div>
+    </div>
+    <table class="storyDetailsTable">
+      <tbody>
+      <tr>
+        <td colspan="1" class="letContentExpand">
           <div>
-            <%= project_form.text_area :description, :cols => 1, :rows => 1, :class => 'textAreaFocus description_area autoresize expand17-99999' %>
+            <%= project_form.select(:type, WorkableItem.types,
+                                    {:selected => workable_item.new_record? ? 'Story' : workable_item.type},
+                                    {:class => "storyDetailsField workable_item_type_select",
+                                     :id => "#{item_unique_id}_type"}) %>
+          </div>
+        </td>
+        <td colspan="1" class="storyDetailsLabelIcon">
+          <img id="<%= "#{item_unique_id}_type_image" %>" src="<%= item_type_image_source %>">
+        </td>
+        <td colspan="1" class="helpIcon lastCell">
+          <div id="<%= "#{item_unique_id}_help_story_types" %>" class="helpIcon">
+            <img src="/images/question_mark.gif">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1">
+          <div>
+            <%= project_form.select(:estimate, WorkableItem.estimates,
+                                    {:selected => workable_item.new_record? ? -1 : workable_item.estimate},
+                                    {:class => "storyDetailsField workable_item_estimate_select",
+                                     :id => "#{item_unique_id}_estimate",
+                                     :disabled => (!workable_item.new_record? and !workable_item.is_estimatable?)}) %>
+          </div>
+        </td>
+        <td colspan="1" class="storyDetailsLabelIcon">
+          <% if workable_item.new_record? or workable_item.is_estimatable? %>
+              <img id="<%= "#{item_unique_id}_estimate_image" %>" src="<%= item_estimate_image_source %>">
+          <% end %>
+        </td>
+        <td colspan="1" class="helpIcon">
+          <div id="<%= "#{item_unique_id}_help_estimates" %>" class="helpIcon">
+            <img src="/images/question_mark.gif">
+          </div>
+        </td>
+      </tr>
+      <% if !workable_item.new_record? %>
+          <tr>
+            <td>
+              <div>
+                <%= project_form.select(:status, WorkableItem.aasm_states_for_select,
+                                        {:class => "storyDetailsField workable_item_estimate_select",
+                                         :id => "#{item_unique_id}_status"}) %>
+              </div>
+            </td>
+            <td colspan="3">
+            </td>
+          </tr>
+      <% end %>
+      <tr>
+        <td>
+          <div>
+            <%= project_form.collection_select(:requester, project_users, :user_id, :email, :class => "storyDetailsField") %>
+          </div>
+        </td>
+        <td colspan="3">
+          <label id="workable_item_requester_label" for="workable_item_requester">
+            <div>
+              <div class="emphasizedFieldLabel">requested</div>
+              <div class="fieldLabel">this story</div>
+            </div>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1">
+          <div>
+            <%= project_form.collection_select(:owner, project_users, :user_id, :email, :prompt => true) %>
+          </div>
+        </td>
+        <td colspan="3">
+          <label id="workable_item_owner_label" for="workable_item_owner">
+            <div>
+              <div class="emphasizedFieldLabel">owns</div>
+              <div class="fieldLabel">this story</div>
+            </div>
+          </label>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <!--<div class="section">-->
+    <!--<div class="header">-->
+    <!--<div class="label">Labels</div>-->
+    <!--</div>-->
+    <!--<div class="wrapper">-->
+    <!--<input class="labels" name="story[labels]" style="display: none;">-->
+
+    <!--<div class="labels saveable">-->
+    <!--<img src="/images/labels_dropdown.png" class="labels_dropdown_arrow">-->
+    <!--<ul>-->
+    <!--<li style="position: relative;" data-value="solaro.in" class="">-->
+    <!--<a class="text">-->
+    <!--<span>solaro.in</span>-->
+    <!--</a>-->
+    <!--<a class="remove">-->
+    <!--<span>x</span>-->
+    <!--</a>-->
+    <!--<input tabindex="-1" style="width: 0pt; height: 0pt; position: absolute; left: -10000em;">-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--<input type="text" class="create ui-autocomplete-input" placeholder="" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">-->
+    <!--<span style="position: absolute; top: -10000em; left: -10000em; width: auto; font-size: 12px; font-family: Arial,Helvetica,sans-serif; font-weight: 400; letter-spacing: normal; white-space: nowrap;">-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 28px; left: 0px; display: none; width: 1196px;">-->
+    <!--<li class="ui-menu-item" role="menuitem">-->
+    <!--<a class="ui-corner-all" tabindex="-1">admin</a>-->
+    <!--</li>-->
+    <!--<li class="ui-menu-item" role="menuitem">-->
+    <!--<a class="ui-corner-all" tabindex="-1">android</a>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="section">
+      <div class="storyDescriptionTable">
+        <div class="header">
+          <div class="label">Description</div>
+          <div id="workable_item_description_details_help" class="helpIcon">
+            <img src="/images/question_mark.gif">
+          </div>
+          <div class="clear">
           </div>
         </div>
+        <div>
+          <%= project_form.text_area :description, :cols => 1, :rows => 1, :class => 'textAreaFocus description_area autoresize expand17-99999' %>
+        </div>
       </div>
-      <div class="taskTableDiv">
-        <div class="section">
-          <div id="<%= "#{item_unique_id}_tasks_header" %>" class="header">
-            Tasks <span class="count">(<%= workable_item.tasks.count %>)</span>
-          </div>
-          <ol id="<%= "#{item_unique_id}_tasks" %>" class="task_list ui-sortable">
-            <% project_form.fields_for :tasks do |task_builder| %>
-                <%= render :partial => 'workable_items/task_fields', :locals => {:f => task_builder} %>
-            <% end %>
-          </ol>
-          <div class="add_task">
-            <textarea id="<%= "#{item_unique_id}_new_task_description" %>" cols="1" rows="1" class="tasksTextArea autoresize expand17-99999 new_task_text">add
-              new task</textarea>
+    </div>
+    <div class="taskTableDiv">
+      <div class="section">
+        <div id="<%= "#{item_unique_id}_tasks_header" %>" class="header">
+          Tasks <span class="count">(<%= workable_item.tasks.count %>)</span>
+        </div>
+        <ol id="<%= "#{item_unique_id}_tasks" %>" class="task_list ui-sortable">
+          <% project_form.fields_for :tasks do |task_builder| %>
+              <%= render :partial => 'workable_items/task_fields', :locals => {:f => task_builder} %>
+          <% end %>
+        </ol>
+        <div class="add_task">
+          <textarea id="<%= "#{item_unique_id}_new_task_description" %>" cols="1" rows="1" class="tasksTextArea autoresize expand17-99999 new_task_text">add
+            new task</textarea>
               <span id="<%= "#{item_unique_id}_new_task_add_link" %>" class="add_task" style="display:none;">
                 <%= link_to_add_task_fields "Add", project_form, :tasks, item_unique_id %>
               </span>
-          </div>
         </div>
       </div>
-      <div class="commentTableDiv">
-        <div class="section">
-          <div id="<%= "#{item_unique_id}_comments_header" %>" class="header">
-            Comments <span class="commentCount">(<%= workable_item.comments.count %>)</span>
-          </div>
-          <table class="commentsTable">
-            <tbody id="<%= "#{item_unique_id}_comments" %>">
-            <% project_form.fields_for :comments do |comment_builder| %>
-                <%= render :partial => 'workable_items/comment_fields', :locals => {:f => comment_builder} %>
-            <% end %>
-            </tbody>
-          </table>
-          <div class="add_comment">
-            <textarea id="<%= "#{item_unique_id}_new_comment_description" %>" cols="20" rows="1" class="tasksTextArea autoresize expand17-99999 new_comment_text">add
-              a comment</textarea>
+    </div>
+    <div class="commentTableDiv">
+      <div class="section">
+        <div id="<%= "#{item_unique_id}_comments_header" %>" class="header">
+          Comments <span class="commentCount">(<%= workable_item.comments.count %>)</span>
+        </div>
+        <table class="commentsTable">
+          <tbody id="<%= "#{item_unique_id}_comments" %>">
+          <% project_form.fields_for :comments do |comment_builder| %>
+              <%= render :partial => 'workable_items/comment_fields', :locals => {:f => comment_builder} %>
+          <% end %>
+          </tbody>
+        </table>
+        <div class="add_comment">
+          <textarea id="<%= "#{item_unique_id}_new_comment_description" %>" cols="20" rows="1" class="tasksTextArea autoresize expand17-99999 new_comment_text">add
+            a comment</textarea>
 
-            <div class="commentText">(Format using *<b>bold</b>* and _<i>italic</i>_ text.)</div>
+          <div class="commentText">(Format using *<b>bold</b>* and _<i>italic</i>_ text.)</div>
               <span id="<%= "#{item_unique_id}_new_comment_add_link" %>" class="add_comment" style="display:none;">
                 <%= link_to_add_comment_fields "Add", project_form, :comments, item_unique_id %>
               </span>
-          </div>
         </div>
       </div>
+    </div>
     </div>
 
 

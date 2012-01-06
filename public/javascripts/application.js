@@ -207,9 +207,6 @@ $(document).ready(function () {
     });
 
     $(".draggable").draggable({
-//        drag: function(){
-//            $(this).addClass('drag-highlight');
-//        },
         addClasses: false,
         zIndex: 9999,
         revert: true,
@@ -223,14 +220,19 @@ $(document).ready(function () {
     $(".droppable").droppable({
         drop: function(event, ui) {
             var droppable_id = $(this).attr('id');
-            var id = $(ui.draggable).attr('id').split('_')[2];
+
+            var item_dropped_id = $(ui.draggable).attr('id');
+            var priority_to_set = $("#"+droppable_id.replace('preview', 'priority')).val();
+            var id = item_dropped_id.split('_')[2];
+
             $.ajax({
                 type: "PUT",
                 url: "/workable_items/" + id + "/update_category_and_priority",
                 dataType: "script",
                 data: {
                     id: id,
-                    category: $(this).attr('id').split('_')[0]
+                    priority: (priority_to_set - 1),
+                    category: droppable_id.split('_')[0]
                 },
                 success: function(data) {
                     $(ui.draggable).insertBefore($("#" + droppable_id));

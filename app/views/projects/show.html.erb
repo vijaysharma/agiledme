@@ -21,8 +21,7 @@
                 <span class="panelTitle"><%= category.upcase %> </span>
                 <span class="external_icon"></span>
             <span class="panelSubtitle">
-              displaying last 12 iterations (<a href="?include_all_iterations=true" class=<%= "show#{category.capitalize}StoriesLink" %>>show
-              all</a>)
+              displaying last 12 iterations (<a href="#" class=<%= "show#{category.capitalize}StoriesLink" %>>show all</a>)
             </span>
               </div>
             </div>
@@ -40,9 +39,6 @@
                            @workable_item = WorkableItem.new
                            @workable_item.project = @project
                            @workable_item.requester = current_user.id
-                           @workable_item.priority = -1
-                           @workable_item.category = 'icebox'
-                           @workable_item.title = 'Enter title of the item'
                         %>
                         <%= render :partial => 'workable_items/workable_item', :locals => {:workable_item => @workable_item} %>
                     <% end %>

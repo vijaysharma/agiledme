@@ -15,8 +15,8 @@ class WorkableItem < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :category
 
-  after_create :update_created_by
-  before_update :add_status_history
+  after_create :set_initial_default_values
+  before_update :update_required_params
 
   aasm_initial_state :not_yet_started
 
@@ -53,6 +53,10 @@ class WorkableItem < ActiveRecord::Base
     end
   end
 
+  def self.next_priority_for(category)
+    WorkableItem.maximum('priority', :group => 'category')[category] + 1
+  end
+
   def self.types
     %w[Story Bug Chore]
   end
@@ -81,11 +85,9 @@ class WorkableItem < ActiveRecord::Base
     true
   end
 
-  def add_status_history
-    if changed_attributes["status"].present?
-      action = (self.not_yet_started? ? "un started" : self.status)
-      add_history(action + " this "+ self.type.downcase)
-    end
+  def update_required_params
+    update_status_change_history
+    update_priorities_for_category
   end
 
   def add_history(event)
@@ -98,13 +100,36 @@ class WorkableItem < ActiveRecord::Base
 
   private
 
-  def update_started_by
-    add_history("started this "+ self.type.downcase)
-    set_owner_as_current_user
-    update_category("current")
+  def update_status_change_history
+    if changed_attributes["status"].present?
+      action = (self.not_yet_started? ? "un started" : self.status)
+      add_history(action + " this "+ self.type.downcase)
+    end
   end
 
-  def update_created_by
+  def re_prioritized_in_same_category
+    changed_attributes["priority"].present? and changed_attributes["category"].blank?
+  end
+
+  def update_priorities_for_category
+    if re_prioritized_in_same_category
+      raise "to do man"
+#      get_items_between_the_old_and_new_priority
+      action = (self.not_yet_started? ? "un started" : self.status)
+      add_history(action + " this "+ self.type.downcase)
+    end
+  end
+
+  def update_started_by
+    add_history("started this "+ self.type.downcase)
+    self.category = "current"
+    set_owner_as_current_user
+  end
+
+  def set_initial_default_values
+    self.category = 'icebox'
+    self.priority = WorkableItem.next_priority_for("icebox")
+    self.save
     add_history("created this "+ self.type.downcase)
   end
 
@@ -133,11 +158,6 @@ class WorkableItem < ActiveRecord::Base
 
   def set_owner_as_current_user
     self.owner = User.current_user.id
-    self.save!
-  end
-
-  def update_category(category)
-    self.category = category
     self.save!
   end
 

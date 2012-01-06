@@ -231,8 +231,8 @@ $(document).ready(function () {
                 dataType: "script",
                 data: {
                     id: id,
-                    priority: (priority_to_set - 1),
-                    category: droppable_id.split('_')[0]
+                    workable_item: {priority: (parseInt(priority_to_set) + 1),
+                    category: droppable_id.split('_')[0]}
                 },
                 success: function(data) {
                     $(ui.draggable).insertBefore($("#" + droppable_id));

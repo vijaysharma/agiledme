@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(:version => 20111225133451) do
   end
 
   create_table "workable_items", :force => true do |t|
-    t.string   "title"
+    t.string   "title",       :default => "Enter title of the item"
     t.string   "description"
     t.integer  "requester"
     t.integer  "owner"
@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(:version => 20111225133451) do
     t.string   "status"
     t.integer  "estimate"
     t.string   "type"
-    t.string   "category"
-    t.integer  "priority"
+    t.string   "category",    :default => "icebox"
+    t.integer  "priority",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

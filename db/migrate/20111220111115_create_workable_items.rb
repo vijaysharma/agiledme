@@ -11,6 +11,7 @@ class CreateWorkableItems < ActiveRecord::Migration
       t.integer :estimate
       t.string :type
       t.string :category
+      t.integer :priority
 
       t.timestamps
     end

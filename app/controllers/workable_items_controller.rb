@@ -41,7 +41,7 @@ class WorkableItemsController < ApplicationController
     end
   end
 
-  def update_category
+  def update_category_and_priority
     @workable_item = WorkableItem.find(params[:id])
 
     respond_to do |format|

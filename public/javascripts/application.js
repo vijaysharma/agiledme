@@ -177,6 +177,19 @@ $(document).ready(function () {
         }
     });
 
+    $(".titleInputField").focusin(function() {
+        if ($(this).val() == 'Enter title of the item') {
+            $(this).val('');
+        }
+
+    });
+
+    $(".titleInputField").focusout(function() {
+        if ($(this).val() == '') {
+            $(this).val('Enter title of the item');
+        }
+    });
+
     $(".new_comment_text").focusin(function() {
         $(this).val('');
         $(this).addClass("textAreaFocus");
@@ -194,8 +207,14 @@ $(document).ready(function () {
     });
 
     $(".draggable").draggable({
+//        drag: function(){
+//            $(this).addClass('drag-highlight');
+//        },
+        addClasses: false,
         zIndex: 9999,
-        containment: "#containment-wrapper",
+        revert: true,
+        revertDuration: 10,
+        containment: "#all_panels",
         opacity: 0.7,
         helper: "clone",
         cursor: "move"
@@ -207,7 +226,7 @@ $(document).ready(function () {
             var id = $(ui.draggable).attr('id').split('_')[2];
             $.ajax({
                 type: "PUT",
-                url: "/workable_items/" + id + "/update_category",
+                url: "/workable_items/" + id + "/update_category_and_priority",
                 dataType: "script",
                 data: {
                     id: id,
@@ -215,13 +234,13 @@ $(document).ready(function () {
                 },
                 success: function(data) {
                     $(ui.draggable).insertBefore($("#" + droppable_id));
+                    $(ui.draggable).addClass("drag-highlight");
                 }
             })
         },
+        addClasses: false,
         hoverClass: "drop_target",
-        tolerance
-                :
-                'intersect'
+        tolerance: 'intersect'
     });
 
 });

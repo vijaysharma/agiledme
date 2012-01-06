@@ -211,7 +211,7 @@ img {
     margin-top:-2px;
 }
 
-.story_content .item .storyItem.drag-highlight {
+.drag-highlight {
     background-color:#FFFF99;
 }
 
@@ -846,6 +846,10 @@ div.storyDetails .attachmentWidget .attach_files .text {
 
 .story_content .item .unstarted {
     background-color: #F4F4F4;
+}
+
+.story_content .item .unstarted:hover {
+    background-color: #E6E6E6;
 }
 
 .story_content .item .unscheduled {

@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20111225133451) do
     t.integer  "estimate"
     t.string   "type"
     t.string   "category"
+    t.integer  "priority"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

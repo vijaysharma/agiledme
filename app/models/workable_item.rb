@@ -78,7 +78,7 @@ class WorkableItem < ActiveRecord::Base
   end
 
   def is_estimatable?
-    true;
+    true
   end
 
   def add_status_history

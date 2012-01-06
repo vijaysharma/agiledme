@@ -40,6 +40,7 @@
                            @workable_item = WorkableItem.new
                            @workable_item.project = @project
                            @workable_item.requester = current_user.id
+                           @workable_item.priority = -1
                            @workable_item.category = 'icebox'
                            @workable_item.title = 'Enter title of the item'
                         %>

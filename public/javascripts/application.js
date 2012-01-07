@@ -221,22 +221,20 @@ $(document).ready(function () {
         drop: function(event, ui) {
             var droppable_id = $(this).attr('id');
 
-            var item_dropped_id = $(ui.draggable).attr('id');
-            var priority_to_set = $("#"+droppable_id.replace('preview', 'priority')).val();
-            var id = item_dropped_id.split('_')[2];
-
+            var dropped_id = $(ui.draggable).attr('id');
+            var droppable_priority = $("#"+droppable_id.replace('preview', 'priority')).val();
+            var item_id_to_change_priority_of = dropped_id.split('_')[2];
             $.ajax({
                 type: "PUT",
-                url: "/workable_items/" + id + "/update_category_and_priority",
+                url: "/workable_items/" + item_id_to_change_priority_of + "/update_category_and_priority",
                 dataType: "script",
                 data: {
-                    id: id,
-                    workable_item: {priority: (parseInt(priority_to_set) + 1),
-                    category: droppable_id.split('_')[0]}
+                    id: item_id_to_change_priority_of,
+                    droppable_priority: droppable_priority,
+                    category: droppable_id.split('_')[0]
                 },
                 success: function(data) {
                     $(ui.draggable).insertBefore($("#" + droppable_id));
-                    $(ui.draggable).addClass("drag-highlight");
                 }
             })
         },

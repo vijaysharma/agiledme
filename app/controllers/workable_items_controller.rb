@@ -45,7 +45,7 @@ class WorkableItemsController < ApplicationController
     @workable_item = WorkableItem.find(params[:id])
 
     respond_to do |format|
-      if @workable_item.update_attributes!(params[:workable_item])
+      if @workable_item.update_priorities_for_category(params[:droppable_priority].to_i, params[:category])
         format.js {render :js => "ajax_flash_notice('Updated successfully!!');"}
       else
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }

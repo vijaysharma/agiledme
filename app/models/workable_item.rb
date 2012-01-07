@@ -16,7 +16,6 @@ class WorkableItem < ActiveRecord::Base
   validates_presence_of :category
 
   after_create :set_initial_default_values
-  before_update :update_required_params
 
   aasm_initial_state :not_yet_started
 
@@ -85,11 +84,6 @@ class WorkableItem < ActiveRecord::Base
     true
   end
 
-  def update_required_params
-    update_status_change_history
-    update_priorities_for_category
-  end
-
   def add_history(event)
     WorkableItemHistory.new(:event => event,
                             :user_id => User.current_user.id,
@@ -97,6 +91,17 @@ class WorkableItem < ActiveRecord::Base
                             :project_id => self.project.id).save!
   end
 
+
+  def update_priorities_for_category(other_priority, other_category)
+    if re_prioritized_in_same_category?(other_category)
+      if has_priority_increased?(other_priority)
+        decrement_priorities_of_all_items_between_this_item_and_other_item(other_priority)
+      elsif has_priority_decreased?(other_priority)
+        increment_priorities_of_all_items_between_this_item_and_other_item(other_priority)
+      end
+
+    end
+  end
 
   private
 
@@ -107,17 +112,34 @@ class WorkableItem < ActiveRecord::Base
     end
   end
 
-  def re_prioritized_in_same_category
-    changed_attributes["priority"].present? and changed_attributes["category"].blank?
+  def re_prioritized_in_same_category?(category)
+    self.category.eql? category
   end
 
-  def update_priorities_for_category
-    if re_prioritized_in_same_category
-      raise "to do man"
-#      get_items_between_the_old_and_new_priority
-      action = (self.not_yet_started? ? "un started" : self.status)
-      add_history(action + " this "+ self.type.downcase)
+  def has_priority_increased?(other_priority)
+    self.priority < other_priority
+  end
+
+  def has_priority_decreased?(other_priority)
+    self.priority > other_priority
+  end
+
+  def decrement_priorities_of_all_items_between_this_item_and_other_item(other_priority)
+    items_between_this_and_other = self.project.workable_items.where("priority > ? AND priority <= ? and category = ?", self.priority, other_priority, self.category)
+    items_between_this_and_other.each do |item|
+      current_item_priority = item.priority
+      item.update_attributes!(:priority => (current_item_priority - 1))
     end
+    self.update_attributes!(:priority => other_priority)
+  end
+
+  def increment_priorities_of_all_items_between_this_item_and_other_item(other_priority)
+    items_between_this_and_other = self.project.workable_items.where("priority <= ? AND priority > ? and category = ?", self.priority, other_priority, self.category)
+    items_between_this_and_other.each do |item|
+      current_item_priority = item.priority
+      item.update_attributes!(:priority => (current_item_priority + 1))
+    end
+    self.update_attributes!(:priority => (other_priority + 1))
   end
 
   def update_started_by

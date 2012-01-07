@@ -77,7 +77,7 @@ class WorkableItem < ActiveRecord::Base
   end
 
   def is_unestimated?
-    is_estimatable? and self.estimate < 0
+    is_estimatable? and (self.estimate.blank? or self.estimate < 0)
   end
 
   def is_estimatable?

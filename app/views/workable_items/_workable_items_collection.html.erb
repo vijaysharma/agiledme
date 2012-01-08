@@ -1,5 +1,5 @@
 <% workable_items.each do |workable_item| %>
-    <% item_unique_id = "#{workable_item.category}_#{workable_item.type.downcase}_#{workable_item.id}"
+    <% item_unique_id = "#{workable_item.id}"
        class_for_item = "unscheduled"
        draggable_droppable = ""
        cursor_style = "cursor: move;"

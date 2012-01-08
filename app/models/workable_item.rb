@@ -95,11 +95,11 @@ class WorkableItem < ActiveRecord::Base
   def update_priorities_for_category(other_priority, other_category)
     if re_prioritized_in_same_category?(other_category)
       if has_priority_increased?(other_priority)
-        decrement_priorities_of_all_items_between_this_item_and_other_item(other_priority)
+        decrement_priorities_of_all_items_between_this_and_other_item(other_priority)
       elsif has_priority_decreased?(other_priority)
-        increment_priorities_of_all_items_between_this_item_and_other_item(other_priority)
+        increment_priorities_of_all_items_between_this_and_other_item(other_priority)
       end
-
+      self.update_attributes!(:priority => other_priority)
     end
   end
 
@@ -124,22 +124,18 @@ class WorkableItem < ActiveRecord::Base
     self.priority > other_priority
   end
 
-  def decrement_priorities_of_all_items_between_this_item_and_other_item(other_priority)
+  def decrement_priorities_of_all_items_between_this_and_other_item(other_priority)
     items_between_this_and_other = self.project.workable_items.where("priority > ? AND priority <= ? and category = ?", self.priority, other_priority, self.category)
     items_between_this_and_other.each do |item|
-      current_item_priority = item.priority
-      item.update_attributes!(:priority => (current_item_priority - 1))
+      item.update_attributes!(:priority => (item.priority - 1))
     end
-    self.update_attributes!(:priority => other_priority)
   end
 
-  def increment_priorities_of_all_items_between_this_item_and_other_item(other_priority)
-    items_between_this_and_other = self.project.workable_items.where("priority <= ? AND priority > ? and category = ?", self.priority, other_priority, self.category)
+  def increment_priorities_of_all_items_between_this_and_other_item(other_priority)
+    items_between_this_and_other = self.project.workable_items.where("priority < ? AND priority >= ? and category = ?", self.priority, other_priority, self.category)
     items_between_this_and_other.each do |item|
-      current_item_priority = item.priority
-      item.update_attributes!(:priority => (current_item_priority + 1))
+      item.update_attributes!(:priority => (item.priority + 1))
     end
-    self.update_attributes!(:priority => (other_priority + 1))
   end
 
   def update_started_by

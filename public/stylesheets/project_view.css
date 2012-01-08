@@ -5,9 +5,9 @@
     width: 100%;
 }
 
-.no_workable_items{
-    margin:5px;
-    text-align:center;
+.no_workable_items {
+    margin: 5px;
+    text-align: center;
 }
 
 .story_content .item ol.task_list > li > ul li a:first-child {
@@ -15,21 +15,23 @@
 }
 
 .item_to_delete {
-    text-decoration:line-through;
+    text-decoration: line-through;
     background-color: #ffcccc
 }
 
 .finished_task {
-    text-decoration:line-through;
+    text-decoration: line-through;
     background-color: #ccffcc
 }
 
-.expand17-99999{
-    height: 18px; overflow: hidden;
+.expand17-99999 {
+    height: 18px;
+    overflow: hidden;
 }
 
 .add_task {
-    padding-top:5px;display:block;
+    padding-top: 5px;
+    display: block;
 }
 
 .toggleExpandedButton, .iterationHeaderToggleExpandedButton {
@@ -56,8 +58,8 @@ img {
     margin: 0 7px 3px;
     vertical-align: bottom;
     width: 6px;
-    line-height:22px;
-    font-size:0.8em;
+    line-height: 22px;
+    font-size: 0.8em;
 }
 
 .flyoverIcon {
@@ -72,14 +74,10 @@ img {
 }
 
 .list {
-    background: #FFFFFF;
+    background: #FFFFFF url("/images/panel_bg_left.png") repeat-y scroll left top;
     height: 100%;
     padding-left: 3px;
     position: relative;
-}
-
-.list {
-    background: url("/images/panel_bg_left.png") repeat-y scroll left top #FFFFFF;
     height: 100%;
     padding-left: 3px;
     position: relative;
@@ -97,14 +95,8 @@ img {
     position: relative;
     width: 3px;
     z-index: 5;
-}
-
-.list > .btm .right {
     background-position: right top;
     float: right;
-}
-
-.list > .btm .right {
     height: 3px;
 }
 
@@ -113,33 +105,22 @@ img {
     position: relative;
     width: 3px;
     z-index: 5;
-}
-
-.list > .btm .left {
     float: left;
+    height: 3px;
 }
 
 .left {
     float: left;
 }
 
-.list > .btm .left {
-    height: 3px;
-}
-
-.list > .btm .mid {
-    height: 3px;
-}
 .list > .btm .mid {
     background: url("/images/panel_bg_btm.png") repeat-x scroll 0 0 transparent;
+    height: 3px;
 }
 
 .items {
     height: 100%;
     position: relative;
-}
-
-.items {
     background: url("/images/panel_bg_right.png") repeat-y scroll right top #FFFFFF;
     padding-right: 3px;
 }
@@ -195,7 +176,7 @@ img {
 .story_content .storyLabels {
     color: #006633;
     cursor: default;
-    font-family: arial,sans-serif;
+    font-family: arial, sans-serif;
     font-size: 12px;
     margin-right: 4px;
     margin-top: 1px;
@@ -206,13 +187,13 @@ img {
 }
 
 .story_content .items .item.drop_target {
-    background-color:#666666;
+    background-color: #666666;
     border-top: 2px solid;
-    margin-top:-2px;
+    margin-top: -2px;
 }
 
 .drag-highlight {
-    background-color:#FFFF99;
+    background-color: #FFFF99;
 }
 
 .fieldLabel {
@@ -292,7 +273,6 @@ div.storyDetails .storyDetailsButton, .storyDetailsButton > div {
     padding: 0;
 }
 
-
 div.storyDetails .storyDetailsTable {
     border-collapse: separate;
     border-spacing: 0 0;
@@ -304,8 +284,8 @@ div.storyDetails .storyDetailsTable td.letContentExpand {
 }
 
 .storyDetails select {
-    width:150px;
-    font-family: Arial,Helvetica,sans-serif;
+    width: 150px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .storyDetails label, .storyDetails input, .storyDetails select {
@@ -368,7 +348,7 @@ div.storyDetails .section .commentsTable td.commentInfo div {
 }
 
 div.storyDetails .section .commentsTable td.commentInfo div:hover {
-    background-color:#EBE29C
+    background-color: #EBE29C
 }
 
 .commentText {
@@ -400,6 +380,7 @@ div.storyDetails .section .commentsTable td.commentInfo a.delete_comment {
     float: left;
     padding-left: 10px;
 }
+
 div.storyDetails .section .commentsTable td.commentInfo a.delete_comment img {
     display: block;
 }
@@ -410,9 +391,8 @@ div.storyDetails .section input[type="submit"] {
 }
 
 div.storyDetails div.wrapper {
-position: relative;
-    }
-
+    position: relative;
+}
 
 div.storyDetails div.labels {
     background-attachment: scroll;
@@ -560,7 +540,7 @@ div.storyDetails div.labels a.remove > span {
 }
 
 div.storyDetails div.labels ul > li {
-    background: -moz-linear-gradient(center top , #88AF0A, #729A07) repeat scroll 0 0 transparent;
+    background: -moz-linear-gradient(center top, #88AF0A, #729A07) repeat scroll 0 0 transparent;
     border: 1px solid #447200;
     border-radius: 11px 11px 11px 11px;
     cursor: pointer;
@@ -616,8 +596,9 @@ body.mozilla #content .item .storyItem div.formatted_text_area {
     padding: 3px 2px 1px 3px;
     position: relative;
 }
+
 .story_content .item ol.task_list > li:hover {
-    background:none repeat scroll 0 0 #EBE29C;
+    background: none repeat scroll 0 0 #EBE29C;
 }
 
 .story_content .item ol.task_list * {
@@ -664,7 +645,7 @@ body.mozilla #content .item .storyItem div.formatted_text_area {
     color: #000000;
     cursor: default;
     display: block;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: normal;
     line-height: 18px;
@@ -903,7 +884,6 @@ div.storyDetails .attachmentWidget .attach_files .text {
     background-image: url("/images/accept.png");
 }
 
-
 .story_content .item .storyItem a.accept:hover {
     background-image: url("/images/accept_hover.png");
 }
@@ -943,7 +923,7 @@ div.storyDetails .attachmentWidget .attach_files .text {
 
 .story_content .item .storyItem a.restart {
     background-image: url("/images/restart.png");
-     color: #222222;
+    color: #222222;
     padding-left: 20px;
     text-align: left;
     width: 46px;
@@ -1034,8 +1014,8 @@ div.storyDetails .attachmentWidget .attach_files .text {
 }
 
 .panelHeaderLeft, .panelHeaderRight {
-    /*margin-left: -1px;*/
-    /*margin-right: -1px;*/
+/*margin-left: -1px;*/
+/*margin-right: -1px;*/
     width: 10px;
 }
 
@@ -1051,6 +1031,7 @@ div.storyDetails .attachmentWidget .attach_files .text {
     margin-top: 5px;
     width: 16px;
 }
+
 .story_content .panelLink.closePanel:hover {
     background: url("/images/close_panel_hover.png") no-repeat scroll 0 0 transparent;
 }

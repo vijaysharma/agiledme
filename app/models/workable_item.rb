@@ -92,7 +92,10 @@ class WorkableItem < ActiveRecord::Base
   end
 
 
-  def update_priorities_for_category(other_priority, other_category)
+  def update_priorities_for_category(other_item_id)
+    other_item = WorkableItem.find(other_item_id)
+    other_priority = other_item.priority
+    other_category = other_item.category
     if re_prioritized_in_same_category?(other_category)
       if has_priority_increased?(other_priority)
         decrement_priorities_of_all_items_between_this_and_other_item(other_priority)
@@ -100,6 +103,16 @@ class WorkableItem < ActiveRecord::Base
         increment_priorities_of_all_items_between_this_and_other_item(other_priority)
       end
       self.update_attributes!(:priority => other_priority)
+    else
+      other_item.increment_priorities_of_all_items_of_higher_priority
+      self.update_attributes!(:priority => (other_priority + 1), :category => other_category)
+    end
+  end
+
+  def increment_priorities_of_all_items_of_higher_priority
+    all_items_of_higher_priority = self.project.workable_items.where("priority > ? and category = ?", self.priority, self.category)
+    all_items_of_higher_priority.each do |item|
+      item.update_attributes!(:priority => (item.priority + 1))
     end
   end
 

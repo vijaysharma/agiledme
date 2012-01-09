@@ -42,6 +42,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.xml
   def create
+    raise params.inspect
     @project = Project.new(params[:project])
     @project.users << current_user
     respond_to do |format|

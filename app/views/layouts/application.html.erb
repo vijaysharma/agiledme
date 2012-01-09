@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <title><%= content_for?(:title) ? yield(:title) + " - White Apple!!" : "You Agiled Me!!" %></title>
-  <%= stylesheet_link_tag 'application', 'project_view', 'control_panel', :cache => true %>
+  <%= stylesheet_link_tag 'application', 'project_view', 'control_panel', 'jquery-ui-1.8.16.custom', 'ie9', 'ie', :cache => true %>
   <!--[if gte IE 9]>
       <%= stylesheet_link_tag 'ie9' %>
     <![endif]-->
@@ -25,8 +25,8 @@
           Call Us: +91-80-42414300
         </div>
         <ul class="nav_links">
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-          <li><%= link_to 'Register', new_user_registration_path %></li>
+          <li><%= link_to 'Sign In', new_user_session_path, :class => (current_page?(new_user_session_path) ? 'current' : '')  %></li>
+          <li><%= link_to 'Register', new_user_registration_path, :class => (current_page?(new_user_registration_path) ? 'current' : '') %></li>
           <li>
         </ul>
     <% else %>
@@ -34,7 +34,8 @@
           Welcome, <%= current_user.email %>
         </div>
         <ul class="nav_links">
-          <li class="dashboard"><%= link_to "Dashboard", root_path %></li>
+          <% %>
+          <li class="dashboard"><%= link_to "Dashboard", root_path, :class => (current_page?(root_path) ? 'current' : '') %></li>
           <li><a href="#">Reports</a></li>
           <li><a href="#">Profile</a></li>
           <li><a href="#">Help</a></li>

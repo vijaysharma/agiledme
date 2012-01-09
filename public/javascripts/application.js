@@ -241,6 +241,86 @@ $(document).ready(function () {
         tolerance: 'intersect'
     });
 
+//    =======================================
+
+    $("#dialog:ui-dialog").dialog("destroy");
+
+    var name = $("#name"),
+            description = $("#description"),
+            estimate_bugs = $("#estimate_bugs"),
+            estimate_chores = $("#estimate_chores"),
+            start_date = $("#start_date"),
+            allFields = $([]).add(name).add(description).add(estimate_bugs).add(estimate_chores).add(start_date),
+            tips = $(".validateTips");
+
+    function updateTips(t) {
+        tips
+                .text(t)
+                .addClass("ui-state-highlight");
+        setTimeout(function() {
+            tips.removeClass("ui-state-highlight", 1500);
+        }, 500);
+    }
+
+    function checkLength(o, n, min, max) {
+        if (o.val().length > max || o.val().length < min) {
+            o.addClass("ui-state-error");
+            updateTips("Length of " + n + " must be between " +
+                    min + " and " + max + ".");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    $("#new_project_form").dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        modal: true,
+        addClasses:false,
+        buttons: {
+            "Create Project": function() {
+                var bValid = true;
+                allFields.removeClass("ui-state-error");
+
+                bValid = bValid && checkLength(name, "name", 3, 16);
+
+                if (bValid) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/projects",
+                        dataType: "script",
+                        data: {
+                            name: name
+                        }
+//                        ,
+//                        success: function(data) {
+//                            alert("successsful call");
+//                            $(this).dialog("close");
+//                            $(ui.draggable).insertBefore(item_dropped_on);
+//                        }
+                    })
+                }
+            },
+            Cancel: function() {
+                $(this).dialog("close");
+            }
+        },
+        close: function() {
+            allFields.val("").removeClass("ui-state-error");
+        }
+    });
+
+    $("#create_new_project_button")
+            .button()
+            .click(function() {
+        $("#new_project_form").dialog("open");
+    });
+
+//    =======================================
+
+
 });
 
 function add_task_fields(link, association, content) {

@@ -171,7 +171,7 @@ select, input, textarea {
     background-clip: border-box;
     background-origin: padding-box;
     background-size: auto auto;
-    height: 45px;
+    height: 50px;
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -191,7 +191,6 @@ select, input, textarea {
 }
 
 #header h1 a {
-    background: transparent url("/images/v7/logos/pivotal_tracker_white.png") no-repeat scroll left top;
     background-clip: border-box;
     background-origin: padding-box;
     background-size: auto auto;
@@ -206,7 +205,8 @@ select, input, textarea {
     color: #FFFFFF;
     line-height: 1.5;
     margin-right: 14px;
-    margin-top: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
     text-align: right;
 }
 
@@ -215,16 +215,22 @@ select, input, textarea {
 }
 
 #header .navigation_area ul.nav_links {
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
+    margin: 0;
     position: relative;
 }
 
 #header ul.nav_links {
     float: right;
     margin-top: 11px;
+}
+
+#header ul.nav_links > li a.current {
+    -moz-text-blink: none;
+    -moz-text-decoration-color: -moz-use-text-color;
+    -moz-text-decoration-line: none;
+    -moz-text-decoration-style: solid;
+    background-color: #153B5C;
+    border-radius: 4px;
 }
 
 #header .navigation_area ul.nav_links li.dropdown {
@@ -238,15 +244,6 @@ select, input, textarea {
 #header ul.nav_links > li {
     float: left;
     width: auto;
-}
-
-#header .navigation_area ul.nav_links > li.dropdown:first-child > a {
-    background: transparent url("/images/v7/application/icons/arrow_dropdown_white.png") no-repeat scroll 72px 8px;
-    background-clip: border-box;
-    background-origin: padding-box;
-    background-size: auto auto;
-    margin-right: 3px;
-    padding-right: 17px;
 }
 
 #header .navigation_area ul.nav_links > li a {
@@ -318,7 +315,7 @@ a {
     height: 24px;
     letter-spacing: 1px;
     line-height: 24px;
-    padding: 2px 10px;
+    padding: 2px 0;
     position: relative;
     text-decoration: none;
     top: -9px;

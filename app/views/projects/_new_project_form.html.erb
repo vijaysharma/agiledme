@@ -1,0 +1,20 @@
+<div id="new_project_form" title="Create New Project">
+  <p class="validateTips">All form fields are required.</p>
+  <%= form_for Project.new, :remote => true do |f| %>
+      <fieldset>
+        <label for="name">Project Name</label>
+        <%= f.text_field :name, :class => "", :id => "name" %>
+        <label for="description">Description</label>
+        <%= f.text_field :description, :class => "", :id => "description" %>
+        <label for="estimate_bugs">Estimate Bugs?</label>
+        <%= f.check_box :estimate_bugs, :class => "", :id => "estimate_bugs" %>
+        <label for="estimate_chores">Estimate Chores?</label>
+        <%= f.check_box :estimate_chores, :class => "", :id => "estimate_chores" %>
+        <label for="start_date">Start Date</label>
+        <%= f.date_select :start_date, :start_year => DateTime.now.year, :order => [:day, :month, :year], :id => "start_date" %>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      </fieldset>
+  <% end %>
+</div>

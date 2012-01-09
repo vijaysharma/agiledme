@@ -262,10 +262,10 @@ $(document).ready(function () {
         }, 500);
     }
 
-    function checkLength(o, n, min, max) {
-        if (o.val().length > max || o.val().length < min) {
-            o.addClass("ui-state-error");
-            updateTips("Length of " + n + " must be between " +
+    function checkLength(object, object_name, min, max) {
+        if (object.val().length > max || object.val().length < min) {
+            object.addClass("ui-state-error");
+            updateTips("Length of " + object_name + " must be between " +
                     min + " and " + max + ".");
             return false;
         } else {
@@ -283,24 +283,12 @@ $(document).ready(function () {
             "Create Project": function() {
                 var bValid = true;
                 allFields.removeClass("ui-state-error");
-
-                bValid = bValid && checkLength(name, "name", 3, 16);
+                bValid = bValid && checkLength(name, "name", 3, 1000);
 
                 if (bValid) {
-                    $.ajax({
-                        type: "POST",
-                        url: "/projects",
-                        dataType: "script",
-                        data: {
-                            name: name
-                        }
-//                        ,
-//                        success: function(data) {
-//                            alert("successsful call");
-//                            $(this).dialog("close");
-//                            $(ui.draggable).insertBefore(item_dropped_on);
-//                        }
-                    })
+                    $("#new_project").submit();
+                    alert("success");
+                    $(this).dialog("close");
                 }
             },
             Cancel: function() {

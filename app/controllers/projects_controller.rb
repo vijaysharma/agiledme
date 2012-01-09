@@ -42,13 +42,13 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.xml
   def create
-    raise params.inspect
     @project = Project.new(params[:project])
     @project.users << current_user
     respond_to do |format|
       if @project.save
         format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }

@@ -8,41 +8,11 @@
         <h2>My Projects
           <a id="create_new_project_button" class="blueButton">CREATE PROJECT +</a>
         </h2>
-
-        <!--//////////////////////////////////////////////////-->
-
-        <%= form_for Project.new , :remote => true do |f| %>
-            <div id="new_project_form" title="Create New Project">
-              <p class="validateTips">All form fields are required.</p>
-              <fieldset>
-                <label for="name">Project Name</label>
-                <%= f.text_field :name, :class => "text ui-widget-content ui-corner-all", :id => "name" %>
-                <label for="description">Description</label>
-                <%= f.text_field :description, :class => "text ui-widget-content ui-corner-all", :id => "description" %>
-                <label for="estimate_bugs">Estimate Bugs?</label>
-                <%= f.check_box :estimate_bugs, :class => "ui-widget-content", :id => "estimate_bugs" %>
-                <label for="estimate_chores">Estimate Chores?</label>
-                <%= f.check_box :estimate_chores, :class => "ui-widget-content", :id => "estimate_chores" %>
-                <label for="start_date">Start Date</label>
-                <%= f.date_select :start_date, :start_year => DateTime.now.year, :order => [:day, :month, :year], :id => "start_date" %>
-              </fieldset>
-            </div>
-        <% end %>
-
-        <!--//////////////////////////////////////////////////-->
-
-        <div class="project_list">
+        <%= render :partial => 'projects/new_project_form' %>
+        <div id="project_list" class="project_list">
           <% if @projects.present? %>
               <% @projects.each do |project| %>
-                  <%= link_to project, :class => "project_name" do %>
-                      <div class="project_box">
-                        <div class="project_title"><%= project.name.capitalize %></div>
-                        <div class="project_box_hover_links">
-                          <%= link_to 'show', project, :class => "hover_link" %>
-                          <%= link_to 'members', project_member_invitations_path(:project => project) %>
-                        </div>
-                      </div>
-                  <% end %>
+                  <%= render :partial => 'projects/project_box', :locals => {:project => project} %>
               <% end %>
           <% else %>
               You have not created any project as of now.

@@ -5,6 +5,96 @@
     width: 100%;
 }
 
+.overlay {
+    font-size: 0.9em;
+    z-index: 10;
+}
+
+.help.flyover {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #FFFFFF;
+    background-image: url("/images/bg_gradient_comments_hover.gif");
+    background-origin: padding-box;
+    background-position: left top;
+    background-repeat: repeat-x;
+    background-size: auto auto;
+    border-bottom-color: #5593D8;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #5593D8;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: solid;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: 1px;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #5593D8;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: solid;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 1px;
+    border-top-color: #5593D8;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    font-size: 12px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+}
+
+.help.flyover .storyTitle {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 3px;
+}
+
+.sectionDivider {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: goldenrod;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    height: 1px;
+}
+
+.overlay .sectionDivider {
+    display: none;
+}
+
+.help.flyover {
+    font-size: 12px;
+}
+
+.overlayContentWrapper {
+    padding-bottom: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0;
+}
+
 .no_workable_items {
     margin: 5px;
     text-align: center;
@@ -75,9 +165,9 @@ img {
 
 .list {
     background: #FFFFFF url("/images/panel_bg_left.png") repeat-y scroll left top;
-    height: 100%;
-    padding-left: 3px;
-    position: relative;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
     height: 100%;
     padding-left: 3px;
     position: relative;
@@ -91,11 +181,10 @@ img {
 }
 
 .list > .btm .right {
-    background-image: url("/images/panel_bg_btm_corners.png");
+    background: url("/images/panel_bg_btm_corners.png") right top;
     position: relative;
     width: 3px;
     z-index: 5;
-    background-position: right top;
     float: right;
     height: 3px;
 }
@@ -122,11 +211,17 @@ img {
     height: 100%;
     position: relative;
     background: url("/images/panel_bg_right.png") repeat-y scroll right top #FFFFFF;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
     padding-right: 3px;
 }
 
 .items > div.inner {
-    background: none repeat scroll 0 0 #AEB6B9;
+    background: #AEB6B9 none repeat scroll 0 0;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -976,7 +1071,35 @@ div.storyDetails .attachmentWidget .attach_files .text {
 }
 
 .panel {
-    border: medium none;
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-bottom-color: -moz-use-text-color;
+    border-bottom-style: none;
+    border-bottom-width: medium;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: -moz-use-text-color;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: none;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: medium;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: -moz-use-text-color;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: none;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: medium;
+    border-top-color: -moz-use-text-color;
+    border-top-style: none;
+    border-top-width: medium;
     min-width: 240px;
     vertical-align: top;
 }

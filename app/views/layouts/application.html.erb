@@ -15,38 +15,45 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<div class="main">
-  <div class="header">
-    <h1 class="logo">
-      <a href="/" title="AGILED">WHITE APPLE</a>
-    </h1>
 
-    <div class="notice" style="display:none;"></div>
-    <% if notice.present? %>
-        <div class="notice"><%= notice %></div>
-    <% end %>
-    <% if alert.present? %>
-        <div class="alert"><%= alert %></div>
-    <% end %>
+<div class="clearfix" id="header">
+  <h1><a href="/">WHITE APPLE </a></h1>
 
+  <div class="navigation_area clearfix">
     <% if !user_signed_in? %>
-        <p class="call" title="Call Us"><span></span>Call Us: +91-80-42414300</p>
+        <div class="welcome_message">
+          Call Us: +91-80-42414300
+        </div>
+        <ul class="nav_links">
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <li><%= link_to 'Register', new_user_registration_path %></li>
+          <li>
+        </ul>
+    <% else %>
+        <div class="welcome_message">
+          Welcome, <%= current_user.email %>
+        </div>
+        <ul class="nav_links">
+          <li class="dashboard"><%= link_to "Dashboard", root_path %></li>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Help</a></li>
+          <li><%= link_to 'Sign Out', destroy_user_session_path %></li>
+          <li>
+        </ul>
     <% end %>
-
-    <div class="main_menu_links">
-      <% if user_signed_in? %>
-          Welcome <%= current_user.email %> | <%= link_to 'Logout', destroy_user_session_path %>
-      <% else %>
-          <%= link_to 'Login', new_user_session_path, :class => current_page?(new_user_session_path) ? 'selected' :'not_selected' %>
-          <%= link_to 'Register', new_user_registration_path, :class => current_page?(new_user_registration_path) ? 'selected' :'not_selected' %>
-      <% end %>
-    </div>
-    <ul class="navigation">
-      <% if user_signed_in? %>
-          <li class="<%= current_page?(root_path) ? 'selected' :'not_selected' %>"><%= link_to "Dashboard", root_path %></li>
-      <% end %>
-    </ul>
   </div>
+
+  <div class="notice" style="display:none;"></div>
+  <% if notice.present? %>
+      <div class="notice"><%= notice %></div>
+  <% end %>
+  <% if alert.present? %>
+      <div class="alert"><%= alert %></div>
+  <% end %>
+</div>
+
+<div class="main">
   <div class="content">
     <%= yield %>
     <div class="clear"></div>

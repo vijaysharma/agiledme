@@ -243,7 +243,7 @@ $(document).ready(function () {
 
 //    =======================================
 
-    $("#dialog:ui-dialog").dialog("destroy");
+    $("#new_project_form:ui-dialog").dialog("destroy");
 
     var name = $("#name"),
             description = $("#description"),
@@ -287,7 +287,6 @@ $(document).ready(function () {
 
                 if (bValid) {
                     $("#new_project").submit();
-                    alert("success");
                     $(this).dialog("close");
                 }
             },

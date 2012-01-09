@@ -1,5 +1,5 @@
 <%= link_to project, :class => "project_name" do %>
-    <div class="project_box">
+    <div id="<%= "#{project.id}_project_box" %>" class=" project_box">
       <div class="project_title"><%= project.name.capitalize %></div>
       <div class="project_box_hover_links">
         <%= link_to 'show', project, :class => "hover_link" %>

@@ -12,9 +12,6 @@
         <%= f.check_box :estimate_chores, :class => "", :id => "estimate_chores" %>
         <label for="start_date">Start Date</label>
         <%= f.date_select :start_date, :start_year => DateTime.now.year, :order => [:day, :month, :year], :id => "start_date" %>
-        <div class="actions">
-          <%= f.submit %>
-        </div>
       </fieldset>
   <% end %>
 </div>

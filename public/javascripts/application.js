@@ -221,11 +221,9 @@ $(document).ready(function () {
 
     $(".droppable").droppable({
         drop: function(event, ui) {
-            var item_dropped_on = $(this).attr('id');
-
-            var item_dropped = $(ui.draggable).attr('id');
-            var item_dropped_id = item_dropped.split('_')[2];
-            var item_dropped_on_id = item_dropped_on.split('_')[2];
+            var item_dropped_on = $(this);
+            var item_dropped_on_id = item_dropped_on.attr('id');
+            var item_dropped_id = $(ui.draggable).attr('id');
             $.ajax({
                 type: "PUT",
                 url: "/workable_items/" + item_dropped_id + "/update_category_and_priority",
@@ -234,7 +232,7 @@ $(document).ready(function () {
                     item_dropped_on_id: item_dropped_on_id
                 },
                 success: function(data) {
-                    $(ui.draggable).insertBefore($("#" + item_dropped_on));
+                    $(ui.draggable).insertBefore(item_dropped_on);
                 }
             })
         },

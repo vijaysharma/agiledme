@@ -5,14 +5,27 @@
 </h1>
 <div class="subnav clearfix">
   <ul class="buttons">
-    <% sub_page_titles = ['Overview', 'Settings', 'Members', 'Reports', 'Export', 'Import', 'Project Profile']
-       sub_page_titles.each do |sub_page_title|
-           selected_class = sub_page.eql?(sub_page_title) ? "current" : ""
-       last_class = sub_page_titles.last.eql?(sub_page_title) ? "last" : ""
-    %>
-        <li class="<%= "#{last_class}" %>">
-          <a class="<%= "button #{selected_class}" %>" href="#"><%= sub_page_title %></a>
-        </li>
-    <% end %>
+    <li>
+      <a class="button" href="#">Overview</a>
+    </li>
+    <li>
+      <a class="button" href="#">Settings</a>
+    </li>
+    <li>
+      <%= link_to 'Members', project_project_member_invitations_path(project),
+                  :class => "button #{sub_page.eql?("Members") ? "current" : ""}" %>
+    </li>
+    <li>
+      <a class="button" href="#">Reports</a>
+    </li>
+    <li>
+      <a class="button" href="#">Export</a>
+    </li>
+    <li>
+      <a class="button" href="#">Import</a>
+    </li>
+    <li class="last">
+      <a class="button" href="#">Project Profile</a>
+    </li>
   </ul>
 </div>

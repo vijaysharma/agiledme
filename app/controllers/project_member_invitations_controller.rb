@@ -11,7 +11,7 @@ class ProjectMemberInvitationsController < ApplicationController
 
   def new
     @project_member_invitation = ProjectMemberInvitation.new
-    @project_member_invitation.project = Project.find(params[:project])
+    @project_member_invitation.project = Project.find(params[:project_id])
     @project_member_invitation.invited_by = current_user.id
 
     respond_to do |format|

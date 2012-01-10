@@ -1,4 +1,4 @@
-<%= form_for(@project_member_invitation) do |f| %>
+<%= form_for([:project, @project_member_invitation]) do |f| %>
   <% if @project_member_invitation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project_member_invitation.errors.count, "error") %> prohibited this member invitation from being sent:</h2>
@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :initials %><br />
+    <%= f.text_field :initials %>
+  </div>
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.text_field :role %>
+  </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>

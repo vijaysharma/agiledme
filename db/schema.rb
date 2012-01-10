@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(:version => 20111225133451) do
     t.integer  "project_id"
     t.integer  "invited_by"
     t.string   "status"
+    t.string   "initials"
+    t.string   "name"
+    t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -5,6 +5,9 @@ class CreateProjectMemberInvitations < ActiveRecord::Migration
       t.integer :project_id
       t.integer :invited_by
       t.string :status
+      t.string :initials
+      t.string :name
+      t.string :role
 
       t.timestamps
     end

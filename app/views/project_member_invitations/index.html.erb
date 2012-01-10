@@ -49,9 +49,9 @@
       <% @project_member_invitations.each do |project_member_invitation| %>
           <tr id="membership_row_252126">
             <td class="name">
-              Adam Elliot
+              <%= project_member_invitation.name %>
             </td>
-            <td class="initials">AE</td>
+            <td class="initials"><%= project_member_invitation.initials %></td>
             <td class="email"><%= project_member_invitation.email %></td>
             <td class="invited_by_email"><%= User.find(project_member_invitation.invited_by).email %></td>
             <td class="role">

@@ -28,7 +28,7 @@ Agiledme::Application.routes.draw do
   resources :chores, :controller => 'workable_items'
 
   resources :projects do
-    resource :project_member_invitations
+    resources :project_member_invitations
   end
 
   devise_for :users

@@ -1,0 +1,18 @@
+<h1><%= project.name %> : <%= sub_page %>
+  <div class="right_link">
+    <%= link_to "View Stories", project_path(project) %>
+  </div>
+</h1>
+<div class="subnav clearfix">
+  <ul class="buttons">
+    <% sub_page_titles = ['Overview', 'Settings', 'Members', 'Reports', 'Export', 'Import', 'Project Profile']
+       sub_page_titles.each do |sub_page_title|
+           selected_class = sub_page.eql?(sub_page_title) ? "current" : ""
+       last_class = sub_page_titles.last.eql?(sub_page_title) ? "last" : ""
+    %>
+        <li class="<%= "#{last_class}" %>">
+          <a class="<%= "button #{selected_class}" %>" href="#"><%= sub_page_title %></a>
+        </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,21 +1,11 @@
 class ProjectMemberInvitationsController < ApplicationController
   def index
-    @project = Project.find(params[:project])
+    @project = Project.find(params[:project_id])
     @project_member_invitations = @project.project_member_invitations
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @project_member_invitations }
-    end
-  end
-
-  def show
-    @project = Project.find(params[:project_id])
-    @project_member_invitations = @project.project_member_invitations
-
-    respond_to do |format|
-      format.html {render :index}
-      format.xml  { render :xml => @project_member_invitation }
     end
   end
 

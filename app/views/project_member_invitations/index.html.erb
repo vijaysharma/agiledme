@@ -1,35 +1,6 @@
 <% title "Project Members" %>
 <div class="project_pages members_page">
-  <h1><%= @project.name %> : Member Invitations</h1>
-
-  <div class="subnav clearfix">
-    <ul class="buttons">
-      <li>
-        <a class="button" href="#">Overview</a>
-      </li>
-      <li>
-        <a class="button" href="#">Settings</a>
-      </li>
-      <li>
-        <a class="button current">Members</a>
-      </li>
-      <li>
-        <a class="button" href="#">Reports</a>
-      </li>
-      <li>
-        <a class="button" href="#">Export</a>
-      </li>
-      <li>
-        <a class="button" href="#">Import</a>
-      </li>
-      <li>
-        <a class="button" href="#">Project Profile</a>
-      </li>
-      <li class="last">
-        <a class="button" href="#">Integrations</a>
-      </li>
-    </ul>
-  </div>
+  <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Members"}%>
 
   <h2>Members</h2>
 

@@ -13,6 +13,9 @@
        else
            draggable_droppable = " draggable droppable"
        end
+       if (workable_item.category == 'icebox')
+           class_for_item += " unscheduled"
+       end
     %>
 
     <div id="<%= "#{item_unique_id}_preview" %>" class="<%= "item #{draggable_droppable}" %>">

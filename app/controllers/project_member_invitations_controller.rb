@@ -29,6 +29,7 @@ class ProjectMemberInvitationsController < ApplicationController
 
     respond_to do |format|
       if @project_member_invitation.save
+        format.js
         format.html { redirect_to(project_member_invitations_path(:project => @project_member_invitation.project), :notice => 'Invitation was successfully created.') }
         format.xml  { render :xml => @project_member_invitation, :status => :created, :location => @project_member_invitation }
       else

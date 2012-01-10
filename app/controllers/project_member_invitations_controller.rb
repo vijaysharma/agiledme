@@ -1,6 +1,4 @@
 class ProjectMemberInvitationsController < ApplicationController
-  # GET /pending_invitations
-  # GET /pending_invitations.xml
   def index
     @project = Project.find(params[:project])
     @project_member_invitations = @project.project_member_invitations
@@ -11,19 +9,16 @@ class ProjectMemberInvitationsController < ApplicationController
     end
   end
 
-  # GET /pending_invitations/1
-  # GET /pending_invitations/1.xml
   def show
-    @project_member_invitation = ProjectMemberInvitation.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @project_member_invitations = @project.project_member_invitations
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {render :index}
       format.xml  { render :xml => @project_member_invitation }
     end
   end
 
-  # GET /pending_invitations/new
-  # GET /pending_invitations/new.xml
   def new
     @project_member_invitation = ProjectMemberInvitation.new
     @project_member_invitation.project = Project.find(params[:project])
@@ -35,13 +30,10 @@ class ProjectMemberInvitationsController < ApplicationController
     end
   end
 
-  # GET /pending_invitations/1/edit
   def edit
     @project_member_invitation = ProjectMemberInvitation.find(params[:id])
   end
 
-  # POST /pending_invitations
-  # POST /pending_invitations.xml
   def create
     @project_member_invitation = ProjectMemberInvitation.new(params[:project_member_invitation])
 
@@ -57,8 +49,6 @@ class ProjectMemberInvitationsController < ApplicationController
     end
   end
 
-  # PUT /pending_invitations/1
-  # PUT /pending_invitations/1.xml
   def update
     @project_member_invitation = ProjectMemberInvitation.find(params[:id])
 
@@ -73,8 +63,6 @@ class ProjectMemberInvitationsController < ApplicationController
     end
   end
 
-  # DELETE /pending_invitations/1
-  # DELETE /pending_invitations/1.xml
   def destroy
     @project_member_invitation = ProjectMemberInvitation.find(params[:id])
     project = @project_member_invitation.project

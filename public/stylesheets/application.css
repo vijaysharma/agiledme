@@ -92,6 +92,7 @@ body {
     overflow: visible;
     padding: 0 0 10px 0;
     height:100%;
+    min-height:350px;
 }
 
 .content ul {

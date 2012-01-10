@@ -274,133 +274,6 @@ a {
     margin-left: 6px;
 }
 
-.dashboard_page {
-    margin-left: 125px;
-    margin-right: 125px;
-    margin-top: 15px;
-}
-
-.dashboard_page .left_column {
-    float: left;
-    width: 480px;
-}
-
-.dashboard_page #activity_feed {
-    overflow: hidden;
-}
-
-.dashboard_page #my_projects > span.inner {
-    display: block;
-    margin-right: 10%;
-}
-
-.dashboard_page h1 {
-    margin-bottom: 15px;
-    font-size: 2.3em;
-}
-
-.dashboard_page h2 {
-    height: 29px;
-    overflow: hidden;
-    padding-bottom: 5px;
-    border-bottom: 4px solid #0C598C;
-}
-
-.dashboard_page a#create_new_project_button {
-    color: #FFFFFF;
-    display: block;
-    float: right;
-    font-size: 0.5em;
-    height: 24px;
-    letter-spacing: 1px;
-    line-height: 24px;
-    padding: 2px 0;
-    position: relative;
-    text-decoration: none;
-    top: -9px;
-    cursor:pointer;
-}
-
-.dashboard_page #activity_feed h2 span {
-    float: left;
-}
-
-.dashboard_page #activity_feed h2 a.activity_feed_subscribe_link {
-    background: url("/images/feed-icon-16x16.png") no-repeat scroll left top transparent;
-    display: block;
-    float: left;
-    height: 16px;
-    margin-left: 7px;
-    margin-top: 3px;
-    text-indent: -9999em;
-    width: 16px;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list {
-    margin-top: -10px;
-    overflow: hidden;
-    background: none;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list > li {
-    border-bottom: 1px solid #DDDDDD;
-    overflow: hidden;
-    padding: 5px 10px 5px 4px;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list div.main_details h3 {
-    display: inline;
-    font-size: 1.0em;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list h3 {
-    font-weight: bold;
-    line-height: 1.4em;
-}
-
-li {
-    list-style: none outside none;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list div.secondary_details {
-    float: right;
-    margin-top: 1px;
-    text-align: right;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list div.main_details {
-    margin-right: 10px;
-    overflow: hidden;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list div.secondary_details .activity_occurred_at {
-    color: #AAAAAA;
-    display: block;
-    font-style: italic;
-    margin-top: 1px;
-    font-size: 0.8em;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list div.main_details .activity_description {
-    color: #777777;
-    font-size: 0.9em;
-    padding-left: 3px;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list div.main_details p {
-    margin-top: 1px;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list p {
-    margin: 0;
-}
-
-.dashboard_page #activity_feed #activity_feed_items ul.list div.main_details p a {
-    color: #555555;
-    font-size: 0.9em;
-    font-weight: bold;
-}
-
 p {
     color: #666666;
     line-height: 1.4;
@@ -657,30 +530,6 @@ li, ul, div {
     z-index: 1;
 }
 
-.main_menu_links {
-    position: absolute;
-    right: 15px;
-    top: 31px;
-    color: #FFFFFF
-}
-
-.navigation > li > a, .main_menu_links > a {
-    display: inline-block;
-    font-weight: bold;
-    color: #fff;
-    padding: 5px 10px;
-}
-
-.main_menu_links .selected, .main_menu_links > a:hover, .navigation .selected > a, .navigation > li > a:hover {
-    text-decoration: none;
-    color: #0c598c;
-    background: #ffffff; /* Old browsers */
-    -moz-border-radius: 5px 5px 0 0;
-    -webkit-border-radius: 5px 5px 0 0;
-    -o-border-radius: 5px 5px 0 0;
-    border-radius: 5px 5px 0 0;
-}
-
 .logo {
     float: left;
     padding: 0px 0 0 20px;
@@ -715,22 +564,6 @@ li, ul, div {
 }
 
 .call > a {
-    color: #fff;
-}
-
-.navigation {
-    font-weight: bold;
-    float: left;
-    margin: 31px 0 0 70px;
-}
-
-.navigation > li {
-    float: left;
-    padding: 0 5px;
-    position: relative;
-}
-
-.navigation > li > a {
     color: #fff;
 }
 

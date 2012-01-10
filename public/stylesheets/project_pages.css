@@ -1,0 +1,194 @@
+.project_pages {
+    margin-left: 125px;
+    margin-right: 125px;
+    margin-top: 15px;
+}
+
+.project_pages .left_column {
+    float: left;
+    width: 480px;
+}
+
+.project_pages #activity_feed {
+    overflow: hidden;
+}
+
+.project_pages #my_projects > span.inner {
+    display: block;
+    margin-right: 10%;
+}
+
+.project_pages h1 {
+    margin-bottom: 15px;
+    font-size: 2.3em;
+}
+
+.project_pages h2 {
+    height: 29px;
+    overflow: hidden;
+    padding-bottom: 5px;
+    border-bottom: 4px solid #0C598C;
+}
+
+.project_pages a#create_new_project_button {
+    color: #FFFFFF;
+    display: block;
+    float: right;
+    font-size: 0.5em;
+    height: 24px;
+    letter-spacing: 1px;
+    line-height: 24px;
+    padding: 2px 0;
+    position: relative;
+    text-decoration: none;
+    top: -9px;
+    cursor:pointer;
+}
+
+.project_pages #activity_feed h2 span {
+    float: left;
+}
+
+.project_pages #activity_feed h2 a.activity_feed_subscribe_link {
+    background: url("/images/feed-icon-16x16.png") no-repeat scroll left top transparent;
+    display: block;
+    float: left;
+    height: 16px;
+    margin-left: 7px;
+    margin-top: 3px;
+    text-indent: -9999em;
+    width: 16px;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list {
+    margin-top: -10px;
+    overflow: hidden;
+    background: none;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list > li {
+    border-bottom: 1px solid #DDDDDD;
+    overflow: hidden;
+    padding: 5px 10px 5px 4px;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list div.main_details h3 {
+    display: inline;
+    font-size: 1.0em;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list h3 {
+    font-weight: bold;
+    line-height: 1.4em;
+}
+
+li {
+    list-style: none outside none;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list div.secondary_details {
+    float: right;
+    margin-top: 1px;
+    text-align: right;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list div.main_details {
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list div.secondary_details .activity_occurred_at {
+    color: #AAAAAA;
+    display: block;
+    font-style: italic;
+    margin-top: 1px;
+    font-size: 0.8em;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list div.main_details .activity_description {
+    color: #777777;
+    font-size: 0.9em;
+    padding-left: 3px;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list div.main_details p {
+    margin-top: 1px;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list p {
+    margin: 0;
+}
+
+.project_pages #activity_feed #activity_feed_items ul.list div.main_details p a {
+    color: #555555;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.content .subnav {
+    margin-bottom: 21px;
+}
+
+.content .subnav ul {
+    float: left;
+}
+
+.content .subnav ul li {
+    float: left;
+    margin-right: 1px;
+}
+
+.content .subnav ul li a.current {
+    background-color: #153B5C;
+    color: #FFFFFF;
+}
+
+.listing_table {
+    font-size: 12px;
+    width: 100%;
+}
+
+.members_page .listing_table th.name, .members_page .listing_table td.name {
+    padding-left: 33px;
+}
+
+.listing_table th {
+    font-weight: bold;
+    text-align:left;
+}
+
+.listing_table td.name {
+    font-weight: bold;
+    padding-right: 6em;
+}
+
+.listing_table td {
+    border-bottom: 1px dashed #D3D3D3;
+    padding: 10px 0;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.content .subnav ul li:first-child > a {
+    border-radius: 5px 0 0 5px;
+}
+
+.content .subnav ul li a {
+    background-color: #5D8CB0;
+    color: #FFFFFF;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 6px 10px 4px;
+    text-shadow: none;
+    text-transform: uppercase;
+}
+
+.content .subnav ul li {
+    float: left;
+    margin-right: 1px;
+}
+
+.content .subnav ul li:last-child > a {
+    border-radius: 0 5px 5px 0;
+}

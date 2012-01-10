@@ -1,28 +1,82 @@
-<h1><%= @project.name %> : Member Invitations</h1>
+<% title "Project Members" %>
+<div class="project_pages members_page">
+  <h1><%= @project.name %> : Member Invitations</h1>
 
-<table>
-  <tr>
-    <th>Invitee Email</th>
-    <th>Invited By</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="subnav clearfix">
+    <ul class="buttons">
+      <li>
+        <a class="button" href="#">Overview</a>
+      </li>
+      <li>
+        <a class="button" href="#">Settings</a>
+      </li>
+      <li>
+        <a class="button current">Members</a>
+      </li>
+      <li>
+        <a class="button" href="#">Reports</a>
+      </li>
+      <li>
+        <a class="button" href="#">Export</a>
+      </li>
+      <li>
+        <a class="button" href="#">Import</a>
+      </li>
+      <li>
+        <a class="button" href="#">Project Profile</a>
+      </li>
+      <li class="last">
+        <a class="button" href="#">Integrations</a>
+      </li>
+    </ul>
+  </div>
 
-<% @project_member_invitations.each do |project_member_invitation| %>
-  <tr>
-    <td><%= project_member_invitation.email %></td>
-    <td><%= User.find(project_member_invitation.invited_by).email %></td>
-    <td><%= project_member_invitation.status %></td>
-    <td><%= link_to 'Show', project_member_invitation %></td>
-    <td><%= link_to 'Edit', edit_project_member_invitation_path(project_member_invitation) %></td>
-    <td><%= link_to 'Destroy', project_member_invitation, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <h2>Members</h2>
 
-<br />
+  <div id="members_module">
+    <table class="listing_table" id="members_table">
+      <tbody>
+      <tr>
+        <th class="name">Name</th>
+        <th class="initials">Initials</th>
+        <th class="email">Email</th>
+        <th class="email">Invited By</th>
+        <th class="role">Role</th>
 
-<%= link_to 'Add Member', new_project_member_invitation_path(:project => @project) %> |
-<%= link_to 'Back', project_path(@project) %>
+        <th class="invitations">Status</th>
+        <th class="remove"></th>
+      </tr>
+      <% @project_member_invitations.each do |project_member_invitation| %>
+          <tr id="membership_row_252126">
+            <td class="name">
+              Adam Elliot
+            </td>
+            <td class="initials">AE</td>
+            <td class="email"><%= project_member_invitation.email %></td>
+            <td class="invited_by_email"><%= User.find(project_member_invitation.invited_by).email %></td>
+            <td class="role">
+              <select>
+                <option value="1">Owner</option>
+                <option selected="selected" value="2">Member</option>
+                <option value="3">Viewer</option>
+              </select>
+              <img style="visibility:hidden" src="/images/spinner_adding.gif" id="" class="spinner" alt="Spinner_adding">
+            </td>
+            <td class="invitations">
+              <span><%= project_member_invitation.status.capitalize %></span>
+            </td>
+            <td class="remove">
+              <%= link_to 'Remove', project_member_invitation, :confirm => 'Are you sure?', :method => :delete %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
+  <br/>
+
+  <%= link_to 'Add Member', new_project_member_invitation_path(:project => @project) %> |
+  <%= link_to 'Back', project_path(@project) %>
+</div>

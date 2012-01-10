@@ -4,12 +4,13 @@
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
     <tr>
-      <% if !@project.workable_items.present?
-             category_display_class = 'display:none'
-         end
-      %>
+
       <% WorkableItem.categories.each do |category| %>
-          <% if category.eql?('icebox')
+          <% workable_items_in_category = @project.workable_items.select { |wi| wi.category == category } %>
+          <% if !workable_items_in_category.present?
+                 category_display_class = 'display:none'
+             end
+             if category.eql?('icebox')
                  category_display_class = "";
              end %>
           <td id="<%= category %>" class="<%= "#{category} panel" %>" style="<%= category_display_class %>" width="25%">
@@ -21,7 +22,8 @@
                 <span class="panelTitle"><%= category.upcase %> </span>
                 <span class="external_icon"></span>
             <span class="panelSubtitle">
-              displaying last 12 iterations (<a href="#" class=<%= "show#{category.capitalize}StoriesLink" %>>show all</a>)
+              displaying last 12 iterations (<a href="#" class=<%= "show#{category.capitalize}StoriesLink" %>>show
+              all</a>)
             </span>
               </div>
             </div>
@@ -42,7 +44,6 @@
                         %>
                         <%= render :partial => 'workable_items/workable_item', :locals => {:workable_item => @workable_item} %>
                     <% end %>
-                    <% workable_items_in_category = @project.workable_items.select { |wi| wi.category == category } %>
                     <% if workable_items_in_category.present? %>
                         <%= render :partial => 'workable_items/workable_items_collection',
                                    :locals => {:workable_items => @project.workable_items.select { |wi| wi.category == category }} %>

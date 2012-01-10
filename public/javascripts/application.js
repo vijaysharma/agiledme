@@ -5,6 +5,15 @@ var estimate_bugs = false;
 var estimate_chores = false;
 
 $(document).ready(function () {
+
+//    $(".content").height((parseInt($(window).height()) -
+//            parseInt($("#header").height()) -
+//                    parseInt($("#controlPanel").height())));
+//    alert($(window).height());
+//    alert($("#header").height());
+//    alert($("#controlPanel").height());
+//    alert($(".content").height());
+
     $("#backlog_close").click(function () {
         $("#backlog").hide();
         $("#backlog_control_button").removeClass('selected');
@@ -275,8 +284,8 @@ $(document).ready(function () {
 
     $("#new_project_form").dialog({
         autoOpen: false,
-        height: 300,
-        width: 350,
+        height: 350,
+        width: 450,
         modal: true,
         addClasses:false,
         buttons: {

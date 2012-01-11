@@ -12,7 +12,7 @@
     display: block;
     font-weight: bold;
     height: 90px;
-    margin-top: 20px;
+    margin-top: 10px;
     position: relative;
     text-align: center;
     -moz-border-radius: 5px;
@@ -189,7 +189,7 @@ h2 + .action_area {
 }
 
 .project_pages #activity_feed #activity_feed_items ul.list {
-    margin-top: -10px;
+    /*margin-top: -10px;*/
     overflow: hidden;
     background: none;
 }

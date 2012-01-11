@@ -1,16 +1,17 @@
-<tr id="<%= "#{project_member_invitation.id}_member_invitation" %>">
+<% invited_user = project_user.user %>
+<tr id="<%= "#{invited_user.id}_member_invitation" %>">
   <td class="name">
-    <%= project_member_invitation.name %>
+    <%= invited_user.name %>
   </td>
-  <td class="initials"><%= project_member_invitation.initials %></td>
-  <td class="email"><%= project_member_invitation.email %></td>
-  <td class="invited_by_email"><%= User.find(project_member_invitation.invited_by).email %></td>
+  <td class="initials"><%= invited_user.initials %></td>
+  <td class="email"><%= invited_user.email %></td>
+  <td class="invited_by_email"><%= User.find(invited_user.invited_by).email %></td>
   <td class="role">
-    <%= select(project_member_invitation, "role", options_for_select(ProjectMemberInvitation.roles, project_member_invitation.role)) %>
+    <%= collection_select invited_user, :role, User::ROLES, :to_s, :humanize, :selected => invited_user.role %>
     <img style="visibility:hidden" src="/images/spinner_adding.gif" id="" class="spinner" alt="Spinner_adding">
   </td>
   <td class="invitations">
-    <span><%= project_member_invitation.status.capitalize %></span>
+    <span><%= project_user.active? ? "Yes" : "No Yet" %></span>
   </td>
   <td class="remove">
   </td>

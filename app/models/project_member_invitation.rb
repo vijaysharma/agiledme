@@ -19,27 +19,4 @@ class ProjectMemberInvitation < ActiveRecord::Base
     end
   end
 
-  def self.roles
-    %w[Owner Member Viewer]
-  end
-
-  def add_new_invitee!
-
-    name = ""
-    email = ""
-    initials = ""
-    invitee_details_value = self.invitee_details
-    if (invitee_details_value.include?('<'))
-      name = invitee_details_value.split('<')[0].split('(')[0]
-      initials = invitee_details_value.split('<')[0].split('(')[1].split(')')[0]
-      email = invitee_details_value.split('<')[1].split('>')[0]
-    elsif invitee_details_value.include?(',')
-      name = invitee_details_value.split(',')[0].strip
-      email = invitee_details_value.split(',')[1]
-    end
-    self.initials = initials.strip
-    self.name = name.strip
-    self.email = email.strip
-    self.save
-  end
 end

@@ -1,13 +1,13 @@
-<% if @project_member_invitation.errors.any? %>
-<% message = ""%>
-<% @project_member_invitation.errors.full_messages.each do |msg| %>
-<% message += "#{msg}"%>
-<% end %>
-<% message += ""%>
-$('#add_member_error_message').html('<%= h message %>');
+<% if @user.errors.any? %>
+    <% message = ""
+    @user.errors.full_messages.each do |msg|
+      message += "#{msg}"
+      end
+    message += ""%>
+    $('#add_member_error_message').html('<%= h message %>');
 <% else %>
-$('#members_table tr:first').after('<%=escape_javascript render :partial => 'project_member_invitation_row', :locals => {:project_member_invitation => @project_member_invitation} %>');
+$('#members_table tr:first').after('<%=escape_javascript render :partial => 'project_member_invitation_row', :locals => {:project_user => @project_user} %>');
 ajax_flash_notice('New member invited successfully!!');
-highlight_item($('#<%=@project_member_invitation.id%>_member_invitation'));
+highlight_item($('#<%=@user.id%>_member_invitation'));
 <% end %>
 

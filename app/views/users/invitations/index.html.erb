@@ -3,7 +3,6 @@
   <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Members"} %>
   <%= link_to "Invite new user", new_user_invitation_path %>
   <h2>Members</h2>
-  <%= render 'form' %>
   <div id="members_module">
     <table class="listing_table" id="members_table">
       <tbody>

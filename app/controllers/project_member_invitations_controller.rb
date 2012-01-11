@@ -8,36 +8,14 @@ class ProjectMemberInvitationsController < ApplicationController
     end
   end
 
-  def new
-    @project_member_invitation = ProjectMemberInvitation.new
-    @project_member_invitation.project = Project.find(params[:project_id])
-    @project_member_invitation.invited_by = current_user.id
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @project_member_invitation }
-    end
-  end
-
-  def edit
-    @project_member_invitation = ProjectMemberInvitation.find(params[:id])
-  end
-
   def create
-    @project_member_invitation = ProjectMemberInvitation.new(params[:project_member_invitation])
     @project = Project.find(params[:project_id])
-    @project_member_invitation.project = @project
-    @project_member_invitation.invited_by = current_user.id
-    @project_member_invitation.invitee_details = params[:project_member_invitation][:invitee_details]
+    invitee_details = get_invitee_details(params[:project_member_invitation])
+    @user = User.invite!(invitee_details, current_user)
+    @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false)
 
     respond_to do |format|
-      if @project_member_invitation.add_new_invitee!
         format.js
-      else
-        format.js
-        format.html { render :action => "index" }
-        format.xml  { render :xml => @project_member_invitation.errors, :status => :unprocessable_entity }
-      end
     end
   end
 
@@ -65,4 +43,24 @@ class ProjectMemberInvitationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+
+  def get_invitee_details(invitee_details_params)
+
+    name = ""
+    email = ""
+    initials = ""
+    invitee_details_value = invitee_details_params[:invitee_details]
+    if (invitee_details_value.include?('<'))
+      name = invitee_details_value.split('<')[0].split('(')[0]
+      initials = invitee_details_value.split('<')[0].split('(')[1].split(')')[0]
+      email = invitee_details_value.split('<')[1].split('>')[0]
+    elsif invitee_details_value.include?(',')
+      name = invitee_details_value.split(',')[0].strip
+      email = invitee_details_value.split(',')[1]
+    end
+    {:initials => initials.strip, :email => email.strip, :name => name.strip, :role => invitee_details_params[:role]}
+  end
+
 end

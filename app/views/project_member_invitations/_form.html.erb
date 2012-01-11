@@ -1,37 +1,35 @@
-<%= form_for([:project, @project_member_invitation], :remote => true) do |f| %>
-  <% if @project_member_invitation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project_member_invitation.errors.count, "error") %> prohibited this member invitation from being sent:</h2>
-
-      <ul>
-      <% @project_member_invitation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div class="action_area" id="add_member">
+  <div class="error_message" id="add_member_error_message"></div>
+  <table class="action_cells">
+    <tbody>
+    <tr>
+      <% @project_member_invitation = ProjectMemberInvitation.new(:project => @project, :invited_by => current_user.id) %>
+      <%= form_for([:project, @project_member_invitation], :remote => true) do |f| %>
+          <td><label for="members_for_lookup">Add Member</label></td>
+          <td><%= f.text_field :invitee_details, :size => "60" %></td>
+          <td>
+            <%= f.select(:role, ProjectMemberInvitation.roles, {:selected => 'Member'}) %>
+          </td>
+          <%= f.hidden_field :invited_by %>
+          <td>
+            <%= f.submit %>
+          </td>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :initials %><br />
-    <%= f.text_field :initials %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :project_id %>
-    <%= f.hidden_field :invited_by %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+      <td><label for="select_source_list">Or,</label></td>
+      <td colspan="3" class="select_source">
+        <ul id="select_source_list">
+          <li class="select_source_button">
+            <a id="new_members_button" href="#">Add members from list</a>
+          </li>
+
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="text_example" colspan="3">e.g. Name, email, or Sanjeev K. Mishra (SKM) &lt;skmishra@crri.co.in&gt;</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

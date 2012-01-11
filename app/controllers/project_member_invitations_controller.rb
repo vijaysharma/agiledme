@@ -26,9 +26,10 @@ class ProjectMemberInvitationsController < ApplicationController
 
   def create
     @project_member_invitation = ProjectMemberInvitation.new(params[:project_member_invitation])
+    @project_member_invitation.project = Project.find(params[:project_id])
 
     respond_to do |format|
-      if @project_member_invitation.save
+      if @project_member_invitation.add_new_invitee
         format.js
         format.html { redirect_to(project_member_invitations_path(:project => @project_member_invitation.project), :notice => 'Invitation was successfully created.') }
         format.xml  { render :xml => @project_member_invitation, :status => :created, :location => @project_member_invitation }

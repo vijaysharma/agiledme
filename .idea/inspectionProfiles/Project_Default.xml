@@ -7,8 +7,19 @@
       <option name="myIgnoreVendorSpecificProperties" value="true" />
       <option name="myCustomPropertiesList">
         <value>
-          <list size="1">
+          <list size="12">
             <item index="0" class="java.lang.String" itemvalue="background-size" />
+            <item index="1" class="java.lang.String" itemvalue="border-left-color-ltr-source" />
+            <item index="2" class="java.lang.String" itemvalue="border-left-color-rtl-source" />
+            <item index="3" class="java.lang.String" itemvalue="border-left-color-value" />
+            <item index="4" class="java.lang.String" itemvalue="border-left-width-rtl-source" />
+            <item index="5" class="java.lang.String" itemvalue="border-left-width-ltr-source" />
+            <item index="6" class="java.lang.String" itemvalue="border-left-style-value" />
+            <item index="7" class="java.lang.String" itemvalue="border-left-style-rtl-source" />
+            <item index="8" class="java.lang.String" itemvalue="border-left-style-ltr-source" />
+            <item index="9" class="java.lang.String" itemvalue="border-right-width-value" />
+            <item index="10" class="java.lang.String" itemvalue="border-right-width-rtl-source" />
+            <item index="11" class="java.lang.String" itemvalue="border-right-style-value" />
           </list>
         </value>
       </option>

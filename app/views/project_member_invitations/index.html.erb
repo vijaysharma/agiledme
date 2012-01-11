@@ -1,9 +1,9 @@
 <% title "Project Members" %>
 <div class="project_pages members_page">
-  <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Members"}%>
+  <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Members"} %>
 
   <h2>Members</h2>
-
+  <%= render 'form' %>
   <div id="members_module">
     <table class="listing_table" id="members_table">
       <tbody>

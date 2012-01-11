@@ -6,14 +6,6 @@ Agiledme::Application.routes.draw do
     end
   end
 
-  resources :comments
-
-  resources :tasks do
-    member do
-      get :start, :finish
-    end
-  end
-
   resources :workable_item_histories
 
   resources :workable_items do
@@ -31,7 +23,9 @@ Agiledme::Application.routes.draw do
     resources :project_member_invitations
   end
 
-  devise_for :users, :controllers => { :invitations => 'users/invitations' }
+  devise_for :users, :controllers => {:invitations => 'users/invitations'} do
+    get "/users/invitations" => "users/invitations#index", :as => "member_invitations"
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

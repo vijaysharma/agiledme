@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(:version => 20120111154105) do
     t.datetime "updated_at"
   end
 
+  create_table "project_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+    t.boolean "active"
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -95,11 +101,6 @@ ActiveRecord::Schema.define(:version => 20120111154105) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "users_projects", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "project_id"
-  end
 
   create_table "workable_item_histories", :force => true do |t|
     t.string   "event"

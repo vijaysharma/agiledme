@@ -1,0 +1,26 @@
+<% title "Project Members" %>
+<div class="project_pages members_page">
+  <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Members"} %>
+  <%= link_to "Invite new user", new_user_invitation_path %>
+  <h2>Members</h2>
+  <%= render 'form' %>
+  <div id="members_module">
+    <table class="listing_table" id="members_table">
+      <tbody>
+      <tr>
+        <th class="name">Name</th>
+        <th class="initials">Initials</th>
+        <th class="email">Email</th>
+        <th class="email">Invited By</th>
+        <th class="role">Role</th>
+
+        <th class="invitations">Status</th>
+        <th class="remove"></th>
+      </tr>
+        <% @project.project_member_invitations.each do |project_member_invitation| %>
+            <%= render :partial => 'project_member_invitation_row', :locals => {:project_member_invitation => project_member_invitation} %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

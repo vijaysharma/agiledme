@@ -1,16 +1,4 @@
 class ProjectsController < ApplicationController
-  # GET /projects
-  # GET /projects.xml
-  def index
-
-    @projects = current_user.projects
-
-    respond_to do |format|
-      format.html
-      format.js
-      format.xml  { render :xml => @projects }
-    end
-  end
 
   # GET /projects/1
   # GET /projects/1.xml
@@ -19,17 +7,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @project }
-    end
-  end
-
-  # GET /projects/new
-  # GET /projects/new.xml
-  def new
-    @project = Project.new(:estimate_bugs => false)
-
-    respond_to do |format|
-      format.html # new.html.erb
       format.xml  { render :xml => @project }
     end
   end
@@ -43,14 +20,13 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
-    @project.users << current_user
+    @project.project_users << ProjectUser.new(:user_id => current_user.id, :project_id => @project.id, :active => true)
     respond_to do |format|
       if @project.save
         format.html { redirect_to(@project, :notice => 'Project was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
         format.js
       else
-        format.html { render :action => "new" }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
       end
     end

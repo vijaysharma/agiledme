@@ -17,11 +17,9 @@
         <th class="invitations">Status</th>
         <th class="remove"></th>
       </tr>
-      <div id="project_member_invitation_list">
         <% @project.project_member_invitations.each do |project_member_invitation| %>
             <%= render :partial => 'project_member_invitation_row', :locals => {:project_member_invitation => project_member_invitation} %>
         <% end %>
-      </div>
       </tbody>
     </table>
   </div>

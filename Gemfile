@@ -7,6 +7,7 @@ gem 'rails', '3.0.3'
 
 gem 'mysql2', '0.2.5'
 gem 'devise'
+gem 'devise_invitable'
 gem 'aasm'
 gem 'jquery-rails'
 #gem 'acts-as-taggable-on', '~>2.2.0'

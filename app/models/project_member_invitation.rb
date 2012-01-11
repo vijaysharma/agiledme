@@ -4,6 +4,7 @@ class ProjectMemberInvitation < ActiveRecord::Base
   validates_uniqueness_of :email
 
   attr_accessor :invitee_details
+  attr_accessible :invitee_details, :role, :invited_by, :project_id
 
   include AASM
 
@@ -22,8 +23,23 @@ class ProjectMemberInvitation < ActiveRecord::Base
     %w[Owner Member Viewer]
   end
 
-  def add_new_invitee
+  def add_new_invitee!
 
+    name = ""
+    email = ""
+    initials = ""
+    invitee_details_value = self.invitee_details
+    if (invitee_details_value.include?('<'))
+      name = invitee_details_value.split('<')[0].split('(')[0]
+      initials = invitee_details_value.split('<')[0].split('(')[1].split(')')[0]
+      email = invitee_details_value.split('<')[1].split('>')[0]
+    elsif invitee_details_value.include?(',')
+      name = invitee_details_value.split(',')[0].strip
+      email = invitee_details_value.split(',')[1]
+    end
+    self.initials = initials.strip
+    self.name = name.strip
+    self.email = email.strip
+    self.save
   end
-
 end

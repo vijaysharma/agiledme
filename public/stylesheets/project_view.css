@@ -864,11 +864,6 @@ div.storyDetails .attachmentWidget .attach_files .text {
     color: #666666;
 }
 
-.error_message {
-    color: red;
-    font-weight: bold;
-}
-
 .story_content .item .accepted {
     background-color: #DAEBCF;
     border-bottom: 1px solid #C3D5B4;

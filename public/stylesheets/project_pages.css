@@ -98,11 +98,6 @@ h2 + .action_area {
     padding: 20px 33px;
 }
 
-.error_message {
-    color: red;
-    font-weight: bold;
-}
-
 .action_area .action_cells td {
     padding: 0 10px 0 0;
     vertical-align: middle;

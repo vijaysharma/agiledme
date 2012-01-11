@@ -354,6 +354,10 @@ function ajax_flash_notice(message) {
     flash_notice();
 }
 
+function highlight_item(item){
+    item.effect("highlight", {color: "#ffd900"}, 2000);
+}
+
 function flash_notice() {
     $('.notice').fadeOut(4000);
 }

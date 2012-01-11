@@ -1,7 +1,6 @@
 class ProjectMemberInvitationsController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
-    @project_member_invitations = @project.project_member_invitations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,16 +25,17 @@ class ProjectMemberInvitationsController < ApplicationController
 
   def create
     @project_member_invitation = ProjectMemberInvitation.new(params[:project_member_invitation])
-    @project_member_invitation.project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id])
+    @project_member_invitation.project = @project
+    @project_member_invitation.invited_by = current_user.id
+    @project_member_invitation.invitee_details = params[:project_member_invitation][:invitee_details]
 
     respond_to do |format|
-      if @project_member_invitation.add_new_invitee
+      if @project_member_invitation.add_new_invitee!
         format.js
-        format.html { redirect_to(project_member_invitations_path(:project => @project_member_invitation.project), :notice => 'Invitation was successfully created.') }
-        format.xml  { render :xml => @project_member_invitation, :status => :created, :location => @project_member_invitation }
       else
-
-        format.html { render :action => "new" }
+        format.js
+        format.html { render :action => "index" }
         format.xml  { render :xml => @project_member_invitation.errors, :status => :unprocessable_entity }
       end
     end

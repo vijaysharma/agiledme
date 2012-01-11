@@ -21,6 +21,14 @@ body {
     line-height: 1;
 }
 
+.error_message {
+    color: red;
+    font-weight: bold;
+    font-size:0.9em;
+    margin-bottom: 5px;
+    margin-left: 92px;
+}
+
 blockquote, q {
     quotes: none;
 }

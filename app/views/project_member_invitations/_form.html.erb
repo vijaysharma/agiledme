@@ -1,16 +1,15 @@
 <div class="action_area" id="add_member">
-  <div class="error_message" id="add_member_error_message"></div>
+  <div class="error_message" id="add_member_error_message">
+  </div>
   <table class="action_cells">
     <tbody>
     <tr>
-      <% @project_member_invitation = ProjectMemberInvitation.new(:project => @project, :invited_by => current_user.id) %>
-      <%= form_for([:project, @project_member_invitation], :remote => true) do |f| %>
+      <%= form_for([:project, ProjectMemberInvitation.new()], :remote => true) do |f| %>
           <td><label for="members_for_lookup">Add Member</label></td>
           <td><%= f.text_field :invitee_details, :size => "60" %></td>
           <td>
             <%= f.select(:role, ProjectMemberInvitation.roles, {:selected => 'Member'}) %>
           </td>
-          <%= f.hidden_field :invited_by %>
           <td>
             <%= f.submit %>
           </td>

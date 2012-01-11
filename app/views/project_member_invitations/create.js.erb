@@ -1,10 +1,12 @@
-<% if @user.errors.any? %>
-    <% message = ""
-    @user.errors.full_messages.each do |msg|
-      message += "#{msg}"
-      end
-    message += ""%>
-    $('#add_member_error_message').html('<%= h message %>');
+<% if ((@user and @user.errors.any?) or @error.present?)
+    message = ""
+    if @user
+        @user.errors.full_messages.each do |msg|
+          message += "#{msg}"
+        end
+    end
+    message += @error %>
+$('#add_member_error_message').html('<%= h message %>');
 <% else %>
 $('#members_table tr:first').after('<%=escape_javascript render :partial => 'project_member_invitation_row', :locals => {:project_user => @project_user} %>');
 ajax_flash_notice('New member invited successfully!!');

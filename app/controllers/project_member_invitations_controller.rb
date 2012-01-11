@@ -4,18 +4,24 @@ class ProjectMemberInvitationsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @project_member_invitations }
+      format.xml { render :xml => @project_member_invitations }
     end
   end
 
   def create
     @project = Project.find(params[:project_id])
     invitee_details = get_invitee_details(params[:project_member_invitation])
-    @user = User.invite!(invitee_details, current_user)
-    @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false)
+
+    if User.find_by_email(invitee_details[:email]).blank?
+      @user = User.invite!(invitee_details, current_user)
+      @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false)
+    else
+      @error = "Email has already been invited"
+    end
+
 
     respond_to do |format|
-        format.js
+      format.js
     end
   end
 
@@ -25,10 +31,10 @@ class ProjectMemberInvitationsController < ApplicationController
     respond_to do |format|
       if @project_member_invitation.update_attributes(params[:project_member_invitation])
         format.html { redirect_to(project_member_invitations_path(:project => @project_member_invitation.project), :notice => 'Invitation was successfully updated.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @project_member_invitation.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @project_member_invitation.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -40,7 +46,7 @@ class ProjectMemberInvitationsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(project_member_invitations_url(:project => project), :notice => 'Invitation was successfully deleted.') }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 

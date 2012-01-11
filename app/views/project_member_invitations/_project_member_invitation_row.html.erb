@@ -5,7 +5,7 @@
   </td>
   <td class="initials"><%= invited_user.initials %></td>
   <td class="email"><%= invited_user.email %></td>
-  <td class="invited_by_email"><%= User.find(invited_user.invited_by).email %></td>
+  <td class="invited_by_email"><%= User.find(invited_user.invited_by_id).email %></td>
   <td class="role">
     <%= collection_select invited_user, :role, User::ROLES, :to_s, :humanize, :selected => invited_user.role %>
     <img style="visibility:hidden" src="/images/spinner_adding.gif" id="" class="spinner" alt="Spinner_adding">

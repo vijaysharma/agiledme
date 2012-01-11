@@ -8,6 +8,7 @@
     message += @error %>
 $('#add_member_error_message').html('<%= h message %>');
 <% else %>
+$('#add_member_error_message').html('');
 $('#members_table tr:first').after('<%=escape_javascript render :partial => 'project_member_invitation_row', :locals => {:project_user => @project_user} %>');
 ajax_flash_notice('New member invited successfully!!');
 highlight_item($('#<%=@user.id%>_member_invitation'));

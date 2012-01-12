@@ -13,19 +13,22 @@ class ProjectMemberInvitationsController < ApplicationController
     invitee_details = get_invitee_details(params[:project_member_invitation])
 
     user = User.find_by_email(invitee_details[:email])
-    if its_new_user_in_system(user)
+    if is_new_user_in_system?(user)
       @user = User.invite!(invitee_details, current_user)
       @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false)
       @message = "An invite is sent to #{invitee_details[:name] || invitee_details[:email]} to join the project!"
-    elsif user_has_already_joined_the_project(user)
+
+    elsif has_already_joined_the_project?(user)
       @error = "#{user.name || user.email} is already #{user.role} of the project!"
-    elsif user_has_not_joined_the_project(user)
+
+    elsif is_invited_but_not_joined_the_project?(user)
       send_project_join_request_to_user(invitee_details)
       @user = user
       @message = "Resent invite to #{user.name || user.email} to join the project!"
+
     else
-      @user = user
       # user is there in the system already, but not invited for this project ever, so invite him now
+      @user = user
       @project_user = ProjectUser.create!(:user_id => user.id, :project_id => @project.id, :active => false)
       send_project_join_request_to_user(invitee_details)
       @message = "An invite is sent to #{user.name || user.email} to join the project!"
@@ -81,11 +84,11 @@ class ProjectMemberInvitationsController < ApplicationController
     {:initials => initials.strip, :email => email.strip, :name => name.strip, :role => invitee_details_params[:role]}
   end
 
-  def user_has_already_joined_the_project(user)
+  def has_already_joined_the_project?(user)
     @project.active_users.include? user
   end
 
-  def user_has_not_joined_the_project(user)
+  def is_invited_but_not_joined_the_project?(user)
     @project.inactive_users.include? user
   end
 
@@ -93,7 +96,7 @@ class ProjectMemberInvitationsController < ApplicationController
 
   end
 
-  def its_new_user_in_system(user)
+  def is_new_user_in_system?(user)
     user.blank?
   end
 

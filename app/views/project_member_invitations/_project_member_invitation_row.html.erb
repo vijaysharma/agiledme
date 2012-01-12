@@ -7,7 +7,7 @@
   <td class="email"><%= invited_user.email %></td>
   <td class="invited_by_email"><%= invited_user.invited_by_id.present? ? User.find(invited_user.invited_by_id).email : "-"%></td>
   <td class="role">
-    <%= collection_select invited_user, :role, User::ROLES, :to_s, :humanize, :selected => invited_user.role %>
+    <%= collection_select invited_user, :role, ProjectUser::ROLES, :to_s, :humanize, :selected => project_user.role %>
     <img style="visibility:hidden" src="/images/spinner_adding.gif" id="" class="spinner" alt="Spinner_adding">
   </td>
   <td class="invitations">

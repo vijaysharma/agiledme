@@ -3,19 +3,18 @@ class ProjectMemberInvitationsController < ApplicationController
     @project = Project.find(params[:project_id])
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml { render :xml => @project_member_invitations }
+      format.html
     end
   end
 
   def create
     @project = Project.find(params[:project_id])
-    invitee_details = get_invitee_details(params[:project_member_invitation])
+    invitee_details = get_invitee_details(params[:project_member_invitation][:invitee_details])
 
     user = User.find_by_email(invitee_details[:email])
     if is_new_user_in_system?(user)
       @user = User.invite!(invitee_details, current_user)
-      @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false)
+      @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false, :role => params[:project_member_invitation][:role])
       @message = "An invite is sent to #{invitee_details[:name] || invitee_details[:email]} to join the project!"
 
     elsif has_already_joined_the_project?(user)
@@ -67,12 +66,11 @@ class ProjectMemberInvitationsController < ApplicationController
 
   private
 
-  def get_invitee_details(invitee_details_params)
+  def get_invitee_details(invitee_details_value)
 
     name = ""
     email = ""
     initials = ""
-    invitee_details_value = invitee_details_params[:invitee_details]
     if (invitee_details_value.include?('<'))
       name = invitee_details_value.split('<')[0].split('(')[0]
       initials = invitee_details_value.split('<')[0].split('(')[1].split(')')[0]
@@ -81,7 +79,7 @@ class ProjectMemberInvitationsController < ApplicationController
       name = invitee_details_value.split(',')[0].strip
       email = invitee_details_value.split(',')[1]
     end
-    {:initials => initials.strip, :email => email.strip, :name => name.strip, :role => invitee_details_params[:role]}
+    {:initials => initials.strip, :email => email.strip, :name => name.strip}
   end
 
   def has_already_joined_the_project?(user)

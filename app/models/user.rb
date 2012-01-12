@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  ROLES = %w[owner member viewer]
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
@@ -7,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :initials, :role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :initials
   cattr_accessor :current_user
 
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, :on => :create

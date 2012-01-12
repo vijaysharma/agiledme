@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120111154105) do
     t.integer "user_id"
     t.integer "project_id"
     t.boolean "active"
+    t.string  "role"
   end
 
   create_table "projects", :force => true do |t|
@@ -92,7 +93,6 @@ ActiveRecord::Schema.define(:version => 20120111154105) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "role"
     t.string   "initials"
     t.string   "name"
   end

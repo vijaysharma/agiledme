@@ -8,7 +8,7 @@
           <td><label for="members_for_lookup">Add Member</label></td>
           <td><%= f.text_field :invitee_details, :size => "60" %></td>
           <td>
-            <%= f.collection_select :role, User::ROLES, :to_s, :humanize, :selected => "member"%>
+            <%= f.collection_select :role, ProjectUser::ROLES, :to_s, :humanize, :selected => "member"%>
           </td>
           <td>
             <%= f.submit %>

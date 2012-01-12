@@ -12,11 +12,23 @@ class ProjectMemberInvitationsController < ApplicationController
     @project = Project.find(params[:project_id])
     invitee_details = get_invitee_details(params[:project_member_invitation])
 
-    if User.find_by_email(invitee_details[:email]).blank?
+    user = User.find_by_email(invitee_details[:email])
+    if its_new_user_in_system(user)
       @user = User.invite!(invitee_details, current_user)
       @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false)
+      @message = "An invite is sent to #{invitee_details[:name] || invitee_details[:email]} to join the project!"
+    elsif user_has_already_joined_the_project(user)
+      @error = "#{user.name || user.email} is already #{user.role} of the project!"
+    elsif user_has_not_joined_the_project(user)
+      send_project_join_request_to_user(invitee_details)
+      @user = user
+      @message = "Resent invite to #{user.name || user.email} to join the project!"
     else
-      @error = "Email has already been invited"
+      @user = user
+      # user is there in the system already, but not invited for this project ever, so invite him now
+      @project_user = ProjectUser.create!(:user_id => user.id, :project_id => @project.id, :active => false)
+      send_project_join_request_to_user(invitee_details)
+      @message = "An invite is sent to #{user.name || user.email} to join the project!"
     end
 
 
@@ -68,5 +80,22 @@ class ProjectMemberInvitationsController < ApplicationController
     end
     {:initials => initials.strip, :email => email.strip, :name => name.strip, :role => invitee_details_params[:role]}
   end
+
+  def user_has_already_joined_the_project(user)
+    @project.active_users.include? user
+  end
+
+  def user_has_not_joined_the_project(user)
+    @project.inactive_users.include? user
+  end
+
+  def send_project_join_request_to_user(invitee_details)
+
+  end
+
+  def its_new_user_in_system(user)
+    user.blank?
+  end
+
 
 end

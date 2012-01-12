@@ -5,4 +5,18 @@ class Project < ActiveRecord::Base
   has_many :epics, :dependent => :destroy
   has_many :workable_item_histories, :dependent => :destroy
   validates_presence_of :name
+
+  def active_users
+    users(true)
+  end
+
+  def inactive_users
+    users(false)
+  end
+
+  private
+
+  def users(status)
+    self.project_users.where(:active => status).collect { |project_user| project_user.user }
+  end
 end

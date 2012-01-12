@@ -29,6 +29,14 @@ body {
     margin-left: 92px;
 }
 
+.message {
+    color: green;
+    font-weight: bold;
+    font-size:0.9em;
+    margin-bottom: 5px;
+    margin-left: 92px;
+}
+
 blockquote, q {
     quotes: none;
 }

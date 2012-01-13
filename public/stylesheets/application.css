@@ -385,6 +385,7 @@ li, ul, div {
     font-size: 12px;
     text-align: center;
     margin-bottom: 10px;
+    margin-top: 10px;
     float:left;
 }
 
@@ -599,6 +600,10 @@ li, ul, div {
     padding-left: 5px;
     font-size: 1em;
     font-weight: bold
+}
+
+.registration input[type="text"], .registration input[type="password"], .registration input[type="email"] {
+    font-size: 1.3em;
 }
 
 .modal_form input[type="text"], .registration input[type="text"], .registration input[type="password"], .registration input[type="email"], textarea {

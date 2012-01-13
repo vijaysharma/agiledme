@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
                             :limit => 10)
   end
 
+  def invited_by
+    User.find(self.invited_by_id)
+  end
+
   def join_project
   end
 

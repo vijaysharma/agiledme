@@ -4,7 +4,4 @@
 <p>To start using white apple, you need to confirm your account. You can confirm your account through the link below:</p>
 
 <p><%= link_to 'Confirm my account', user_confirmation_url(:confirmation_token => @resource.confirmation_token) %></p>
-<p>
-  Thanks and Regards,
-  The WHITE APPLE Team
-</p>
+<%= render :mail_signature %>

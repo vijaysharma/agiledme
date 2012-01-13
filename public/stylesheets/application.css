@@ -21,8 +21,9 @@ body {
     line-height: 1;
 }
 
-#error_explanation {
-
+.field_with_errors {
+    float: left;
+    padding-left: 2px;
 }
 
 #error_explanation h3 {
@@ -31,15 +32,16 @@ body {
     font-size: 1em;
     margin-bottom: 0;
     padding-top: 0;
-    padding-bottom:5px;
+    padding-bottom: 5px;
 }
 
 #error_explanation ul {
     padding-bottom: 5px;
     margin-bottom: 10px;
-    border-bottom:1px dashed #FFFFFF;
+    border-bottom: 1px dashed #FFFFFF;
 
 }
+
 #error_explanation ul > li {
     margin-left: 50px;
 }
@@ -47,7 +49,7 @@ body {
 .error_message {
     color: red;
     font-weight: bold;
-    font-size:0.9em;
+    font-size: 0.9em;
     margin-bottom: 5px;
     margin-left: 92px;
 }
@@ -55,7 +57,7 @@ body {
 .message {
     color: green;
     font-weight: bold;
-    font-size:0.9em;
+    font-size: 0.9em;
     margin-bottom: 5px;
     margin-left: 92px;
 }
@@ -79,18 +81,6 @@ input, textarea {
     -moz-border-top-colors: none;
     border: 1px solid #CCCCCC;
     border-radius: 3px;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-style-ltr-source: physical;
-    border-left-style-rtl-source: physical;
-    border-left-width-ltr-source: physical;
-    border-left-width-rtl-source: physical;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-style-ltr-source: physical;
-    border-right-style-rtl-source: physical;
-    border-right-width-ltr-source: physical;
-    border-right-width-rtl-source: physical;
     font-size: 12px;
     padding: 5px 5px 4px;
 }
@@ -103,18 +93,6 @@ select {
     -moz-border-top-colors: none;
     border: 1px solid #CCCCCC;
     border-radius: 3px;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-style-ltr-source: physical;
-    border-left-style-rtl-source: physical;
-    border-left-width-ltr-source: physical;
-    border-left-width-rtl-source: physical;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-style-ltr-source: physical;
-    border-right-style-rtl-source: physical;
-    border-right-width-ltr-source: physical;
-    border-right-width-rtl-source: physical;
     padding: 4px 5px;
 }
 
@@ -171,8 +149,8 @@ body {
 .content {
     overflow: visible;
     padding: 0 0 10px 0;
-    height:100%;
-    min-height:350px;
+    height: 100%;
+    min-height: 350px;
 }
 
 .content ul {
@@ -262,7 +240,7 @@ select, input, textarea {
     margin-top: 11px;
     padding: 0;
     width: 326px;
-    letter-spacing:10px;
+    letter-spacing: 10px;
 }
 
 #header h1 a {
@@ -386,7 +364,7 @@ li, ul, div {
     text-align: center;
     margin-bottom: 10px;
     margin-top: 10px;
-    float:left;
+    float: left;
 }
 
 .registration p > a {
@@ -584,7 +562,8 @@ li, ul, div {
     display: inline-block;
     vertical-align: top;
 }
-.modal_form label{
+
+.modal_form label {
     width: 85px;
     text-align: right;
     display: inline-block;

@@ -15,8 +15,6 @@ class User < ActiveRecord::Base
   has_many :project_users
   has_many :workable_item_histories
 
-  after_invitation_accepted :email_invited_by
-
   def all_workable_item_histories_for_all_my_projects
     WorkableItemHistory.all(:conditions => ["project_id in (?)", self.project_ids],
                             :order => "created_at DESC",

@@ -18,7 +18,7 @@ class ProjectMemberInvitationsController < ApplicationController
       @message = "An invite is sent to #{invitee_details[:name] || invitee_details[:email]} to join the project!"
 
     elsif has_already_joined_the_project?(user)
-      @error = "#{user.name || user.email} is already #{user.role} of the project!"
+      @error = "#{user.name || user.email} is already #{user.project_users.where(:project_id => @project.id).first.role} of the project!"
 
     elsif is_invited_but_not_joined_the_project?(user)
       send_project_join_request_to_user(invitee_details)

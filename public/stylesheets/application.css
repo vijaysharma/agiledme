@@ -21,6 +21,29 @@ body {
     line-height: 1;
 }
 
+#error_explanation {
+
+}
+
+#error_explanation h3 {
+    border-bottom: medium none -moz-use-text-color;
+    color: yellow;
+    font-size: 1em;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom:5px;
+}
+
+#error_explanation ul {
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom:1px dashed #FFFFFF;
+
+}
+#error_explanation ul > li {
+    margin-left: 50px;
+}
+
 .error_message {
     color: red;
     font-weight: bold;
@@ -48,7 +71,7 @@ blockquote:before, blockquote:after, q:before, q:after {
     outline: 0;
 }
 
-input[type="text"], input[type="password"], textarea {
+input, textarea {
     -moz-border-bottom-colors: none;
     -moz-border-image: none;
     -moz-border-left-colors: none;
@@ -328,9 +351,7 @@ a {
 }
 
 p {
-    color: #666666;
     line-height: 1.4;
-    margin-bottom: 1em;
 }
 
 li, ul, div {
@@ -357,22 +378,23 @@ li, ul, div {
     -moz-box-shadow: 0px 0px 10px 0px #020000;
     box-shadow: 0px 0px 10px 0px #020000;
     color: #fff;
-    padding: 0 10px 0 10px;
+    padding: 0 10px 15px 10px;
 }
 
 .registration p {
     font-size: 12px;
     text-align: center;
     margin-bottom: 10px;
+    float:left;
 }
 
 .registration p > a {
     color: #fff;
-    text-decoration: underline;
+
 }
 
 .registration p > a:hover {
-    color: #fff;
+    text-decoration: underline;
 }
 
 .registration > ul {
@@ -542,7 +564,6 @@ li, ul, div {
 
 .registration {
     width: 355px;
-    height: 217px;
     float: left;
     position: relative;
     -moz-border-radius: 10px;
@@ -573,7 +594,7 @@ li, ul, div {
 
 .modal_form input[type="text"], .registration input[type="text"], .registration input[type="password"], .registration input[type="email"] {
     height: 20px;
-    width: 245px;
+    width: 240px;
     margin-bottom: 8px;
     padding-left: 5px;
     font-size: 1em;

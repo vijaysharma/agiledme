@@ -13,6 +13,7 @@ module Devise
     end
 
     module Invitable
+      #had to make the deliver_invitation publisc instead of protected for this to work..hack!!
       handle_asynchronously :deliver_invitation
     end
   end

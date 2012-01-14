@@ -5,11 +5,9 @@
         <label for="name">Project Name</label>
         <%= f.text_field :name, :class => "", :id => "name" %><br/>
         <label for="description">Description</label>
-        <%= f.text_field :description, :class => "", :id => "description" %><br/>
-        <label for="estimate_bugs">Estimate Bugs?</label>
-        <%= f.check_box :estimate_bugs, :class => "", :id => "estimate_bugs" %><br/>
-        <label for="estimate_chores">Estimate Chores?</label>
-        <%= f.check_box :estimate_chores, :class => "", :id => "estimate_chores" %><br/>
+        <%= f.text_area :description, :id => "description" %><br/>
+        <%= f.hidden_field :estimate_bugs %><br/>
+        <%= f.hidden_field :estimate_chores %><br/>
         <label for="start_date">Start Date</label>
         <%= f.date_select :start_date, :start_year => DateTime.now.year, :order => [:day, :month, :year], :id => "start_date" %>
       </fieldset>

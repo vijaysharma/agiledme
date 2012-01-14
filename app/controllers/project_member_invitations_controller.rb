@@ -104,7 +104,7 @@ class ProjectMemberInvitationsController < ApplicationController
   end
 
   def send_project_join_request_to_user
-    UserMailer.join_project_invitation(@user, @project, current_user).deliver
+    UserMailer.delay.join_project_invitation(@user, @project, current_user)
   end
 
   def is_new_user_in_system?(user)

@@ -18,6 +18,12 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="delayed_job" version="2.1.4" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="devise" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -75,9 +81,7 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] devise_invitable (v0.6.1, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/devise_invitable-0.6.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rails (v3.1.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/rails-3.1.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] activemodel (v3.1.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/activemodel-3.1.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] multi_json (v1.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/multi_json-1.0.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.10, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/arel-2.0.10)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] activesupport (v3.1.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/activesupport-3.1.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] tzinfo (v0.3.31, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/tzinfo-0.3.31)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] tilt (v1.3.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/tilt-1.3.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] mime-types (v1.17.2, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/mime-types-1.17.2)" level="application" />
@@ -110,6 +114,8 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] activerecord (v3.1.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/activerecord-3.1.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] actionpack (v3.1.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/actionpack-3.1.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] sprockets (v2.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/sprockets-2.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] delayed_job (v2.1.4, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/delayed_job-2.1.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] daemons (v1.1.5, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/daemons-1.1.5)" level="application" />
   </component>
 </module>
 

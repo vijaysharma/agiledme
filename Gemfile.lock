@@ -33,6 +33,10 @@ GEM
     arel (2.0.10)
     bcrypt-ruby (3.0.1)
     builder (2.1.2)
+    daemons (1.1.5)
+    delayed_job (2.1.4)
+      activesupport (~> 3.0)
+      daemons
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -87,6 +91,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  delayed_job (~> 2.1.4)
   devise
   devise_invitable
   jquery-rails

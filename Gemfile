@@ -10,6 +10,8 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'aasm'
 gem 'jquery-rails'
+gem "delayed_job", "~> 2.1.4"
+
 #gem 'acts-as-taggable-on', '~>2.2.0'
 
 # Use unicorn as the web server

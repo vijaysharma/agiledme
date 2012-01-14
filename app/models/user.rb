@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
   cattr_accessor :current_user
 
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, :on => :create
-  validates_uniqueness_of :email
   has_and_belongs_to_many :projects, :join_table => "project_users"
   has_many :project_users
   has_many :workable_item_histories
@@ -25,7 +24,8 @@ class User < ActiveRecord::Base
     User.find(self.invited_by_id)
   end
 
-  def join_project
+  def not_accepted_the_invitation?
+    self.invited_by.present? and self.invitation_token.present?
   end
 
 end

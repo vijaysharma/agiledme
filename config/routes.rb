@@ -23,7 +23,8 @@ Agiledme::Application.routes.draw do
     resources :project_member_invitations
   end
 
-  devise_for :users, :controllers => {:invitations => 'users/invitations'}
+  devise_for :users, :controllers => { :registrations => 'users/registrations'}
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

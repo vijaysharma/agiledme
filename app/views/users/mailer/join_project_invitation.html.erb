@@ -1,0 +1,10 @@
+<p>Hello <%= @user.name || @user.email %>!</p>
+
+<p>You are invited you to join the project : <%= @project.name %> by <%= @invited_by.name || @invited_by.email %>.</p>
+<p>Please accept the invitation by logging in to you WHITE APPLE account and click the below link: </p>
+
+<p><%= link_to "Dashboard", root_url %> </p>
+
+<p>If you don't want to accept the invitation, please ignore this email.<br /></p>
+
+<%= render "/users/mailer/mail_signature" %>

@@ -12,9 +12,14 @@ class ProjectMemberInvitationsController < ApplicationController
     invitee_details = get_invitee_details(params[:project_member_invitation][:invitee_details])
 
     user = User.find_by_email(invitee_details[:email])
-    if is_new_user_in_system?(user) || user.not_accepted_the_invitation?
+    if is_new_user_in_system?(user)
       @user = User.invite!(invitee_details, current_user)
-      if user.not_accepted_the_invitation? and is_not_invited_for_the_project?(user)
+      @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false, :role => params[:project_member_invitation][:role])
+      @message = "An invite is sent to #{invitee_details[:name] || invitee_details[:email]} to join the project!"
+
+    elsif user.not_accepted_the_invitation?
+      @user = User.invite!(invitee_details, current_user)
+      if is_not_invited_for_the_project?(user)
         @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false, :role => params[:project_member_invitation][:role])
       end
       @message = "An invite is sent to #{invitee_details[:name] || invitee_details[:email]} to join the project!"

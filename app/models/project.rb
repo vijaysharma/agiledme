@@ -7,16 +7,16 @@ class Project < ActiveRecord::Base
   validates_presence_of :name
 
   def active_users
-    users(true)
+    my_users(true)
   end
 
   def inactive_users
-    users(false)
+    my_users(false)
   end
 
   private
 
-  def users(status)
+  def my_users(status)
     self.project_users.where(:active => status).collect { |project_user| project_user.user }
   end
 end

@@ -14,7 +14,9 @@ class ProjectMemberInvitationsController < ApplicationController
     user = User.find_by_email(invitee_details[:email])
     if is_new_user_in_system?(user) || user.not_accepted_the_invitation?
       @user = User.invite!(invitee_details, current_user)
-      @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false, :role => params[:project_member_invitation][:role])
+      if user.not_accepted_the_invitation? and is_not_invited_for_the_project?(user)
+        @project_user = ProjectUser.create!(:user_id => @user.id, :project_id => @project.id, :active => false, :role => params[:project_member_invitation][:role])
+      end
       @message = "An invite is sent to #{invitee_details[:name] || invitee_details[:email]} to join the project!"
 
     elsif has_already_joined_the_project?(user)
@@ -27,7 +29,7 @@ class ProjectMemberInvitationsController < ApplicationController
 
     elsif
       # user is there in the system already, but not invited for this project ever, so invite him now
-      @user = user
+    @user = user
       @project_user = ProjectUser.create!(:user_id => user.id, :project_id => @project.id, :active => false, :role => params[:project_member_invitation][:role])
       send_project_join_request_to_user(invitee_details)
       @message = "An invite is sent to #{user.name || user.email} to join the project!"
@@ -86,6 +88,10 @@ class ProjectMemberInvitationsController < ApplicationController
 
   def has_already_joined_the_project?(user)
     @project.active_users.include? user
+  end
+
+  def is_not_invited_for_the_project?(user)
+    !@project.users.include? user
   end
 
   def is_invited_but_not_joined_the_project?(user)

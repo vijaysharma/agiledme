@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
 
   def overview
     @project = Project.find(params[:id])
+    @project_users = @project.project_users.page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # show.html.erb

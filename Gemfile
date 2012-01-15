@@ -11,6 +11,7 @@ gem 'devise_invitable'
 gem 'aasm'
 gem 'jquery-rails'
 gem "delayed_job", "~> 2.1.4"
+gem "kaminari"
 
 #gem 'acts-as-taggable-on', '~>2.2.0'
 

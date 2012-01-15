@@ -15,16 +15,20 @@
     </div>
     <div class="content_section">
       <h2>Reports</h2>
+
       <div class="report_item">
         <a class="big_link" href="#">Progress Report</a>
+
         <p>Details the progress made on stories in a given time span.</p>
       </div>
       <div class="report_item">
         <a class="big_link" href="#">Members Report</a>
+
         <p>A count of all users on all projects detailing their usage.</p>
       </div>
       <div class="report_item">
         <a class="big_link" href="#">Points Breakdown</a>
+
         <p>A daily breakdown of story points by state.</p>
       </div>
     </div>
@@ -63,30 +67,19 @@
       </h2>
       <table class="listing_table" id="members_table">
         <tbody>
-        <tr>
-          <td class="name">
-            Adam Elliot
-          </td>
-          <td class="initials">AE</td>
-          <td class="email">aelliot@crri.co.in</td>
-        </tr>
-        <tr>
-          <td class="name">
-            Amitava Basak
-          </td>
-          <td class="initials">AB</td>
-          <td class="email">abasak@crri.co.in</td>
-        </tr>
+        <% @project_users.each do |project_user|%>
+            <tr>
+              <td class="name">
+                <%= project_user.user.display_name %>
+              </td>
+              <td class="initials"><%= project_user.user.initials %></td>
+              <td class="email"><%= project_user.user.email %></td>
+            </tr>
+        <% end %>
         <tr class="minilinks">
           <td colspan="3">
-
-            <div class="pagination"><span class="disabled prev_page">« Previous</span> <span class="current">1</span>
-              <a rel="next" href="/projects/68195/overview?page=2">2</a> <a href="/projects/68195/overview?page=3">3</a>
-              <a href="/projects/68195/overview?page=4">4</a> <a href="/projects/68195/overview?page=5">5</a>
-              <a href="/projects/68195/overview?page=6">6</a>
-              <a rel="next" class="next_page" href="/projects/68195/overview?page=2">Next »</a></div>
+            <%= paginate @project_users %>
             <%= link_to 'Edit project member list', project_project_users_path(@project) %>
-
           </td>
         </tr>
         </tbody>

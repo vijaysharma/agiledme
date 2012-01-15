@@ -44,11 +44,13 @@
           <td valign="top">
             <%= link_to 'Leave this project',
                         leave_project_path(@project),
-                        :confirm => "Are you sure you want to leave the project? Once left, you can rejoin the project later from dashboard page.",
-                        :title => "Terminate membership from the project",
+                        :confirm => "You are going to leave the project #{@project.name}. Are you sure you want to do this? Once left, you can rejoin the project later from dashboard page.",
+                        :title => "Leave project #{@project.name}. Are you sure you want to do this? Once left, you can rejoin the project later from dashboard page.",
                         :class => "big_link" %>
-            <a class="big_link" href="#">Archive</a>
-            <a class="big_link" href="#">Delete</a>
+            <%= link_to 'Delete', @project,
+                :confirm => "You are going to permanently delete the project #{@project.name}. Deleting a project will delete all its related data as well and it can not be undone. Are you sure you want to do this?",
+                :title => "Permanently delete the project #{@project.name}. Deleting a project will delete all its related data as well and it can not be undone. Are you sure you want to do this?",
+                :method => :delete %>
           </td>
         </tr>
         </tbody>

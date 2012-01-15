@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   has_many :users, :through => :project_users
-  has_many :project_users
+  has_many :project_users, :dependent => :destroy
   has_many :workable_items, :order=>"priority DESC", :dependent => :destroy
   has_many :epics, :dependent => :destroy
   has_many :workable_item_histories, :dependent => :destroy

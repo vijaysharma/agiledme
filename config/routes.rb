@@ -23,7 +23,7 @@ Agiledme::Application.routes.draw do
     member do
       get :join
     end
-    resources :project_member_invitations
+    resources :project_users
   end
 
   devise_for :users, :controllers => { :registrations => 'users/registrations'}

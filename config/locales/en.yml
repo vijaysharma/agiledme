@@ -4,5 +4,5 @@
 en:
    helpers:
     submit:
-      project_member_invitation:
+      project_user:
         create: "Add"

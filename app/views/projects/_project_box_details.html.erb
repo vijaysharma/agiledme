@@ -3,7 +3,7 @@
   <% if current_user.belongs_to_project?(project) %>
 
       <%= link_to 'Stories', project, :class => "hover_link" %>
-      <%= link_to 'Members', project_project_member_invitations_path(project) %>
+      <%= link_to 'Members', project_project_users_path(project) %>
   <% else %>
       <%= link_to 'Join', join_project_path(project), :remote=> true %>
   <% end %>

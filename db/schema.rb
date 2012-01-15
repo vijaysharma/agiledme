@@ -45,18 +45,6 @@ ActiveRecord::Schema.define(:version => 20120114074141) do
     t.datetime "updated_at"
   end
 
-  create_table "project_member_invitations", :force => true do |t|
-    t.string   "email"
-    t.integer  "project_id"
-    t.integer  "invited_by"
-    t.string   "status"
-    t.string   "initials"
-    t.string   "name"
-    t.string   "role"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "project_users", :force => true do |t|
     t.integer  "user_id"
     t.integer  "project_id"

@@ -19,7 +19,7 @@
         <th class="remove"></th>
       </tr>
       <% @project.project_users.select { |project_user| !project_user.active? and !project_user.user.eql? current_user }.each do |project_user| %>
-          <%= render :partial => 'project_member_invitation_row', :locals => {:project_user => project_user} %>
+          <%= render :partial => 'project_user_row', :locals => {:project_user => project_user} %>
       <% end %>
       </tbody>
     </table>

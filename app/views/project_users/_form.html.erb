@@ -4,7 +4,7 @@
   <table class="action_cells">
     <tbody>
     <tr>
-      <%= form_for([:project, ProjectMemberInvitation.new()], :remote => true) do |f| %>
+      <%= form_for([:project, ProjectUser.new()], :remote => true) do |f| %>
           <td><label for="members_for_lookup">Add Member</label></td>
           <td><%= f.text_field :invitee_details, :size => "60" %></td>
           <td>

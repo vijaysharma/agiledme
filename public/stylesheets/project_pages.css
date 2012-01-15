@@ -44,7 +44,7 @@ label {
     width: 40em;
 }
 
-.content input[type="submit"] {
+.form_table input[type="submit"] {
     -moz-border-bottom-colors: none;
     -moz-border-image: none;
     -moz-border-left-colors: none;
@@ -61,7 +61,7 @@ label {
     text-transform: uppercase;
 }
 
-.content input[type="submit"]:hover {
+.form_table input[type="submit"]:hover {
     background-color: #153B5C;
 }
 

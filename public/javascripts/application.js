@@ -285,7 +285,7 @@ $(document).ready(function () {
     $("#new_project_form").dialog({
         autoOpen: false,
         height: 350,
-        width: 450,
+        width: 537,
         modal: true,
         addClasses:false,
         buttons: {

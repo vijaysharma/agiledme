@@ -42,7 +42,11 @@
             <a class="big_link" href="#">Import CSV</a>
           </td>
           <td valign="top">
-            <a class="big_link" href="#">Leave this project</a>
+            <%= link_to 'Leave this project',
+                        leave_project_path(@project),
+                        :confirm => "Are you sure you want to leave the project? Once left, you can rejoin the project later from dashboard page.",
+                        :title => "Terminate membership from the project",
+                        :class => "big_link" %>
             <a class="big_link" href="#">Archive</a>
             <a class="big_link" href="#">Delete</a>
           </td>
@@ -67,7 +71,7 @@
       </h2>
       <table class="listing_table" id="members_table">
         <tbody>
-        <% @project_users.each do |project_user|%>
+        <% @project_users.each do |project_user| %>
             <tr>
               <td class="name">
                 <%= project_user.user.display_name %>

@@ -50,4 +50,9 @@ class User < ActiveRecord::Base
     project_user.update_attributes!(:active => true)
   end
 
+  def leave_project(project)
+    project_user = self.project_users.find_by_project_id(project.id)
+    project_user.update_attributes!(:active => false)
+  end
+
 end

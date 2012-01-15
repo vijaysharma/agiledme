@@ -26,7 +26,7 @@
       <a class="button" href="#">Import</a>
     </li>
     <li class="last">
-      <a class="button" href="#">Project Profile</a>
+      <%= link_to "Project Profile", edit_project_path(@project), :class => "button #{sub_page.eql?("Project Profile") ? "current" : ""}" %>
     </li>
   </ul>
 </div>

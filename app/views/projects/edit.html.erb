@@ -1,6 +1,7 @@
-<h1>Editing project</h1>
+<% title "Project Overview" %>
+<div class="project_pages">
+  <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Project Profile"} %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @project %> |
-<%= link_to 'Cancel', project_path(@project) %>
+  <h2>Project Profile</h2>
+  <%= render 'form' %>
+</div>

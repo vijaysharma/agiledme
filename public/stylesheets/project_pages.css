@@ -29,15 +29,12 @@ h2 .right_link {
 
 .big_link {
     display: block;
-    font-size: 1.4em;
+    font-size: 1.2em;
     line-height: 2em;
 }
 
 .report_item p {
     color: #888888;
-    font-size: 1.2em;
-    margin: 0;
-    padding: 0;
 }
 
 .project_overview_page .velocity .heading {
@@ -58,6 +55,7 @@ h2 .right_link {
     border-bottom: 1px solid #CFCFCF;
     padding: 5px;
 }
+
 .project_box {
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%); /* FF3.6+ */
@@ -214,8 +212,12 @@ h2 + .action_area {
 .project_pages h2 {
     height: 29px;
     overflow: hidden;
-    padding-bottom: 5px;
     border-bottom: 4px solid #0C598C;
+}
+
+.markdown_content {
+    margin-top: 10px;
+    color: #666666;
 }
 
 .project_pages a#create_new_project_button {
@@ -226,8 +228,8 @@ h2 + .action_area {
     letter-spacing: 1px;
     text-decoration: none;
     cursor: pointer;
-    margin-top:0px;
-    margin-bottom:0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .project_pages #activity_feed h2 span {
@@ -246,7 +248,7 @@ h2 + .action_area {
 }
 
 .project_pages #activity_feed #activity_feed_items ul.list {
-    /*margin-top: -10px;*/
+/*margin-top: -10px;*/
     overflow: hidden;
     background: none;
 }

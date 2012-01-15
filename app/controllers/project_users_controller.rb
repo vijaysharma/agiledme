@@ -48,7 +48,7 @@ class ProjectUsersController < ApplicationController
   end
 
   def update
-    @project_user = ProjectMemberInvitation.find(params[:id])
+    @project_user = ProjectUser.find(params[:id])
 
     respond_to do |format|
       if @project_user.update_attributes(params[:project_user])
@@ -62,13 +62,12 @@ class ProjectUsersController < ApplicationController
   end
 
   def destroy
-    @project_user = ProjectMemberInvitation.find(params[:id])
-    project = @project_user.project
-    @project_user.destroy
+    project_user = ProjectUser.find(params[:id])
+    @user = project_user.user
+    project_user.destroy
 
     respond_to do |format|
-      format.html { redirect_to(project_users_url(:project => project), :notice => 'Invitation was successfully deleted.') }
-      format.xml { head :ok }
+      format.js
     end
   end
 

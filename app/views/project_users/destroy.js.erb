@@ -1,0 +1,4 @@
+$('#add_member_error_message').html('');
+ajax_flash_notice('Membership of <%= @user.display_name %> is cancelled!');
+$("#<%=@user.id%>_member_invitation").hide( "highlight", 500);
+

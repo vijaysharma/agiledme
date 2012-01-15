@@ -1,18 +1,24 @@
-<% invited_user = project_user.user %>
-<tr id="<%= "#{invited_user.id}_member_invitation" %>">
+<% user = project_user.user %>
+<tr id="<%= "#{user.id}_member_invitation" %>">
   <td class="name">
-    <%= invited_user.name %>
+    <%= user.name %>
   </td>
-  <td class="initials"><%= invited_user.initials %></td>
-  <td class="email"><%= invited_user.email %></td>
-  <td class="invited_by_email"><%= invited_user.invited_by_id.present? ? User.find(invited_user.invited_by_id).email : "-"%></td>
+  <td class="initials"><%= user.initials %></td>
+  <td class="email"><%= user.email %></td>
+  <td class="invited_by_email"><%= user.invited_by.present? ? user.invited_by.email : "-"%></td>
   <td class="role">
-    <%= collection_select invited_user, :role, ProjectUser::ROLES, :to_s, :humanize, :selected => project_user.role %>
+    <%= collection_select user, :role, ProjectUser::ROLES, :to_s, :humanize, :selected => project_user.role %>
     <img style="visibility:hidden" src="/images/spinner_adding.gif" id="" class="spinner" alt="Spinner_adding">
   </td>
   <td class="invitations">
     <span><%= project_user.active? ? "Yes" : "No Yet" %></span>
   </td>
   <td class="remove">
+    <%= link_to 'Remove',
+                project_project_user_path(project_user.project, project_user),
+                :confirm => "Are you sure you want to remove #{project_user.user.display_name} from the project?",
+                :title => "Terminate membership from the project",
+                :method => :delete,
+                :remote => true %>
   </td>
 </tr>

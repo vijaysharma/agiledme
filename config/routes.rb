@@ -21,7 +21,7 @@ Agiledme::Application.routes.draw do
 
   resources :projects do
     member do
-      get :join
+      get :join, :overview
     end
     resources :project_users
   end

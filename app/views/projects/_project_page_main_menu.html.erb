@@ -6,7 +6,8 @@
 <div class="subnav clearfix">
   <ul class="buttons">
     <li>
-      <a class="button" href="#">Overview</a>
+      <%= link_to 'Overview', overview_project_path(project),
+                  :class => "button #{sub_page.eql?("Overview") ? "current" : ""}" %>
     </li>
     <li>
       <a class="button" href="#">Settings</a>

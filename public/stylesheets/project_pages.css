@@ -1,3 +1,59 @@
+.has_right_spacer {
+    margin-right: 45px;
+}
+
+.halfway_column {
+    float: left;
+    width: 455px;
+}
+
+.content_section {
+    margin-bottom: 45px;
+}
+
+h2 .right_link {
+    float: right;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.right_link {
+    float: right;
+    line-height: 25px;
+}
+
+.report_item {
+    line-height: 0.2em;
+    margin-bottom: 1em;
+}
+
+.big_link {
+    display: block;
+    font-size: 1.4em;
+    line-height: 2em;
+}
+
+.report_item p {
+    color: #888888;
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+}
+
+.project_overview_page .velocity .heading {
+    color: #BBBBBB;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-left: 25px;
+    position: relative;
+    top: -33px;
+}
+
+.project_overview_page .velocity .heading .number {
+    color: #333333;
+    padding-right: 0.2em;
+}
+
 #no_project_message {
     border-bottom: 1px solid #CFCFCF;
     padding: 5px;
@@ -167,14 +223,11 @@ h2 + .action_area {
     display: block;
     float: right;
     font-size: 0.5em;
-    height: 24px;
     letter-spacing: 1px;
-    line-height: 24px;
-    padding: 2px 0;
-    position: relative;
     text-decoration: none;
-    top: -9px;
     cursor: pointer;
+    margin-top:0px;
+    margin-bottom:0px;
 }
 
 .project_pages #activity_feed h2 span {
@@ -278,6 +331,43 @@ li {
 .listing_table {
     font-size: 12px;
     width: 100%;
+}
+
+.project_overview_page .listing_table td {
+    color: #555555;
+    font-size: 1em;
+    padding: 5px;
+}
+
+.listing_table td.name {
+    font-weight: bold;
+    padding-right: 6em;
+}
+
+.listing_table tr.minilinks td {
+    background: transparent none repeat scroll 0 0;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+}
+
+.pagination {
+    font-size: 12px;
+    margin-top: 2px;
+    text-align: center;
+}
+
+.minilinks a {
+    font-weight: normal;
+}
+
+.pagination .disabled {
+    color: #888888;
+    opacity: 0.5;
+}
+
+.pagination .current {
+    font-weight: bold;
 }
 
 .members_page .listing_table th.name, .members_page .listing_table td.name {

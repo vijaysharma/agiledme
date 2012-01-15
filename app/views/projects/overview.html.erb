@@ -1,0 +1,201 @@
+<% title "Project Overview" %>
+<div class="project_pages">
+  <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Overview"} %>
+  <div class="halfway_column has_right_spacer">
+    <div class="content_section">
+      <h2>
+
+        <div class="right_link"><a href="/projects/68195/profile">Edit</a></div>
+
+        Project Profile
+      </h2>
+
+        <div class="markdown_content">
+          <p>This is the SOLARO project for Castlerock Research India</p>
+
+        </div>
+
+    </div>
+
+
+      <div class="content_section">
+        <h2>Reports</h2>
+        <div class="report_item">
+      <a class="big_link" href="/reports/progress?project_id=68195">Progress Report</a>
+      <p>Details the progress made on stories in a given time span.</p>
+    </div>
+<div class="report_item">
+      <a class="big_link" href="/reports/members">Members Report</a>
+      <p>A count of all users on all projects detailing their usage.</p>
+    </div>
+<div class="report_item">
+      <a class="big_link" href="/reports/point_count?project_id=68195">Points Breakdown</a>
+      <p>A daily breakdown of story points by state.</p>
+    </div>
+      </div>
+
+
+    <div class="content_section">
+      <h2>Actions</h2>
+      <table width="100%">
+          <tbody><tr>
+            <td width="50%">
+              <a class="big_link" href="/projects/68195/export">Export CSV</a>
+
+                <a class="big_link" href="/projects/68195/import">Import CSV</a>
+
+            </td>
+            <td valign="top">
+
+                <a onclick="if (confirm('Are you sure you want to leave the project \'CRRI | SOLARO  Europa (Vijaya Kannusamy)\'?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit(); };return false;" class="big_link" href="/projects/68195/leave">Leave this project</a>
+
+
+
+                <a onclick="if (confirm('You are about to archive the project \&quot;CRRI | SOLARO  Europa (Vijaya Kannusamy).\&quot; Are you sure you want to do this?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit(); };return false;" class="big_link" href="/projects/68195/archive">Archive</a>
+
+
+
+                <a onclick="if (confirm('You are about to permanently delete the project \&quot;CRRI | SOLARO  Europa (Vijaya Kannusamy).\&quot; Are you sure you want to do this?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);f.submit(); };return false;" class="big_link" href="/projects/68195">Delete</a>
+
+
+            </td>
+          </tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <div class="halfway_column">
+    <div class="content_section velocity">
+      <h2>Velocity</h2>
+
+
+        <img src="https://www.pivotaltracker.com/google_chart?cht=bvs&amp;chd=t:9.2,8.2,23.2,12.2,14.2,11.2,4.2,11.2,11.2,2.2,33.2,9.2,35.2,8.2,18.2,4.2,2.2,11.2,19.2,19.2&amp;chs=320x65&amp;chds=0,35.2&amp;chco=88c2e5&amp;chbh=11,1&amp;chf=bg,s,FFFFFF00&amp;chxt=x,y&amp;chxs=0,000000,1,0,_%7C1,000000,1,0,_&amp;chxl=0:%7C%7C1:%7C" alt="">
+        <span class="heading"><span class="number">14</span>velocity</span>
+
+    </div>
+    <div class="content_section">
+  <h2>
+
+      <div class="right_link"><a href="/projects/68195/memberships">Edit</a></div>
+
+    Members
+  </h2>
+
+  <table class="listing_table" id="members_table">
+
+  <tbody><tr>
+    <td class="name">
+              Adam Elliot
+          </td>
+    <td class="initials">AE</td>
+
+      <td class="email">aelliot@crri.co.in</td>
+
+  </tr>
+
+  <tr>
+    <td class="name">
+              Amitava Basak
+          </td>
+    <td class="initials">AB</td>
+
+      <td class="email">abasak@crri.co.in</td>
+
+  </tr>
+
+  <tr>
+    <td class="name">
+              Anupam Choudhury
+          </td>
+    <td class="initials">AC</td>
+
+      <td class="email">achoudhury@crri.co.in</td>
+
+  </tr>
+
+  <tr>
+    <td class="name">
+              Arjun
+          </td>
+    <td class="initials">AR</td>
+
+      <td class="email">aghosh@crri.co.in</td>
+
+  </tr>
+
+  <tr>
+    <td class="name">
+              Arunmozhi Santhanam
+          </td>
+    <td class="initials">AS</td>
+
+      <td class="email">asanthanam@crri.co.in</td>
+
+  </tr>
+
+  <tr>
+    <td class="name">
+              Bratish Goswami
+          </td>
+    <td class="initials">BG</td>
+
+      <td class="email">bgoswami@crri.co.in</td>
+
+  </tr>
+
+  <tr>
+    <td class="name">
+              Cameron Upright
+          </td>
+    <td class="initials">CU</td>
+
+      <td class="email">cupright@castlerockresearch.com</td>
+
+  </tr>
+
+  <tr>
+    <td class="name">
+              Christopher Manning
+          </td>
+    <td class="initials">CM</td>
+
+      <td class="email">cmanning@castlerockresearch.com</td>
+
+  </tr>
+
+  <tr>
+    <td class="name">
+              CR Geissler
+          </td>
+    <td class="initials">CRG</td>
+
+      <td class="email">geissler@gmail.com</td>
+
+  </tr>
+
+  <tr>
+    <td class="name">
+              Dan Mercier
+          </td>
+    <td class="initials">DM</td>
+
+      <td class="email">dmercier@castlerockresearch.com</td>
+
+  </tr>
+
+  <tr class="minilinks">
+    <td colspan="3">
+
+        <div class="pagination"><span class="disabled prev_page">« Previous</span> <span class="current">1</span> <a rel="next" href="/projects/68195/overview?page=2">2</a> <a href="/projects/68195/overview?page=3">3</a> <a href="/projects/68195/overview?page=4">4</a> <a href="/projects/68195/overview?page=5">5</a> <a href="/projects/68195/overview?page=6">6</a> <a rel="next" class="next_page" href="/projects/68195/overview?page=2">Next »</a></div>
+
+
+        <a href="/projects/68195/memberships">Edit project member list</a>
+
+    </td>
+  </tr>
+  </tbody></table>
+</div>
+
+  </div>
+
+</div>

@@ -2,7 +2,9 @@
 <div class="project_pages members_page">
   <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Members"} %>
   <h2>Members</h2>
-  <%= render 'form' %>
+  <% if current_user.can_manage_members_of(@project) %>
+      <%= render 'form' %>
+  <% end %>
   <div id="members_module">
     <table class="listing_table" id="members_table">
       <tbody>
@@ -16,7 +18,7 @@
         <th class="invitations">Joined</th>
         <th class="remove"></th>
       </tr>
-      <% @project.project_users.select { |project_user| !project_user.active? and !project_user.user.eql? current_user}.each do |project_user| %>
+      <% @project.project_users.select { |project_user| !project_user.active? and !project_user.user.eql? current_user }.each do |project_user| %>
           <%= render :partial => 'project_member_invitation_row', :locals => {:project_user => project_user} %>
       <% end %>
       </tbody>

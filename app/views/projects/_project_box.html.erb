@@ -1,9 +1,5 @@
 <%= link_to project, :class => "project_name" do %>
     <div id="<%= "#{project.id}_project_box" %>" class=" project_box">
-      <div class="project_title"><%= project.name.capitalize %></div>
-      <div class="project_box_hover_links">
-        <%= link_to 'view stories', project, :class => "hover_link" %>|
-        <%= link_to 'members', project_project_member_invitations_path(project) %>
-      </div>
+      <%= render :partial => 'projects/project_box_details', :locals => {:project => project} %>
     </div>
 <% end %>

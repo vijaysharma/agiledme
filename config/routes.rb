@@ -20,6 +20,9 @@ Agiledme::Application.routes.draw do
   resources :chores, :controller => 'workable_items'
 
   resources :projects do
+    member do
+      get :join
+    end
     resources :project_member_invitations
   end
 

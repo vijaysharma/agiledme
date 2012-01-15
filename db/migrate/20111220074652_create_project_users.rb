@@ -5,6 +5,7 @@ class CreateProjectUsers < ActiveRecord::Migration
       t.integer :project_id
       t.boolean :active
       t.string :role
+      t.timestamps
     end
   end
 

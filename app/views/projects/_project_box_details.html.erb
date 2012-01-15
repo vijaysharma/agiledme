@@ -1,0 +1,9 @@
+<div class="project_title"><%= project.name.capitalize %></div>
+<div class="project_box_hover_links">
+  <% if current_user.belongs_to?(project) %>
+      <%= link_to 'view stories', project, :class => "hover_link" %>
+      <%= link_to 'members', project_project_member_invitations_path(project) %>
+  <% else %>
+      <%= link_to 'Join', join_project_path(project), :remote=> true %>
+  <% end %>
+</div>

@@ -28,4 +28,18 @@ class User < ActiveRecord::Base
     self.invited_by.present? and self.invitation_token.present?
   end
 
+  def can_manage_members_of(project)
+    project_user = self.project_users.find_by_project_id(project.id)
+    project_user and (project_user.role == 'owner' or project_user.role == 'member')
+  end
+
+  def belongs_to?(project)
+    self.project_users.find_by_project_id(project.id).active?
+  end
+
+  def join(project)
+    project_user = self.project_users.find_by_project_id(project.id)
+    project_user.update_attributes!(:active => true)
+  end
+
 end

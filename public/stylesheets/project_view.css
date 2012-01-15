@@ -425,10 +425,6 @@ div.storyDetails .section .commentsTable td.commentInfo div:hover {
     background-color: #EBE29C
 }
 
-.commentText {
-    padding-bottom: 10px;
-}
-
 div.storyDetails .section tr.commentTextRow + tr.commentInfoRow > td.commentInfo {
     padding-top: 10px;
 }

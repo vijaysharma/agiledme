@@ -46,8 +46,9 @@
             <span>
               <%= workable_item.title %>
               <% if workable_item.owner.present? %>
-                  (<a href="javascript:void(0);" title="<%= email = User.find(workable_item.owner).email %>" class="storyOwnerInitials"><%= email %></a>)
-                  <% end %>
+                  <% owner = User.find(workable_item.owner) %>
+                  (<a href="javascript:void(0);" title="<%= owner.display_name %>" class="storyOwnerInitials"><%= owner.initials_display_name %></a>)
+              <% end %>
             </span>
           </div>
         </div>

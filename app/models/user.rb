@@ -20,6 +20,14 @@ class User < ActiveRecord::Base
                             :limit => 10)
   end
 
+  def display_name
+    self.name || self.email
+  end
+
+  def initials_display_name
+    self.initials || display_name
+  end
+
   def invited_by
     User.find_by_invited_by_id(self.invited_by_id)
   end

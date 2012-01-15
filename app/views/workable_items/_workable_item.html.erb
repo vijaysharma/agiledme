@@ -12,7 +12,7 @@
 <div id="<%= "#{item_unique_id}_detail" %>" class="item" style="display:none">
 <div id="<%= "#{item_unique_id}_content" %>" class="storyItem unscheduled unestimated underEdit jquery_file_upload">
 <%= form_for(workable_item) do |project_form| %>
-    <% project_users = workable_item.project.users %>
+    <% project_users = workable_item.project.active_users %>
     <% if workable_item.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(workable_item.errors.count, "error") %> prohibited this workable_item from being
@@ -112,7 +112,7 @@
       <tr>
         <td>
           <div>
-            <%= project_form.collection_select(:requester, project_users, :id, :email, :class => "storyDetailsField") %>
+            <%= project_form.collection_select(:requester, project_users, :id, :display_name) %>
           </div>
         </td>
         <td colspan="3">
@@ -127,7 +127,7 @@
       <tr>
         <td colspan="1">
           <div>
-            <%= project_form.collection_select(:owner, project_users, :id, :email, :prompt => true) %>
+            <%= project_form.collection_select(:owner, project_users, :id, :display_name, :prompt => "none") %>
           </div>
         </td>
         <td colspan="3">

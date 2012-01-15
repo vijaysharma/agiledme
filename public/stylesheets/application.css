@@ -624,7 +624,7 @@ li, ul, div {
     color: #fff;
 }
 
-.registration input[type="submit"]:hover {
+input[type="submit"]:hover, input[type="button"]:hover {
     cursor: pointer;
 }
 

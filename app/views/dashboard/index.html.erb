@@ -14,7 +14,10 @@
               <% @projects.each do |project| %>
                   <%= render :partial => 'projects/project_box', :locals => {:project => project} %>
               <% end %>
-          <% else %><br/>You have not created any project as of now.<br/>
+          <% else %>
+              <div id="no_project_message">
+                You have not created any project as of now.
+              </div>
           <% end %>
         </div>
       </div>

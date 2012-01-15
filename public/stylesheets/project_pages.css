@@ -1,3 +1,7 @@
+#no_project_message {
+    border-bottom: 1px solid #CFCFCF;
+    padding: 5px;
+}
 .project_box {
     background: #ffffff; /* Old browsers */
     background: -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 50%, #ededed 51%, #ffffff 100%); /* FF3.6+ */

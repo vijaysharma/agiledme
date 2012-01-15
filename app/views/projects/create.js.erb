@@ -1,3 +1,4 @@
+$('#no_project_message').hide();
 $('#project_list').prepend('<%=escape_javascript render :partial => 'project_box', :locals => {:project => @project} %>');
 ajax_flash_notice('New Project created successfully!!');
 highlight_item($('#<%=@project.id%>_project_box'));

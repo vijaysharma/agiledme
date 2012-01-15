@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   end
 
   def invited_by
-    User.find_by_invited_by_id(self.invited_by_id)
+    User.find(self.invited_by_id)
   end
 
   def not_accepted_the_invitation?

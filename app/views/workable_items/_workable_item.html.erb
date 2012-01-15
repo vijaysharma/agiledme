@@ -112,7 +112,7 @@
       <tr>
         <td>
           <div>
-            <%= project_form.collection_select(:requester, project_users, :id, :display_name) %>
+            <%= project_form.collection_select(:requester, project_users, :id, :display_name, {}, {:class => "storyDetailsField"}) %>
           </div>
         </td>
         <td colspan="3">
@@ -127,7 +127,7 @@
       <tr>
         <td colspan="1">
           <div>
-            <%= project_form.collection_select(:owner, project_users, :id, :display_name, :prompt => "none") %>
+            <%= project_form.collection_select(:owner, project_users, :id, :display_name, {:prompt => "none"}, {:class => "storyDetailsField"}) %>
           </div>
         </td>
         <td colspan="3">

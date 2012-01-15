@@ -77,7 +77,7 @@
       </h2>
       <table class="listing_table" id="members_table">
         <tbody>
-        <% @project_users.each do |project_user| %>
+        <% @project_users.select { |project_user| !project_user.user.eql? current_user }.each do |project_user| %>
             <tr>
               <td class="name">
                 <%= project_user.user.display_name %>

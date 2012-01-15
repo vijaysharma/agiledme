@@ -1,4 +1,4 @@
-$('#<%= @project.id %>_project_box').val('<%=escape_javascript render :partial => 'projects/project_box_details', :locals => {:project => @project} %>');
+$('#<%= @project.id %>_project_box').html('<%=escape_javascript render :partial => 'projects/project_box_details', :locals => {:project => @project} %>');
 ajax_flash_notice('You joined the project successfully!!');
 highlight_item($('#<%=@project.id%>_project_box'));
 

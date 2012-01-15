@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   cattr_accessor :current_user
 
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, :on => :create
-  has_and_belongs_to_many :projects, :join_table => "project_users"
+  has_many :projects, :through => :project_users
   has_many :project_users, :dependent => :destroy
   has_many :workable_item_histories
 
@@ -33,11 +33,11 @@ class User < ActiveRecord::Base
     project_user and (project_user.role == 'owner' or project_user.role == 'member')
   end
 
-  def belongs_to?(project)
+  def belongs_to_project?(project)
     self.project_users.find_by_project_id(project.id).active?
   end
 
-  def join(project)
+  def join_project(project)
     project_user = self.project_users.find_by_project_id(project.id)
     project_user.update_attributes!(:active => true)
   end

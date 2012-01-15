@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
 
   def join
     @project = Project.find(params[:id])
-    current_user.join(@project)
+    current_user.join_project(@project)
     respond_to do |format|
         format.js
     end

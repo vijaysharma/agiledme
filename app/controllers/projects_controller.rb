@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to(@project, :notice => 'Project was successfully updated.') }
+        format.html { redirect_to overview_project_path(@project), :notice => 'Project was successfully updated.' }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }
@@ -69,7 +69,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     current_user.leave_project(@project)
     respond_to do |format|
-        format.html { redirect_to root_path, :notice => 'You left the project .' }
+        format.html { redirect_to root_path, :notice => 'You left the project.' }
     end
   end
 

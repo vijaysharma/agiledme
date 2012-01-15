@@ -1,3 +1,70 @@
+.edit_project {
+    margin-top:20px;
+}
+
+.form_table {
+    color: #555555;
+    margin-bottom: 30px;
+}
+
+.form_table td.label_column {
+    font-weight: bold;
+    padding: 3px 2em 10px 0;
+    text-align: right;
+}
+
+.form_table td {
+    font-size: 12px;
+}
+
+.form_table td.label_column label {
+    line-height: 25px;
+}
+
+label {
+    color: #333333;
+    font-size: 12px;
+}
+
+.form_table td.field_column {
+    line-height: 25px;
+    padding: 3px 0 10px;
+    vertical-align: top;
+}
+
+.form_table td.field_column textarea {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border: 1px solid #CCCCCC;
+    font-family: Helvetica,sans-serif;
+    padding: 5px;
+    width: 40em;
+}
+
+.content input[type="submit"] {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #256188;
+    border: 1px solid #153B5C;
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 6px 7px 4px;
+    text-transform: uppercase;
+}
+
+.content input[type="submit"]:hover {
+    background-color: #153B5C;
+}
+
 .has_right_spacer {
     margin-right: 45px;
 }

@@ -14,11 +14,13 @@
     <span><%= project_user.active? ? "Yes" : "No Yet" %></span>
   </td>
   <td class="remove">
+    <% if current_user.can_manage_members_of(@project) %>
     <%= link_to 'Remove',
                 project_project_user_path(project_user.project, project_user),
                 :confirm => "Are you sure you want to remove #{project_user.user.display_name} from the project?",
                 :title => "Terminate membership from the project",
                 :method => :delete,
                 :remote => true %>
+        <% end %>
   </td>
 </tr>

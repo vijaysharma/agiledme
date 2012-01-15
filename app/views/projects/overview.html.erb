@@ -47,10 +47,12 @@
                         :confirm => "You are going to leave the project #{@project.name}. Are you sure you want to do this? Once left, you can rejoin the project later from dashboard page.",
                         :title => "Leave project #{@project.name}. Are you sure you want to do this? Once left, you can rejoin the project later from dashboard page.",
                         :class => "big_link" %>
-            <%= link_to 'Delete', @project,
-                :confirm => "You are going to permanently delete the project #{@project.name}. Deleting a project will delete all its related data as well and it can not be undone. Are you sure you want to do this?",
-                :title => "Permanently delete the project #{@project.name}. Deleting a project will delete all its related data as well and it can not be undone. Are you sure you want to do this?",
-                :method => :delete %>
+            <% if current_user.is_owner?(@project) %>
+                <%= link_to 'Delete', @project,
+                            :confirm => "You are going to permanently delete the project #{@project.name}. Deleting a project will delete all its related data as well and it can not be undone. Are you sure you want to do this?",
+                            :title => "Permanently delete the project #{@project.name}. Deleting a project will delete all its related data as well and it can not be undone. Are you sure you want to do this?",
+                            :method => :delete %>
+            <% end %>
           </td>
         </tr>
         </tbody>
@@ -67,7 +69,9 @@
     <div class="content_section">
       <h2>
         <div class="right_link">
-          <%= link_to 'Edit', project_project_users_path(@project) %>
+          <% if current_user.can_manage_members_of(@project) %>
+              <%= link_to 'Edit', project_project_users_path(@project) %>
+          <% end %>
         </div>
         Members
       </h2>

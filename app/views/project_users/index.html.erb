@@ -18,10 +18,12 @@
         <th class="invitations">Joined</th>
         <th class="remove"></th>
       </tr>
-      <% @project.project_users.select { |project_user| !project_user.user.eql? current_user }.each do |project_user| %>
+      <% @project_users.select { |project_user| !project_user.user.eql? current_user }.each do |project_user| %>
           <%= render :partial => 'project_user_row', :locals => {:project_user => project_user} %>
       <% end %>
+
       </tbody>
     </table>
+      <%= paginate @project_users %>
   </div>
 </div>

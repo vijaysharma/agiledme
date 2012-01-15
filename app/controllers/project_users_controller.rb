@@ -1,6 +1,7 @@
 class ProjectUsersController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
+    @project_users = @project.project_users.order('updated_at').page(params[:page]).per(10)
 
     respond_to do |format|
       format.html

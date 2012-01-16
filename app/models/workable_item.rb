@@ -154,6 +154,7 @@ class WorkableItem < ActiveRecord::Base
   def update_started_by
     add_history("started this "+ self.type.downcase)
     self.category = "current"
+    self.started_at = Time.now
     set_owner_as_current_user
   end
 
@@ -166,20 +167,26 @@ class WorkableItem < ActiveRecord::Base
 
   def update_finished_by
     add_history("finished this "+ self.type.downcase)
+    self.finished_at = Time.now
     set_owner_as_current_user
   end
 
   def update_delivered_by
     add_history("delivered this "+ self.type.downcase)
+    self.delivered_at = Time.now
     set_owner_as_current_user
   end
 
   def update_accepted_by
     add_history("accepted this "+ self.type.downcase)
+    self.accepted_at = Time.now
+    self.save!
   end
 
   def update_rejected_by
     add_history("rejected this "+ self.type.downcase)
+    self.rejected_at = Time.now
+    self.save!
   end
 
   def update_restarted_by

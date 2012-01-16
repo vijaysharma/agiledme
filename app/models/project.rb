@@ -14,6 +14,16 @@ class Project < ActiveRecord::Base
     my_users(false)
   end
 
+  def points_burned_down_on(date)
+    if !self.estimate_bugs? and !self.estimate_chores?
+      self.workable_items.where(" status = 'delivered' and date(delivered_at) = ?", date).sum(:estimate)
+    elsif self.estimate_bugs?
+      self.workable_items.where(" status = 'delivered' and type != 'Chore' and date(delivered_at) = ? ", date).sum(:estimate)
+    elsif self.estimate_chores?
+      self.workable_items.where(" status = 'delivered' and type != 'Bug' and date(delivered_at) = ? ", date).sum(:estimate)
+    end
+  end
+
   private
 
   def my_users(status)

@@ -1,5 +1,5 @@
 <% title "Project Overview" %>
-<div class="project_pages">
+<div class="project_pages project_overview_page">
   <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Overview"} %>
   <div class="halfway_column has_right_spacer">
     <div class="content_section">
@@ -60,11 +60,49 @@
     </div>
   </div>
 
+  <script type="text/javascript" charset="utf-8">
+      $(function () {
+          new Highcharts.Chart({
+              chart: {
+                  renderTo: 'velocity_chart',
+                  defaultSeriesType: 'column'
+              },
+              title: {
+                  text: 'Velocity Trend'
+              },
+              xAxis: {
+                  type: "datetime",
+                  title: {
+                      text: 'Sprint'
+                  }
+              },
+              yAxis: {
+                  title: {
+                      text: 'Velocity'
+                  }
+              },
+              plotOptions: {
+                  column: {
+                      pointPadding: 0.0,
+                      borderWidth: 0
+                  }
+              },
+              series: [
+                  {
+                      name: "Points",
+                      pointInterval: <%= 1.day * 1000 %>,
+                      pointStart: <%= @project.sprint_length.weeks.ago.at_midnight.to_i * 1000 %>,
+                      data: <%= (@project.sprint_length.weeks.ago.to_date..Date.today).map { |date| @project.points_burned_down_on(date)}.inspect %>
+                  }
+              ]
+          });
+      });
+  </script>
   <div class="halfway_column">
     <div class="content_section velocity">
       <h2>Velocity</h2>
-      <img src="https://www.pivotaltracker.com/google_chart?cht=bvs&amp;chd=t:9.2,8.2,23.2,12.2,14.2,11.2,4.2,11.2,11.2,2.2,33.2,9.2,35.2,8.2,18.2,4.2,2.2,11.2,19.2,19.2&amp;chs=320x65&amp;chds=0,35.2&amp;chco=88c2e5&amp;chbh=11,1&amp;chf=bg,s,FFFFFF00&amp;chxt=x,y&amp;chxs=0,000000,1,0,_%7C1,000000,1,0,_&amp;chxl=0:%7C%7C1:%7C" alt="">
-      <span class="heading"><span class="number">14</span>velocity</span>
+      <div id="velocity_chart" style="width:360px; height:200px;"></div>
+      <span class="heading"><span class="number"><%= @project.velocity %></span>velocity</span>
     </div>
     <div class="content_section">
       <h2>

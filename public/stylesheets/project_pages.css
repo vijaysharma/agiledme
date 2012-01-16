@@ -105,7 +105,6 @@ h2 .right_link {
 
 .project_overview_page .velocity .heading {
     color: #BBBBBB;
-    font-size: 1.3em;
     font-weight: bold;
     padding-left: 25px;
     position: relative;
@@ -279,10 +278,10 @@ h2 + .action_area {
     height: 29px;
     overflow: hidden;
     border-bottom: 4px solid #0C598C;
+    margin-bottom:15px;
 }
 
 .markdown_content {
-    margin-top: 10px;
     color: #666666;
 }
 

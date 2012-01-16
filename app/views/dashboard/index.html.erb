@@ -30,9 +30,8 @@
         <a class="activity_feed_subscribe_link" href="#">subscribe</a>
       </h2>
       <ul class="list">
-        <% user_project_activities = current_user.all_workable_item_histories_for_all_my_projects %>
-        <% if user_project_activities.present? %>
-            <% user_project_activities.each do |workable_item_history| %>
+        <% if @user_project_activities.present? %>
+            <% @user_project_activities.each do |workable_item_history| %>
                 <li>
                   <div class="secondary_details">
                     <% workable_item_type = workable_item_history.workable_item.type.downcase %>
@@ -58,6 +57,7 @@
                   </div>
                 </li>
             <% end %>
+            <li><%= paginate @user_project_activities %></li>
         <% else %>
             <li>No activities for any of your projects!!</li>
         <% end %>

@@ -12,6 +12,11 @@ class CreateWorkableItems < ActiveRecord::Migration
       t.string :type
       t.string :category, :default => 'icebox'
       t.integer :priority, :default => 0
+      t.datetime :started_at
+      t.datetime :finished_at
+      t.datetime :delivered_at
+      t.datetime :accepted_at
+      t.datetime :rejected_at
 
       t.timestamps
     end

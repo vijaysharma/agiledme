@@ -15,9 +15,7 @@ class User < ActiveRecord::Base
   has_many :workable_item_histories
 
   def all_workable_item_histories_for_all_my_projects
-    WorkableItemHistory.all(:conditions => ["project_id in (?)", self.project_ids],
-                            :order => "created_at DESC",
-                            :limit => 10)
+    WorkableItemHistory.order("created_at DESC").where("project_id in (?)", self.project_ids)
   end
 
   def display_name

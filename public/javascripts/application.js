@@ -6,14 +6,6 @@ var estimate_chores = false;
 
 $(document).ready(function () {
 
-//    $(".content").height((parseInt($(window).height()) -
-//            parseInt($("#header").height()) -
-//                    parseInt($("#controlPanel").height())));
-//    alert($(window).height());
-//    alert($("#header").height());
-//    alert($("#controlPanel").height());
-//    alert($(".content").height());
-
     $("#backlog_close").click(function () {
         $("#backlog").hide();
         $("#backlog_control_button").removeClass('selected');
@@ -256,10 +248,8 @@ $(document).ready(function () {
 
     var name = $("#name"),
             description = $("#description"),
-            estimate_bugs = $("#estimate_bugs"),
-            estimate_chores = $("#estimate_chores"),
             start_date = $("#start_date"),
-            allFields = $([]).add(name).add(description).add(estimate_bugs).add(estimate_chores).add(start_date),
+            allFields = $([]).add(name).add(description).add(start_date),
             tips = $(".validateTips");
 
     function updateTips(t) {

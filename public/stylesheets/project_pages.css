@@ -108,7 +108,8 @@ h2 .right_link {
     font-weight: bold;
     padding-left: 25px;
     position: relative;
-    top: -33px;
+    top: -189px;
+    left:-12px;
 }
 
 .project_overview_page .velocity .heading .number {

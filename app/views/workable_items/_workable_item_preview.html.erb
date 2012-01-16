@@ -1,0 +1,57 @@
+<% item_unique_id = "#{workable_item.id}"
+   class_for_item = "unscheduled"
+   draggable_droppable = ""
+   cursor_style = "cursor: move;"
+   if workable_item.not_yet_started? and (workable_item.is_ready?)
+       class_for_item = "unstarted"
+   elsif workable_item.started? or workable_item.finished? or workable_item.delivered? or workable_item.rejected? or workable_item.accepted?
+       class_for_item = workable_item.status
+   end
+   if workable_item.accepted?
+       cursor_style = "cursor: default;"
+   else
+       draggable_droppable = " draggable droppable"
+   end
+   if (workable_item.category == 'icebox')
+       class_for_item += " unscheduled"
+   end
+%>
+
+<div id="<%= "#{item_unique_id}_preview" %>" class="<%= "item #{draggable_droppable}" %>">
+  <div id="<%= item_unique_id %>_content" class="<%= "storyItem #{class_for_item} notUnderEdit" %>">
+    <div class="storyPreviewHeader">
+      <div class="storySelector notDblclickable">&nbsp;</div>
+      <div class="storyPreviewButtons" id="<%= item_unique_id %>_content_buttons">
+        <%= render :partial => 'workable_items/workable_item_actions', :locals => {:workable_item => workable_item} %>
+      </div>
+      <div class="icons">
+        <img id="<%= item_unique_id %>_editButton" class="toggleExpandedButton" src="/images/story_collapsed.png" title="Expand">
+
+        <div class="left">
+          <img class="storyTypeIcon" src="<%= "/images/#{workable_item.type}.png" %>">
+          <% if workable_item.is_estimatable? and workable_item.estimate != -1 %>
+              <img width="6" class="estimateIcon" title="<%= "Estimate: #{workable_item.estimate} points" %>"
+                   src="<%= "/images/estimate#{workable_item.estimate}pt.gif" %>">
+          <% else %>
+              <img width="6" class="estimateIcon" src="<%= "/images/estimate0pt.gif" %>">
+          <% end %>
+          <% if workable_item.description.present? or workable_item.comments.present? or workable_item.tasks.present? %>
+              <img class="flyoverIcon" src="/images/story_flyover_icon.png">
+          <% end %>
+        </div>
+      </div>
+      <div id="<%= item_unique_id %>_content_details" class="storyPreviewText" style="<%= cursor_style %>">
+        <span id="<%= item_unique_id %>_content_labels_story[label_list]" class="storyLabels empty"></span>
+            <span>
+              <%= workable_item.title %>
+              <% if workable_item.owner.present? %>
+                  <% owner = User.find(workable_item.owner) %>
+                  (<a href="javascript:void(0);" title="<%= owner.display_name %>" class="storyOwnerInitials"><%= owner.initials_display_name %></a>)
+              <% end %>
+            </span>
+      </div>
+    </div>
+    <div class="storyDetailElement">
+    </div>
+  </div>
+</div>

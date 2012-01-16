@@ -49,9 +49,8 @@
                                    :locals => {:workable_items => @project.workable_items.select { |wi| wi.category == category }} %>
                     <% else %>
                         <% if category.eql?('icebox') and !@project.workable_items.present? %>
-                            <div id="no_workable_items" class="no_workable_items">You have not got any work to do in
-                              this
-                              project yet. Hurry, and start working!!
+                            <div id="no_workable_items" class="no_workable_items">
+                              You have not got any work to do in this project yet. Hurry, and start working!!
                             </div>
                         <% end %>
                     <% end %>

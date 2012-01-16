@@ -45,18 +45,8 @@ $(document).ready(function () {
         $("#icebox_new_workable_item_detail").show();
         $("#icebox_control_button").addClass('selected');
     });
-    $(".toggleExpandedButton").click(function() {
-        var id = $(this).attr('id');
-        $("#" + id.replace('editButton', 'preview')).hide();
-        $("#" + id.replace('editButton', 'detail')).show();
-    });
-    $(".cancelEditButton").click(function() {
-        var id = $(this).attr('id');
-        $("#" + id.replace('cancel_edit_button', 'preview')).show();
-        $("#" + id.replace('cancel_edit_button', 'detail')).hide();
-    });
 
-    $('.workable_item_type_select').change(function() {
+    $(document).delegate('.workable_item_type_select' ,"change", function() {
         var id = $(this).attr('id');
         var item_type = $(this).attr('value');
         $("#" + id + "_image").attr('src', "/images/" + $(this).attr('value') + ".png");
@@ -68,9 +58,21 @@ $(document).ready(function () {
         }
     });
 
-    $('.workable_item_estimate_select').change(function() {
+    $(document).delegate(".workable_item_estimate_select", "change", function() {
         var id = $(this).attr('id');
         $("#" + id + "_image").attr('src', "/images/estimate" + $(this).attr('value') + "pt.gif");
+    });
+
+    $(document).delegate(".toggleExpandedButton", "click", function() {
+        var id = $(this).attr('id');
+        $("#" + id.replace('editButton', 'preview')).hide();
+        $("#" + id.replace('editButton', 'detail')).show();
+    });
+
+    $(document).delegate(".cancelEditButton", "click", function() {
+        var id = $(this).attr('id');
+        $("#" + id.replace('cancel_edit_button', 'preview')).show();
+        $("#" + id.replace('cancel_edit_button', 'detail')).hide();
     });
 
     $(document).delegate(".workable_item_tasks", "mouseenter", function() {

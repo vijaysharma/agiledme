@@ -115,6 +115,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.accept!
+        format.js
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully accepted.') }
         format.xml { head :ok }
       else
@@ -129,6 +130,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.reject!
+        format.js
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was rejected.') }
         format.xml { head :ok }
       else

@@ -60,49 +60,11 @@
     </div>
   </div>
 
-  <script type="text/javascript" charset="utf-8">
-      $(function () {
-          new Highcharts.Chart({
-              chart: {
-                  renderTo: 'velocity_chart',
-                  defaultSeriesType: 'column'
-              },
-              title: {
-                  text: 'Velocity Trend'
-              },
-              xAxis: {
-                  type: "datetime",
-                  title: {
-                      text: 'Sprint'
-                  }
-              },
-              yAxis: {
-                  title: {
-                      text: 'Velocity'
-                  }
-              },
-              plotOptions: {
-                  column: {
-                      pointPadding: 0.0,
-                      borderWidth: 0
-                  }
-              },
-              series: [
-                  {
-                      name: "Points",
-                      pointInterval: <%= 1.day * 1000 %>,
-                      pointStart: <%= @project.sprint_length.weeks.ago.at_midnight.to_i * 1000 %>,
-                      data: <%= (@project.sprint_length.weeks.ago.to_date..Date.today).map { |date| @project.points_burned_down_on(date)}.inspect %>
-                  }
-              ]
-          });
-      });
-  </script>
   <div class="halfway_column">
     <div class="content_section velocity">
       <h2>Velocity</h2>
       <div id="velocity_chart" style="width:360px; height:200px;"></div>
-      <span class="heading"><span class="number"><%= @project.velocity %></span>velocity</span>
+      <span class="heading"><span class="number"><%= @project.current_velocity %></span>velocity</span>
     </div>
     <div class="content_section">
       <h2>
@@ -136,3 +98,42 @@
   </div>
 
 </div>
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        new Highcharts.Chart({
+            chart: {
+                renderTo: 'velocity_chart',
+                defaultSeriesType: 'column'
+            },
+            title: {
+                text: 'Velocity Trend'
+            },
+            xAxis: {
+                type: "datetime",
+                title: {
+                    text: 'Sprint'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Velocity'
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.0,
+                    borderWidth: 0
+                }
+            },
+            series: [
+                {
+                    name: "Points",
+                    pointInterval: <%= 1.day * 1000 %>,
+                    pointStart: <%= @project.sprint_length.weeks.ago.at_midnight.to_i * 1000 %>,
+                    data: <%= velocity_chart_series(@project, @project.sprint_length.weeks.ago) %>
+                }
+            ]
+        });
+    });
+</script>

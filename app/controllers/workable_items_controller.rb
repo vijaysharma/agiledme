@@ -11,6 +11,7 @@ class WorkableItemsController < ApplicationController
         if @workable_item.epic.present? and !@workable_item.epic.split_in_progress?
           @workable_item.epic.start_splitting!
         end
+        format.js
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully created.') }
         format.xml { render :xml => @workable_item, :status => :created, :location => @workable_item }
       else

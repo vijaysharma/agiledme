@@ -11,7 +11,7 @@
 
 <div id="<%= "#{item_unique_id}_detail" %>" class="item" style="display:none">
 <div id="<%= "#{item_unique_id}_content" %>" class="storyItem unscheduled unestimated underEdit jquery_file_upload">
-<%= form_for(workable_item) do |project_form| %>
+<%= form_for workable_item, :remote => true  do |project_form| %>
     <% project_users = workable_item.project.active_users %>
     <% if workable_item.errors.any? %>
         <div id="error_explanation">

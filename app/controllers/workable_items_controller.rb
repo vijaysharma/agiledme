@@ -56,6 +56,7 @@ class WorkableItemsController < ApplicationController
 
   def start
     @workable_item = WorkableItem.find(params[:id])
+    @pre_category = @workable_item.category
 
     respond_to do |format|
       if @workable_item.start!

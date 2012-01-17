@@ -19,11 +19,11 @@ module ProjectsHelper
   def velocity_chart_series(project, start_time)
     workable_items = nil
     if !project.estimate_bugs? and !project.estimate_chores?
-      workable_items = project.workable_items.where(" status = 'delivered'")
+      workable_items = project.workable_items.where(" status in ('delivered', 'accepted')")
     elsif project.estimate_bugs?
-      workable_items = project.workable_items.where(" status = 'delivered' and type != 'Chore'")
+      workable_items = project.workable_items.where(" status in ('delivered', 'accepted') and type != 'Chore'")
     elsif project.estimate_chores?
-      workable_items = project.workable_items.where(" status = 'delivered' and type != 'Bug'")
+      workable_items = project.workable_items.where(" status in ('delivered', 'accepted') and type != 'Bug'")
     end
     if workable_items
       workable_items_by_day = workable_items.where(:delivered_at => start_time.beginning_of_day..Time.zone.now.end_of_day).

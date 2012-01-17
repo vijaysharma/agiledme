@@ -3,6 +3,9 @@
 
 var estimate_bugs = false;
 var estimate_chores = false;
+var velocity_chart_point_interval = 1;
+var velocity_chart_point_start = 0;
+var velocity_chart_data_series = [];
 
 $(document).ready(function () {
 
@@ -57,33 +60,6 @@ $(document).ready(function () {
             $("#" + estimate_id).attr("disabled", false);
         }
     });
-
-//    $(document).delegate('.stateChangeButton', "click", function() {
-//        var id = $(this).attr('id');
-//        var spinner_id = id.split('_')[0]+"_spinner";
-//        alert(id);
-//        alert(spinner_id);
-//    });
-//    jQuery(function($) {
-//      // create a convenient toggleLoading function
-//      var toggleLoading = function() { $("#loading").toggle() };
-//
-//      $("#pending_invitation")
-//        .live("ajax:loading",  toggleLoading)
-//        .live("ajax:complete", toggleLoading)
-//        .live("ajax:success", function(event, data, status, xhr) {
-//           var response = JSON.parse(xhr.responseText)
-//           if (response.result == "ok") {
-//              $(this).fadeOut('fast');
-//           }
-//           else {
-//             var errors = $('<div id="error_explanation"/>');
-//             errors.append('<h2>Pending invitation action error</h2><ul><li>' + response.error + '</li></ul>');
-//             $('#new_invitation_error').append(errors)
-//           }
-//        });
-//    });
-
 
     $(document).delegate(".workable_item_estimate_select", "change", function() {
         var id = $(this).attr('id');
@@ -333,7 +309,42 @@ $(document).ready(function () {
     });
 
 //    =======================================
-
+    $(function () {
+        new Highcharts.Chart({
+            chart: {
+                renderTo: 'velocity_chart',
+                defaultSeriesType: 'column'
+            },
+            title: {
+                text: 'Velocity Trend'
+            },
+            xAxis: {
+                type: "datetime",
+                title: {
+                    text: 'Sprint'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Velocity'
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.0,
+                    borderWidth: 0
+                }
+            },
+            series: [
+                {
+                    name: "Points",
+                    pointInterval: velocity_chart_point_interval,
+                    pointStart: velocity_chart_point_start,
+                    data: velocity_chart_data_series
+                }
+            ]
+        });
+    });
 
 });
 

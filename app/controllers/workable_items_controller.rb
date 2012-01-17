@@ -71,9 +71,12 @@ class WorkableItemsController < ApplicationController
 
   def estimate
     @workable_item = WorkableItem.find(params[:id])
+    @message = "estimated as #{params[:estimate]}"
 
     respond_to do |format|
       if @workable_item.update_attributes(:estimate => params[:estimate])
+        @message = "estimated as #{params[:estimate]} pointer"
+        format.js {render :template => 'workable_items/action_success'}
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully estimated as a ' + params[:estimate] +" pointer.") }
         format.xml { head :ok }
       else

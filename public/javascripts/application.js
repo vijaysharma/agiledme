@@ -46,7 +46,7 @@ $(document).ready(function () {
         $("#icebox_control_button").addClass('selected');
     });
 
-    $(document).delegate('.workable_item_type_select' ,"change", function() {
+    $(document).delegate('.workable_item_type_select', "change", function() {
         var id = $(this).attr('id');
         var item_type = $(this).attr('value');
         $("#" + id + "_image").attr('src', "/images/" + $(this).attr('value') + ".png");
@@ -57,6 +57,34 @@ $(document).ready(function () {
             $("#" + estimate_id).attr("disabled", false);
         }
     });
+
+//    $(document).delegate('.stateChangeButton', "click", function() {
+//        var id = $(this).attr('id');
+//        var spinner_id = id.split('_')[0]+"_spinner";
+//        alert(id);
+//        alert(spinner_id);
+//    });
+//    jQuery(function($) {
+//      // create a convenient toggleLoading function
+//      var toggleLoading = function() { $("#loading").toggle() };
+//
+//      $("#pending_invitation")
+//        .live("ajax:loading",  toggleLoading)
+//        .live("ajax:complete", toggleLoading)
+//        .live("ajax:success", function(event, data, status, xhr) {
+//           var response = JSON.parse(xhr.responseText)
+//           if (response.result == "ok") {
+//              $(this).fadeOut('fast');
+//           }
+//           else {
+//             var errors = $('<div id="error_explanation"/>');
+//             errors.append('<h2>Pending invitation action error</h2><ul><li>' + response.error + '</li></ul>');
+//             $('#new_invitation_error').append(errors)
+//           }
+//        });
+//    });
+
+
 
     $(document).delegate(".workable_item_estimate_select", "change", function() {
         var id = $(this).attr('id');
@@ -346,7 +374,7 @@ function ajax_flash_notice(message) {
     flash_notice();
 }
 
-function highlight_item(item){
+function highlight_item(item) {
     item.effect("highlight", {color: "#ffd900"}, 2000);
 }
 

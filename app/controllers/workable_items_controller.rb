@@ -59,6 +59,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.start!
+        format.js {render :template => 'workable_items/action_success'}
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully started.') }
         format.xml { head :ok }
       else
@@ -87,6 +88,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.finish!
+        format.js {render :template => 'workable_items/action_success'}
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully finished.') }
         format.xml { head :ok }
       else
@@ -101,6 +103,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.deliver!
+        format.js {render :template => 'workable_items/action_success'}
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully delivered.') }
         format.xml { head :ok }
       else
@@ -112,10 +115,9 @@ class WorkableItemsController < ApplicationController
 
   def accept
     @workable_item = WorkableItem.find(params[:id])
-
     respond_to do |format|
       if @workable_item.accept!
-        format.js
+        format.js {render :template => 'workable_items/action_success'}
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully accepted.') }
         format.xml { head :ok }
       else
@@ -130,7 +132,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.reject!
-        format.js
+        format.js {render :template => 'workable_items/action_success'}
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was rejected.') }
         format.xml { head :ok }
       else
@@ -145,6 +147,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.restart!
+        format.js {render :template => 'workable_items/action_success'}
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully restarted.') }
         format.xml { head :ok }
       else

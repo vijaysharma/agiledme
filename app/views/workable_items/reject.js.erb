@@ -1,4 +1,0 @@
-$('#<%= @workable_item.id %>_preview_box').html('<%=escape_javascript render :partial => 'workable_items/workable_item_preview', :locals => {:workable_item => @workable_item} %>');
-$('#<%= @workable_item.id %>_detail_box').html('<%=escape_javascript render :partial => 'workable_items/workable_item', :locals => {:workable_item => @workable_item} %>');
-ajax_flash_notice('<%="#{@workable_item.type} was successfully rejected."%>');
-highlight_item($('#<%= @workable_item.id %>_preview'));

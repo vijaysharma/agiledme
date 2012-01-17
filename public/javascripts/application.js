@@ -85,7 +85,6 @@ $(document).ready(function () {
 //    });
 
 
-
     $(document).delegate(".workable_item_estimate_select", "change", function() {
         var id = $(this).attr('id');
         $("#" + id + "_image").attr('src', "/images/estimate" + $(this).attr('value') + "pt.gif");
@@ -192,14 +191,14 @@ $(document).ready(function () {
 
     $(document).delegate(".notice", flash_notice());
 
-    $(".new_task_text").focusin(function() {
+    $(document).delegate(".new_task_text", "focusin", function() {
         $(this).val('');
         $(this).addClass("textAreaFocus");
         var add_link_id = $(this).attr('id').replace('new_task_description', 'new_task_add_link');
         $("#" + add_link_id).show();
     });
 
-    $(".new_task_text").focusout(function() {
+    $(document).delegate(".new_task_text", "focusout", function() {
         if ($(this).val() == '') {
             $(this).val('add new task');
             $(this).removeClass("textAreaFocus");
@@ -208,27 +207,26 @@ $(document).ready(function () {
         }
     });
 
-    $(".titleInputField").focusin(function() {
+    $(document).delegate(".titleInputField", "focusin", function() {
         if ($(this).val() == 'Enter title of the item') {
             $(this).val('');
         }
-
     });
 
-    $(".titleInputField").focusout(function() {
+    $(document).delegate(".titleInputField", "focusout", function() {
         if ($(this).val() == '') {
             $(this).val('Enter title of the item');
         }
     });
 
-    $(".new_comment_text").focusin(function() {
+    $(document).delegate(".new_comment_text", "focusin", function() {
         $(this).val('');
         $(this).addClass("textAreaFocus");
         var add_link_id = $(this).attr('id').replace('new_comment_description', 'new_comment_add_link');
         $("#" + add_link_id).show();
     });
 
-    $(".new_comment_text").focusout(function() {
+    $(document).delegate(".new_comment_text", "focusout", function() {
         if ($(this).val() == '') {
             $(this).val('add new comment');
             $(this).removeClass("textAreaFocus");
@@ -272,7 +270,7 @@ $(document).ready(function () {
         tolerance: 'intersect'
     });
 
-//    =======================================
+//    New Project Modal =======================================
 
     $("#new_project_form:ui-dialog").dialog("destroy");
 

@@ -42,7 +42,7 @@ $(document).ready(function () {
         $("#icebox").toggle();
         $("#icebox_control_button").toggleClass('selected');
     });
-    $("#add_new_workable_control_button").click(function () {
+    $(document).delegate("#add_new_workable_control_button", "click", function () {
         $("#icebox").show();
         $("#no_workable_items").hide();
         $("#icebox_new_workable_item_detail").show();

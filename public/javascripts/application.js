@@ -53,8 +53,9 @@ MyClass = function() {
 }();
 
 // Global ajax activity indicators.
-$(document).ajaxStart().ajaxStop(function() {
+$(document).ajaxStart(function(){$(".spinner").show()}).ajaxStop(function() {
     MyClass.init();
+    $(".spinner").hide();
 });
 
 

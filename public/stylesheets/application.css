@@ -21,6 +21,11 @@ body {
     line-height: 1;
 }
 
+.spinner {
+    float: right;
+    margin-right: 216px;
+}
+
 .field_with_errors {
     float: left;
     padding-left: 2px;
@@ -581,12 +586,12 @@ li, ul, div {
 }
 
 .modal_form input[type="text"], .modal_form textarea {
-    width:500px;
+    width: 500px;
 }
 
 .modal_form textarea {
-    height:115px;
-    margin-bottom:10px;
+    height: 115px;
+    margin-bottom: 10px;
 }
 
 .registration input[type="text"], .registration input[type="password"], .registration input[type="email"] {

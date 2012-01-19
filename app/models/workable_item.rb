@@ -1,5 +1,6 @@
 class WorkableItem < ActiveRecord::Base
 
+  MINIMUM_POSSIBLE_PRIORITY = 0
   include AASM
 
   belongs_to :project
@@ -77,7 +78,7 @@ class WorkableItem < ActiveRecord::Base
   end
 
   def is_unestimated?
-    is_estimatable? and (self.estimate.blank? or self.estimate < 0)
+    is_estimatable? and (self.estimate.blank? or self.estimate < MINIMUM_POSSIBLE_PRIORITY)
   end
 
   def is_estimatable?
@@ -91,8 +92,7 @@ class WorkableItem < ActiveRecord::Base
                             :project_id => self.project.id).save!
   end
 
-
-  def update_priorities_for_category(other_item_id)
+  def prioritize_above(other_item_id)
     other_item = WorkableItem.find(other_item_id)
     other_priority = other_item.priority
     other_category = other_item.category
@@ -109,14 +109,14 @@ class WorkableItem < ActiveRecord::Base
     end
   end
 
+  private
+
   def increment_priorities_of_all_items_of_higher_priority
     all_items_of_higher_priority = self.project.workable_items.where("priority > ? and category = ?", self.priority, self.category)
     all_items_of_higher_priority.each do |item|
       item.update_attributes!(:priority => (item.priority + 1))
     end
   end
-
-  private
 
   def update_status_change_history
     if changed_attributes["status"].present?
@@ -155,7 +155,19 @@ class WorkableItem < ActiveRecord::Base
     add_history("started this "+ self.type.downcase)
     self.category = "current"
     self.started_at = Time.now
-    set_owner_as_current_user
+    priority_to_set = WorkableItem.where(:category => 'current').minimum(:priority)
+    if priority_to_set.present?
+      increment_priorities_of_all_items_in_current
+      self.priority = priority_to_set
+    else
+      self.priority = MINIMUM_POSSIBLE_PRIORITY
+    end
+  end
+
+  def increment_priorities_of_all_items_in_current
+    WorkableItem.where(:category => 'current').each do |item|
+      item.update_attributes!(:priority => (item.priority + 1))
+    end
   end
 
   def set_initial_default_values

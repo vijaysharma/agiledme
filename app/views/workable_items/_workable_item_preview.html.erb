@@ -1,6 +1,5 @@
 <% item_unique_id = "#{workable_item.id}"
    class_for_item = "unscheduled"
-   draggable_droppable = ""
    cursor_style = "cursor: move;"
    if workable_item.not_yet_started? and (workable_item.is_ready?)
        class_for_item = "unstarted"
@@ -9,15 +8,13 @@
    end
    if workable_item.accepted?
        cursor_style = "cursor: default;"
-   else
-       draggable_droppable = " draggable droppable"
    end
    if (workable_item.category == 'icebox')
        class_for_item += " unscheduled"
    end
 %>
 
-<div id="<%= "#{item_unique_id}_preview" %>" class="<%= "item #{draggable_droppable}" %>">
+<div id="<%= "#{item_unique_id}_preview" %>" class="item">
   <div id="<%= item_unique_id %>_content" class="<%= "storyItem #{class_for_item} notUnderEdit" %>">
     <div class="storyPreviewHeader">
       <div class="storySelector notDblclickable">&nbsp;</div>

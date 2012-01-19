@@ -7,7 +7,59 @@ var velocity_chart_point_interval = 1;
 var velocity_chart_point_start = 0;
 var velocity_chart_data_series = [];
 
+MyClass = function() {
+    return {
+        init : function() {
+            $(".draggable").draggable({
+                start: function(event, ui) {
+                    $(this).addClass('drag-highlight');
+                },
+                stop: function(event, ui) {
+                    $(this).removeClass('drag-highlight');
+                },
+                zIndex: 9999,
+                revert: true,
+                revertDuration: 10,
+                containment: "#all_panels",
+                opacity: 0.7,
+                helper: "clone",
+                cursor: "move"
+            });
+
+            $(".droppable").droppable({
+                drop: function(event, ui) {
+                    var item_dropped_on = $(this);
+                    var item_dropped_on_id = item_dropped_on.attr('id');
+                    var item_dropped_id = $(ui.draggable).attr('id');
+                    $.ajax({
+                        type: "PUT",
+                        url: "/workable_items/" + item_dropped_id + "/update_category_and_priority",
+                        dataType: "script",
+                        data: {
+                            item_dropped_on_id: item_dropped_on_id
+                        },
+                        success: function(data) {
+                            $(ui.draggable).insertBefore(item_dropped_on);
+                        }
+                    })
+                },
+                addClasses: false,
+                hoverClass: "drop_target",
+                tolerance: 'intersect'
+            });
+        }
+    }
+
+}();
+
+// Global ajax activity indicators.
+$(document).ajaxStart().ajaxStop(function() {
+    MyClass.init();
+});
+
+
 $(document).ready(function () {
+    MyClass.init();
 
     $("#backlog_close").click(function () {
         $("#backlog").hide();
@@ -211,40 +263,6 @@ $(document).ready(function () {
         }
     });
 
-    $(".draggable").draggable({
-        drag: function(event, ui) {
-            $(this).addClass('drag-highlight');
-        },
-        zIndex: 9999,
-        revert: true,
-        revertDuration: 10,
-        containment: "#all_panels",
-        opacity: 0.7,
-        helper: "clone",
-        cursor: "move"
-    });
-
-    $(".droppable").droppable({
-        drop: function(event, ui) {
-            var item_dropped_on = $(this);
-            var item_dropped_on_id = item_dropped_on.attr('id');
-            var item_dropped_id = $(ui.draggable).attr('id');
-            $.ajax({
-                type: "PUT",
-                url: "/workable_items/" + item_dropped_id + "/update_category_and_priority",
-                dataType: "script",
-                data: {
-                    item_dropped_on_id: item_dropped_on_id
-                },
-                success: function(data) {
-                    $(ui.draggable).insertBefore(item_dropped_on);
-                }
-            })
-        },
-        addClasses: false,
-        hoverClass: "drop_target",
-        tolerance: 'intersect'
-    });
 
 //    New Project Modal =======================================
 
@@ -329,6 +347,14 @@ $(document).ready(function () {
                     text: 'Velocity'
                 }
             },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                floating: true,
+                shadow: true
+            },
+
             plotOptions: {
                 column: {
                     pointPadding: 0.0,

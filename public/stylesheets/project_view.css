@@ -238,15 +238,19 @@ img {
     -moz-user-select: none;
 }
 
-.story_content .items .item.drop_target {
+.story_content .items .drop_target {
     background-color: #666666;
     border-top: 2px solid;
     margin-top: -2px;
 }
 
-.drag-highlight {
-    background-color: #FFFF99;
+.story_content .items .drag-highlight {
+    border: 1px solid #000000;
 }
+
+/*.drag-highlight {*/
+    /*background-color: #FFFF99;*/
+/*}*/
 
 .fieldLabel {
     color: gray;

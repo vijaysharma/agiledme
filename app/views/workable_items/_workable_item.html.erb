@@ -1,4 +1,9 @@
-<div id="<%= "#{workable_item.id}_item_box" %>">
+<% draggable_droppable = ""
+   if !workable_item.accepted?
+       draggable_droppable = " draggable droppable"
+   end
+%>
+<div id="<%= "#{workable_item.id}_item_box" %>" class="<%= draggable_droppable %>">
   <div id="<%= "#{workable_item.id}_preview_box" %>">
     <%= render :partial => 'workable_items/workable_item_preview', :locals => {:workable_item => workable_item} %>
   </div>

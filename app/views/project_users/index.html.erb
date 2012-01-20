@@ -6,16 +6,15 @@
       <%= render 'form' %>
   <% end %>
   <div id="members_module">
-    <table class="listing_table" id="members_table">
+    <table class="listing_table" id="members_table" width="100%">
       <tbody>
       <tr>
         <th class="name">Name</th>
-        <th class="initials">Initials</th>
-        <th class="email">Email</th>
-        <th class="email">Invited By</th>
-        <th class="role">Role</th>
-
-        <th class="invitations">Joined</th>
+        <th class="initials" >Initials</th>
+        <th class="email" >Email</th>
+        <th class="email" >Invited By</th>
+        <th class="role" >Role</th>
+        <th class="invitations" >Joined</th>
         <th class="remove"></th>
       </tr>
       <% @project_users.select { |project_user| !project_user.user.eql? current_user }.each do |project_user| %>

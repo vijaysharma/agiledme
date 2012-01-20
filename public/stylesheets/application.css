@@ -21,11 +21,6 @@ body {
     line-height: 1;
 }
 
-.spinner {
-    float: right;
-    margin-right: 216px;
-}
-
 .field_with_errors {
     float: left;
     padding-left: 2px;

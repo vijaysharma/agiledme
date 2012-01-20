@@ -53,11 +53,9 @@ class ProjectUsersController < ApplicationController
 
     respond_to do |format|
       if @project_user.update_attributes(params[:project_user])
+        format.js { render :js => "ajax_flash_notice('Changed #{@project_user.user.display_name} to #{@project_user.role.humanize}.');" }
         format.html { redirect_to(project_users_path(:project => @project_user.project), :notice => 'Invitation was successfully updated.') }
         format.xml { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml { render :xml => @project_user.errors, :status => :unprocessable_entity }
       end
     end
   end

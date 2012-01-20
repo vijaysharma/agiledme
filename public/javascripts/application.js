@@ -53,7 +53,10 @@ MyClass = function() {
 }();
 
 // Global ajax activity indicators.
-$(document).ajaxStart(function(){$(".spinner").show()}).ajaxStop(function() {
+$(document).ajaxStart(
+        function() {
+            $(".spinner").show()
+        }).ajaxStop(function() {
     MyClass.init();
     $(".spinner").hide();
 });
@@ -112,6 +115,20 @@ $(document).ready(function () {
         } else {
             $("#" + estimate_id).attr("disabled", false);
         }
+    });
+
+    $(document).delegate('.member_role', "change", function() {
+        var id = $(this).attr('id');
+        var project_id = $("#"+id+"_project").val();
+        var role = $(this).val();
+        $.ajax({
+            type: "PUT",
+            url: "/projects/"+project_id+"/project_users/"+id,
+            dataType: "script",
+            data: {
+                project_user: {role: role}
+            }
+        })
     });
 
     $(document).delegate(".workable_item_estimate_select", "change", function() {

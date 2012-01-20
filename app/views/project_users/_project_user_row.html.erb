@@ -6,9 +6,12 @@
   <td class="initials"><%= user.initials %></td>
   <td class="email"><%= user.email %></td>
   <td class="invited_by_email"><%= user.invited_by.present? ? user.invited_by.display_name : "-"%></td>
+  <input type="hidden" value="<%= project_user.project_id%>" id="<%=project_user.id%>_project">
   <td class="role">
-    <%= collection_select user, :role, ProjectUser::ROLES, :to_s, :humanize, :selected => project_user.role %>
-    <img style="visibility:hidden" src="/images/spinner_adding.gif" id="" class="spinner" alt="Spinner_adding">
+    <%= collection_select user.id,
+                          :role, ProjectUser::ROLES, :to_s, :humanize,
+                          {:selected => project_user.role},
+                          {:class => "member_role", :id => project_user.id} %>
   </td>
   <td class="invitations">
     <span><%= project_user.active? ? "Yes" : "No Yet" %></span>

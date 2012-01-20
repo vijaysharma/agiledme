@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def invited_by
-    User.find(self.invited_by_id)
+    User.find(self.invited_by_id) unless self.invited_by_id.blank?
   end
 
   def not_accepted_the_invitation?

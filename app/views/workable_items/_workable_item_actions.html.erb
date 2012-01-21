@@ -4,36 +4,36 @@
         <%= link_to image_tag("/images/estimate#{estimate}pt.gif",
                               :class => "estimateButton notDblclickable",
                               :title => "Estimate: #{estimate} point"),
-                    estimate_workable_item_path(workable_item, {:estimate => estimate}),
+                    estimate_project_workable_item_path(workable_item.project, workable_item, {:estimate => estimate}),
                     :id => "#{item_unique_id}_estimate#{estimate}Button",
                     :remote => true %>
     <% end %>
 <% elsif workable_item.not_yet_started? and workable_item.is_ready? %>
-    <%= link_to "Start", start_workable_item_path(workable_item),
+    <%= link_to "Start", start_project_workable_item_path(workable_item.project, workable_item),
                 :id => "#{item_unique_id}_start_button",
                 :class => "stateChangeButton notDblclickable start",
                 :remote => true %>
 <% elsif workable_item.started? %>
-    <%= link_to "Finish", finish_workable_item_path(workable_item),
+    <%= link_to "Finish", finish_project_workable_item_path(workable_item.project, workable_item),
                 :id => "#{item_unique_id}_finish_button",
                 :class => "stateChangeButton notDblclickable finish",
                 :remote => true %>
 <% elsif workable_item.finished? %>
-    <%= link_to "Deliver", deliver_workable_item_path(workable_item),
+    <%= link_to "Deliver", deliver_project_workable_item_path(workable_item.project, workable_item),
                 :id => "#{item_unique_id}_deliver_button",
                 :class => "stateChangeButton notDblclickable deliver",
                 :remote => true %>
 <% elsif workable_item.delivered? %>
-    <%= link_to "Accept", accept_workable_item_path(workable_item),
+    <%= link_to "Accept", accept_project_workable_item_path(workable_item.project, workable_item),
                 :id => "#{item_unique_id}_accept_button",
                 :class => "stateChangeButton notDblclickable accept",
                 :remote => true %>
-    <%= link_to "Reject", reject_workable_item_path(workable_item),
+    <%= link_to "Reject", reject_project_workable_item_path(workable_item.project, workable_item),
                 :id => "#{item_unique_id}_reject_button",
                 :class => "stateChangeButton notDblclickable reject",
                 :remote => true %>
 <% elsif workable_item.rejected? %>
-    <%= link_to "Restart", restart_workable_item_path(workable_item),
+    <%= link_to "Restart", restart_project_workable_item_path(workable_item.project, workable_item),
                 :id => "#{item_unique_id}_restart_button",
                 :class => "stateChangeButton notDblclickable restart",
                 :remote => true %>

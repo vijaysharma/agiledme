@@ -7,12 +7,10 @@
 
       <% WorkableItem.categories.each do |category| %>
           <% workable_items_in_category = @project.workable_items.select { |wi| wi.category == category } %>
-          <% if !workable_items_in_category.present?
+          <% if workable_items_in_category.blank? and !category.eql?('icebox')
                  category_display_class = 'display:none'
              end
-             if category.eql?('icebox')
-                 category_display_class = "";
-             end %>
+          %>
           <td id="<%= category %>" class="<%= "#{category} panel" %>" style="<%= category_display_class %>" width="25%">
             <div class="panelHeaderRight"></div>
             <div class="panelHeaderLeft"></div>

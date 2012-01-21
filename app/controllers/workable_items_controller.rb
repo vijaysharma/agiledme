@@ -24,20 +24,20 @@ class WorkableItemsController < ApplicationController
   # PUT /workable_items/1
   # PUT /workable_items/1.xml
   def update
-    if params[:commit] == 'Delete'
-      destroy
-    else
-      @workable_item = WorkableItem.find(params[:id])
-      @workable_item.type = params[@workable_item.type.downcase][:type]
+    @workable_item = WorkableItem.find(params[:id])
+    @pre_category = @workable_item.category
+    params_req = params[:workable_item] || params[@workable_item.type.downcase]
+    @workable_item.type = params_req[:type] || params_req[:type]
 
-      respond_to do |format|
-        if @workable_item.update_attributes!(params[@workable_item.type.downcase])
-          format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully updated.') }
-          format.xml { head :ok }
-        else
-          format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
-          format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @workable_item.update_attributes!(params_req)
+        @message = "updated"
+        format.js { render :template => 'workable_items/action_success' }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully updated.') }
+        format.xml { head :ok }
+      else
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
+        format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -61,7 +61,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.start!
-        format.js {render :template => 'workable_items/action_success'}
+        format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully started.') }
         format.xml { head :ok }
       else
@@ -78,7 +78,7 @@ class WorkableItemsController < ApplicationController
     respond_to do |format|
       if @workable_item.update_attributes(:estimate => params[:estimate])
         @message = "estimated as #{params[:estimate]} pointer"
-        format.js {render :template => 'workable_items/action_success'}
+        format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully estimated as a ' + params[:estimate] +" pointer.") }
         format.xml { head :ok }
       else
@@ -93,7 +93,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.finish!
-        format.js {render :template => 'workable_items/action_success'}
+        format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully finished.') }
         format.xml { head :ok }
       else
@@ -108,7 +108,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.deliver!
-        format.js {render :template => 'workable_items/action_success'}
+        format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully delivered.') }
         format.xml { head :ok }
       else
@@ -122,7 +122,7 @@ class WorkableItemsController < ApplicationController
     @workable_item = WorkableItem.find(params[:id])
     respond_to do |format|
       if @workable_item.accept!
-        format.js {render :template => 'workable_items/action_success'}
+        format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully accepted.') }
         format.xml { head :ok }
       else
@@ -137,7 +137,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.reject!
-        format.js {render :template => 'workable_items/action_success'}
+        format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was rejected.') }
         format.xml { head :ok }
       else
@@ -152,7 +152,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.restart!
-        format.js {render :template => 'workable_items/action_success'}
+        format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully restarted.') }
         format.xml { head :ok }
       else
@@ -170,6 +170,7 @@ class WorkableItemsController < ApplicationController
     @workable_item.destroy
 
     respond_to do |format|
+      format.js
       format.html { redirect_to(project_url(project), :notice => @workable_item.type + ' was successfully deleted.') }
       format.xml { head :ok }
     end

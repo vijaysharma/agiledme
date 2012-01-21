@@ -11,7 +11,7 @@
 
 <div id="<%= "#{item_unique_id}_detail" %>" class="item" style="display:none">
 <div id="<%= "#{item_unique_id}_content" %>" class="storyItem unscheduled unestimated underEdit jquery_file_upload">
-<%= form_for workable_item, :remote => true  do |project_form| %>
+<%= form_for([workable_item.project, workable_item], :remote => true)  do |project_form| %>
     <% project_users = workable_item.project.active_users %>
     <% if workable_item.errors.any? %>
         <div id="error_explanation">
@@ -48,7 +48,7 @@
           <%= project_form.submit('Save') %>
           <input id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="cancelEditButton" type="button" value="Cancel">
           <% if !workable_item.new_record? %>
-              <%= project_form.submit('Delete') %>
+              <%= link_to 'Delete', project_workable_item_path(workable_item.project, workable_item), :confirm => "Are you sure you want to delete the #{workable_item.type}?", :method => :delete, :remote => true %>
           <% else %>
               <input type="submit" value="Delete" disabled="disabled">
               <input type="submit" value="View history" disabled="disabled">
@@ -201,8 +201,9 @@
             <% end %>
           </ol>
           <div class="add_task">
-            <textarea id="<%= "#{item_unique_id}_new_task_description" %>" cols="1" rows="1" class="tasksTextArea autoresize expand17-99999 new_task_text">add
-              new task</textarea>
+            <textarea id="<%= "#{item_unique_id}_new_task_description" %>"
+                      cols="1" rows="1"
+                      class="tasksTextArea autoresize expand17-99999 new_task_text">add new task</textarea>
               <span id="<%= "#{item_unique_id}_new_task_add_link" %>" class="add_task" style="display:none;">
                 <%= link_to_add_task_fields "Add", project_form, :tasks, item_unique_id %>
               </span>
@@ -222,8 +223,9 @@
             </tbody>
           </table>
           <div class="add_comment">
-            <textarea id="<%= "#{item_unique_id}_new_comment_description" %>" cols="20" rows="1" class="tasksTextArea autoresize expand17-99999 new_comment_text">add
-              a comment</textarea>
+            <textarea id="<%= "#{item_unique_id}_new_comment_description" %>"
+                      cols="20" rows="1"
+                      class="tasksTextArea autoresize expand17-99999 new_comment_text">add new comment</textarea>
 
             <div class="commentText">(Format using *<b>bold</b>* and _<i>italic</i>_ text.)</div>
               <span id="<%= "#{item_unique_id}_new_comment_add_link" %>" class="add_comment" style="display:none;">

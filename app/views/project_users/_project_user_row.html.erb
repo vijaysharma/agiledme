@@ -5,8 +5,8 @@
   </td>
   <td class="initials"><%= user.initials %></td>
   <td class="email"><%= user.email %></td>
-  <td class="invited_by_email"><%= user.invited_by.present? ? user.invited_by.display_name : "-"%></td>
-  <input type="hidden" value="<%= project_user.project_id%>" id="<%=project_user.id%>_project">
+  <td class="invited_by_email"><%= user.invited_by.present? ? user.invited_by.display_name : "-" %></td>
+  <input type="hidden" value="<%= project_user.project_id %>" id="<%= project_user.id %>_project">
   <td class="role">
     <%= collection_select user.id,
                           :role, ProjectUser::ROLES, :to_s, :humanize,
@@ -18,12 +18,12 @@
   </td>
   <td class="remove">
     <% if current_user.can_manage_members_of(@project) %>
-    <%= link_to 'Remove',
-                project_project_user_path(project_user.project, project_user),
-                :confirm => "Are you sure you want to remove #{project_user.user.display_name} from the project?",
-                :title => "Terminate membership from the project",
-                :method => :delete,
-                :remote => true %>
-        <% end %>
+        <%= link_to 'Remove',
+                    project_project_user_path(project_user.project, project_user),
+                    :confirm => "Are you sure you want to remove #{project_user.user.display_name} from the project?",
+                    :title => "Terminate membership from the project",
+                    :method => :delete,
+                    :remote => true %>
+    <% end %>
   </td>
 </tr>

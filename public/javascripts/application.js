@@ -119,11 +119,11 @@ $(document).ready(function () {
 
     $(document).delegate('.member_role', "change", function() {
         var id = $(this).attr('id');
-        var project_id = $("#"+id+"_project").val();
+        var project_id = $("#" + id + "_project").val();
         var role = $(this).val();
         $.ajax({
             type: "PUT",
-            url: "/projects/"+project_id+"/project_users/"+id,
+            url: "/projects/" + project_id + "/project_users/" + id,
             dataType: "script",
             data: {
                 project_user: {role: role}
@@ -237,22 +237,6 @@ $(document).ready(function () {
 
     $(document).delegate(".notice", flash_notice());
 
-    $(document).delegate(".new_task_text", "focusin", function() {
-        $(this).val('');
-        $(this).addClass("textAreaFocus");
-        var add_link_id = $(this).attr('id').replace('new_task_description', 'new_task_add_link');
-        $("#" + add_link_id).show();
-    });
-
-    $(document).delegate(".new_task_text", "focusout", function() {
-        if ($(this).val() == '') {
-            $(this).val('add new task');
-            $(this).removeClass("textAreaFocus");
-            var add_link_id = $(this).attr('id').replace('new_task_description', 'new_task_add_link');
-            $("#" + add_link_id).hide();
-        }
-    });
-
     $(document).delegate(".titleInputField", "focusin", function() {
         if ($(this).val() == "As a \<role\>, I want \<goal/desire\> so that \<benefit\>") {
             $(this).val('');
@@ -266,10 +250,13 @@ $(document).ready(function () {
     });
 
     $(document).delegate(".new_comment_text", "focusin", function() {
-        $(this).val('');
-        $(this).addClass("textAreaFocus");
-        var add_link_id = $(this).attr('id').replace('new_comment_description', 'new_comment_add_link');
-        $("#" + add_link_id).show();
+        if ($(this).val() == 'add new comment') {
+            $(this).val('');
+            $(this).addClass("textAreaFocus");
+            var add_link_id = $(this).attr('id').replace('new_comment_description', 'new_comment_add_link');
+            $("#" + add_link_id).show();
+        }
+
     });
 
     $(document).delegate(".new_comment_text", "focusout", function() {
@@ -277,6 +264,24 @@ $(document).ready(function () {
             $(this).val('add new comment');
             $(this).removeClass("textAreaFocus");
             var add_link_id = $(this).attr('id').replace('new_comment_description', 'new_comment_add_link');
+            $("#" + add_link_id).hide();
+        }
+    });
+
+    $(document).delegate(".new_task_text", "focusin", function() {
+        if ($(this).val() == 'add new task') {
+            $(this).val('');
+            $(this).addClass("textAreaFocus");
+            var add_link_id = $(this).attr('id').replace('new_task_description', 'new_task_add_link');
+            $("#" + add_link_id).show();
+        }
+    });
+
+    $(document).delegate(".new_task_text", "focusout", function() {
+        if ($(this).val() == '') {
+            $(this).val('add new task');
+            $(this).removeClass("textAreaFocus");
+            var add_link_id = $(this).attr('id').replace('new_task_description', 'new_task_add_link');
             $("#" + add_link_id).hide();
         }
     });

@@ -8,25 +8,23 @@ Agiledme::Application.routes.draw do
 
   resources :workable_item_histories
 
-  resources :workable_items do
-    member do
-      get :start, :finish, :deliver, :accept, :reject, :restart, :estimate
-      put :update_category_and_priority
-    end
-  end
-
-  resources :stories, :controller => 'workable_items'
-  resources :bugs, :controller => 'workable_items'
-  resources :chores, :controller => 'workable_items'
-
   resources :projects do
     member do
       get :join, :leave, :overview
     end
     resources :project_users
+    resources :workable_items do
+      member do
+        get :start, :finish, :deliver, :accept, :reject, :restart, :estimate
+        put :update_category_and_priority
+      end
+    end
+    resources :stories, :controller => 'workable_items'
+    resources :bugs, :controller => 'workable_items'
+    resources :chores, :controller => 'workable_items'
   end
 
-  devise_for :users, :controllers => { :registrations => 'users/registrations'}
+  devise_for :users, :controllers => {:registrations => 'users/registrations'}
 
 
   # The priority is based upon order of creation:

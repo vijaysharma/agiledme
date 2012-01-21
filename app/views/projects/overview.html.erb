@@ -80,7 +80,7 @@
         <% @project_users.select { |project_user| !project_user.user.eql? current_user }.each do |project_user| %>
             <tr>
               <td class="name">
-                <%= project_user.user.display_name %>
+                <%= project_user.user.name %>
               </td>
               <td class="initials"><%= project_user.user.initials %></td>
               <td class="email"><%= project_user.user.email %></td>

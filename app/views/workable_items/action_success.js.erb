@@ -1,6 +1,6 @@
 <% if @pre_category and !(@pre_category.eql? @workable_item.category) %>
    $('#<%= @workable_item.id %>_item_box').remove();
-   $('#<%= @workable_item.category %>_scrolling_item_list').append('<%=escape_javascript render :partial => 'workable_items/workable_item', :locals => {:workable_item => @workable_item} %>');
+   $('#<%= @workable_item.category %>_item_list_end').before('<%=escape_javascript render :partial => 'workable_items/workable_item', :locals => {:workable_item => @workable_item} %>');
 <% else %>
     $('#<%= @workable_item.id %>_item_box').html('<%=escape_javascript render :partial => 'workable_items/workable_item_preview', :locals => {:workable_item => @workable_item} %>');
     $('#<%= @workable_item.id %>_detail_box').html('<%=escape_javascript render :partial => 'workable_items/workable_item_detail', :locals => {:workable_item => @workable_item} %>');

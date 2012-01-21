@@ -254,14 +254,14 @@ $(document).ready(function () {
     });
 
     $(document).delegate(".titleInputField", "focusin", function() {
-        if ($(this).val() == 'Enter title of the item') {
+        if ($(this).val() == "As a \<role\>, I want \<goal/desire\> so that \<benefit\>") {
             $(this).val('');
         }
     });
 
     $(document).delegate(".titleInputField", "focusout", function() {
         if ($(this).val() == '') {
-            $(this).val('Enter title of the item');
+            $(this).val("As a \<role\>, I want \<goal/desire\> so that \<benefit\>");
         }
     });
 

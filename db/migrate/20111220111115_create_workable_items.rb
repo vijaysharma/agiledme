@@ -1,7 +1,7 @@
 class CreateWorkableItems < ActiveRecord::Migration
   def self.up
     create_table :workable_items do |t|
-      t.string :title, :default => 'Enter title of the item'
+      t.string :title, :default => "As a <role>, I want <goal/desire> so that <benefit>"
       t.string :description
       t.integer :requester
       t.integer :owner

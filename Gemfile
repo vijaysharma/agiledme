@@ -13,7 +13,7 @@ gem 'jquery-rails'
 gem "delayed_job", "~> 2.1.4"
 gem "kaminari"
 
-#gem 'acts-as-taggable-on', '~>2.2.0'
+gem 'acts-as-taggable-on', '~>2.2.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'

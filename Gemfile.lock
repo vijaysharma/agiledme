@@ -30,6 +30,8 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
+    acts-as-taggable-on (2.2.2)
+      rails (~> 3.0)
     arel (2.0.10)
     bcrypt-ruby (3.0.1)
     builder (2.1.2)
@@ -95,6 +97,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  acts-as-taggable-on (~> 2.2.0)
   delayed_job (~> 2.1.4)
   devise
   devise_invitable

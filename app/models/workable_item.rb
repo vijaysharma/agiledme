@@ -3,6 +3,8 @@ class WorkableItem < ActiveRecord::Base
   MINIMUM_POSSIBLE_PRIORITY = 0
   include AASM
 
+  acts_as_taggable_on :labels
+
   belongs_to :project
   belongs_to :epic
   has_many :workable_item_histories, :dependent => :destroy

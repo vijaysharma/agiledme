@@ -11,7 +11,7 @@
 
 <div id="<%= "#{item_unique_id}_detail" %>" class="item" style="display:none">
 <div id="<%= "#{item_unique_id}_content" %>" class="storyItem unscheduled unestimated underEdit jquery_file_upload">
-<%= form_for([workable_item.project, workable_item], :remote => true) do |project_form| %>
+<%= form_for([workable_item.project, workable_item], :html => {:multipart => true}, :remote => true) do |project_form| %>
     <% project_users = workable_item.project.active_users %>
 
     <div class="storyPreviewHeader">
@@ -213,8 +213,7 @@
           </div>
           <ol class="attachments_list">
             <% project_form.fields_for :workable_item_attachments do |workable_item_attachment_builder| %>
-
-                <%= render :partial => 'workable_items/attachment_fields', :locals => {:f => workable_item_attachment_builder} %>
+                <%= workable_item_attachment_builder.file_field :image %>
             <% end %>
           </ol>
         </div>

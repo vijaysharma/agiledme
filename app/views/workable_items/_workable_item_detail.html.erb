@@ -140,7 +140,9 @@
         </div>
         <div class="wrapper">
           <%= project_form.text_field :label_tokens,
-                                      "data-pre" => workable_item.labels.map(&:attributes).to_json %>
+                                      :class => "label_tokens",
+                                      "data-pre" => workable_item.labels.all.to_json,
+                                      "data-url" => "/labels.json?project_id=#{workable_item.project.id}" %>
         </div>
       </div>
 

@@ -34,7 +34,7 @@ MyClass = function() {
                     var item_dropped_id = $(ui.draggable).attr('id').split('_')[0];
                     $.ajax({
                         type: "PUT",
-                        url: "/projects/"+item_project_id+"/workable_items/"+item_dropped_id+"/update_category_and_priority",
+                        url: "/projects/" + item_project_id + "/workable_items/" + item_dropped_id + "/update_category_and_priority",
                         dataType: "script",
                         data: {
                             item_dropped_on_id: item_dropped_on_id
@@ -49,11 +49,16 @@ MyClass = function() {
                 tolerance: 'intersect'
             });
 
-            $("#workable_item_label_tokens").tokenInput("/projects/8/workable_items/23/labels.json", {
-                crossDomain: false,
-                prePopulate: $("#workable_item_label_tokens").data("pre"),
-                theme: "facebook"
-            })
+            $(".label_tokens").each(function() {
+                var el = $(this);
+                el.tokenInput(el.data("url"), {
+                    crossDomain: false,
+                    prePopulate: el.data("pre"),
+                    theme: "facebook",
+                    hintText: "Start typing label name",
+                    preventDuplicates: true
+                });
+            });
         }
     }
 

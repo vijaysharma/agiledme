@@ -54,7 +54,7 @@ body {
     margin-left: 92px;
 }
 
-.storyPreviewHeader .error_message {
+.storyPreviewHeader .error_message, .storyPreviewHeader .text_example {
     margin-left: 27px;
 }
 

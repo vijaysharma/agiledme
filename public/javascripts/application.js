@@ -48,6 +48,12 @@ MyClass = function() {
                 hoverClass: "drop_target",
                 tolerance: 'intersect'
             });
+
+            $("#workable_item_label_tokens").tokenInput("/projects/8/workable_items/23/labels.json", {
+                crossDomain: false,
+                prePopulate: $("#workable_item_label_tokens").data("pre"),
+                theme: "facebook"
+            })
         }
     }
 

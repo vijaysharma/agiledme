@@ -3,14 +3,25 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <title><%= content_for?(:title) ? yield(:title) + " - White Apple!!" : "You Agiled Me!!" %></title>
-  <%= stylesheet_link_tag 'application', 'project_view','project_pages', 'control_panel', 'jquery-ui-1.8.16.custom', 'ie9', 'ie', :cache => true %>
+  <%= stylesheet_link_tag 'application',
+                          'project_view',
+                          'project_pages',
+                          'token-input-facebook',
+                          'control_panel',
+                          'jquery-ui-1.8.16.custom',
+                          'ie9', 'ie', :cache => true %>
   <!--[if gte IE 9]>
       <%= stylesheet_link_tag 'ie9' %>
     <![endif]-->
   <!--[if lte IE 8]>
       <%= stylesheet_link_tag 'ie' %>
     <![endif]-->
-  <%= javascript_include_tag "jquery-1.7.1.min", "jquery-ui-1.8.16.custom.min", "application", "rails", 'highcharts', :cache => true %>
+  <%= javascript_include_tag "jquery-1.7.1.min",
+                             "jquery-ui-1.8.16.custom.min",
+                             "jquery.tokeninput",
+                             "application",
+                             "rails",
+                             'highcharts', :cache => true %>
 
   <%= csrf_meta_tag %>
 </head>

@@ -18,12 +18,6 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="acts-as-taggable-on" version="2.2.0" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
-      </requirement>
-      <source from="Gemfile" />
-    </requirement>
-    <requirement>
-      <requirement>
         <dependency name="delayed_job" version="2.1.4" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -97,6 +91,7 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] daemons (v1.1.5, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/daemons-1.1.5)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] kaminari (v0.13.0, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/kaminari-0.13.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] activesupport (v3.1.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/activesupport-3.1.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rails3-jquery-autocomplete (v1.0.5, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/rails3-jquery-autocomplete-1.0.5)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] multi_json (v1.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/multi_json-1.0.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] activemodel (v3.1.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/activemodel-3.1.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.10, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p0/gems/arel-2.0.10)" level="application" />

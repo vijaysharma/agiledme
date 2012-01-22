@@ -139,35 +139,8 @@
           <div class="label">Labels</div>
         </div>
         <div class="wrapper">
-          <input class="labels" name="story[labels]" style="display: none;">
-
-          <div class="labels saveable">
-            <img src="/images/labels_dropdown.png" class="labels_dropdown_arrow">
-            <ul>
-              <% workable_item.label_list.each do |label | %>
-              <li style="position: relative;" data-value="solaro.in" class="">
-                <a class="text">
-                  <span><%= label %></span>
-                </a>
-                <a class="remove">
-                  <span>x</span>
-                </a>
-                <input tabindex="-1" style="width: 0pt; height: 0pt; position: absolute; left: -10000em;">
-              </li>
-              <% end %>
-            </ul>
-            <input type="text" class="create ui-autocomplete-input" placeholder="" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
-            <span style="position: absolute; top: -10000em; left: -10000em; width: auto; font-size: 12px; font-family: Arial,Helvetica,sans-serif; font-weight: 400; letter-spacing: normal; white-space: nowrap;">
-            </span>
-          </div>
-          <ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: 28px; left: 0px; display: none; width: 1196px;">
-            <li class="ui-menu-item" role="menuitem">
-              <a class="ui-corner-all" tabindex="-1">admin</a>
-            </li>
-            <li class="ui-menu-item" role="menuitem">
-              <a class="ui-corner-all" tabindex="-1">android</a>
-            </li>
-          </ul>
+          <%= project_form.text_field :label_tokens,
+                                      "data-pre" => workable_item.labels.map(&:attributes).to_json %>
         </div>
       </div>
 

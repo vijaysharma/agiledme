@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :initials
   cattr_accessor :current_user
 
-  acts_as_tagger
-
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, :on => :create
   has_many :projects, :through => :project_users
   has_many :project_users, :dependent => :destroy

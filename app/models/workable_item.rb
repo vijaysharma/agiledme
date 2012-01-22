@@ -9,8 +9,8 @@ class WorkableItem < ActiveRecord::Base
   has_many :workable_item_histories, :dependent => :destroy
   has_many :tasks, :order=>"updated_at DESC", :dependent => :destroy
   has_many :comments, :order=>"updated_at DESC", :dependent => :destroy
-  has_many :workable_item_labels
-  has_many :labels, :through => :workable_item_labels, :order=>"updated_at DESC", :dependent => :destroy
+  has_many :workable_item_labels, :dependent => :destroy
+  has_many :labels, :through => :workable_item_labels
 
   accepts_nested_attributes_for :tasks, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :comments, :allow_destroy => true, :reject_if => :all_blank

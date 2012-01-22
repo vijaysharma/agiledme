@@ -109,19 +109,33 @@ class WorkableItem < ActiveRecord::Base
     end
   end
 
+  def update_status_change_history
+    if changed_attributes["status"].present?
+      if self.not_yet_started?
+        add_history("un started this "+ self.type.downcase)
+      elsif self.started?
+        update_started_by
+      elsif self.finished?
+        update_finished_by
+      elsif self.delivered?
+        update_delivered_by
+      elsif self.accepted?
+        update_accepted_by
+      elsif self.rejected?
+        update_rejected_by
+      else
+        add_history(self.status" this "+ self.type.downcase)
+      end
+    end
+  end
+
+
   private
 
   def increment_priorities_of_all_items_of_higher_priority
     all_items_of_higher_priority = self.project.workable_items.where("priority > ? and category = ?", self.priority, self.category)
     all_items_of_higher_priority.each do |item|
       item.update_attributes!(:priority => (item.priority + 1))
-    end
-  end
-
-  def update_status_change_history
-    if changed_attributes["status"].present?
-      action = (self.not_yet_started? ? "un started" : self.status)
-      add_history(action + " this "+ self.type.downcase)
     end
   end
 
@@ -151,19 +165,6 @@ class WorkableItem < ActiveRecord::Base
     end
   end
 
-  def update_started_by
-    add_history("started this "+ self.type.downcase)
-    self.category = "current"
-    self.started_at = Time.now
-    priority_to_set = WorkableItem.where(:category => 'current').minimum(:priority)
-    if priority_to_set.present?
-      increment_priorities_of_all_items_in_current
-      self.priority = priority_to_set
-    else
-      self.priority = MINIMUM_POSSIBLE_PRIORITY
-    end
-  end
-
   def increment_priorities_of_all_items_in_current
     WorkableItem.where(:category => 'current').each do |item|
       item.update_attributes!(:priority => (item.priority + 1))
@@ -175,6 +176,23 @@ class WorkableItem < ActiveRecord::Base
     self.priority = WorkableItem.next_priority_for("icebox")
     self.save
     add_history("created this "+ self.type.downcase)
+  end
+
+  def update_started_by
+    add_history("started this "+ self.type.downcase)
+    self.started_at = Time.now
+    move_item_to_current_category unless self.category.eql? "current"
+  end
+
+  def move_item_to_current_category
+    self.category = "current"
+    priority_to_set = WorkableItem.where(:category => 'current').minimum(:priority)
+    if priority_to_set.present?
+      increment_priorities_of_all_items_in_current
+      self.priority = priority_to_set
+    else
+      self.priority = MINIMUM_POSSIBLE_PRIORITY
+    end
   end
 
   def update_finished_by

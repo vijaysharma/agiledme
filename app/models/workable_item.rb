@@ -18,6 +18,9 @@ class WorkableItem < ActiveRecord::Base
   attr_reader :label_tokens
 
   def label_tokens=(ids)
+    ids.gsub!(/CREATE_(.+?)_END/) do
+      Label.create!(:name => $1).id
+    end
     self.label_ids = ids.split(",")
   end
 
@@ -132,7 +135,7 @@ class WorkableItem < ActiveRecord::Base
       elsif self.rejected?
         update_rejected_by
       else
-        add_history(self.status" this "+ self.type.downcase)
+        add_history(self.status " this "+ self.type.downcase)
       end
     end
   end

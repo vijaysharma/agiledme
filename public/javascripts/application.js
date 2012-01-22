@@ -29,11 +29,12 @@ MyClass = function() {
             $(".droppable").droppable({
                 drop: function(event, ui) {
                     var item_dropped_on = $(this);
-                    var item_dropped_on_id = item_dropped_on.attr('id');
-                    var item_dropped_id = $(ui.draggable).attr('id');
+                    var item_project_id = $(this).attr('project_id');
+                    var item_dropped_on_id = item_dropped_on.attr('id').split('_')[0];
+                    var item_dropped_id = $(ui.draggable).attr('id').split('_')[0];
                     $.ajax({
                         type: "PUT",
-                        url: "/workable_items/" + item_dropped_id + "/update_category_and_priority",
+                        url: "/projects/"+item_project_id+"/workable_items/"+item_dropped_id+"/update_category_and_priority",
                         dataType: "script",
                         data: {
                             item_dropped_on_id: item_dropped_on_id

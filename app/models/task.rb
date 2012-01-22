@@ -29,5 +29,6 @@ class Task < ActiveRecord::Base
 
   def add_created_by
     self.created_by = User.current_user.id
+    self.finished_by = User.current_user.id if self.status.eql? "finished"
   end
 end

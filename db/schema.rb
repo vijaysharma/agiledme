@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120122134026) do
+ActiveRecord::Schema.define(:version => 20120122201403) do
 
   create_table "comments", :force => true do |t|
     t.string   "comment"
@@ -112,6 +112,16 @@ ActiveRecord::Schema.define(:version => 20120122134026) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "workable_item_attachments", :force => true do |t|
+    t.integer  "workable_item_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "workable_item_histories", :force => true do |t|
     t.string   "event"

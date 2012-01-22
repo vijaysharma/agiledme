@@ -146,7 +146,6 @@
                                       "data-url" => "/labels.json?project_id=#{workable_item.project.id}" %>
         </div>
       </div>
-
       <div class="section">
         <div class="storyDescriptionTable">
           <div class="header">
@@ -206,64 +205,37 @@
           </div>
         </div>
       </div>
+      <div class="attachmentWidget">
+      <div>
+        <div class="section attachments">
+          <div id="<%= "#{item_unique_id}_attachments_header" %>" class="header">
+            Attachments <span class="count">(<%= workable_item.workable_item_attachments.count %>)</span>
+          </div>
+          <ol class="attachments_list">
+            <% project_form.fields_for :workable_item_attachments do |workable_item_attachment_builder| %>
+
+                <%= render :partial => 'workable_items/attachment_fields', :locals => {:f => workable_item_attachment_builder} %>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+      <form class="attachment_form jquery_file_upload" enctype="multipart/form-data" method="POST" action="/api/resource/upload?project_id=68195">
+        <div class="attachment_controls_wrapper">
+          <input type="file" multiple="" name="Filedata">
+        </div>
+        <div class="attach_files">
+          <span class="upload_button">Upload Files</span>
+
+          <span class="text">or, drag them onto this story</span>
+        </div>
+        <div style="display: none;" class="error_message">
+        </div>
+      </form>
+    </div>
     </div>
 
 
-    <!--<div class="attachmentWidget">-->
-    <!--<div>-->
-    <!--<div class="section attachments" id="attachment_field_for_newStory">-->
-    <!--<div class="header">Attachments <span class="count">(1)</span>-->
-    <!--</div>-->
-    <!--<ol class="attachments_list">-->
-    <!--<li>-->
-    <!--<div class="attachment_thumbnail">-->
 
-    <!--<a tabindex="-1" data-new-window="true" href="/resource/download/4251343?inline=true">-->
-    <!--<img class="resource_image" alt="bug_step1.jpg" src="https://s3.amazonaws.com/prod.tracker2/resource/4251343/bug_step1_thumb.jpg?AWSAccessKeyId=AKIAIKWOAN6H4H3QMJ6Q&amp;Expires=1325750055&amp;Signature=3V%2FEoKu6Dwm8GTRUp7eB4Evoh1E%3D">-->
-    <!--</a>-->
-
-    <!--</div>-->
-    <!--<div class="attachment_details_container clearfix">-->
-    <!--<ul class="attachment_details">-->
-    <!--<li class="name">bug_step1.jpg-->
-    <!--</li>-->
-    <!--<li class="description" style="display: list-item;">-->
-    <!--<a class="edit" href="#">add a description</a>-->
-    <!--</li>-->
-    <!--<li class="edit_description" style="display: none;">-->
-    <!--<input type="text" maxlength="255" name="description">-->
-    <!--<button>Save</button>-->
-    <!--or <a class="cancel" href="#">cancel</a>-->
-    <!--</li>-->
-    <!--<li class="uploader">Uploaded by Sanjeev Kumar Mishra</li>-->
-    <!--<li class="metadata">77 KB<span> on 29 Dec 2011, 1:24pm</span>-->
-    <!--</li>-->
-    <!--<li class="actions">-->
-    <!--<a href="/resource/download/4251343">Download</a>-->
-
-    <!--| <a href="#" class="remove">Remove</a>-->
-
-    <!--</li>-->
-
-    <!--</ul>-->
-    <!--</div>-->
-    <!--</li>-->
-    <!--</ol>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<form class="attachment_form jquery_file_upload" enctype="multipart/form-data" method="POST" action="/api/resource/upload?project_id=68195">-->
-    <!--<div class="attachment_controls_wrapper">-->
-    <!--<input type="file" multiple="" name="Filedata">-->
-    <!--</div>-->
-    <!--<div class="attach_files">-->
-    <!--<span class="upload_button">Upload Files</span>-->
-
-    <!--<span class="text">or, drag them onto this story</span>-->
-    <!--</div>-->
-    <!--<div style="display: none;" class="error_message">-->
-    <!--</div>-->
-    <!--</form>-->
-    <!--</div>-->
     </div>
     <%= project_form.hidden_field :category %>
     <%= project_form.hidden_field :priority %>

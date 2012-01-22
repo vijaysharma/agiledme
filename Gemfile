@@ -12,6 +12,7 @@ gem 'aasm'
 gem 'jquery-rails'
 gem "delayed_job", "~> 2.1.4"
 gem "kaminari"
+gem "paperclip", "~> 2.0"
 
 # Use unicorn as the web server
 # gem 'unicorn'

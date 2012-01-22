@@ -13,18 +13,7 @@
 <div id="<%= "#{item_unique_id}_content" %>" class="storyItem unscheduled unestimated underEdit jquery_file_upload">
 <%= form_for([workable_item.project, workable_item], :remote => true)  do |project_form| %>
     <% project_users = workable_item.project.active_users %>
-    <% if workable_item.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(workable_item.errors.count, "error") %> prohibited this workable_item from being
-            saved:</h2>
 
-          <ul>
-            <% workable_item.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
     <div class="storyPreviewHeader">
       <% if !workable_item.new_record? %>
           <div class="storySelector notDblclickable">&nbsp;</div>
@@ -36,10 +25,12 @@
         <%= project_form.text_area :title,
                                    :cols => 1,
                                    :rows => 1,
+                                   :id =>"#{item_unique_id}_title",
                                    :class => 'titleInputField autoresize expand17-99999' %>
         <div class="clear">
         </div>
       </div>
+      <div class="error_message" id="<%= "#{item_unique_id}_workable_item_error_message" %>" style="display:none;"></div>
     </div>
     <div class="storyDetailElement">
     <div class="storyDetails" id="story_newStory_details">

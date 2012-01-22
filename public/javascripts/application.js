@@ -147,6 +147,9 @@ $(document).ready(function () {
         var id = $(this).attr('id');
         $("#" + id.replace('cancel_edit_button', 'preview')).show();
         $("#" + id.replace('cancel_edit_button', 'detail')).hide();
+        $("#" + id.replace('cancel_edit_button', 'workable_item_error_message')).hide();
+        $("#" + id.replace('cancel_edit_button', 'workable_item_error_message')).html('');
+
     });
 
     $(document).delegate(".workable_item_tasks", "mouseenter", function() {

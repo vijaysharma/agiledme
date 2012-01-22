@@ -15,6 +15,7 @@ class WorkableItemsController < ApplicationController
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully created.') }
         format.xml { render :xml => @workable_item, :status => :created, :location => @workable_item }
       else
+        format.js { render :template => 'workable_items/error' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
         format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end
@@ -30,13 +31,14 @@ class WorkableItemsController < ApplicationController
     @workable_item.type = params_req[:type] || params_req[:type]
 
     respond_to do |format|
-      if @workable_item.update_attributes!(params_req)
+      if @workable_item.update_attributes(params_req)
         @workable_item.update_status_change_history
         @message = "updated"
         format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully updated.') }
         format.xml { head :ok }
       else
+        format.js { render :template => 'workable_items/error' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
         format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
       end

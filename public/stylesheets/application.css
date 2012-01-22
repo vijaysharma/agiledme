@@ -54,6 +54,10 @@ body {
     margin-left: 92px;
 }
 
+.storyPreviewHeader .error_message {
+    margin-left: 27px;
+}
+
 .message {
     color: green;
     font-weight: bold;

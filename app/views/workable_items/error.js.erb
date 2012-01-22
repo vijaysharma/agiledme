@@ -1,0 +1,13 @@
+<% message = ""
+    @workable_item.errors.full_messages.each do |msg |
+     message += " #{msg}"
+    end
+    %>
+<% if @workable_item.new_record? %>
+    $('#icebox_new_workable_item_workable_item_error_message').html("<%="#{message}"%>");
+    $('#icebox_new_workable_item_workable_item_error_message').show();
+<% else %>
+    $('#<%=@workable_item.id%>_title').val($('#<%=@workable_item.id%>_title').text());
+    $('#<%=@workable_item.id%>_workable_item_error_message').html("<%="#{message}"%>");
+    $('#<%=@workable_item.id%>_workable_item_error_message').show();
+<% end %>

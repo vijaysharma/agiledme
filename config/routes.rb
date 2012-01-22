@@ -6,8 +6,6 @@ Agiledme::Application.routes.draw do
     end
   end
 
-  resources :workable_item_histories
-
   resources :projects do
     member do
       get :join, :leave, :overview
@@ -18,10 +16,11 @@ Agiledme::Application.routes.draw do
         get :start, :finish, :deliver, :accept, :reject, :restart, :estimate
         put :update_category_and_priority
       end
+      resources :workable_item_histories
     end
-    resources :stories, :controller => 'workable_items'
-    resources :bugs, :controller => 'workable_items'
-    resources :chores, :controller => 'workable_items'
+    resources :stories, :controller => :workable_items
+    resources :bugs, :controller => :workable_items
+    resources :chores, :controller => :workable_items
   end
 
   devise_for :users, :controllers => {:registrations => 'users/registrations'}

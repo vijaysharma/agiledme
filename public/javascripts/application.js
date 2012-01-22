@@ -48,6 +48,18 @@ MyClass = function() {
                 hoverClass: "drop_target",
                 tolerance: 'intersect'
             });
+
+            $(".label_tokens").each(function() {
+                var el = $(this);
+                el.tokenInput(el.data("url"), {
+                    crossDomain: false,
+                    prePopulate: el.data("pre"),
+                    theme: "facebook",
+                    hintText: "Start typing label name",
+                    preventDuplicates: true
+                });
+            });
+
         }
     }
 
@@ -65,17 +77,6 @@ $(document).ajaxStart(
 
 $(document).ready(function () {
     MyClass.init();
-
-    $(".label_tokens").each(function() {
-        var el = $(this);
-        el.tokenInput(el.data("url"), {
-            crossDomain: false,
-            prePopulate: el.data("pre"),
-            theme: "facebook",
-            hintText: "Start typing label name",
-            preventDuplicates: true
-        });
-    });
 
     $("#backlog_close").click(function () {
         $("#backlog").hide();

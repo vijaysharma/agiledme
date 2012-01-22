@@ -123,7 +123,7 @@
             </div>
           </td>
           <td colspan="3">
-            <label id="workable_item_owner_label" for="workable_item_owner">
+            <label>
               <div>
                 <div class="emphasizedFieldLabel">owns</div>
                 <div class="fieldLabel">this story</div>
@@ -141,6 +141,7 @@
         <div class="wrapper">
           <%= project_form.text_field :label_tokens,
                                       :class => "label_tokens",
+                                      :id => "#{item_unique_id}_labels",
                                       "data-pre" => workable_item.labels.all.to_json,
                                       "data-url" => "/labels.json?project_id=#{workable_item.project.id}" %>
         </div>

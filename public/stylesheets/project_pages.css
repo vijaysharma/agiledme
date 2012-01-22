@@ -241,11 +241,10 @@ h2 + .action_area {
     vertical-align: middle;
 }
 
-.action_area td.text_example {
+.text_example {
     color: #888888;
     font-size: 10px;
     font-style: oblique;
-    padding-bottom: 10px;
 }
 
 .right_link {

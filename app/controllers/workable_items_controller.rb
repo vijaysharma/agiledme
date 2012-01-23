@@ -3,7 +3,9 @@ class WorkableItemsController < ApplicationController
   # POST /workable_items
   # POST /workable_items.xml
   def create
+    @project = Project.find(params[:project_id])
     @workable_item = WorkableItem.new(params[:workable_item])
+    @workable_item.project = @project
     @workable_item.type = params[:workable_item][:type]
 
     respond_to do |format|

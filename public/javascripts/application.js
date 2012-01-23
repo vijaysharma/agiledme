@@ -48,18 +48,6 @@ MyClass = function() {
                 hoverClass: "drop_target",
                 tolerance: 'intersect'
             });
-
-            $(".label_tokens").each(function() {
-                var el = $(this);
-                el.tokenInput(el.data("url"), {
-                    crossDomain: false,
-                    prePopulate: el.data("pre"),
-                    theme: "facebook",
-                    hintText: "Start typing label name",
-                    preventDuplicates: true
-                });
-            });
-
         }
     }
 
@@ -75,6 +63,15 @@ $(document).ajaxStart(
 });
 
 
+function attachTokenInput(item) {
+    item.tokenInput(item.data("url"), {
+        crossDomain: false,
+        prePopulate: item.data("pre"),
+        theme: "facebook",
+        hintText: "Start typing label name",
+        preventDuplicates: true
+    });
+}
 $(document).ready(function () {
     MyClass.init();
 
@@ -111,6 +108,12 @@ $(document).ready(function () {
         $("#icebox").toggle();
         $("#icebox_control_button").toggleClass('selected');
     });
+
+    $(".labels").each(function () {
+        attachTokenInput($(this));
+    });
+
+
     $(document).delegate("#add_new_workable_control_button", "click", function () {
         $("#icebox").show();
         $("#no_workable_items").hide();
@@ -411,7 +414,8 @@ $(document).ready(function () {
         });
     });
 
-});
+})
+        ;
 
 function add_task_fields(link, association, content) {
     var new_id = new Date().getTime();

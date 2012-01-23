@@ -832,6 +832,7 @@ div.storyDetails .attachmentWidget .attach_files .upload_button {
 
 div.storyDetails .attachmentWidget .attach_files .text {
     color: #666666;
+    font-size:0.9em;
 }
 
 .story_content .item .accepted {

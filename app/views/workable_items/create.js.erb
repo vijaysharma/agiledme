@@ -3,4 +3,6 @@ $('#icebox_new_workable_item_workable_item_error_message').hide();
 $('#new_workable_item').html('<%=escape_javascript render :partial => 'workable_items/new_workable_item', :locals => {:project => @workable_item.project} %>');
 $('#new_workable_item').after('<%=escape_javascript render :partial => 'workable_items/workable_item', :locals => {:workable_item => @workable_item} %>');
 ajax_flash_notice('<%="#{@workable_item.type} was added."%>');
+attachTokenInput($('#<%= @workable_item.id %>_labels'));
+attachTokenInput($('#icebox_new_workable_item_labels'));
 highlight_item($('#<%= @workable_item.id %>_content'));

@@ -16,7 +16,7 @@
         or <a class="cancel" href="#">cancel</a>
       </li>
       <li class="uploader">Uploaded by <%= f.object.user.display_name %></li>
-      <li class="metadata"><%= f.object.image_file_size/1024 %>
+      <li class="metadata"><%= f.object.image_file_size.present? ? f.object.image_file_size/1024 : 0 %>
         KB<span> on <%= f.object.image_updated_at.to_s(:pretty) %></span>
       </li>
       <li class="actions">

@@ -3,13 +3,7 @@ class WorkableItemsController < ApplicationController
   # POST /workable_items
   # POST /workable_items.xml
   def create
-    attachments = []
-    params[:workable_item][:workable_item_attachments_attributes].each do |index, image|
-      image[:image].each do |file|
-        attachments << {:image => file, :user_id => current_user.id}
-      end
-    end
-    params[:workable_item][:workable_item_attachments_attributes] = attachments
+    prepare_attachments
 
     @project = Project.find(params[:project_id])
     @workable_item = WorkableItem.new(params[:workable_item])
@@ -44,6 +38,7 @@ class WorkableItemsController < ApplicationController
       if @workable_item.update_attributes(params_req)
         @workable_item.update_status_change_history
         @message = "updated"
+        @workable_item.workable_item_attachments.reload
         format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully updated.') }
         format.xml { head :ok }
@@ -188,4 +183,17 @@ class WorkableItemsController < ApplicationController
       format.xml { head :ok }
     end
   end
+
+  private
+
+  def prepare_attachments
+    attachments = []
+    params[:workable_item][:workable_item_attachments_attributes].each do |index, image|
+      image[:image].each do |file|
+        attachments << {:image => file, :user_id => current_user.id}
+      end
+    end
+    params[:workable_item][:workable_item_attachments_attributes] = attachments
+  end
+
 end

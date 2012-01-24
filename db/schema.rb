@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20120122201403) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

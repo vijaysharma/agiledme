@@ -6,7 +6,7 @@ class WorkableItemsController < ApplicationController
     attachments = []
     params[:workable_item][:workable_item_attachments_attributes].each do |index, image|
       image[:image].each do |file|
-        attachments << {:image => file}
+        attachments << {:image => file, :user_id => current_user.id}
       end
     end
     params[:workable_item][:workable_item_attachments_attributes] = attachments

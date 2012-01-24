@@ -207,6 +207,15 @@ $(document).ready(function () {
         }
     });
 
+    $(document).delegate(".delete_image", "click", function() {
+
+        var delete_image_checkbox = $("#" + $(this).attr('id').replace("delete_image", "delete_image_checkbox"));
+        var image_details = $("#" + $(this).attr('id').replace("delete_image", "image_details"));
+
+        $(delete_image_checkbox).attr('checked', true);
+        image_details.hide();
+    });
+
     $(document).delegate(".delete_task", "click", function() {
         var finish_task_id = $(this).attr('id').replace('delete_task', 'task_finish');
         var edit_task_id = $(this).attr('id').replace('delete_task', 'edit_task');

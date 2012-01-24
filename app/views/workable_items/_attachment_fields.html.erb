@@ -1,12 +1,7 @@
 <% attachment_id = f.object.new_record? ? "new" : f.object.id %>
-<li>
+<li id="<%="#{attachment_id}_image_details" %>">
   <div class="attachment_thumbnail">
-    <a tabindex="-1" data-new-window="true" href="/resource/download/4251343?inline=true">
-      <%= link_to image_tag(f.object.image.url(:thumb)), f.object.image.url(:original), :target => '_blank' %>
-      <%= f.check_box :_destroy %>
-      <img class="resource_image" alt="bug_step1.jpg" src="https://s3.amazonaws.com/prod.tracker2/resource/4251343/bug_step1_thumb.jpg?AWSAccessKeyId=AKIAIKWOAN6H4H3QMJ6Q&amp;Expires=1325750055&amp;Signature=3V%2FEoKu6Dwm8GTRUp7eB4Evoh1E%3D">
-    </a>
-
+    <%= link_to image_tag(f.object.image.url(:thumb)), f.object.image.url(:original), :target => '_blank' %>
   </div>
   <div class="attachment_details_container clearfix">
     <ul class="attachment_details">
@@ -20,14 +15,18 @@
         <button>Save</button>
         or <a class="cancel" href="#">cancel</a>
       </li>
-      <li class="uploader">Uploaded by Sanjeev Kumar Mishra</li>
-      <li class="metadata"><%= f.object.image_file_size %> KB<span> on 29 Dec 2011, 1:24pm</span>
+      <li class="uploader">Uploaded by <%= f.object.user.display_name %></li>
+      <li class="metadata"><%= f.object.image_file_size/1024 %>
+        KB<span> on <%= f.object.image_updated_at.to_s(:pretty) %></span>
       </li>
       <li class="actions">
         <a href="/resource/download/4251343">Download</a>
-
-        | <a href="#" class="remove">Remove</a>
-
+        |
+        <%= f.check_box :_destroy, :id => "#{attachment_id}_delete_image_checkbox", :style => "display:none;" %>
+        <%= f.hidden_field :user_id %>
+        <a id="<%= "#{attachment_id}_delete_image" %>" href="#" title="Remove Image" class="delete_image">
+          Remove
+        </a>
       </li>
 
     </ul>

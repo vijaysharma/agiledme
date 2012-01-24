@@ -1,19 +1,9 @@
 class WorkableItemAttachmentsController < ApplicationController
 
   def download_attachment
-    raise "came to download"
-    @workable_item = WorkableItem.find(params[:id])
-
-    respond_to do |format|
-      if @workable_item.restart!
-        format.js { render :template => 'workable_items/action_success' }
-        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully restarted.') }
-        format.xml { head :ok }
-      else
-        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
-        format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
-      end
-    end
+    @workable_item_attachment = WorkableItemAttachment.find(params[:id])
+    send_file("#{Rails.root}/public/system/images/#{@workable_item_attachment.id}/original/#{@workable_item_attachment.image_file_name}",
+              :filename => @workable_item_attachment.image_file_name,
+              :type => @workable_item_attachment.image_content_type)
   end
-
 end

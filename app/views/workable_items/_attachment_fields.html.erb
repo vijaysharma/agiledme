@@ -20,7 +20,7 @@
         KB<span> on <%= f.object.image_updated_at.to_s(:pretty) %></span>
       </li>
       <li class="actions">
-        <a href="/resource/download/4251343">Download</a>
+        <%= link_to 'Download', download_attachment_project_workable_item_workable_item_attachment_path(f.object.workable_item.project, f.object.workable_item) %>
         |
         <%= f.check_box :_destroy, :id => "#{attachment_id}_delete_image_checkbox", :style => "display:none;" %>
         <%= f.hidden_field :user_id %>

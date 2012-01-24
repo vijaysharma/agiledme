@@ -19,6 +19,11 @@ Agiledme::Application.routes.draw do
         put :update_category_and_priority
       end
       resources :workable_item_histories
+      resources :workable_item_attachments do
+        member do
+          get :download_attachment
+        end
+      end
     end
     resources :stories, :controller => :workable_items
     resources :bugs, :controller => :workable_items

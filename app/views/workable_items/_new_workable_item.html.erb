@@ -1,6 +1,6 @@
 <%
    workable_item = WorkableItem.new
-   2.times {workable_item.workable_item_attachments.build}
+   workable_item.workable_item_attachments.build
    workable_item.project = project
    workable_item.requester = current_user.id
 %>

@@ -3,11 +3,19 @@ class WorkableItemsController < ApplicationController
   # POST /workable_items
   # POST /workable_items.xml
   def create
+    attachments = []
+    params[:workable_item][:workable_item_attachments_attributes].each do |index, image|
+      image[:image].each do |file|
+        attachments << {:image => file}
+      end
+    end
+    params[:workable_item][:workable_item_attachments_attributes] = attachments
+
     @project = Project.find(params[:project_id])
     @workable_item = WorkableItem.new(params[:workable_item])
     @workable_item.project = @project
-    @workable_item.type = params[:workable_item][:type]
 
+    @workable_item.type = params[:workable_item][:type]
     respond_to do |format|
       if @workable_item.save
         if @workable_item.epic.present? and !@workable_item.epic.split_in_progress?

@@ -212,7 +212,7 @@
               </div>
               <ol class="attachments_list">
                 <% project_form.fields_for :workable_item_attachments do |workable_item_attachment_builder| %>
-                    <%= workable_item_attachment_builder.file_field :image %>
+                    <%= workable_item_attachment_builder.file_field :image, :multiple => true %>
                 <% end %>
               </ol>
             </div>

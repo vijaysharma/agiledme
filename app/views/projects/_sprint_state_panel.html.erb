@@ -1,0 +1,32 @@
+<td id="<%= state %>" class="<%= "#{state} panel" %>">
+  <div class="panelHeaderRight"></div>
+  <div class="panelHeaderLeft"></div>
+  <div class="panelHeader">
+    <div id=<%= "#{state}_title" %>>
+      <a href="#" class="closePanel panelLink" id='<%= "#{state}_close" %>' title="Close panel"></a>
+      <span class="panelTitle"><%= state %> </span>
+      <span class="external_icon"></span>
+    </div>
+  </div>
+  <div id="<%= "#{state}_item_list" %>" class="list">
+    <div class="btm">
+      <div class="right"></div>
+      <div class="left"></div>
+      <div class="mid"></div>
+    </div>
+    <div id="<%= "#{state}_items" %>" class="items">
+      <div id="<%= "#{state}_scrolling_item_list" %>" class="inner scrolling_item_list">
+        <% if workable_items_in_state.present? %>
+            <% workable_items_in_state.each do |workable_item| %>
+                <%= render :partial => 'workable_items/workable_item', :locals => {:workable_item => workable_item} %>
+            <% end %>
+        <% else %>
+            <div id="no_workable_items" class="no_workable_items">
+              Not anything yet.
+            </div>
+        <% end %>
+        <div id="<%= "#{state}_item_list_end" %>" class="endOfList"></div>
+      </div>
+    </div>
+  </div>
+</td>

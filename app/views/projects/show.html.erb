@@ -1,5 +1,5 @@
 <% title @project.name.camelcase %>
-<%= render :partial => 'control_panel', :locals => {:current_project => @project} %>
+<%= render :partial => 'projects/control_panel', :locals => {:current_project => @project, :view => "project"} %>
 <div id="all_panels" class="story_content">
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>

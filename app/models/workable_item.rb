@@ -142,15 +142,15 @@ class WorkableItem < ActiveRecord::Base
     end
   end
 
-
-  private
-
   def increment_priorities_of_all_items_of_higher_priority
     all_items_of_higher_priority = self.project.workable_items.where("priority > ? and category = ?", self.priority, self.category)
     all_items_of_higher_priority.each do |item|
       item.update_attributes!(:priority => (item.priority + 1))
     end
   end
+
+
+  private
 
   def re_prioritized_in_same_category?(category)
     self.category.eql? category

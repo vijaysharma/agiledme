@@ -18,6 +18,10 @@ class Project < ActiveRecord::Base
     self.velocity
   end
 
+  def self.sprint_columns
+    %w['todo' 'in progress' 'done' 'deployed', 'accepted']
+  end
+
   def labels
     all_labels_ids = WorkableItemLabel.select(:label_id).where("workable_item_id in (?)", self.workable_item_ids).map(&:label_id)
     Label.where("id in (?)", all_labels_ids)

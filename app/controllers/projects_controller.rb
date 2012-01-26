@@ -10,8 +10,15 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET /projects/1
-  # GET /projects/1.xml
+  def sprint
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml { render :xml => @project }
+    end
+  end
+
   def show
     @project = Project.find(params[:id])
 
@@ -21,13 +28,10 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
   end
 
-  # POST /projects
-  # POST /projects.xml
   def create
     @project = Project.new(params[:project])
     @project.project_users << ProjectUser.new(:user_id => current_user.id, :project_id => @project.id, :active => true, :role => "owner")
@@ -40,8 +44,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # PUT /projects/1
-  # PUT /projects/1.xml
   def update
     @project = Project.find(params[:id])
 
@@ -64,7 +66,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-
   def leave
     @project = Project.find(params[:id])
     current_user.leave_project(@project)
@@ -73,8 +74,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # DELETE /projects/1
-  # DELETE /projects/1.xml
   def destroy
     @project = Project.find(params[:id])
     @project.destroy

@@ -45,13 +45,22 @@
         <img style="display:none;" src="/images/ajax-loader.gif" class="spinner" alt="Spinner_adding">
       </div>
       <ul class="clearfix" id="panelList">
-        <% WorkableItem.categories.each do |category| %>
-            <% button_class = 'selected' %>
-            <% if category != 'icebox' %>
-                <% button_class = current_project.workable_items.where(:category => category).present? ? 'selected' : '' %>
+        <% if view.eql? "project" %>
+            <% WorkableItem.categories.each do |category| %>
+                <% button_class = 'selected' %>
+                <% if category != 'icebox' %>
+                    <% button_class = current_project.workable_items.where(:category => category).present? ? 'selected' : '' %>
+                <% end %>
+                <li>
+                  <a id="<%= "#{category}_control_button" %>" href="#" class="<%= "button #{button_class}" %>"><%= category.capitalize %></a>
+                </li>
             <% end %>
             <li>
-              <a id="<%= "#{category}_control_button" %>" href="#" class="<%= "button #{button_class}" %>"><%= category.capitalize %></a>
+              <%= link_to "Sprint View", sprint_project_path, :class => "button", :id => "show_sprint_button" %>
+            </li>
+        <% elsif view.eql? "sprint" %>
+            <li>
+              <%= link_to "Project View", project_path, :class => "button", :id => "show_project_button" %>
             </li>
         <% end %>
       </ul>

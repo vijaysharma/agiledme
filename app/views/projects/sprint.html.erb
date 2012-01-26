@@ -1,0 +1,32 @@
+<% title @project.name.camelcase %>
+<%= render :partial => 'projects/control_panel', :locals => {:current_project => @project, :view => "sprint"} %>
+<div id="all_panels" class="story_content">
+  <table id="layout" class="layout" cellspacing="16px">
+    <tbody>
+    <tr>
+      <% current_sprint_work = @project.workable_items.select { |wi| wi.category == "current" } %>
+      <%= render :partial => 'projects/sprint_state_panel',
+                 :locals => {:state => "Dev Ready",
+                             :workable_items_in_state => current_sprint_work.select { |wi| wi.not_yet_started? }} %>
+      <%= render :partial => 'projects/sprint_state_panel',
+                 :locals => {:state => "In Progress",
+                             :workable_items_in_state => current_sprint_work.select { |wi| wi.started? }} %>
+      <%= render :partial => 'projects/sprint_state_panel',
+                 :locals => {:state => "Dev Done",
+                             :workable_items_in_state => current_sprint_work.select { |wi| wi.finished? }} %>
+      <%= render :partial => 'projects/sprint_state_panel',
+                 :locals => {:state => "QA Ready",
+                             :workable_items_in_state => current_sprint_work.select { |wi| wi.delivered? }} %>
+      <%= render :partial => 'projects/sprint_state_panel',
+                 :locals => {:state => "Accepted / Rejected",
+                             :workable_items_in_state => current_sprint_work.select { |wi| wi.accepted? or wi.rejected? }} %>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript">
+    estimate_bugs = <%= @project.estimate_bugs? %>;
+    estimate_chores = <%= @project.estimate_chores? %>;
+</script>

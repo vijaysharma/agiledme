@@ -4,22 +4,22 @@
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
     <tr>
-      <% current_sprint_work = @project.workable_items.select { |wi| wi.category.eql? "current" } %>
+      <% sprint_work = @project.workable_items.select { |wi| wi.category.eql? "current" } %>
       <%= render :partial => 'projects/sprint_state_panel',
                  :locals => {:state => "dev_ready",
-                             :workable_items_in_state => current_sprint_work.select { |wi| wi.not_yet_started? }} %>
+                             :workable_items_in_state => sprint_work.select { |wi| wi.not_yet_started? }} %>
       <%= render :partial => 'projects/sprint_state_panel',
                  :locals => {:state => "in_progress",
-                             :workable_items_in_state => current_sprint_work.select { |wi| wi.started? }} %>
+                             :workable_items_in_state => sprint_work.select { |wi| wi.started? }} %>
       <%= render :partial => 'projects/sprint_state_panel',
                  :locals => {:state => "dev_done",
-                             :workable_items_in_state => current_sprint_work.select { |wi| wi.finished? }} %>
+                             :workable_items_in_state => sprint_work.select { |wi| wi.finished? }} %>
       <%= render :partial => 'projects/sprint_state_panel',
                  :locals => {:state => "qa_ready",
-                             :workable_items_in_state => current_sprint_work.select { |wi| wi.delivered? }} %>
+                             :workable_items_in_state => sprint_work.select { |wi| wi.delivered? }} %>
       <%= render :partial => 'projects/sprint_state_panel',
                  :locals => {:state => "qa_done",
-                             :workable_items_in_state => current_sprint_work.select { |wi| wi.accepted? or wi.rejected? }} %>
+                             :workable_items_in_state => sprint_work.select { |wi| wi.accepted? or wi.rejected? }} %>
 
     </tr>
     </tbody>

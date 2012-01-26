@@ -1,68 +1,79 @@
-<%= form_for(@project) do |f| %>
-    <% if @project.errors.any? %>
-        <div class="error_message">
-          <h3><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h3>
+<div class="action_area">
+  <%= form_for(@project) do |f| %>
+      <% if @project.errors.any? %>
+          <div class="error_message">
+            <h3><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h3>
 
-          <ul>
-            <% @project.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+            <ul>
+              <% @project.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
 
-    <table class="form_table">
-      <tbody>
-      <tr>
-        <td class="label_column">
-          <%= f.label :name %>
-        </td>
-        <td class="field_column">
-          <%= f.text_field :name %>
-        </td>
-      </tr>
-      <tr>
-        <td class="label_column" valign="top">
-          <%= f.label :description %>
-        </td>
-        <td class="field_column">
-          <%= f.text_area :description, :rows => 10, :cols=> 25 %>
-          <br>
-        </td>
-      </tr>
-      <tr>
-        <td class="label_column">
-          <%= f.label :estimate_bugs %>
-        </td>
-        <td class="field_column">
-          <%= f.check_box :estimate_bugs %>
-          <br>
-        </td>
-      </tr>
-      <tr>
-        <td class="label_column">
-          <%= f.label :estimate_chores %>
-        </td>
-        <td class="field_column">
-          <%= f.check_box :estimate_chores %>
-          <br>
-        </td>
-      </tr>
-      <tr>
-        <td class="label_column">
-          <%= f.label :start_date %>
-        </td>
-        <td class="field_column">
-          <%= f.date_select :start_date, :start_year => DateTime.now.year, :order => [:day, :month, :year] %>
-          <br>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>
-          <%= f.submit %>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-<% end %>
+      <table class="form_table">
+        <tbody>
+        <tr>
+          <td class="label_column">
+            <%= f.label :name %>
+          </td>
+          <td class="field_column">
+            <%= f.text_field :name, :size => 87 %>
+          </td>
+        </tr>
+        <tr>
+          <td class="label_column" valign="top">
+            <%= f.label :description %>
+          </td>
+          <td class="field_column">
+            <%= f.text_area :description, :rows => 10, :cols=> 25 %>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td class="label_column">
+            <%= f.label :estimate_bugs %>
+          </td>
+          <td class="field_column">
+            <%= f.check_box :estimate_bugs %>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td class="label_column">
+            <%= f.label :estimate_chores %>
+          </td>
+          <td class="field_column">
+            <%= f.check_box :estimate_chores %>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td class="label_column">
+            <%= f.label :sprint_length %>
+          </td>
+          <td class="field_column">
+            <%= f.select :sprint_length, [1, 2, 3, 4] %> <span class="text_example">(in weeks)</span>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td class="label_column">
+            <%= f.label :start_date %>
+          </td>
+          <td class="field_column">
+            <%= f.date_select :start_date, :start_year => DateTime.now.year, :order => [:day, :month, :year] %>
+            <br>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= f.submit %>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+  <% end %>
+</div>

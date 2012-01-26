@@ -210,11 +210,6 @@ h1 .right_link {
 
 #add_member.action_area {
     margin-bottom: 10px;
-    margin-top: -15px;
-}
-
-h2 + .action_area {
-    margin-top: -1px;
 }
 
 .action_area {
@@ -223,6 +218,7 @@ h2 + .action_area {
     padding-left: 33px;
     padding-right: 33px;
     padding-top: 20px;
+    margin-top: -15px;
 }
 
 .action_area .action_cells td {

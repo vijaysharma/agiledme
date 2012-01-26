@@ -2,6 +2,7 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 var estimate_bugs = false;
+var view = "project";
 var estimate_chores = false;
 var velocity_chart_point_interval = 1;
 var velocity_chart_point_start = 0;

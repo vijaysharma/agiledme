@@ -4,7 +4,7 @@
   <div class="panelHeader">
     <div id=<%= "#{state}_title" %>>
       <a href="#" class="closePanel panelLink" id='<%= "#{state}_close" %>' title="Close panel"></a>
-      <span class="panelTitle"><%= state %> </span>
+      <span class="panelTitle"><%= state.gsub('_',' ').humanize %> </span>
       <span class="external_icon"></span>
     </div>
   </div>

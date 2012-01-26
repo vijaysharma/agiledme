@@ -1,24 +1,24 @@
-<% title @project.name.camelcase %>
+<% title "#{@project.name.camelcase} : Sprint" %>
 <%= render :partial => 'projects/control_panel', :locals => {:current_project => @project, :view => "sprint"} %>
 <div id="all_panels" class="story_content">
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
     <tr>
-      <% current_sprint_work = @project.workable_items.select { |wi| wi.category == "current" } %>
+      <% current_sprint_work = @project.workable_items.select { |wi| wi.category.eql? "current" } %>
       <%= render :partial => 'projects/sprint_state_panel',
-                 :locals => {:state => "Dev Ready",
+                 :locals => {:state => "dev_ready",
                              :workable_items_in_state => current_sprint_work.select { |wi| wi.not_yet_started? }} %>
       <%= render :partial => 'projects/sprint_state_panel',
-                 :locals => {:state => "In Progress",
+                 :locals => {:state => "in_progress",
                              :workable_items_in_state => current_sprint_work.select { |wi| wi.started? }} %>
       <%= render :partial => 'projects/sprint_state_panel',
-                 :locals => {:state => "Dev Done",
+                 :locals => {:state => "dev_done",
                              :workable_items_in_state => current_sprint_work.select { |wi| wi.finished? }} %>
       <%= render :partial => 'projects/sprint_state_panel',
-                 :locals => {:state => "QA Ready",
+                 :locals => {:state => "qa_ready",
                              :workable_items_in_state => current_sprint_work.select { |wi| wi.delivered? }} %>
       <%= render :partial => 'projects/sprint_state_panel',
-                 :locals => {:state => "Accepted / Rejected",
+                 :locals => {:state => "qa_done",
                              :workable_items_in_state => current_sprint_work.select { |wi| wi.accepted? or wi.rejected? }} %>
 
     </tr>
@@ -29,4 +29,5 @@
 <script type="text/javascript">
     estimate_bugs = <%= @project.estimate_bugs? %>;
     estimate_chores = <%= @project.estimate_chores? %>;
+    view = "sprint";
 </script>

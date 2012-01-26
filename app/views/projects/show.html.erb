@@ -40,7 +40,8 @@
                   <% end %>
                   <% if workable_items_in_category.present? %>
                       <% @project.workable_items.select { |wi| wi.category == category }.each do |workable_item| %>
-                          <%= render :partial => 'workable_items/workable_item', :locals => {:workable_item => workable_item} %>
+                          <%= render :partial => 'workable_items/workable_item',
+                                     :locals => {:workable_item => workable_item} %>
                       <% end %>
                   <% else %>
                       <% if category.eql?('icebox') and !@project.workable_items.present? %>
@@ -63,4 +64,6 @@
 <script type="text/javascript">
     estimate_bugs = <%= @project.estimate_bugs? %>;
     estimate_chores = <%= @project.estimate_chores? %>;
+    view = "project";
+
 </script>

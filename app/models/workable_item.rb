@@ -149,7 +149,6 @@ class WorkableItem < ActiveRecord::Base
     end
   end
 
-
   private
 
   def re_prioritized_in_same_category?(category)

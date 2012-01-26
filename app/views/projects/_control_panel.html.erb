@@ -60,6 +60,21 @@
             </li>
         <% elsif view.eql? "sprint" %>
             <li>
+              <a id="<%= "dev_ready_control_button" %>" href="#" class="<%= "button selected" %>">Dev Ready</a>
+            </li>
+            <li>
+              <a id="<%= "in_progress_control_button" %>" href="#" class="<%= "button selected" %>">In Progress</a>
+            </li>
+            <li>
+              <a id="<%= "dev_done_control_button" %>" href="#" class="<%= "button selected" %>">Dev Done</a>
+            </li>
+            <li>
+              <a id="<%= "qa_ready_control_button" %>" href="#" class="<%= "button selected" %>">QA Ready</a>
+            </li>
+            <li>
+              <a id="<%= "qa_done_control_button" %>" href="#" class="<%= "button selected" %>">QA Done</a>
+            </li>
+            <li>
               <%= link_to "Project View", project_path, :class => "button", :id => "show_project_button" %>
             </li>
         <% end %>

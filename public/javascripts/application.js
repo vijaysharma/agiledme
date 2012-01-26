@@ -96,6 +96,31 @@ $(document).ready(function () {
         $("#icebox_control_button").removeClass('selected');
     });
 
+    $("#dev_ready_close").click(function () {
+        $("#dev_ready").hide();
+        $("#dev_ready_control_button").removeClass('selected');
+    });
+
+    $("#in_progress_close").click(function () {
+        $("#in_progress").hide();
+        $("#in_progress_control_button").removeClass('selected');
+    });
+
+    $("#dev_done_close").click(function () {
+        $("#dev_done").hide();
+        $("#dev_done_control_button").removeClass('selected');
+    });
+
+    $("#qa_ready_close").click(function () {
+        $("#qa_ready").hide();
+        $("#qa_ready_control_button").removeClass('selected');
+    });
+
+    $("#qa_done_close").click(function () {
+        $("#qa_done").hide();
+        $("#qa_done_control_button").removeClass('selected');
+    });
+
     $("#backlog_control_button").click(function () {
         $("#backlog").toggle();
         $("#backlog_control_button").toggleClass('selected');
@@ -129,11 +154,6 @@ $(document).ready(function () {
     $("#dev_done_control_button").click(function () {
         $("#dev_done").toggle();
         $("#dev_done_control_button").toggleClass('selected');
-    });
-
-    $("#qa_ready_control_button").click(function () {
-        $("#qa_ready").toggle();
-        $("#qa_ready_control_button").toggleClass('selected');
     });
 
     $("#qa_ready_control_button").click(function () {

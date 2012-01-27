@@ -20,14 +20,41 @@
       <%= render :partial => 'projects/sprint_state_panel',
                  :locals => {:state => "qa_done",
                              :workable_items_in_state => sprint_work.select { |wi| wi.accepted? or wi.rejected? }} %>
-
+      <td class="panel" width="20%">
+        <div class="panelHeaderRight"></div>
+        <div class="panelHeaderLeft"></div>
+        <div class="panelHeader">
+          <div id="burndown_chart_title">
+            <a href="#" class="closePanel panelLink" id="burndown_chart_close" title="Close panel"></a>
+            <span class="panelTitle">Burndown Chart </span>
+            <span class="external_icon"></span>
+          </div>
+        </div>
+        <div id="_item_list" class="list">
+          <div class="btm">
+            <div class="right"></div>
+            <div class="left"></div>
+            <div class="mid"></div>
+          </div>
+          <div id="items" class="items">
+            <div id="scrolling_item_list" class="inner scrolling_item_list">
+              <div id="burndown_chart" ></div>
+            </div>
+          </div>
+        </div>
+      </td>
     </tr>
     </tbody>
   </table>
 </div>
 
-<script type="text/javascript">
+<script type="text/javascript" charset="utf-8">
     estimate_bugs = <%= @project.estimate_bugs? %>;
     estimate_chores = <%= @project.estimate_chores? %>;
     view = "sprint";
+
+    burndown_chart_data_series = <%= burndown_chart_series(@project, @project.sprint_length.weeks.ago) %>;
+    burndown_chart_point_start = <%= @project.sprint_length.weeks.ago.at_midnight.to_i * 1000 %>;
+    burndown_chart_point_interval = <%= 1.day * 1000 %>;
+    draw_burndown_chart();
 </script>

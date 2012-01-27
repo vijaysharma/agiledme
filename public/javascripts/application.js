@@ -8,6 +8,10 @@ var velocity_chart_point_interval = 1;
 var velocity_chart_point_start = 0;
 var velocity_chart_data_series = [];
 
+var burndown_chart_point_interval = 1;
+var burndown_chart_point_start = 0;
+var burndown_chart_data_series = [];
+
 MyClass = function() {
     return {
         init : function() {
@@ -435,53 +439,98 @@ $(document).ready(function () {
     });
 
 //    =======================================
-    $(function () {
-        new Highcharts.Chart({
-            chart: {
-                renderTo: 'velocity_chart',
-                defaultSeriesType: 'column'
-            },
+
+
+});
+
+function draw_burndown_chart() {
+    new Highcharts.Chart({
+        chart: {
+            renderTo: 'burndown_chart'
+        },
+        title: {
+            text: 'Burndown Chart'
+        },
+        xAxis: {
+            type: "datetime",
             title: {
-                text: 'Velocity Trend'
-            },
-            xAxis: {
-                type: "datetime",
-                title: {
-                    text: 'Sprint'
-                }
-            },
-            yAxis: {
-                title: {
-                    text: 'Velocity'
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                floating: true,
-                shadow: true
-            },
+                text: 'Sprint'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Velocity'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            floating: true,
+            shadow: true
+        },
 
-            plotOptions: {
-                column: {
-                    pointPadding: 0.0,
-                    borderWidth: 0
-                }
-            },
-            series: [
-                {
-                    name: "Points",
-                    pointInterval: velocity_chart_point_interval,
-                    pointStart: velocity_chart_point_start,
-                    data: velocity_chart_data_series
-                }
-            ]
-        });
+        plotOptions: {
+            column: {
+                pointPadding: 0.0,
+                borderWidth: 0
+            }
+        },
+        series: [
+            {
+                name: "Points",
+                pointInterval: burndown_chart_point_interval,
+                pointStart: burndown_chart_point_start,
+                data: burndown_chart_data_series
+            }
+        ]
     });
+}
 
-})
-        ;
+function draw_velocity_trend_chart() {
+    new Highcharts.Chart({
+        chart: {
+            renderTo: 'velocity_chart',
+            defaultSeriesType: 'column'
+        },
+        title: {
+            text: 'Velocity Trend'
+        },
+        xAxis: {
+            type: "datetime",
+            title: {
+                text: 'Sprint'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Velocity'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            floating: true,
+            shadow: true
+        },
+
+        plotOptions: {
+            column: {
+                pointPadding: 0.0,
+                borderWidth: 0
+            }
+        },
+        series: [
+            {
+                name: "Points",
+                pointInterval: velocity_chart_point_interval,
+                pointStart: velocity_chart_point_start,
+                data: velocity_chart_data_series
+            }
+        ]
+    });
+}
 
 function add_task_fields(link, association, content) {
     var new_id = new Date().getTime();

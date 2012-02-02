@@ -87,7 +87,7 @@
             </li>
             <li>
               <a id="<%= "qa_done_control_button" %>" href="#"
-                 class="<%= "button #{sprint_work.select { |wi| wi.accepted? or wi.rejected?}.present? ? "selected" : ""}" %>">
+                 class="<%= "button #{sprint_work.select { |wi| wi.accepted? or wi.rejected? }.present? ? "selected" : ""}" %>">
                 QA Done
               </a>
             </li>

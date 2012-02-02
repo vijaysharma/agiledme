@@ -101,5 +101,5 @@
   velocity_chart_data_series = <%= velocity_chart_series(@project, @project.sprint_length.weeks.ago) %>;
   velocity_chart_point_start = <%= @project.sprint_length.weeks.ago.at_midnight.to_i * 1000 %>;
   velocity_chart_point_interval = <%= 1.day * 1000 %>;
-        draw_velocity_trend_chart();
+  draw_velocity_trend_chart();
 </script>

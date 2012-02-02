@@ -440,6 +440,13 @@ $(document).ready(function () {
 
 //    =======================================
 
+    $(".helpIcon").tooltip({
+        effect: 'slide',
+        offset: [1,1],
+        position: 'center, right',
+        delay: 1000,
+        predelay: 1000
+    });
 
 });
 

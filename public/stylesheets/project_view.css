@@ -10,26 +10,26 @@
     z-index: 10;
 }
 
-.help.flyover {
-    -moz-border-bottom-colors: none;
-    -moz-border-image: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
+.tooltip {
+    display:none;
     background: #FFFFFF url("/images/bg_gradient_comments_hover.gif") repeat-x scroll left top;
-    background-clip: border-box;
-    background-origin: padding-box;
     background-size: auto auto;
     border: 1px solid #5593D8;
     border-radius: 8px;
     font-size: 12px;
     padding: 8px;
+    width:450px;
 }
 
-.help.flyover .storyTitle {
+.tooltip .storyTitle {
     font-size: 13px;
     font-weight: bold;
     margin: 3px 0;
+}
+
+.tooltip_desc {
+    font-weight:normal;
+    height:auto;
 }
 
 .sectionDivider {
@@ -40,16 +40,8 @@
     height: 1px;
 }
 
-.overlay .sectionDivider {
+.tooltip .sectionDivider {
     display: none;
-}
-
-.help.flyover {
-    font-size: 12px;
-}
-
-.overlayContentWrapper {
-    padding: 0 1em;
 }
 
 .no_workable_items {

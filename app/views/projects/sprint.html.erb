@@ -1,10 +1,10 @@
 <% title "#{@project.name.camelcase} : Sprint" %>
 <%= render :partial => 'projects/control_panel', :locals => {:current_project => @project, :view => "sprint"} %>
 <div id="all_panels" class="story_content">
+  <% sprint_work = @project.workable_items.select { |wi| wi.category.eql? "current" } %>
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
-    <tr>
-      <% sprint_work = @project.workable_items.select { |wi| wi.category.eql? "current" } %>
+    <tr id="sprint_panels">
       <%= render :partial => 'projects/sprint_state_panel',
                  :locals => {:state => "dev_ready",
                              :workable_items_in_state => sprint_work.select { |wi| wi.not_yet_started? }} %>
@@ -20,7 +20,9 @@
       <%= render :partial => 'projects/sprint_state_panel',
                  :locals => {:state => "qa_done",
                              :workable_items_in_state => sprint_work.select { |wi| wi.accepted? or wi.rejected? }} %>
-      <td class="panel" width="20%">
+    </tr>
+    <tr style="display:none;" id="burndown">
+      <td class="panel" colspan="6">
         <div class="panelHeaderRight"></div>
         <div class="panelHeaderLeft"></div>
         <div class="panelHeader">
@@ -38,7 +40,7 @@
           </div>
           <div id="items" class="items">
             <div id="scrolling_item_list" class="inner scrolling_item_list">
-              <div id="burndown_chart" ></div>
+              <div id="burndown_chart"></div>
             </div>
           </div>
         </div>
@@ -53,8 +55,12 @@
     estimate_chores = <%= @project.estimate_chores? %>;
     view = "sprint";
 
-    burndown_chart_data_series = <%= burndown_chart_series(@project, @project.sprint_length.weeks.ago) %>;
-    burndown_chart_point_start = <%= @project.sprint_length.weeks.ago.at_midnight.to_i * 1000 %>;
-    burndown_chart_point_interval = <%= 1.day * 1000 %>;
-    draw_burndown_chart();
+    var actual_burndown_chart_data_series = <%= actual_burndown_chart_data_series(@project) %>;
+    var idle_burndown_chart_data_series = <%= idle_burndown_chart_data_series(@project) %>;
+    var burndown_chart_point_start = <%= @project.current_sprint_start_date.at_midnight.to_i * 1000 %>;
+    var burndown_chart_point_interval = <%= 1.day * 1000 %>;
+    draw_burndown_chart(burndown_chart_point_start,
+            burndown_chart_point_interval,
+            actual_burndown_chart_data_series,
+            idle_burndown_chart_data_series);
 </script>

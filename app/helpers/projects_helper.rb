@@ -36,7 +36,7 @@ module ProjectsHelper
     end
   end
 
-  def burndown_chart_series(project, start_time)
+  def actual_burndown_chart_data_series(project)
     workable_items = nil
     if !project.estimate_bugs? and !project.estimate_chores?
       workable_items = project.workable_items.where(" status in ('delivered', 'accepted') and category = 'current'")
@@ -45,13 +45,37 @@ module ProjectsHelper
     elsif project.estimate_chores?
       workable_items = project.workable_items.where(" status in ('delivered', 'accepted') and category = 'current' and type != 'Bug'")
     end
+    start_time = project.current_sprint_start_date
+    end_time = project.current_sprint_end_date
     if workable_items
-      workable_items_by_day = workable_items.where(:delivered_at => start_time.beginning_of_day..Time.zone.now.end_of_day).
+      workable_items_by_day = workable_items.where(:delivered_at => start_time.beginning_of_day..end_time.end_of_day).
           group("date(delivered_at)").
           select("delivered_at, sum(estimate) as estimate")
-       (start_time.to_date..Date.today).map do |date|
+      (start_time..end_time).map do |date|
         workable_item = workable_items_by_day.detect { |workable_item| workable_item.delivered_at.to_date == date }
         workable_item && workable_item.estimate || 0
+      end.inspect
+    end
+  end
+
+  def idle_burndown_chart_data_series(project)
+    workable_items = nil
+    if !project.estimate_bugs? and !project.estimate_chores?
+      workable_items = project.workable_items.where(" category = 'current'")
+    elsif project.estimate_bugs?
+      workable_items = project.workable_items.where(" category = 'current' and type != 'Chore'")
+    elsif project.estimate_chores?
+      workable_items = project.workable_items.where(" category = 'current' and type != 'Bug'")
+    end
+    start_time = project.current_sprint_start_date
+    end_time = project.current_sprint_end_date
+    if workable_items
+      sprint_commitment = workable_items.sum("estimate")
+      points_to_burn_per_day = sprint_commitment.to_f / (project.days_in_sprint)
+      index = 0
+      (start_time - 1 ..end_time).map do
+        index = index + 1
+        sprint_commitment - (points_to_burn_per_day * index)
       end.inspect
     end
   end

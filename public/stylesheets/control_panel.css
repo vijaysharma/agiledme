@@ -157,7 +157,7 @@
     margin-top: -2px;
 }
 
-#controlPanel #controls_search_velocity_row ul#buttonPanel #panelList > li {
+#controlPanel #controls_search_velocity_row ul#buttonPanel li {
     float: left;
     margin-right: 10px;
 }
@@ -165,6 +165,11 @@
 #controlPanel #controls_search_velocity_row ul#buttonPanel ul#panelList li a.selected {
     background: none repeat scroll 0 0 #FFFFFF;
     color: #256188;
+}
+
+#controlPanel #controls_search_velocity_row ul#buttonPanel ul#panelList {
+    border-right: 1px solid #CCCCCC;
+    float: left;
 }
 
 #controlPanel #controls_search_velocity_row ul#buttonPanel ul#panelList li a.selected:hover {

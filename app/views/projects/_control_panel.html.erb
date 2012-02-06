@@ -41,12 +41,14 @@
       </div>
 
     </div>
-    <ul class="clearfix" id="buttonPanel">
-      <div style="margin-right: 216px; float:right">
-        <img style="display:none;" src="/images/ajax-loader.gif" class="spinner" alt="Spinner_adding">
-      </div>
-      <ul class="clearfix" id="panelList">
-        <% if view.eql? "project" %>
+
+    <% if view.eql? "project" %>
+        <ul class="clearfix" id="buttonPanel">
+          <div style="margin-right: 216px; float:right">
+            <img style="display:none;" src="/images/ajax-loader.gif" class="spinner" alt="Spinner_adding">
+          </div>
+
+          <ul class="clearfix" id="panelList">
             <% WorkableItem.categories.each do |category| %>
                 <% button_class = 'selected' %>
                 <% if category != 'icebox' %>
@@ -56,10 +58,19 @@
                   <a id="<%= "#{category}_control_button" %>" href="#" class="<%= "button #{button_class}" %>"><%= category.capitalize %></a>
                 </li>
             <% end %>
-            <li>
-              <%= link_to "Sprint View", sprint_project_path, :class => "button", :id => "show_sprint_button" %>
-            </li>
-        <% elsif view.eql? "sprint" %>
+
+          </ul>
+          <li>
+            <%= link_to "Sprint View", sprint_project_path, :class => "button", :id => "show_sprint_button" %>
+          </li>
+        </ul>
+    <% elsif view.eql? "sprint" %>
+        <ul class="clearfix" id="buttonPanel">
+          <div style="margin-right: 216px; float:right">
+            <img style="display:none;" src="/images/ajax-loader.gif" class="spinner" alt="Spinner_adding">
+          </div>
+
+          <ul class="clearfix" id="panelList">
             <% sprint_work = @project.workable_items.select { |wi| wi.category.eql? "current" } %>
             <li>
               <a id="<%= "dev_ready_control_button" %>" href="#"
@@ -92,10 +103,17 @@
               </a>
             </li>
             <li>
-              <%= link_to "Project View", project_path, :class => "button", :id => "show_project_button" %>
+              <a id="<%= "burndown_control_button" %>" href="#"
+                 class="<%= "button" %>">
+                Burndown
+              </a>
             </li>
-        <% end %>
-      </ul>
-    </ul>
+
+          </ul>
+          <li>
+            <%= link_to "Project View", project_path, :class => "button", :id => "show_project_button" %>
+          </li>
+        </ul>
+    <% end %>
   </div>
 </div>

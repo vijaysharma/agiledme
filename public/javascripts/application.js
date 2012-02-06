@@ -4,13 +4,6 @@
 var estimate_bugs = false;
 var view = "project";
 var estimate_chores = false;
-var velocity_chart_point_interval = 1;
-var velocity_chart_point_start = 0;
-var velocity_chart_data_series = [];
-
-var burndown_chart_point_interval = 1;
-var burndown_chart_point_start = 0;
-var burndown_chart_data_series = [];
 
 MyClass = function() {
     return {
@@ -168,6 +161,12 @@ $(document).ready(function () {
     $("#qa_done_control_button").click(function () {
         $("#qa_done").toggle();
         $("#qa_done_control_button").toggleClass('selected');
+    });
+
+    $("#burndown_control_button").click(function () {
+        $("#burndown").toggle();
+        $("#sprint_panels").toggle();
+        $("#burndown_control_button").toggleClass('selected');
     });
 
     $(".labels").each(function () {
@@ -445,13 +444,13 @@ $(document).ready(function () {
         relative: true,
         offset: [15,15],
         position: 'center, right',
-        delay: 1000,
-        predelay: 1000
+        delay: 500,
+        predelay: 500
     });
 
 });
 
-function draw_burndown_chart() {
+function draw_burndown_chart(chart_point_start, chart_point_interval, actual_chart_data_series, idle_chart_data_series) {
     new Highcharts.Chart({
         chart: {
             renderTo: 'burndown_chart'
@@ -478,24 +477,24 @@ function draw_burndown_chart() {
             shadow: true
         },
 
-        plotOptions: {
-            column: {
-                pointPadding: 0.0,
-                borderWidth: 0
-            }
-        },
         series: [
             {
                 name: "Points",
-                pointInterval: burndown_chart_point_interval,
-                pointStart: burndown_chart_point_start,
-                data: burndown_chart_data_series
+                pointStart: chart_point_start,
+                pointInterval: chart_point_interval,
+                data: actual_chart_data_series
+            },
+            {
+                name: "Points",
+                pointStart: chart_point_start,
+                pointInterval: chart_point_interval,
+                data: idle_chart_data_series
             }
         ]
     });
 }
 
-function draw_velocity_trend_chart() {
+function draw_velocity_trend_chart(chart_point_start, chart_point_interval, chart_data_series) {
     new Highcharts.Chart({
         chart: {
             renderTo: 'velocity_chart',
@@ -532,9 +531,9 @@ function draw_velocity_trend_chart() {
         series: [
             {
                 name: "Points",
-                pointInterval: velocity_chart_point_interval,
-                pointStart: velocity_chart_point_start,
-                data: velocity_chart_data_series
+                pointStart: chart_point_start,
+                pointInterval: chart_point_interval,
+                data: chart_data_series
             }
         ]
     });

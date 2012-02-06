@@ -23,7 +23,23 @@ class Project < ActiveRecord::Base
     Label.where("id in (?)", all_labels_ids)
   end
 
+  def current_sprint_start_date
+    Date.today - days_passed_in_current_sprint
+  end
+
+  def current_sprint_end_date
+    current_sprint_start_date + days_in_sprint
+  end
+
+  def days_in_sprint
+    self.sprint_length * 7
+  end
+
   private
+
+  def days_passed_in_current_sprint
+    (Date.today  -  self.start_date.to_date).to_i % days_in_sprint
+  end
 
   def my_users(status)
     self.project_users.where(:active => status).collect { |project_user| project_user.user }

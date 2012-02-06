@@ -27,6 +27,22 @@ class Project < ActiveRecord::Base
     Date.today - days_passed_in_current_sprint
   end
 
+  def sprint_commitment
+    workable_items = nil
+    if !self.estimate_bugs? and !self.estimate_chores?
+      workable_items = self.workable_items.where(" category = 'current'")
+    elsif project.estimate_bugs?
+      workable_items = self.workable_items.where(" category = 'current' and type != 'Chore'")
+    elsif project.estimate_chores?
+      workable_items = self.workable_items.where(" category = 'current' and type != 'Bug'")
+    end
+    if workable_items.present?
+      workable_items.sum("estimate")
+    else
+      0
+    end
+  end
+
   def current_sprint_end_date
     current_sprint_start_date + days_in_sprint
   end
@@ -38,7 +54,7 @@ class Project < ActiveRecord::Base
   private
 
   def days_passed_in_current_sprint
-    (Date.today  -  self.start_date.to_date).to_i % days_in_sprint
+    (Date.today - self.start_date.to_date).to_i % days_in_sprint
   end
 
   def my_users(status)

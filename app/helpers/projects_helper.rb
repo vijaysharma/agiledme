@@ -46,12 +46,11 @@ module ProjectsHelper
       workable_items = project.workable_items.where(" status in ('delivered', 'accepted') and category = 'current' and type != 'Bug'")
     end
     start_time = project.current_sprint_start_date
-    end_time = project.current_sprint_end_date
     if workable_items
-      workable_items_by_day = workable_items.where(:delivered_at => start_time.beginning_of_day..end_time.end_of_day).
+      workable_items_by_day = workable_items.where(:delivered_at => start_time.beginning_of_day..Date.today.end_of_day).
           group("date(delivered_at)").
           select("delivered_at, sum(estimate) as estimate")
-      (start_time..end_time).map do |date|
+      (start_time..Date.today).map do |date|
         workable_item = workable_items_by_day.detect { |workable_item| workable_item.delivered_at.to_date == date }
         workable_item && workable_item.estimate || 0
       end.inspect
@@ -72,10 +71,8 @@ module ProjectsHelper
     if workable_items
       sprint_commitment = workable_items.sum("estimate")
       points_to_burn_per_day = sprint_commitment.to_f / (project.days_in_sprint)
-      index = 0
-      (start_time - 1 ..end_time).map do
-        index = index + 1
-        sprint_commitment - (points_to_burn_per_day * index)
+      (start_time..end_time).map do |day|
+        sprint_commitment - (points_to_burn_per_day * (day - start_time).to_i)
       end.inspect
     end
   end

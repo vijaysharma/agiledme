@@ -479,13 +479,13 @@ function draw_burndown_chart(chart_point_start, chart_point_interval, actual_cha
 
         series: [
             {
-                name: "Points",
+                name: "Actual",
                 pointStart: chart_point_start,
                 pointInterval: chart_point_interval,
                 data: actual_chart_data_series
             },
             {
-                name: "Points",
+                name: "Idle",
                 pointStart: chart_point_start,
                 pointInterval: chart_point_interval,
                 data: idle_chart_data_series

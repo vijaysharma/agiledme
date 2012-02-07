@@ -465,6 +465,7 @@ function draw_burndown_chart(chart_point_start, chart_point_interval, actual_cha
             }
         },
         yAxis: {
+            min: 0,
             title: {
                 text: 'Velocity'
             }

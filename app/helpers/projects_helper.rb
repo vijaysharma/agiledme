@@ -58,7 +58,7 @@ module ProjectsHelper
       sprint_commitment = project.sprint_commitment
       (start_time..Date.today).map do |date|
         workable_item = workable_items_by_day.detect { |workable_item| workable_item.date.to_date == date }
-        sprint_commitment - (workable_item && workable_item.estimate || 0)
+        sprint_commitment = sprint_commitment - (workable_item && workable_item.estimate || 0)
       end.inspect
     end
   end

@@ -459,12 +459,20 @@ function draw_burndown_chart(chart_point_start, chart_point_interval, actual_cha
             text: 'Burndown Chart'
         },
         xAxis: {
+            gridLineWidth: 1,
+            lineColor: '#000',
+            tickColor: '#000',
             type: "datetime",
             title: {
                 text: 'Sprint'
             }
         },
         yAxis: {
+                  minorTickInterval: 'auto',
+      lineColor: '#000',
+      lineWidth: 1,
+      tickWidth: 1,
+      tickColor: '#000',
             min: 0,
             title: {
                 text: 'Velocity'

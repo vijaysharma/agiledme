@@ -27,8 +27,8 @@ module ProjectsHelper
     end
     if workable_items
       workable_items_by_day = workable_items.where(:delivered_at => start_time.beginning_of_day..Time.zone.now.end_of_day).
-          group("date(delivered_at)").
-          select("delivered_at, sum(estimate) as estimate")
+          group("delivered_at, priority").
+          select("priority, delivered_at, sum(estimate) as estimate")
       (start_time.to_date..Date.today).map do |date|
         workable_item = workable_items_by_day.detect { |workable_item| workable_item.delivered_at.to_date == date }
         workable_item && workable_item.estimate || 0
@@ -48,11 +48,11 @@ module ProjectsHelper
     start_time = project.current_sprint_start_date
     if workable_items
       workable_items_by_day = workable_items.where(:delivered_at => start_time.beginning_of_day..Date.today.end_of_day).
-          group("date(date)").
+          group("delivered_at, priority").
           select("delivered_at as date, sum(estimate) as estimate")
 
       workable_items_by_day.concat workable_items.where(:accepted_at => start_time.beginning_of_day..Date.today.end_of_day).
-          group("date(date)").
+          group("accepted_at, priority").
           select("accepted_at as date, sum(estimate) as estimate")
 
       sprint_commitment = project.sprint_commitment

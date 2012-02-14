@@ -98,6 +98,7 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] actionmailer (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/actionmailer-3.0.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] activeresource (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/activeresource-3.0.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] railties (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/railties-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] pg (v0.13.1, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/pg-0.13.1)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rake (v0.9.2.2, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rake-0.9.2.2)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] treetop (v1.4.10, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/treetop-1.4.10)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rack-mount (v0.6.14, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rack-mount-0.6.14)" level="application" />
@@ -112,7 +113,6 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.10, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/arel-2.0.10)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] i18n (v0.6.0, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/i18n-0.6.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rack-test (v0.5.7, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rack-test-0.5.7)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] pg (v0.13.1, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/pg-0.13.1)" level="application" />
   </component>
 </module>
 

@@ -9,7 +9,11 @@
                           'token-input-facebook',
                           'control_panel',
                           'jquery-ui-1.8.16.custom',
-                          'ie9', 'ie', :cache => true %>
+                          'jquery.fileupload-ui',
+                          'ie9',
+                          'ie',
+                          :cache => true %>
+
   <!--[if gte IE 9]>
       <%= stylesheet_link_tag 'ie9' %>
     <![endif]-->
@@ -22,7 +26,12 @@
                              "jquery.tools.min",
                              "application",
                              "rails",
-                             'highcharts', :cache => true %>
+                             'highcharts',
+                             'jquery.fileupload',
+                             'jquery.fileupload-ui',
+                             'jquery.fileupload-ip',
+                             'jquery.iframe-transport',
+                             :cache => true %>
 
   <%= csrf_meta_tag %>
 </head>
@@ -37,7 +46,7 @@
           Call Us: +91-80-42414300
         </div>
         <ul class="nav_links">
-          <li><%= link_to 'Sign In', new_user_session_path, :class => (current_page?(new_user_session_path) ? 'current' : '')  %></li>
+          <li><%= link_to 'Sign In', new_user_session_path, :class => (current_page?(new_user_session_path) ? 'current' : '') %></li>
           <li><%= link_to 'Register', new_user_registration_path, :class => (current_page?(new_user_registration_path) ? 'current' : '') %></li>
           <li>
         </ul>

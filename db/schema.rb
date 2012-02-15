@@ -115,10 +115,8 @@ ActiveRecord::Schema.define(:version => 20120122201403) do
 
   create_table "workable_item_attachments", :force => true do |t|
     t.integer  "workable_item_id"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.datetime "image_updated_at"
-    t.integer  "image_file_size"
+    t.string   "image"
+    t.string   "content_type"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

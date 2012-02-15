@@ -1,7 +1,7 @@
 <% attachment_id = f.object.new_record? ? "new" : f.object.id %>
 <li id="<%="#{attachment_id}_image_details" %>">
   <div class="attachment_thumbnail">
-    <%= link_to image_tag(f.object.image.url(:thumb)), f.object.image.url(:original), :target => '_blank' %>
+    <%= link_to image_tag(f.object.image.url(:thumb).to_s), f.object.image.url.to_s, :target => '_blank' %>
   </div>
   <div class="attachment_details_container clearfix">
     <ul class="attachment_details">
@@ -16,8 +16,8 @@
         or <a class="cancel" href="#">cancel</a>
       </li>
       <li class="uploader">Uploaded by <%= f.object.user.display_name %></li>
-      <li class="metadata"><%= f.object.image_file_size.present? ? f.object.image_file_size/1024 : 0 %>
-        KB<span> on <%= f.object.image_updated_at.to_s(:pretty) %></span>
+      <li class="metadata"><%= f.object.image.size.present? ? f.object.image.size/1024 : 0 %>
+        KB<span> on <%= f.object.updated_at.to_s(:pretty) %></span>
       </li>
       <li class="actions">
         <%= link_to 'Download', download_attachment_project_workable_item_workable_item_attachment_path(f.object.workable_item.project, f.object.workable_item, f.object.id) %>

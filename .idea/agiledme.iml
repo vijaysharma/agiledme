@@ -18,6 +18,12 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="carrierwave" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="delayed_job" version="2.1.4" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -48,12 +54,6 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="paperclip" version="2.0" bound="LATEST_IN_BRANCH" git="false" path="false" doRequire="true" />
-      </requirement>
-      <source from="Gemfile" />
-    </requirement>
-    <requirement>
-      <requirement>
         <dependency name="pg" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -61,6 +61,12 @@
     <requirement>
       <requirement>
         <dependency name="rails" version="3.0.3" bound="EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="rmagick" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
     </requirement>
@@ -113,6 +119,8 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.10, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/arel-2.0.10)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] i18n (v0.6.0, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/i18n-0.6.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rack-test (v0.5.7, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rack-test-0.5.7)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] carrierwave (v0.5.8, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/carrierwave-0.5.8)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rmagick (v2.13.1, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rmagick-2.13.1)" level="application" />
   </component>
 </module>
 

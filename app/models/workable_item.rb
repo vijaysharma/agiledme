@@ -15,7 +15,6 @@ class WorkableItem < ActiveRecord::Base
 
   accepts_nested_attributes_for :tasks, :allow_destroy => true, :reject_if => :all_blank
   accepts_nested_attributes_for :comments, :allow_destroy => true, :reject_if => :all_blank
-  accepts_nested_attributes_for :workable_item_attachments, :allow_destroy => true, :reject_if => :all_blank
 
   attr_reader :label_tokens
 

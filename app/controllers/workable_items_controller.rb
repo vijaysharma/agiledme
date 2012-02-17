@@ -3,13 +3,12 @@ class WorkableItemsController < ApplicationController
   # POST /workable_items
   # POST /workable_items.xml
   def create
-    prepare_attachments
-
     @project = Project.find(params[:project_id])
     @workable_item = WorkableItem.new(params[:workable_item])
     @workable_item.project = @project
 
     @workable_item.type = params[:workable_item][:type]
+    @workable_item.workable_item_attachments = WorkableItemAttachment.where(:user_id => current_user.id, :workable_item_id => -1)
     respond_to do |format|
       if @workable_item.save
         if @workable_item.epic.present? and !@workable_item.epic.split_in_progress?

@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/base/jquery-ui.css", :id => "theme" %>
+<%= javascript_include_tag "http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" %>
+
+<div id="fileupload">
+  <%= form_for WorkableItemAttachment.new, :html => { :multipart => true } do |f| %>
+      <div class="fileupload-buttonbar">
+          <label class="fileinput-button">
+              <span>Add files...</span>
+                <%= f.file_field :image %>
+                <%= f.hidden_field :workable_item_id, :value => -1 %>
+          </label>
+          <button type="submit" class="start">Start upload</button>
+          <button type="reset" class="cancel">Cancel upload</button>
+          <button type="button" class="delete">Delete files</button>
+      </div>
+  <% end %>
+  <div class="fileupload-content">
+      <table class="files"></table>
+      <div class="fileupload-progressbar"></div>
+  </div>
+</div>
+
+<%= render :partial => "workable_items/template-upload" %>
+<%= render :partial => "workable_items/template-download" %>

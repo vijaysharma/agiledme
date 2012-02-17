@@ -64,6 +64,7 @@
         <td colspan="1" class="lastCell">
           <div id="<%= "#{item_unique_id}_help_story_types" %>">
             <img src="/images/question_mark.gif" class="helpIcon">
+
             <div class="tooltip">
               <div class="storyTitle">Story Types</div>
               <div class="sectionDivider">
@@ -105,6 +106,7 @@
         <td colspan="1">
           <div id="<%= "#{item_unique_id}_help_estimates" %>">
             <img src="/images/question_mark.gif" class="helpIcon">
+
             <div class="tooltip">
               <div class="storyTitle">Estimates</div>
               <div class="sectionDivider">
@@ -180,6 +182,7 @@
           <div class="label">Description</div>
           <div id="<%= "#{item_unique_id}_help_story_description" %>">
             <img src="/images/question_mark.gif" class="helpIcon">
+
             <div class="tooltip">
               <div class="storyTitle">Description</div>
               <div class="sectionDivider"></div>
@@ -242,30 +245,19 @@
       </div>
     </div>
     <div class="attachmentWidget">
-      <div>
-        <div class="section attachments">
-          <div id="<%= "#{item_unique_id}_attachments_header" %>" class="header">
-            Attachments <span class="count">(<%= workable_item.workable_item_attachments.count %>)</span>
-          </div>
-          <ol id="<%= "#{item_unique_id}_attachments_list" %>" class="attachments_list">
-            <% project_form.fields_for :workable_item_attachments do |workable_item_attachment_builder| %>
-                <% if workable_item_attachment_builder.object.new_record? %>
-                    <%= workable_item_attachment_builder.file_field :image, :multiple => true %>
-                <% else %>
-                    <%= render :partial => 'workable_items/attachment_fields', :locals => {:f => workable_item_attachment_builder} %>
-                <% end %>
-            <% end %>
-          </ol>
+      <div class="section attachments">
+        <div id="<%= "#{item_unique_id}_attachments_header" %>" class="header">
+          Attachments <span class="count">(<%= workable_item.workable_item_attachments.count %>)</span>
         </div>
+        <ol id="<%= "#{item_unique_id}_attachments_list" %>" class="attachments_list">
+          <% project_form.fields_for :workable_item_attachments do |workable_item_attachment_builder| %>
+              <% if !workable_item_attachment_builder.object.new_record? %>
+                  <%= render :partial => 'workable_items/attachment_fields', :locals => {:f => workable_item_attachment_builder} %>
+              <% end %>
+          <% end %>
+        </ol>
       </div>
-      <form class="attachment_form jquery_file_upload" enctype="multipart/form-data" method="POST" action="/api/resource/upload?project_id=68195">
-        <div class="attach_files">
-          <span class="upload_button">Upload Files</span>
-          <span class="text">or, drag them onto this story</span>
-        </div>
-        <div style="display: none;" class="error_message">
-        </div>
-      </form>
+
     </div>
     </div>
     </div>
@@ -274,5 +266,6 @@
     <%= project_form.hidden_field :epic_id %>
     <%= project_form.hidden_field :project_id, {:value => workable_item.project.id} %>
 <% end %>
+<%= render :partial => 'workable_items/form' %>
 </div>
 </div>

@@ -1,4 +1,6 @@
 class WorkableItemAttachment < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   belongs_to :workable_item
   belongs_to :user
 
@@ -8,6 +10,18 @@ class WorkableItemAttachment < ActiveRecord::Base
 
   def image_file_name
     File.basename(self.image.url)
+  end
+
+  #one convenient method to pass jq_upload the necessary information
+  def to_jq_upload
+    {
+      "name" => image_file_name,
+      "size" => self.image.size,
+      "url" => self.image.url,
+      "thumbnail_url" => self.image.thumb.url,
+      "delete_url" => workable_item_attachment_path(:id => id),
+      "delete_type" => "DELETE"
+    }
   end
 
   private

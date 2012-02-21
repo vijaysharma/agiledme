@@ -6,7 +6,7 @@
       <div class="fileupload-buttonbar">
           <label class="fileinput-button">
               <span>Add files...</span>
-                <%= f.file_field :image %>
+                <%= f.file_field :image, :multiple => true %>
                 <%= f.hidden_field :workable_item_id, :value => -1 %>
           </label>
           <button type="submit" class="start">Start upload</button>
@@ -20,5 +20,5 @@
   </div>
 </div>
 
-<%= render :partial => "workable_items/template-upload" %>
-<%= render :partial => "workable_items/template-download" %>
+<%= render :partial => "workable_item_attachments/template-upload" %>
+<%= render :partial => "workable_item_attachments/template-download" %>

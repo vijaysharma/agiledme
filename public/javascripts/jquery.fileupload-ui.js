@@ -531,7 +531,6 @@
         },
 
         _initFileUploadButtonBar: function () {
-            alert("jquery upload");
             var fileUploadButtonBar = this.element.find('.fileupload-buttonbar'),
                 filesList = this.element.find('.files'),
                 ns = this.options.namespace;

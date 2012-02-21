@@ -8,9 +8,10 @@ class WorkableItemAttachmentsController < ApplicationController
   end
 
   def create
+    params[:workable_item_attachment][:image] = params[:workable_item_attachment][:image][0]
     @workable_item_attachment = WorkableItemAttachment.new(params[:workable_item_attachment])
     @workable_item_attachment.user_id= current_user.id
-    if @workable_item_attachment.save
+    if @workable_item_attachment.save!
       respond_to do |format|
         format.html {
           render :json => [@workable_item_attachment.to_jq_upload].to_json,

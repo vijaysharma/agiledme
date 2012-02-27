@@ -34,7 +34,7 @@
       <div class="error_message" id="<%= "#{item_unique_id}_workable_item_error_message" %>" style="display:none;"></div>
     </div>
     <div class="storyDetailElement">
-    <div class="storyDetails" id="story_newStory_details">
+    <div class="storyDetails">
     <div class="buttons">
       <div class="storyDetailsButton">
         <%= project_form.submit 'Save', :class => "story_save", :id => "#{item_unique_id}_save_button" %>
@@ -244,6 +244,10 @@
         </div>
       </div>
     </div>
+    <%= project_form.hidden_field :category %>
+    <%= project_form.hidden_field :priority %>
+    <%= project_form.hidden_field :epic_id %>
+    <%= project_form.hidden_field :project_id, {:value => workable_item.project.id} %>
     <div class="attachmentWidget">
       <div class="section attachments">
         <div id="<%= "#{item_unique_id}_attachments_header" %>" class="header">
@@ -257,15 +261,10 @@
           <% end %>
         </ol>
       </div>
-
     </div>
-    </div>
-    </div>
-    <%= project_form.hidden_field :category %>
-    <%= project_form.hidden_field :priority %>
-    <%= project_form.hidden_field :epic_id %>
-    <%= project_form.hidden_field :project_id, {:value => workable_item.project.id} %>
 <% end %>
 <%= render :partial => 'workable_item_attachments/form' %>
+</div>
+</div>
 </div>
 </div>

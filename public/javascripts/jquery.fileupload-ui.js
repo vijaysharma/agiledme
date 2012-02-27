@@ -534,8 +534,8 @@
             var fileUploadButtonBar = this.element.find('.fileupload-buttonbar'),
                 filesList = this.element.find('.files'),
                 ns = this.options.namespace;
-            fileUploadButtonBar
-                .addClass('ui-widget-header ui-corner-top');
+//            fileUploadButtonBar
+//                .addClass('ui-widget-header ui-corner-top');
             this.element.find('.fileinput-button').each(function () {
                 var fileInput = $(this).find('input:file').detach();
                 $(this).button({icons: {primary: 'ui-icon-plusthick'}})
@@ -562,8 +562,8 @@
         },
         
         _destroyFileUploadButtonBar: function () {
-            this.element.find('.fileupload-buttonbar')
-                .removeClass('ui-widget-header ui-corner-top');
+//            this.element.find('.fileupload-buttonbar')
+//                .removeClass('ui-widget-header ui-corner-top');
             this.element.find('.fileinput-button').each(function () {
                 var fileInput = $(this).find('input:file').detach();
                 $(this).button('destroy')
@@ -617,8 +617,8 @@
             this.element
                 .addClass('ui-widget');
             this._initFileUploadButtonBar();
-            this.element.find('.fileupload-content')
-                .addClass('ui-widget-content ui-corner-bottom');
+//            this.element.find('.fileupload-content')
+//                .addClass('ui-widget-content ui-corner-bottom');
             this.element.find('.fileupload-progressbar')
                 .hide().progressbar();
         },
@@ -626,8 +626,8 @@
         destroy: function () {
             this.element.find('.fileupload-progressbar')
                 .progressbar('destroy');
-            this.element.find('.fileupload-content')
-                .removeClass('ui-widget-content ui-corner-bottom');
+//            this.element.find('.fileupload-content')
+//                .removeClass('ui-widget-content ui-corner-bottom');
             this._destroyFileUploadButtonBar();
             this.element.removeClass('ui-widget');
             $.blueimp.fileupload.prototype.destroy.call(this);

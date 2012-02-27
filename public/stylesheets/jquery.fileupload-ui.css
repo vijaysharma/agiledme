@@ -13,7 +13,6 @@
 *html .fileinput-button{padding:2px 0;}
 /* Fix for IE 7:*/
 *+html .fileinput-button{padding:2px 0;}
-.fileupload-buttonbar{padding:0.2em 0.4em;}
 .fileupload-buttonbar .ui-button{vertical-align:middle;}
 .fileupload-content{padding:0.2em 0.4em;border-top-width:0;}
 .fileupload-content .ui-progressbar{width:200px;height:20px;}

@@ -7,14 +7,6 @@
     <ul class="attachment_details">
       <li class="name"><%= f.object.image_file_name %>
       </li>
-      <li class="description" style="display: list-item;">
-        <a class="edit" href="#">add a description</a>
-      </li>
-      <li class="edit_description" style="display: none;">
-        <input type="text" maxlength="255" name="description">
-        <button>Save</button>
-        or <a class="cancel" href="#">cancel</a>
-      </li>
       <li class="uploader">Uploaded by <%= f.object.user.display_name %></li>
       <li class="metadata"><%= f.object.image.size.present? ? f.object.image.size/1024 : 0 %>
         KB<span> on <%= f.object.updated_at.to_s(:pretty) %></span>

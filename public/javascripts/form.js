@@ -17,18 +17,18 @@ $(function () {
     }
   
     // Initialize the jQuery File Upload widget:
-    $('#fileupload').fileupload({
+    $('.fileupload').fileupload({
       maxNumberOfFiles: 10,
       acceptFileTypes: /\.(jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG)$/
     });
     
     // 
     // Load existing files:
-    $.getJSON($('#fileupload form').prop('action'), function (files) {
-        var fu = $('#fileupload').data('fileupload');
+    $.getJSON($('.fileupload form').prop('action'), function (files) {
+        var fu = $('.fileupload').data('fileupload');
         //fu._adjustMaxNumberOfFiles(-files.length);
         fu._renderDownload(files)
-            .appendTo($('#fileupload .files'))
+            .appendTo($('.fileupload .files'))
             .fadeIn(function () {
                 // Fix for IE7 and lower:
                 $(this).show();
@@ -41,7 +41,7 @@ $(function () {
 
     // Open download dialogs via iframes,
     // to prevent aborting current uploads:
-    $('#fileupload .files a:not([target^=_blank])').live('click', function (e) {
+    $('.fileupload .files a:not([target^=_blank])').live('click', function (e) {
         e.preventDefault();
         $('<iframe style="display:none;"></iframe>')
             .prop('src', this.href)
@@ -49,7 +49,7 @@ $(function () {
     });
     
     
-    $('#fileupload').bind('fileuploadsend', function (e, data) {
+    $('.fileupload').bind('fileuploadsend', function (e, data) {
       
       var values = {};
       
@@ -69,7 +69,7 @@ $(function () {
 
     });
     
-    $('#fileupload').bind('fileuploadprogressall', function (e,data) {
+    $('.fileupload').bind('fileuploadprogressall', function (e,data) {
       var progress = parseInt(data.loaded / data.total * 100, 10);
       console.info(progress);
     });

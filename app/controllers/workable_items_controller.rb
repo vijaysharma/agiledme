@@ -8,7 +8,7 @@ class WorkableItemsController < ApplicationController
     @workable_item.project = @project
 
     @workable_item.type = params[:workable_item][:type]
-    @workable_item.workable_item_attachments = WorkableItemAttachment.where(:user_id => current_user.id, :workable_item_id => -1)
+    @workable_item.workable_item_attachments = WorkableItemAttachment.where(:user_id => current_user.id, :workable_item_id => nil)
     respond_to do |format|
       if @workable_item.save
         if @workable_item.epic.present? and !@workable_item.epic.split_in_progress?

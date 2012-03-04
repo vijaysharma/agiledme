@@ -11,7 +11,7 @@
 
 <div id="<%= "#{item_unique_id}_detail" %>" class="item" style="display:none">
 <div id="<%= "#{item_unique_id}_content" %>" class="storyItem unscheduled unestimated underEdit jquery_file_upload">
-<%= form_for([workable_item.project, workable_item], :remote => true, :html => {:multipart => true}) do |project_form| %>
+<%= form_for([workable_item.project, workable_item], :remote => true, :html => {:multipart => true}) do |wi| %>
     <% project_users = workable_item.project.active_users %>
 
     <div class="storyPreviewHeader">
@@ -22,7 +22,7 @@
           </div>
       <% end %>
       <div class="storyPreviewInput">
-        <%= project_form.text_area :title,
+        <%= wi.text_area :title,
                                    :cols => 1,
                                    :rows => 1,
                                    :id =>"#{item_unique_id}_title",
@@ -37,7 +37,7 @@
     <div class="storyDetails">
     <div class="buttons">
       <div class="storyDetailsButton">
-        <%= project_form.submit 'Save', :class => "story_save", :id => "#{item_unique_id}_save_button" %>
+        <%= wi.submit 'Save', :class => "story_save", :id => "#{item_unique_id}_save_button" %>
         <input id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="cancelEditButton" type="button" value="Cancel">
         <% if !workable_item.new_record? %>
             <%= link_to 'Delete', project_workable_item_path(workable_item.project, workable_item), :confirm => "Are you sure you want to delete the #{workable_item.type}?", :method => :delete, :remote => true %>
@@ -52,7 +52,7 @@
       <tr>
         <td colspan="1" class="letContentExpand">
           <div>
-            <%= project_form.select(:type, WorkableItem.types,
+            <%= wi.select(:type, WorkableItem.types,
                                     {:selected => workable_item.new_record? ? 'Story' : workable_item.type},
                                     {:class => "storyDetailsField workable_item_type_select",
                                      :id => "#{item_unique_id}_type"}) %>
@@ -91,7 +91,7 @@
       <tr>
         <td colspan="1">
           <div>
-            <%= project_form.select(:estimate, WorkableItem.estimates,
+            <%= wi.select(:estimate, WorkableItem.estimates,
                                     {:selected => workable_item.new_record? ? -1 : workable_item.estimate},
                                     {:class => "storyDetailsField workable_item_estimate_select",
                                      :id => "#{item_unique_id}_estimate",
@@ -123,7 +123,7 @@
           <tr>
             <td>
               <div>
-                <%= project_form.select(:status, WorkableItem.aasm_states_for_select,
+                <%= wi.select(:status, WorkableItem.aasm_states_for_select,
                                         {:class => "storyDetailsField workable_item_estimate_select",
                                          :id => "#{item_unique_id}_status"}) %>
               </div>
@@ -135,7 +135,7 @@
       <tr>
         <td>
           <div>
-            <%= project_form.collection_select(:requester, project_users, :id, :display_name, {}, {:class => "storyDetailsField"}) %>
+            <%= wi.collection_select(:requester, project_users, :id, :display_name, {}, {:class => "storyDetailsField"}) %>
           </div>
         </td>
         <td colspan="3">
@@ -150,7 +150,7 @@
       <tr>
         <td colspan="1">
           <div>
-            <%= project_form.collection_select(:owner, project_users, :id, :display_name, {:prompt => "none"}, {:class => "storyDetailsField"}) %>
+            <%= wi.collection_select(:owner, project_users, :id, :display_name, {:prompt => "none"}, {:class => "storyDetailsField"}) %>
           </div>
         </td>
         <td colspan="3">
@@ -169,7 +169,7 @@
         <div class="label">Labels</div>
       </div>
       <div class="wrapper token_wrapper">
-        <%= project_form.text_field :label_tokens,
+        <%= wi.text_field :label_tokens,
                                     :class => "labels",
                                     :id => "#{item_unique_id}_labels",
                                     "data-pre" => workable_item.labels.all.to_json,
@@ -196,7 +196,7 @@
           </div>
         </div>
         <div>
-          <%= project_form.text_area :description, :cols => 1, :rows => 1, :class => 'textAreaFocus description_area autoresize expand17-99999' %>
+          <%= wi.text_area :description, :cols => 1, :rows => 1, :class => 'textAreaFocus description_area autoresize expand17-99999' %>
         </div>
       </div>
     </div>
@@ -206,7 +206,7 @@
           Tasks <span class="count">(<%= workable_item.tasks.count %>)</span>
         </div>
         <ol id="<%= "#{item_unique_id}_tasks" %>" class="task_list ui-sortable">
-          <% project_form.fields_for :tasks do |task_builder| %>
+          <% wi.fields_for :tasks do |task_builder| %>
               <%= render :partial => 'workable_items/task_fields', :locals => {:f => task_builder} %>
           <% end %>
         </ol>
@@ -215,7 +215,7 @@
                     cols="1" rows="1"
                     class="tasksTextArea autoresize expand17-99999 new_task_text">add new task</textarea>
               <span id="<%= "#{item_unique_id}_new_task_add_link" %>" class="add_task" style="display:none;">
-                <%= link_to_add_task_fields "Add", project_form, :tasks, item_unique_id %>
+                <%= link_to_add_task_fields "Add", wi, :tasks, item_unique_id %>
               </span>
         </div>
       </div>
@@ -227,7 +227,7 @@
         </div>
         <table class="commentsTable">
           <tbody id="<%= "#{item_unique_id}_comments" %>">
-          <% project_form.fields_for :comments do |comment_builder| %>
+          <% wi.fields_for :comments do |comment_builder| %>
               <%= render :partial => 'workable_items/comment_fields', :locals => {:f => comment_builder} %>
           <% end %>
           </tbody>
@@ -239,22 +239,22 @@
 
           <div class="commentText">(Format using *<b>bold</b>* and _<i>italic</i>_ text.)</div>
               <span id="<%= "#{item_unique_id}_new_comment_add_link" %>" class="add_comment" style="display:none;">
-                <%= link_to_add_comment_fields "Add", project_form, :comments, item_unique_id %>
+                <%= link_to_add_comment_fields "Add", wi, :comments, item_unique_id %>
               </span>
         </div>
       </div>
     </div>
-    <%= project_form.hidden_field :category %>
-    <%= project_form.hidden_field :priority %>
-    <%= project_form.hidden_field :epic_id %>
-    <%= project_form.hidden_field :project_id, {:value => workable_item.project.id} %>
+    <%= wi.hidden_field :category %>
+    <%= wi.hidden_field :priority %>
+    <%= wi.hidden_field :epic_id %>
+    <%= wi.hidden_field :project_id, {:value => workable_item.project.id} %>
     <div class="attachmentWidget">
       <div class="section attachments">
         <div id="<%= "#{item_unique_id}_attachments_header" %>" class="header">
           Attachments <span class="count">(<%= workable_item.workable_item_attachments.count %>)</span>
         </div>
         <ol id="<%= "#{item_unique_id}_attachments_list" %>" class="attachments_list">
-          <% project_form.fields_for :workable_item_attachments do |workable_item_attachment_builder| %>
+          <% wi.fields_for :workable_item_attachments do |workable_item_attachment_builder| %>
               <% if !workable_item_attachment_builder.object.new_record? %>
                   <%= render :partial => 'workable_items/attachment_fields', :locals => {:f => workable_item_attachment_builder} %>
               <% end %>
@@ -263,7 +263,7 @@
       </div>
     </div>
 <% end %>
-<%= render :partial => 'workable_item_attachments/form' %>
+<%= render :partial => 'workable_item_attachments/form', :locals => {:workable_item => workable_item} %>
 </div>
 </div>
 </div>

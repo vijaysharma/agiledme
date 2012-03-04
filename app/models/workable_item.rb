@@ -193,6 +193,7 @@ class WorkableItem < ActiveRecord::Base
   def update_started_by
     add_history("started this "+ self.type.downcase)
     self.started_at = Time.now
+    set_owner_as_current_user
     move_item_to_current_category unless self.category.eql? "current"
   end
 

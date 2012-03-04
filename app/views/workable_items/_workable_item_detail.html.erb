@@ -23,10 +23,10 @@
       <% end %>
       <div class="storyPreviewInput">
         <%= wi.text_area :title,
-                                   :cols => 1,
-                                   :rows => 1,
-                                   :id =>"#{item_unique_id}_title",
-                                   :class => 'titleInputField autoresize expand17-99999' %>
+                         :cols => 1,
+                         :rows => 1,
+                         :id =>"#{item_unique_id}_title",
+                         :class => 'titleInputField autoresize expand17-99999' %>
         <div class="clear">
         </div>
       </div>
@@ -46,6 +46,11 @@
             <input type="submit" value="View history" disabled="disabled">
         <% end %>
       </div>
+      <% if !workable_item.new_record? %>
+          <div id="<%= item_unique_id %>_content_buttons" style="margin-left:-4px;margin-top:5px">
+            <%= render :partial => 'workable_items/workable_item_actions', :locals => {:workable_item => workable_item} %>
+          </div>
+      <% end %>
     </div>
     <table class="storyDetailsTable">
       <tbody>
@@ -53,9 +58,9 @@
         <td colspan="1" class="letContentExpand">
           <div>
             <%= wi.select(:type, WorkableItem.types,
-                                    {:selected => workable_item.new_record? ? 'Story' : workable_item.type},
-                                    {:class => "storyDetailsField workable_item_type_select",
-                                     :id => "#{item_unique_id}_type"}) %>
+                          {:selected => workable_item.new_record? ? 'Story' : workable_item.type},
+                          {:class => "storyDetailsField workable_item_type_select",
+                           :id => "#{item_unique_id}_type"}) %>
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
@@ -92,10 +97,10 @@
         <td colspan="1">
           <div>
             <%= wi.select(:estimate, WorkableItem.estimates,
-                                    {:selected => workable_item.new_record? ? -1 : workable_item.estimate},
-                                    {:class => "storyDetailsField workable_item_estimate_select",
-                                     :id => "#{item_unique_id}_estimate",
-                                     :disabled => (!workable_item.new_record? and !workable_item.is_estimatable?)}) %>
+                          {:selected => workable_item.new_record? ? -1 : workable_item.estimate},
+                          {:class => "storyDetailsField workable_item_estimate_select",
+                           :id => "#{item_unique_id}_estimate",
+                           :disabled => (!workable_item.new_record? and !workable_item.is_estimatable?)}) %>
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
@@ -119,19 +124,6 @@
           </div>
         </td>
       </tr>
-      <% if !workable_item.new_record? %>
-          <tr>
-            <td>
-              <div>
-                <%= wi.select(:status, WorkableItem.aasm_states_for_select,
-                                        {:class => "storyDetailsField workable_item_estimate_select",
-                                         :id => "#{item_unique_id}_status"}) %>
-              </div>
-            </td>
-            <td colspan="3">
-            </td>
-          </tr>
-      <% end %>
       <tr>
         <td>
           <div>
@@ -170,10 +162,10 @@
       </div>
       <div class="wrapper token_wrapper">
         <%= wi.text_field :label_tokens,
-                                    :class => "labels",
-                                    :id => "#{item_unique_id}_labels",
-                                    "data-pre" => workable_item.labels.all.to_json,
-                                    "data-url" => "/labels.json?project_id=#{workable_item.project.id}" %>
+                          :class => "labels",
+                          :id => "#{item_unique_id}_labels",
+                          "data-pre" => workable_item.labels.all.to_json,
+                          "data-url" => "/labels.json?project_id=#{workable_item.project.id}" %>
       </div>
     </div>
     <div class="section">

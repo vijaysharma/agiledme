@@ -5,7 +5,7 @@ var estimate_bugs = false;
 var view = "project";
 var estimate_chores = false;
 
-MyClass = function() {
+DraggableDroppable = function() {
     return {
         init : function() {
             $(".draggable").draggable({
@@ -51,12 +51,39 @@ MyClass = function() {
 
 }();
 
+JQueryFileUpload = function() {
+    return {
+        init : function() {
+            // Initialize the jQuery File Upload widget:
+            $('.fileupload').fileupload({
+                maxNumberOfFiles: 10,
+                acceptFileTypes: /\.(jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG)$/
+            });
+
+            // Open download dialogs via iframes, to prevent aborting current uploads:
+            $('.fileupload .files a:not([target^=_blank])').live('click', function (e) {
+                e.preventDefault();
+                $('<iframe style="display:none;"></iframe>')
+                        .prop('src', this.href)
+                        .appendTo('body');
+            });
+
+            $('.fileupload').bind('fileuploadprogressall', function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                console.info(progress);
+            });
+        }
+    }
+
+}();
+
 // Global ajax activity indicators.
 $(document).ajaxStart(
         function() {
             $(".spinner").show()
         }).ajaxStop(function() {
-    MyClass.init();
+    DraggableDroppable.init();
+    JQueryFileUpload.init();
     $(".spinner").hide();
 });
 
@@ -71,7 +98,8 @@ function attachTokenInput(item) {
     });
 }
 $(document).ready(function () {
-    MyClass.init();
+    DraggableDroppable.init();
+    JQueryFileUpload.init();
 
     $("#backlog_close").click(function () {
         $("#backlog").hide();
@@ -468,11 +496,11 @@ function draw_burndown_chart(chart_point_start, chart_point_interval, actual_cha
             }
         },
         yAxis: {
-                  minorTickInterval: 'auto',
-      lineColor: '#000',
-      lineWidth: 1,
-      tickWidth: 1,
-      tickColor: '#000',
+            minorTickInterval: 'auto',
+            lineColor: '#000',
+            lineWidth: 1,
+            tickWidth: 1,
+            tickColor: '#000',
             min: 0,
             title: {
                 text: 'Velocity'

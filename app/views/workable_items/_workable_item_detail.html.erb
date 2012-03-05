@@ -1,10 +1,10 @@
 <% if workable_item.new_record?
        item_unique_id = "icebox_new_workable_item"
-       item_type_image_source = "/images/Story.png"
+       item_type_image_source = "/images/story.png"
        item_estimate_image_source = "/images/estimate-1pt.gif"
    else
        item_unique_id = "#{workable_item.id}"
-       item_type_image_source = "/images/#{workable_item.type}.png"
+       item_type_image_source = "/images/#{workable_item.type.downcase}.png"
        item_estimate_image_source = "/images/estimate#{workable_item.estimate}pt.gif"
    end
 %>

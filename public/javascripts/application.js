@@ -212,7 +212,7 @@ $(document).ready(function () {
     $(document).delegate('.workable_item_type_select', "change", function() {
         var id = $(this).attr('id');
         var item_type = $(this).attr('value');
-        $("#" + id + "_image").attr('src', "/images/" + $(this).attr('value') + ".png");
+        $("#" + id + "_image").attr('src', "/images/" + $(this).attr('value').toLowerCase() + ".png");
         var estimate_id = id.replace("type", "estimate");
         if ((item_type == "Bug" && !estimate_bugs) || (item_type == "Chore" && !estimate_chores)) {
             $("#" + estimate_id).attr("disabled", true);

@@ -25,7 +25,7 @@
         <img id="<%= item_unique_id %>_editButton" class="toggleExpandedButton" src="/images/story_collapsed.png" title="Expand">
 
         <div class="left">
-          <img class="storyTypeIcon" src="<%= "/images/#{workable_item.type}.png" %>">
+          <img class="storyTypeIcon" src="<%= "/images/#{workable_item.type.downcase}.png" %>">
           <% if workable_item.is_estimatable? and workable_item.estimate != -1 %>
               <img width="6" class="estimateIcon" title="<%= "Estimate: #{workable_item.estimate} points" %>"
                    src="<%= "/images/estimate#{workable_item.estimate}pt.gif" %>">

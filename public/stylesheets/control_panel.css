@@ -97,17 +97,25 @@
 }
 
 #controlPanel #controls_search_velocity_row > div.right a#add_new_workable_control_button {
-    background: url("/images/add_story.png") no-repeat scroll 0 0 transparent;
+    background: #256398;
+    border: 1px solid #2A5079;
     display: block;
     float: left;
-    height: 30px;
+    height: 21px;
     margin-right: 7px;
-    text-indent: -9999em;
-    width: 102px;
+    padding-left:5px;
+    padding-right:5px;
+    color:#FFFFFF;
+    text-decoration:none;
+    font-weight: bold;
+    padding-top:3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 
 #controlPanel #controls_search_velocity_row > div.right a#add_new_workable_control_button:hover {
-    background-position: 0 -30px;
+    background: #2A5079;
 }
 
 #controlPanel #controls_search_velocity_row > div.right .ieInputWrapper {

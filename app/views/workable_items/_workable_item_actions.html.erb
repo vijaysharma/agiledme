@@ -18,10 +18,18 @@
                 :id => "#{item_unique_id}_finish_button",
                 :class => "stateChangeButton notDblclickable finish",
                 :remote => true %>
+    <%= link_to "Un-Start", finish_project_workable_item_path(workable_item.project, workable_item),
+                :id => "#{item_unique_id}_finish_button",
+                :class => "stateChangeButton notDblclickable unstart",
+                :remote => true %>
 <% elsif workable_item.finished? %>
     <%= link_to "Deliver", deliver_project_workable_item_path(workable_item.project, workable_item),
                 :id => "#{item_unique_id}_deliver_button",
                 :class => "stateChangeButton notDblclickable deliver",
+                :remote => true %>
+    <%= link_to "Un-Finish", deliver_project_workable_item_path(workable_item.project, workable_item),
+                :id => "#{item_unique_id}_deliver_button",
+                :class => "stateChangeButton notDblclickable unfinish",
                 :remote => true %>
 <% elsif workable_item.delivered? %>
     <%= link_to "Accept", accept_project_workable_item_path(workable_item.project, workable_item),
@@ -31,6 +39,10 @@
     <%= link_to "Reject", reject_project_workable_item_path(workable_item.project, workable_item),
                 :id => "#{item_unique_id}_reject_button",
                 :class => "stateChangeButton notDblclickable reject",
+                :remote => true %>
+    <%= link_to "Un-Deliver", reject_project_workable_item_path(workable_item.project, workable_item),
+                :id => "#{item_unique_id}_reject_button",
+                :class => "stateChangeButton notDblclickable undeliver",
                 :remote => true %>
 <% elsif workable_item.rejected? %>
     <%= link_to "Restart", restart_project_workable_item_path(workable_item.project, workable_item),

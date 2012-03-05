@@ -24,5 +24,9 @@ if (view == "sprint") {
 }
 <% end %>
 attachTokenInput($('#<%= @workable_item.id %>_labels'));
-ajax_flash_notice('<%="#{@workable_item.type} was #{@message || @workable_item.status}."%>');
+<% if @message.present?%>
+ajax_flash_notice('<%="#{@message}"%>');
+<%else%>
+ajax_flash_notice('<%="#{@workable_item.type} was #{@workable_item.status}."%>');
+<%end%>
 highlight_item($('#<%= @workable_item.id %>_content'));

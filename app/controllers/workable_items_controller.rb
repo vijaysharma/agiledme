@@ -36,7 +36,7 @@ class WorkableItemsController < ApplicationController
     respond_to do |format|
       if @workable_item.update_attributes(params_req)
         @workable_item.update_status_change_history
-        @message = "updated"
+        @message = "#{@workable_item.type} was updated"
         @workable_item.workable_item_attachments.reload
         format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully updated.') }
@@ -83,6 +83,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.un_start!
+        @message = "Rolled back #{@workable_item.type} start."
         format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => 'Rolled back '+@workable_item.type + ' start.') }
         format.xml { head :ok }
@@ -95,11 +96,11 @@ class WorkableItemsController < ApplicationController
 
   def estimate
     @workable_item = WorkableItem.find(params[:id])
-    @message = "estimated as #{params[:estimate]}"
+    @message = "#{@workable_item.type} was estimated as #{params[:estimate]}"
 
     respond_to do |format|
       if @workable_item.update_attributes(:estimate => params[:estimate])
-        @message = "estimated as #{params[:estimate]} pointer"
+        @message = "#{@workable_item.type} was estimated as #{params[:estimate]} pointer"
         format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully estimated as a ' + params[:estimate] +" pointer.") }
         format.xml { head :ok }
@@ -130,6 +131,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.un_finish!
+        @message = "Rolled back #{@workable_item.type} finish."
         format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => 'Rolled back '+@workable_item.type + ' finish.') }
         format.xml { head :ok }
@@ -160,6 +162,7 @@ class WorkableItemsController < ApplicationController
 
     respond_to do |format|
       if @workable_item.un_deliver!
+        @message = "Rolled back #{@workable_item.type} deliver."
         format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => 'Rolled back '+@workable_item.type + ' delivery.') }
         format.xml { head :ok }

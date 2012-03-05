@@ -443,7 +443,7 @@ $(document).ready(function () {
             "Create Project": function() {
                 var bValid = true;
                 allFields.removeClass("ui-state-error");
-                bValid = bValid && checkLength(name, "name", 3, 1000);
+                bValid = bValid && checkLength(name, "name", 3, 100);
 
                 if (bValid) {
                     $("#new_project").submit();

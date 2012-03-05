@@ -285,6 +285,8 @@ h1 .right_link {
 }
 
 .project_pages a#create_new_project_button {
+    background: #204f77;
+    border: 1px solid #1c344f;
     color: #FFFFFF;
     display: block;
     float: right;
@@ -292,8 +294,12 @@ h1 .right_link {
     letter-spacing: 1px;
     text-decoration: none;
     cursor: pointer;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.project_pages a#create_new_project_button:hover {
+    background: #265f8f;
 }
 
 .project_pages #activity_feed h2 span {

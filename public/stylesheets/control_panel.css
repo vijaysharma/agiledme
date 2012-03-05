@@ -109,9 +109,9 @@
     text-decoration:none;
     font-weight: bold;
     padding-top:3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #controlPanel #controls_search_velocity_row > div.right a#add_new_workable_control_button:hover {

@@ -15,7 +15,7 @@ Agiledme::Application.routes.draw do
     resources :project_users
     resources :workable_items do
       member do
-        get :start, :finish, :deliver, :accept, :reject, :restart, :estimate
+        get :start, :finish, :deliver, :accept, :reject, :restart, :estimate, :un_start, :un_finish, :un_deliver
         put :update_category_and_priority
       end
       resources :workable_item_histories

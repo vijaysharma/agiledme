@@ -975,19 +975,21 @@ div.storyDetails .attachmentWidget .attach_files .text {
 
 .story_content .item .storyItem a.unstart, .story_content .item .storyItem a.start , .story_content .item .storyItem a.restart {
     background: #E0E2E5;
-    border: 1px solid #BBC4CC;
+    border: 1px solid #a7aeb4;
     padding-top:2px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
     color: #222222;
 }
-.story_content .item .storyItem a.restart {
-    background: #c88585;
-}
 
 .story_content .item .storyItem a.unstart:hover, .story_content .item .storyItem a.start:hover{
     background: #C1C3C9;
+}
+
+.story_content .item .storyItem a.restart, .story_content .item .storyItem a.restart:hover {
+    background: #c88585;
+    border: 1px solid #885d5d;
 }
 
 .story_content .item .storyItem a.restart:hover {

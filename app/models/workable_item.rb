@@ -45,12 +45,24 @@ class WorkableItem < ActiveRecord::Base
       transitions :to => :started, :from => [:not_yet_started]
     end
 
+    event :un_start do
+      transitions :to => :not_yet_started, :from => [:started]
+    end
+
     event :finish do
       transitions :to => :finished, :from => [:started]
     end
 
+    event :un_finish do
+      transitions :to => :started, :from => [:finished]
+    end
+
     event :deliver do
       transitions :to => :delivered, :from => [:finished]
+    end
+
+    event :un_deliver do
+      transitions :to => :finished, :from => [:delivered]
     end
 
     event :accept do

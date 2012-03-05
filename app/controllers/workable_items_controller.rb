@@ -78,6 +78,21 @@ class WorkableItemsController < ApplicationController
     end
   end
 
+  def un_start
+    @workable_item = WorkableItem.find(params[:id])
+
+    respond_to do |format|
+      if @workable_item.un_start!
+        format.js { render :template => 'workable_items/action_success' }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => 'Rolled back '+@workable_item.type + ' start.') }
+        format.xml { head :ok }
+      else
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
+        format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   def estimate
     @workable_item = WorkableItem.find(params[:id])
     @message = "estimated as #{params[:estimate]}"
@@ -110,6 +125,21 @@ class WorkableItemsController < ApplicationController
     end
   end
 
+  def un_finish
+    @workable_item = WorkableItem.find(params[:id])
+
+    respond_to do |format|
+      if @workable_item.un_finish!
+        format.js { render :template => 'workable_items/action_success' }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => 'Rolled back '+@workable_item.type + ' finish.') }
+        format.xml { head :ok }
+      else
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
+        format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   def deliver
     @workable_item = WorkableItem.find(params[:id])
 
@@ -117,6 +147,21 @@ class WorkableItemsController < ApplicationController
       if @workable_item.deliver!
         format.js { render :template => 'workable_items/action_success' }
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' was successfully delivered.') }
+        format.xml { head :ok }
+      else
+        format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }
+        format.xml { render :xml => @workable_item.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def un_deliver
+    @workable_item = WorkableItem.find(params[:id])
+
+    respond_to do |format|
+      if @workable_item.un_deliver!
+        format.js { render :template => 'workable_items/action_success' }
+        format.html { redirect_to(project_url(@workable_item.project), :notice => 'Rolled back '+@workable_item.type + ' delivery.') }
         format.xml { head :ok }
       else
         format.html { redirect_to(project_url(@workable_item.project), :notice => @workable_item.type + ' ERROR.') }

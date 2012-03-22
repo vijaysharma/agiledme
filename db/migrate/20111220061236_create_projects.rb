@@ -2,7 +2,7 @@ class CreateProjects < ActiveRecord::Migration
   def self.up
     create_table :projects do |t|
       t.string :name
-      t.string :description
+      t.text :description
       t.integer :sprint_length, :default => 2
       t.integer :velocity, :default => 10
       t.boolean :estimate_bugs, :default => false

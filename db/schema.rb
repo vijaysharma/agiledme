@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20120122201403) do
 
   create_table "comments", :force => true do |t|
-    t.string   "comment"
+    t.text     "comment"
     t.integer  "workable_item_id"
     t.integer  "posted_by"
     t.datetime "created_at"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20120122201403) do
 
   create_table "epics", :force => true do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description"
     t.integer  "project_id"
     t.string   "status"
     t.integer  "user_id"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(:version => 20120122201403) do
   end
 
   create_table "tasks", :force => true do |t|
-    t.string   "description"
+    t.text     "description"
     t.integer  "workable_item_id"
     t.integer  "created_by"
     t.integer  "finished_by"
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(:version => 20120122201403) do
   end
 
   create_table "workable_item_histories", :force => true do |t|
-    t.string   "event"
+    t.text     "event"
     t.integer  "user_id"
     t.integer  "workable_item_id"
     t.integer  "project_id"

@@ -165,7 +165,13 @@ class ProjectsController < ApplicationController
   end
 
   def parse_category(state)
-    (state.eql?('unstarted') || state.eql?('unscheduled')) ? "icebox" : "current"
+    if state.eql?('accepted')
+      "done"
+    elsif (state.eql?('unstarted') || state.eql?('unscheduled'))
+      "icebox"
+    else
+      "current"
+    end
   end
 
   def get_max_priority_for_category(category)

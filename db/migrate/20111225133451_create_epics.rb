@@ -2,7 +2,7 @@ class CreateEpics < ActiveRecord::Migration
   def self.up
     create_table :epics do |t|
       t.string :title
-      t.string :description
+      t.text :description
       t.integer :project_id
       t.string :status
       t.integer :user_id

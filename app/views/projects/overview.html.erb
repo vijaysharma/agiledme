@@ -39,7 +39,8 @@
         <tr>
           <td width="50%" valign="top">
             <a class="big_link" href="#">Export CSV</a>
-            <%= link_to 'Import CSV', import_csv_project_path(@project) %>
+            <%= link_to 'Import CSV', import_pivotal_csv_project_path(@project) %>
+            <span class="text_example">(only from Pivotal Tracker!!)</span>
           </td>
           <td valign="top">
             <%= link_to 'Leave this project',

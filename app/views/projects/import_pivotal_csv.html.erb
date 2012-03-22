@@ -1,0 +1,27 @@
+<% title "Project Import" %>
+<div class="project_pages">
+  <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Import"} %>
+
+  <h2>Import CSV</h2>
+
+  <div class="action_area" id="add_member">
+    <table class="action_cells">
+      <tbody>
+      <tr>
+        <%= form_tag upload_pivotal_csv_project_path, :multipart => true do %>
+            <td><label>Select a CSV</label></td>
+            <td><%= file_field_tag "file" %>
+            </td>
+            <td>
+              <%= submit_tag("Import") %>
+            </td>
+        <% end %>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="text_example" colspan="3">Only for Pivotal Tracker as of Now!!</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

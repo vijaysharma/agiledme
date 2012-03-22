@@ -1,24 +1,13 @@
 class ProjectsController < ApplicationController
   before_filter :find_project, :except => :create
 
-  def import_csv
+  def import_pivotal_csv
 
   end
 
-  def get_existing_or_current_user(user_name)
-    User.find_by_name(user_name).present? ? User.find_by_name(user_name).id : current_user.id
-  end
 
-  def parse_category(state)
-    state.eql?('unstarted') ? "icebox" : "current"
-  end
 
-  def get_max_priority_for_category(category)
-    max_priority = @project.workable_items.where(:category => category).maximum(:priority)
-    max_priority.present? ? max_priority : 0
-  end
-
-  def upload_csv
+  def upload_pivotal_csv
     file = params[:file]
     old_items = @project.workable_items.count
     FasterCSV.new(file.tempfile, :headers => true).each do |row|
@@ -64,7 +53,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       flash[:notice] = "Successfully imported #{new_items - old_items} items!!"
-      format.html { render :template => 'projects/import_csv' }
+      format.html { render :template => 'projects/import_pivotal_csv' }
     end
 
   end
@@ -144,7 +133,21 @@ class ProjectsController < ApplicationController
   end
 
   private
+
   def find_project
     @project = Project.find(params[:id])
+  end
+
+  def get_existing_or_current_user(user_name)
+    User.find_by_name(user_name).present? ? User.find_by_name(user_name).id : current_user.id
+  end
+
+  def parse_category(state)
+    state.eql?('unstarted') ? "icebox" : "current"
+  end
+
+  def get_max_priority_for_category(category)
+    max_priority = @project.workable_items.where(:category => category).maximum(:priority)
+    max_priority.present? ? max_priority : 0
   end
 end

@@ -38,7 +38,11 @@
         </div>
       </div>
       <div id="<%= item_unique_id %>_content_details" class="storyPreviewText" style="<%= cursor_style %>">
-        <span id="<%= item_unique_id %>_content_labels_story[label_list]" class="storyLabels empty"></span>
+        <span id="<%= item_unique_id %>_content_labels" class="storyLabels empty">
+          <% workable_item.labels.each do |label| %>
+          <%= label.name %>
+          <% end %>
+        </span>
             <span>
               <%= workable_item.title %>
               <% if workable_item.owner.present? %>

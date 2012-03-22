@@ -6,9 +6,9 @@ class ProjectsController < ApplicationController
   end
 
   def upload_pivotal_csv
-    file = params[:file]
+    file = IO.read(params[:file].tempfile.path)
     old_items = @project.workable_items.count
-    FasterCSV.new(file.tempfile, :headers => true).each do |row|
+    FasterCSV.new(file, :headers => true).each do |row|
       csv_type = row['Story Type']
       #importing release is not supported as of today (22 March 2012)
       if !csv_type.eql?("release")

@@ -79,7 +79,8 @@ class WorkableItem < ActiveRecord::Base
   end
 
   def self.next_priority_for(category)
-    WorkableItem.maximum('priority', :group => 'category')[category] + 1
+    max_priority = WorkableItem.maximum('priority', :group => 'category')[category]
+    max_priority.present? ? max_priority + 1 : 0
   end
 
   def self.types
@@ -196,10 +197,14 @@ class WorkableItem < ActiveRecord::Base
   end
 
   def set_initial_default_values
-    self.category = 'icebox'
-    self.priority = WorkableItem.next_priority_for("icebox")
-    self.save
-    add_history("created this "+ self.type.downcase)
+    if self.category.blank?
+      self.category = 'icebox'
+      self.priority = WorkableItem.next_priority_for("icebox")
+      self.save
+      add_history("created this "+ self.type.downcase)
+    else
+      add_history("imported this "+ self.type.downcase)
+    end
   end
 
   def update_started_by

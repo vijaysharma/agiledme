@@ -1,18 +1,84 @@
 class ProjectsController < ApplicationController
+  before_filter :find_project, :except => :create
+
+  def import_csv
+
+  end
+
+  def get_existing_or_current_user(user_name)
+    User.find_by_name(user_name).present? ? User.find_by_name(user_name).id : current_user.id
+  end
+
+  def parse_category(state)
+    state.eql?('unstarted') ? "icebox" : "current"
+  end
+
+  def get_max_priority_for_category(category)
+    max_priority = @project.workable_items.where(:category => category).maximum(:priority)
+    max_priority.present? ? max_priority : 0
+  end
+
+  def upload_csv
+    file = params[:file]
+    old_items = @project.workable_items.count
+    FasterCSV.new(file.tempfile, :headers => true).each do |row|
+      csv_state = row['Current State']
+      csv_category = parse_category(csv_state)
+      workable_item = WorkableItem.new(:project_id => @project.id,
+                                       :title => row['Story'],
+                                       :requester => row['Requested By'].present? ? get_existing_or_current_user(row['Requested By']) : current_user.id,
+                                       :owner => row['Owned By'].present? ? get_existing_or_current_user(row['Requested By']) : current_user.id,
+                                       :status => csv_state == 'unstarted' ? "not_yet_started" : row['Current State'],
+                                       :estimate => row['Estimate'].present? ? row['Estimate'].to_i : "",
+                                       :category => csv_category,
+                                       :priority => get_max_priority_for_category(csv_category) + 1)
+      csv_type = row['Story Type'].camelize
+      workable_item.type = csv_type.eql?("Feature") ? "Story" : csv_type
+      if !csv_state.eql?("unstarted")
+        if csv_state.eql?("accepted")
+          workable_item.started_at = Time.now
+          workable_item.finished_at = Time.now
+          workable_item.delivered_at = Time.now
+          workable_item.accepted_at = Time.now
+        elsif csv_state.eql?("rejected")
+          workable_item.started_at = Time.now
+          workable_item.finished_at = Time.now
+          workable_item.delivered_at = Time.now
+          workable_item.rejected_at = Time.now
+        elsif csv_state.eql?("delivered")
+          workable_item.started_at = Time.now
+          workable_item.finished_at = Time.now
+          workable_item.delivered_at = Time.now
+        elsif csv_state.eql?("finished")
+          workable_item.started_at = Time.now
+          workable_item.finished_at = Time.now
+        elsif csv_state.eql?("started")
+          workable_item.started_at = Time.now
+        end
+      end
+
+      workable_item.save!
+    end
+
+    new_items = @project.workable_items.count
+
+    respond_to do |format|
+      flash[:notice] = "Successfully imported #{new_items - old_items} items!!"
+      format.html { render :template => 'projects/import_csv' }
+    end
+
+  end
 
   def overview
-    @project = Project.find(params[:id])
     @project_users = @project.project_users.page(params[:page]).per(10)
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml { render :xml => @project }
     end
   end
 
   def sprint
-    @project = Project.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @project }
@@ -20,8 +86,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml { render :xml => @project }
@@ -29,7 +93,6 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def create
@@ -45,8 +108,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
-
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to overview_project_path(@project), :notice => 'Project was successfully updated.' }
@@ -59,28 +120,31 @@ class ProjectsController < ApplicationController
   end
 
   def join
-    @project = Project.find(params[:id])
     current_user.join_project(@project)
     respond_to do |format|
-        format.js
+      format.js
     end
   end
 
   def leave
-    @project = Project.find(params[:id])
     current_user.leave_project(@project)
     respond_to do |format|
-        format.html { redirect_to root_path, :notice => 'You left the project.' }
+      format.html { redirect_to root_path, :notice => 'You left the project.' }
     end
   end
 
   def destroy
-    @project = Project.find(params[:id])
+
     @project.destroy
 
     respond_to do |format|
       format.html { redirect_to root_path, :notice => 'You deleted the project .' }
       format.xml { head :ok }
     end
+  end
+
+  private
+  def find_project
+    @project = Project.find(params[:id])
   end
 end

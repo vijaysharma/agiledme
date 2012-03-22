@@ -39,7 +39,7 @@
         <tr>
           <td width="50%" valign="top">
             <a class="big_link" href="#">Export CSV</a>
-            <a class="big_link" href="#">Import CSV</a>
+            <%= link_to 'Import CSV', import_csv_project_path(@project) %>
           </td>
           <td valign="top">
             <%= link_to 'Leave this project',

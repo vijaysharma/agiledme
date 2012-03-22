@@ -23,7 +23,8 @@
       <a class="button" href="#">Export</a>
     </li>
     <li>
-      <a class="button" href="#">Import</a>
+      <%= link_to 'Import', import_csv_project_path(project),
+                  :class => "button #{sub_page.eql?("Import") ? "current" : ""}" %>
     </li>
     <li class="last">
       <%= link_to "Project Profile", edit_project_path(@project), :class => "button #{sub_page.eql?("Project Profile") ? "current" : ""}" %>

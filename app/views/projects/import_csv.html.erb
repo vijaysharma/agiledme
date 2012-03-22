@@ -1,0 +1,11 @@
+<% title "Project Import" %>
+<div class="project_pages">
+  <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Import"} %>
+
+  <h2>Import CSV</h2>
+  <%= form_tag upload_csv_project_path, :multipart => true do %>
+      <%= file_field_tag "file" %>
+      <br/>
+      <%= submit_tag("Import") %>
+  <% end %>
+</div>

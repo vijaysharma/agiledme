@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(:version => 20120122201403) do
   end
 
   create_table "workable_items", :force => true do |t|
-    t.string   "title",        :default => "As a <role>, I want <goal/desire> so that <benefit>"
+    t.text     "title",        :default => "As a <role>, I want <goal/desire> so that <benefit>"
     t.text     "description"
     t.integer  "requester"
     t.integer  "owner"

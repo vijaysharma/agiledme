@@ -9,11 +9,15 @@ class ProjectsController < ApplicationController
     file = params[:file]
     old_items = @project.workable_items.count
     FasterCSV.new(file.tempfile, :headers => true).each do |row|
-      workable_item = create_workable_item(row)
-      import_labels(row, workable_item)
-      import_comments(row, workable_item)
-      import_tasks(row, workable_item)
-      workable_item.save!
+      csv_type = row['Story Type']
+      #importing release is not supported as of today (22 March 2012)
+      if !csv_type.eql?("release")
+        workable_item = create_workable_item(row)
+        import_labels(row, workable_item)
+        import_comments(row, workable_item)
+        import_tasks(row, workable_item)
+        workable_item.save!
+      end
     end
 
     new_items = @project.workable_items.count
@@ -117,12 +121,20 @@ class ProjectsController < ApplicationController
                                      :description => row['Description'],
                                      :requester => row['Requested By'].present? ? get_existing_or_current_user(row['Requested By']) : current_user.id,
                                      :owner => row['Owned By'].present? ? get_existing_or_current_user(row['Requested By']) : current_user.id,
-                                     :status => csv_state == 'unstarted' ? "not_yet_started" : row['Current State'],
-                                     :estimate => row['Estimate'].present? ? row['Estimate'].to_i : "",
+                                     :status => (csv_state.eql?('unstarted') || csv_state.eql?('unscheduled')) ? "not_yet_started" : row['Current State'],
                                      :category => csv_category,
                                      :priority => get_max_priority_for_category(csv_category) + 1)
+
     csv_type = row['Story Type'].camelize
     workable_item.type = csv_type.eql?("Feature") ? "Story" : csv_type
+
+    if csv_type.eql?("Feature") and row['Estimate'].present?
+      workable_item.estimate = row['Estimate'].to_i
+    else
+      workable_item.estimate = -1
+    end
+
+
     if !csv_state.eql?("unstarted")
       if csv_state.eql?("accepted")
         workable_item.started_at = Time.now
@@ -153,7 +165,7 @@ class ProjectsController < ApplicationController
   end
 
   def parse_category(state)
-    state.eql?('unstarted') ? "icebox" : "current"
+    (state.eql?('unstarted') || state.eql?('unscheduled')) ? "icebox" : "current"
   end
 
   def get_max_priority_for_category(category)
@@ -198,7 +210,6 @@ class ProjectsController < ApplicationController
     skip = false
     (task_index..row.length).each do |index|
       if !skip
-        puts index.inspect
         csv_task = row[index]
         if csv_task.present?
           task_status = get_status(row[index + 1])

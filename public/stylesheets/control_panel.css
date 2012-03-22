@@ -96,7 +96,7 @@
     display: block;
 }
 
-#controlPanel #controls_search_velocity_row > div.right a#add_new_workable_control_button {
+#controlPanel #controls_search_velocity_row > div.right a {
     background: #256398;
     border: 1px solid #2A5079;
     display: block;
@@ -114,7 +114,7 @@
     border-radius: 5px;
 }
 
-#controlPanel #controls_search_velocity_row > div.right a#add_new_workable_control_button:hover {
+#controlPanel #controls_search_velocity_row > div.right a:hover {
     background: #2A5079;
 }
 

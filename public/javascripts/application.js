@@ -482,9 +482,9 @@ $(document).ready(function () {
     });
 
     $('.scrolling_item_list').endlessScroll({
+        bottomPixels: 500,
         fireOnce: false,
-        data: function() {
-
+        callback: function(p) {
             var category = $(this).attr('category');
             var offset = 0;
             if(category == "current"){

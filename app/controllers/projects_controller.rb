@@ -9,11 +9,6 @@ class ProjectsController < ApplicationController
 
   def upload_pivotal_csv
 
-#    tmp = params[:file].tempfile
-#    csv_file = File.join("public/csvs", params[:file].original_filename)
-#    FileUtils.cp tmp.path, csv_file
-#    file = File.read(File.join(Rails.root, "/public/csvs/", params[:file].original_filename))
-
     old_items = @project.workable_items.count
     file = IO.read(params[:file].tempfile.path)
 

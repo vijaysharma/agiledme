@@ -4,6 +4,11 @@
 var estimate_bugs = false;
 var view = "project";
 var estimate_chores = false;
+var current_offset = 15;
+var done_offset = 15;
+var backlog_offset = 15;
+var icebox_offset = 15;
+
 
 DraggableDroppable = function() {
     return {
@@ -476,6 +481,40 @@ $(document).ready(function () {
         predelay: 500
     });
 
+    $('.scrolling_item_list').endlessScroll({
+        fireOnce: false,
+        data: function() {
+
+            var category = $(this).attr('category');
+            var offset = 0;
+            if(category == "current"){
+                current_offset = current_offset + 15;
+                offset = current_offset;
+            }
+            if(category == "icebox"){
+                icebox_offset = icebox_offset + 15;
+                offset = icebox_offset;
+            }
+            if(category == "done"){
+                done_offset = done_offset + 15;
+                offset = done_offset;
+            }
+            if(category == "backlog"){
+                backlog_offset = backlog_offset + 15;
+                offset = backlog_offset;
+            }
+            $.ajax({
+                type: "GET",
+                url: "/projects/" + $(this).attr('project_id') + "/show_more_items",
+                dataType: "script",
+                data: {
+                    category : category,
+                    offset : offset
+                }
+            });
+        }
+    });
+
 });
 
 function draw_burndown_chart(chart_point_start, chart_point_interval, actual_chart_data_series, idle_chart_data_series) {
@@ -589,7 +628,6 @@ function add_task_fields(link, association, content) {
     var new_task_label_id = $(link).attr('id').replace("add_task", "task_label");
     $("#" + new_id + "_task_label").text($("#" + new_task_description_id).val());
 }
-
 
 function add_comment_fields(link, association, content) {
     var new_id = new Date().getTime();

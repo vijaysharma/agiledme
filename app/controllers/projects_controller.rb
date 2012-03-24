@@ -53,9 +53,18 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project_users = @project.active_users
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml { render :xml => @project }
+    end
+  end
+
+  def show_more_items
+    @category = params[:category]
+    @workable_items_to_append = @project.workable_items.where(:category => params[:category]).limit(15).offset(params[:offset])
+    respond_to do |format|
+      format.js
     end
   end
 

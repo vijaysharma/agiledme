@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/show_more_items.js.erb" afterPath="$PROJECT_DIR$/app/views/projects/show_more_items.js.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/application.js" afterPath="$PROJECT_DIR$/public/javascripts/application.js" />
     </list>
     <ignored path="agiledme.iws" />
@@ -28,64 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="projects_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="89" selection-start="3532" selection-end="3532" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show_more_items.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/projects/show_more_items.js.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="40" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="32" selection-start="2395" selection-end="2590" vertical-scroll-proportion="-6.9565215">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/epics/_form.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="24" selection-start="561" selection-end="561" vertical-scroll-proportion="-10.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_workable_item.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_item.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="58" selection-start="544" selection-end="544" vertical-scroll-proportion="-6.0869565">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_workable_item_detail.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_item_detail.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="53" selection-start="6774" selection-end="6774" vertical-scroll-proportion="-87.652176">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="486" column="31" selection-start="16789" selection-end="16789" vertical-scroll-proportion="0.1130137">
+            <state line="485" column="21" selection-start="16752" selection-end="16752" vertical-scroll-proportion="0.08609272">
               <folding />
             </state>
           </provider>
@@ -212,20 +159,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agiledme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agiledme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -777,7 +710,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="added the ability to load elements based on the scroll now!! its got to be faster now" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed the bug.. replaced the data with the callback on the endlessscroll" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -790,7 +723,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="added the jquery file upload plugin" />
     <MESSAGE value="got things working with carrierwave gem and removed paperclip" />
     <MESSAGE value="implemented the ajax upload of files first cut" />
     <MESSAGE value="now the multiple file upload is also working" />
@@ -815,6 +747,7 @@
     <MESSAGE value="switched to ruby 1.9.3 to be able to match heruko and use standard CSV parser" />
     <MESSAGE value="removed the unnecessary folder and file" />
     <MESSAGE value="added the ability to load elements based on the scroll now!! its got to be faster now" />
+    <MESSAGE value="fixed the bug.. replaced the data with the callback on the endlessscroll" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -823,13 +756,6 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/workable_items_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="61" selection-start="2092" selection-end="2097" vertical-scroll-proportion="-5.5384617">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/workable_items/create.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="55" selection-start="0" selection-end="683" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -844,13 +770,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/workable_items/error.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/workable_items/action_success.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="182" selection-start="123" selection-end="305" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -911,13 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/show_more_items.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="40" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="133" column="89" selection-start="3532" selection-end="3532" vertical-scroll-proportion="0.0">
@@ -925,9 +837,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/workable_items/action_success.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="56" selection-start="1365" selection-end="1421" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/workable_items/create.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="56" selection-start="514" selection-end="570" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/show_more_items.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="273" selection-end="273" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="486" column="31" selection-start="16789" selection-end="16789" vertical-scroll-proportion="0.1130137">
+        <state line="485" column="21" selection-start="16752" selection-end="16752" vertical-scroll-proportion="0.08609272">
           <folding />
         </state>
       </provider>

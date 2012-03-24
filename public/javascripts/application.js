@@ -482,7 +482,6 @@ $(document).ready(function () {
     });
 
     $('.scrolling_item_list').endlessScroll({
-        bottomPixels: 500,
         fireOnce: false,
         callback: function(p) {
             var category = $(this).attr('category');

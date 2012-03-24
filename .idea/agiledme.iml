@@ -48,12 +48,6 @@
     </requirement>
     <requirement>
       <requirement>
-        <dependency name="fastercsv" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
-      </requirement>
-      <source from="Gemfile" />
-    </requirement>
-    <requirement>
-      <requirement>
         <dependency name="jquery-rails" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -92,47 +86,46 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] kaminari (v0.13.0, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/kaminari-0.13.0)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] delayed_job (v2.1.4, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/delayed_job-2.1.4)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] bcrypt-ruby (v3.0.1, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/bcrypt-ruby-3.0.1)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] warden (v1.1.0, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/warden-1.1.0)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] bundler (v1.0.22, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357@global/gems/bundler-1.0.22)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] aasm (v3.0.0, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/aasm-3.0.0)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] rails (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rails-3.0.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] devise_invitable (v0.6.0, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/devise_invitable-0.6.0)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] devise (v1.5.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/devise-1.5.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] devise (v1.5.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/devise-1.5.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] thor (v0.14.6, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/thor-0.14.6)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] activerecord (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/activerecord-3.0.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] actionpack (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/actionpack-3.0.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] orm_adapter (v0.0.5, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/orm_adapter-0.0.5)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] rails (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rails-3.0.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] activesupport (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/activesupport-3.0.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] daemons (v1.1.5, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/daemons-1.1.5)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] actionmailer (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/actionmailer-3.0.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] activeresource (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/activeresource-3.0.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] railties (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/railties-3.0.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] pg (v0.13.1, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/pg-0.13.1)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] carrierwave (v0.5.8, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/carrierwave-0.5.8)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] rmagick (v2.13.1, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rmagick-2.13.1)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] jquery-rails (v1.0.16, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/jquery-rails-1.0.16)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] best_in_place (v0.1.9, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/bundler/gems/best_in_place-f101f00e2023)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] rake (v0.9.2.2, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rake-0.9.2.2)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] mime-types (v1.17.2, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/mime-types-1.17.2)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] treetop (v1.4.10, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/treetop-1.4.10)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] rack-mount (v0.6.14, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rack-mount-0.6.14)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] builder (v2.1.2, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/builder-2.1.2)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] activemodel (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/activemodel-3.0.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] rack (v1.2.4, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rack-1.2.4)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] erubis (v2.6.6, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/erubis-2.6.6)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] mail (v2.2.19, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/mail-2.2.19)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] polyglot (v0.3.3, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/polyglot-0.3.3)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] abstract (v1.0.0, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/abstract-1.0.0)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] tzinfo (v0.3.31, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/tzinfo-0.3.31)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.10, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/arel-2.0.10)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] i18n (v0.6.0, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/i18n-0.6.0)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] rack-test (v0.5.7, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/rack-test-0.5.7)" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="[gem] fastercsv (v1.5.4, /Users/sanjeev/.rvm/gems/ruby-1.8.7-p357/gems/fastercsv-1.5.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] kaminari (v0.13.0, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/kaminari-0.13.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] delayed_job (v2.1.4, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/delayed_job-2.1.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] bcrypt-ruby (v3.0.1, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/bcrypt-ruby-3.0.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] warden (v1.1.0, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/warden-1.1.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] bundler (v1.0.22, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125@global/gems/bundler-1.0.22)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] aasm (v3.0.0, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/aasm-3.0.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rails (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/rails-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] devise_invitable (v0.6.0, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/devise_invitable-0.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] devise (v1.5.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/devise-1.5.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] devise (v1.5.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/devise-1.5.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] thor (v0.14.6, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/thor-0.14.6)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activerecord (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/activerecord-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] actionpack (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] orm_adapter (v0.0.5, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/orm_adapter-0.0.5)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rails (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/rails-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activesupport (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/activesupport-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] daemons (v1.1.5, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/daemons-1.1.5)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] actionmailer (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/actionmailer-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activeresource (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/activeresource-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] railties (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/railties-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] carrierwave (v0.5.8, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/carrierwave-0.5.8)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rmagick (v2.13.1, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/rmagick-2.13.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] pg (v0.13.2, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/pg-0.13.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] jquery-rails (v0.2.5, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/jquery-rails-0.2.5)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] best_in_place (v0.1.9, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/bundler/gems/best_in_place-f101f00e2023)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] tzinfo (v0.3.31, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/tzinfo-0.3.31)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] arel (v2.0.10, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/arel-2.0.10)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rack-mount (v0.6.14, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/rack-mount-0.6.14)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] treetop (v1.4.10, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/treetop-1.4.10)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rake (v0.9.2.2, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/rake-0.9.2.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activemodel (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/activemodel-3.0.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] builder (v2.1.2, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/builder-2.1.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rack-test (v0.5.7, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/rack-test-0.5.7)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rack (v1.2.4, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.2.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] i18n (v0.6.0, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/i18n-0.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] erubis (v2.6.6, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/erubis-2.6.6)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] polyglot (v0.3.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/polyglot-0.3.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] abstract (v1.0.0, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/abstract-1.0.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] mail (v2.2.19, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/mail-2.2.19)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] mime-types (v1.17.2, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/mime-types-1.17.2)" level="application" />
   </component>
 </module>
 

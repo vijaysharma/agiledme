@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  require 'csv'
+
   before_filter :find_project, :except => :create
 
   def import_pivotal_csv
@@ -7,14 +9,15 @@ class ProjectsController < ApplicationController
 
   def upload_pivotal_csv
 
-    tmp = params[:file].tempfile
-    csv_file = File.join("public/csvs", params[:file].original_filename)
-    FileUtils.cp tmp.path, csv_file
-    file = File.read(File.join(Rails.root, "/public/csvs/", params[:file].original_filename))
+#    tmp = params[:file].tempfile
+#    csv_file = File.join("public/csvs", params[:file].original_filename)
+#    FileUtils.cp tmp.path, csv_file
+#    file = File.read(File.join(Rails.root, "/public/csvs/", params[:file].original_filename))
 
     old_items = @project.workable_items.count
-    #    file = IO.read(params[:file].tempfile.path)
-    FasterCSV.new(file, :headers => true).each do |row|
+    file = IO.read(params[:file].tempfile.path)
+
+    CSV.new(file, :headers => true).each do |row|
       csv_type = row['Story Type']
       #importing release is not supported as of today (22 March 2012)
       if !csv_type.eql?("release")
@@ -26,15 +29,12 @@ class ProjectsController < ApplicationController
       end
     end
 
-    FileUtils.rm csv_file
-
     new_items = @project.workable_items.count
 
     respond_to do |format|
       flash[:notice] = "Successfully imported #{new_items - old_items} items!!"
       format.html { render :template => 'projects/import_pivotal_csv' }
     end
-
   end
 
   def get_status(csv_task_status)

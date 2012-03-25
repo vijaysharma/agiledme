@@ -4,10 +4,11 @@
     <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/projects_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/projects_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/workable_items/_workable_item_preview.html.erb" afterPath="$PROJECT_DIR$/app/views/workable_items/_workable_item_preview.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/_control_panel.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/_control_panel.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/_workable_items_panel.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/_workable_items_panel.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/search.js.erb" afterPath="$PROJECT_DIR$/app/views/projects/search.js.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/application.js" afterPath="$PROJECT_DIR$/public/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/control_panel.css" afterPath="$PROJECT_DIR$/public/stylesheets/control_panel.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/project_view.css" afterPath="$PROJECT_DIR$/public/stylesheets/project_view.css" />
     </list>
     <ignored path="agiledme.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,46 +33,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="projects_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="projects_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="151" column="0" selection-start="4197" selection-end="4197" vertical-scroll-proportion="0.0">
+            <state line="341" column="33" selection-start="11071" selection-end="11071" vertical-scroll-proportion="7.8112583">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <file leaf-file-name="project.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/project.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="26" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.0">
+            <state line="3" column="108" selection-start="222" selection-end="239" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
+      <file leaf-file-name="_workable_item.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_item.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="212" column="40" selection-start="7163" selection-end="7174" vertical-scroll-proportion="0.0">
+            <state line="1" column="7" selection-start="35" selection-end="48" vertical-scroll-proportion="-0.6086956">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_workable_item_preview.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_item_preview.html.erb">
+      <file leaf-file-name="_workable_items_panel.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/projects/_workable_items_panel.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="47" selection-start="566" selection-end="566" vertical-scroll-proportion="0.28915662">
+            <state line="30" column="69" selection-start="1559" selection-end="1559" vertical-scroll-proportion="-18.26087">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="project_view.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/project_view.css">
+      <file leaf-file-name="search.js.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/projects/search.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1023" column="31" selection-start="21326" selection-end="21326" vertical-scroll-proportion="0.0">
+            <state line="2" column="18" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -93,26 +94,30 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Rails console: agiledme" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: agiledme" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: agiledme" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: agiledme" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: agiledme" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/uploaders/image_uploader.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/projects/import_pivotal_csv.html.erb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/projects/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/projects/_control_panel.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/projects/_workable_items_panel.html.erb" />
         <option value="$PROJECT_DIR$/public/stylesheets/control_panel.css" />
-        <option value="$PROJECT_DIR$/app/views/projects/search.js.erb" />
-        <option value="$PROJECT_DIR$/public/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/controllers/projects_controller.rb" />
         <option value="$PROJECT_DIR$/public/stylesheets/project_view.css" />
         <option value="$PROJECT_DIR$/app/views/workable_items/_workable_item_preview.html.erb" />
+        <option value="$PROJECT_DIR$/public/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/views/projects/_control_panel.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/workable_items/_workable_item.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/projects/_workable_items_panel.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/projects/search.js.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/projects_controller.rb" />
       </list>
     </option>
   </component>
@@ -155,6 +160,50 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="agiledme" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agiledme" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="[gem] activerecord (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/activerecord-3.0.3)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agiledme" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="[gem] activerecord (v3.0.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/activerecord-3.0.3)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="active_record" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -750,9 +799,9 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31733745" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21257962" sideWeight="0.55727553" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29538217" sideWeight="0.54643965" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44272447" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45820433" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -777,7 +826,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented search based on user initials" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the search functionality to be able to search by the labels as well now!!" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -790,7 +839,6 @@
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="got the image upload working for all the forms!!" />
     <MESSAGE value="removed displaying iterations link as ti is not working and moreover who uses it man!!!" />
     <MESSAGE value="removed the drop down to change the state rahrer just provided the action buttons there to change the sate of the story" />
     <MESSAGE value="deleted all the action button images and replaced them with CSS" />
@@ -815,93 +863,12 @@
     <MESSAGE value="switched to mini magic gem for carrier wave gem" />
     <MESSAGE value="fixed the bug with the owned by field in the import operation" />
     <MESSAGE value="implemented search based on user initials" />
+    <MESSAGE value="added the search functionality to be able to search by the labels as well now!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_item.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="20" selection-start="615" selection-end="615" vertical-scroll-proportion="-7.304348" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/project_users/_project_user_row.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="98" selection-start="327" selection-end="423" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="41" selection-start="99" selection-end="99" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/show_more_items.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="172" selection-start="100" selection-end="272" vertical-scroll-proportion="0.04964539">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/create.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="24" selection-start="57" selection-end="57" vertical-scroll-proportion="0.023972603">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/join.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="154" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="42" selection-start="490" selection-end="490" vertical-scroll-proportion="0.1996435">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/_control_panel.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="83" selection-start="2214" selection-end="2214" vertical-scroll-proportion="0.51123595">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/_workable_items_panel.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="101" selection-start="574" selection-end="574" vertical-scroll-proportion="-6.0869565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/control_panel.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="16" selection-start="2963" selection-end="2963" vertical-scroll-proportion="0.43273905">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/search.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="40" selection-start="7163" selection-end="7174" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="26" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.0">
@@ -909,23 +876,107 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_item_preview.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="47" selection-start="566" selection-end="566" vertical-scroll-proportion="-7.304348">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/show_more_items.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="44" selection-end="339" vertical-scroll-proportion="0.11589404">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/import_pivotal_csv.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="17" selection-start="311" selection-end="588" vertical-scroll-proportion="-10.347826">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="208" column="23" selection-start="7008" selection-end="7008" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/_control_panel.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="4" selection-start="1034" selection-end="1034" vertical-scroll-proportion="-17.043478">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="39" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/project_view.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1023" column="31" selection-start="21326" selection-end="21326" vertical-scroll-proportion="0.0">
+        <state line="47" column="59" selection-start="859" selection-end="859" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p125/gems/activerecord-3.0.3/lib/active_record/base.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="848" column="10" selection-start="38531" selection-end="38531" vertical-scroll-proportion="0.33093524">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_item.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="7" selection-start="35" selection-end="48" vertical-scroll-proportion="-0.6086956">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/search.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="18" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs19/kernel.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1456" column="8" selection-start="63059" selection-end="63059" vertical-scroll-proportion="-10.519868">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/_workable_items_panel.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="69" selection-start="1559" selection-end="1559" vertical-scroll-proportion="-18.26087">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/workable_item.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="59" selection-start="190" selection-end="190" vertical-scroll-proportion="0.3888889">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/project.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="108" selection-start="222" selection-end="239" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="0" selection-start="4197" selection-end="4197" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/workable_items/_workable_item_preview.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="47" selection-start="566" selection-end="566" vertical-scroll-proportion="0.28915662">
+        <state line="341" column="33" selection-start="11071" selection-end="11071" vertical-scroll-proportion="7.8112583">
           <folding />
         </state>
       </provider>

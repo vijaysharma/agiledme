@@ -1,1 +1,6 @@
-$('#workable_item_panels').append('<%=escape_javascript render :partial => 'projects/workable_items_panel', :locals => {:workable_items => @search_result_workable_items, :category => "search", :search_term => @search_term } %>');
+$('#workable_item_panels').append('<%=escape_javascript render :partial => 'projects/workable_items_panel', :locals => {:workable_items => @search_results, :category => "search", :search_term => @search_term } %>');
+<% if @search_results.present? %>
+<% @search_results.each do |workable_item| %>
+attachTokenInput($('#<%= workable_item.id %>_labels'));
+<% end %>
+<% end %>

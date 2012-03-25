@@ -25,7 +25,9 @@
       <% end %>
 
       <span class="ieInputWrapper">
-        <input type="text" autocomplete="off" size="20" id="searchString" name="searchString" value="" class="searchField">
+        <%= form_tag search_project_path(@project), :remote => true do %>
+            <input type="text" size="20" id="search_term" name="search_term" value="" class="searchField">
+        <% end %>
       </span>
 
       <div id="velocity">

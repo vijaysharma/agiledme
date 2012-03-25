@@ -206,7 +206,7 @@ $(document).ready(function () {
         var search_term = $(this).attr('value');
         $('#searchString').val(search_term);
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/projects/" + $(this).attr('project_id') + "/search",
             dataType: "script",
             data: {

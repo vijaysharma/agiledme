@@ -4,20 +4,51 @@ class ProjectsController < ApplicationController
 
   def search
     @search_term = params[:search_term]
+    @workable_items = @project.workable_items(:include => [:comments, :tasks])
     respond_to do |format|
       if @search_term.present?
         if is_search_by_owner?
-          search_for = @search_term.split(':')[1]
-          if search_for.present?
-            owner = User.where("initials = ? or name = ? or email = ?", search_for, search_for, search_for).first
-            if owner.present?
-              @search_result_workable_items = @project.workable_items.where(:owner => owner.id)
-            end
-          end
+          @search_results = get_items_for_owner(@search_term.split(':')[1])
         elsif is_search_by_label?
-          label = @search_term.split(':')[1]
-          if label.present?
-              @search_result_workable_items = @project.workable_items.select {|wi| wi.labels.map(&:name).include?(label)}
+          @search_results = get_items_for_label(@search_term.split(':')[1])
+        else
+          @search_results = get_items_for(@search_term)
+
+          owner_results = get_items_for_owner(@search_term)
+          label_results = get_items_for_label(@search_term)
+          comment_results = get_items_for_comments(@search_term)
+          task_results = get_items_for_tasks(@search_term)
+
+          if @search_results.present?
+            if owner_results.present?
+              @search_results = @search_results + owner_results
+            end
+          else
+            @search_results = get_items_for_owner(@search_term)
+          end
+
+          if @search_results.present?
+            if label_results.present?
+              @search_results = @search_results + label_results
+            end
+          else
+            @search_results = label_results
+          end
+
+          if @search_results.present?
+            if comment_results.present?
+              @search_results = @search_results + comment_results
+            end
+          else
+            @search_results = comment_results
+          end
+
+          if @search_results.present?
+            if task_results.present?
+              @search_results = @search_results + task_results
+            end
+          else
+            @search_results = task_results
           end
         end
       else
@@ -279,5 +310,60 @@ class ProjectsController < ApplicationController
     search_term_prefix.present? and search_term_prefix.eql?("label")
   end
 
+  def get_items_for_owner(search_term)
+    if search_term.present?
+      owner = User.where("initials = ? or name = ? or email = ?", search_term, search_term, search_term).first
+      if owner.present?
+        @workable_items.where(:owner => owner.id)
+      else
+        nil
+      end
+    end
+  end
+
+  def get_items_for_label(search_term)
+    if search_term.present?
+      @workable_items.select { |wi| wi.labels.map(&:name).include?(search_term) }
+    else
+      nil
+    end
+  end
+
+  def get_items_for(search_term)
+    #If I remove the workable_items. form the below query, I start getting the PG error saying the the description column is ambiguous.
+    #That is because the tasks table which is also getting LEFT joined here has a description column too
+    @workable_items.where("workable_items.title LIKE ? or workable_items.description LIKE ?", "%#{search_term}%", "%#{search_term}%")
+  end
+
+  def get_items_for_comments(search_term)
+    if search_term.present?
+      #This is to optimize the query a bit
+      comments_matching_search_term = Comment.where("workable_item_id IN (?) and comment LIKE ?", @workable_items.map(&:id), "%#{search_term}%").select(:workable_item_id)
+      ids = comments_matching_search_term.map(&:workable_item_id).uniq
+      if ids.count > 0
+        WorkableItem.where("id IN (?)", ids)
+      else
+         nil
+      end
+    else
+      nil
+    end
+  end
+
+  def get_items_for_tasks(search_term)
+    if search_term.present?
+      #This is to optimize the query a bit
+      tasks_matching_search_term = Task.where("workable_item_id IN (?) and description LIKE ?", @workable_items.map(&:id), "%#{search_term}%").select(:workable_item_id)
+      ids = tasks_matching_search_term.map(&:workable_item_id).uniq
+      if ids.count > 0
+#        raise ids.inspect
+        WorkableItem.where("id IN (?)", ids)
+      else
+         nil
+      end
+    else
+      nil
+    end
+  end
 
 end

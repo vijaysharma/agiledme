@@ -128,24 +128,22 @@ class ProjectsController < ApplicationController
   def create_workable_item(row)
     csv_state = row['Current State']
     csv_category = parse_category(csv_state)
+    csv_type = row['Story Type'].camelize
     workable_item = WorkableItem.new(:project_id => @project.id,
                                      :title => row['Story'],
                                      :description => row['Description'],
                                      :requester => row['Requested By'].present? ? get_existing_or_current_user(row['Requested By']) : current_user.id,
-                                     :owner => row['Owned By'].present? ? get_existing_or_current_user(row['Requested By']) : current_user.id,
                                      :status => (csv_state.eql?('unstarted') || csv_state.eql?('unscheduled')) ? "not_yet_started" : row['Current State'],
                                      :category => csv_category,
+                                     :estimate => (csv_type.eql?("Feature") and row['Estimate'].present?) ? row['Estimate'].to_i : -1,
                                      :priority => get_max_priority_for_category(csv_category) + 1)
 
-    csv_type = row['Story Type'].camelize
+
     workable_item.type = csv_type.eql?("Feature") ? "Story" : csv_type
 
-    if csv_type.eql?("Feature") and row['Estimate'].present?
-      workable_item.estimate = row['Estimate'].to_i
-    else
-      workable_item.estimate = -1
+    if row['Owned By'].present?
+      workable_item.owner = get_existing_or_current_user(row['Owned By'])
     end
-
 
     if !csv_state.eql?("unstarted")
       if csv_state.eql?("accepted")

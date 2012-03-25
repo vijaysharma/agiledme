@@ -202,9 +202,8 @@ $(document).ready(function () {
     });
 
     $(document).delegate('.searchable', "click", function() {
-        var email = $(this).attr('id');
         var search_term = $(this).attr('value');
-        $('#searchString').val(search_term);
+        $('#search_term').val(search_term);
         $.ajax({
             type: "POST",
             url: "/projects/" + $(this).attr('project_id') + "/search",
@@ -628,5 +627,5 @@ function highlight_item(item) {
 }
 
 function flash_notice() {
-    $('.notice').fadeOut(4000);
+    $('.notice').fadeOut(8000);
 }

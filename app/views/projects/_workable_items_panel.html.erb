@@ -8,7 +8,8 @@
   <div class="panelHeader">
     <div id=<%= "#{category}_title" %>>
       <a href="#" class="closePanel panelLink" id='<%= "#{category}_close" %>' title="Close"></a>
-      <span class="panelTitle"><%= category.eql?("search") ? "#{category.upcase} : #{search_term}" : category.upcase %> </span>
+      <span class="panelTitle">
+        <%= category.eql?("search") ? "#{category.upcase} : #{truncate(search_term, :length => 20)} (#{workable_items.present? ? workable_items.count : 0})" : category.upcase %> </span>
       <span class="external_icon"></span>
     </div>
   </div>
@@ -36,8 +37,8 @@
                 </div>
             <% elsif category.eql?('search') and workable_items.blank? %>
                 <div id="no_workable_items" class="no_workable_items">
-                  No results found! Please try again.
-                  TIP: You can search by directly clicking on the labels and users.
+                  Sorry no results found!!
+                  TIP: You can search by directly clicking on the Labels and user Initials.
                 </div>
             <% end %>
         <% end %>

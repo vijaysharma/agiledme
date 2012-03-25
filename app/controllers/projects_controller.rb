@@ -4,9 +4,10 @@ class ProjectsController < ApplicationController
 
   def search
     @search_term = params[:search_term]
-    @workable_items = @project.workable_items(:include => [:comments, :tasks])
+
     respond_to do |format|
-      if @search_term.present?
+      if @search_term.present? and @search_term.length > 3
+        @workable_items = @project.workable_items(:include => [:comments, :tasks])
         if is_search_by_owner?
           @search_results = get_items_for_owner(@search_term.split(':')[1])
         elsif is_search_by_label?
@@ -52,7 +53,7 @@ class ProjectsController < ApplicationController
           end
         end
       else
-        flash[:notice] = "Please enter some search criteria!"
+        @error = "Please enter minimum 3 letters to search!"
       end
       format.js
     end

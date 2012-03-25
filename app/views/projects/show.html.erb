@@ -3,53 +3,10 @@
 <div id="all_panels" class="story_content">
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
-    <tr>
-
+    <tr id="workable_item_panels">
       <% WorkableItem.categories.each do |category| %>
-          <% workable_items_in_category = @project.workable_items.where(:category => category).limit(15) %>
-          <% if workable_items_in_category.blank? and !category.eql?('icebox')
-                 category_display_class = 'display:none'
-             end
-          %>
-          <td id="<%= category %>" class="<%= "#{category} panel" %>" style="<%= category_display_class %>" width="25%">
-            <div class="panelHeaderRight"></div>
-            <div class="panelHeaderLeft"></div>
-            <div class="panelHeader">
-              <div id=<%= "#{category}_title" %>>
-                <a href="#" class="closePanel panelLink" id='<%= "#{category}_close" %>' title="Close panel"></a>
-                <span class="panelTitle"><%= category.upcase %> </span>
-                <span class="external_icon"></span>
-              </div>
-            </div>
-            <div id="<%= "#{category}_item_list" %>" class="list">
-              <div class="btm">
-                <div class="right"></div>
-                <div class="left"></div>
-                <div class="mid"></div>
-              </div>
-              <div id="<%= "#{category}_items" %>" class="items">
-                <div id="<%= "#{category}_scrolling_item_list" %>" category="<%= "#{category}" %>" project_id="<%= "#{@project.id}" %>" class="inner scrolling_item_list">
-                  <% if category.eql?('icebox') %>
-                      <div id="new_workable_item">
-                        <%= render :partial => 'workable_items/new_workable_item', :locals => {:project => @project} %>
-                      </div>
-                  <% end %>
-                  <% if workable_items_in_category.present? %>
-                      <% workable_items_in_category.each do |workable_item| %>
-                          <%= render :partial => 'workable_items/workable_item', :locals => {:workable_item => workable_item} %>
-                      <% end %>
-                  <% else %>
-                      <% if category.eql?('icebox') and !@project.workable_items.present? %>
-                          <div id="no_workable_items" class="no_workable_items">
-                            You have not got any work to do in this project yet. Hurry, and start working!!
-                          </div>
-                      <% end %>
-                  <% end %>
-                  <div id="<%= "#{category}_item_list_end" %>" class="endOfList"></div>
-                </div>
-              </div>
-            </div>
-          </td>
+          <% workable_items = @project.workable_items.where(:category => category).limit(15) %>
+          <%= render :partial => 'projects/workable_items_panel', :locals => {:workable_items => workable_items, :category => category}  %>
       <% end %>
     </tr>
     </tbody>

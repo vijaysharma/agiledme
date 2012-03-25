@@ -10,7 +10,7 @@ Agiledme::Application.routes.draw do
 
   resources :projects do
     member do
-      get :join, :leave, :overview, :sprint, :import_pivotal_csv, :show_more_items
+      get :join, :leave, :overview, :sprint, :import_pivotal_csv, :show_more_items, :search
       post :upload_pivotal_csv
     end
     resources :project_users

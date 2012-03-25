@@ -106,49 +106,10 @@ $(document).ready(function () {
     DraggableDroppable.init();
     JQueryFileUpload.init();
 
-    $("#backlog_close").click(function () {
-        $("#backlog").hide();
-        $("#backlog_control_button").removeClass('selected');
-    });
-
-    $("#current_close").click(function () {
-        $("#current").hide();
-        $("#current_control_button").removeClass('selected');
-    });
-
-    $("#done_close").click(function () {
-        $("#done").hide();
-        $("#done_control_button").removeClass('selected');
-    });
-
-    $("#icebox_close").click(function () {
-        $("#icebox").hide();
-        $("#icebox_control_button").removeClass('selected');
-    });
-
-    $("#dev_ready_close").click(function () {
-        $("#dev_ready").hide();
-        $("#dev_ready_control_button").removeClass('selected');
-    });
-
-    $("#in_progress_close").click(function () {
-        $("#in_progress").hide();
-        $("#in_progress_control_button").removeClass('selected');
-    });
-
-    $("#dev_done_close").click(function () {
-        $("#dev_done").hide();
-        $("#dev_done_control_button").removeClass('selected');
-    });
-
-    $("#qa_ready_close").click(function () {
-        $("#qa_ready").hide();
-        $("#qa_ready_control_button").removeClass('selected');
-    });
-
-    $("#qa_done_close").click(function () {
-        $("#qa_done").hide();
-        $("#qa_done_control_button").removeClass('selected');
+    $(document).delegate(".closePanel", "click", function () {
+        var close_panel_id = $(this).attr("id");
+        $(this).parent().parent().parent().hide();
+        $("#" + close_panel_id.replace('_close', '_control_button')).removeClass('selected');
     });
 
     $("#backlog_control_button").click(function () {
@@ -236,6 +197,18 @@ $(document).ready(function () {
             dataType: "script",
             data: {
                 project_user: {role: role}
+            }
+        })
+    });
+
+    $(document).delegate('.storyOwnerInitials', "click", function() {
+        var email = $(this).attr('id');
+        $.ajax({
+            type: "GET",
+            url: "/projects/" + $(this).attr('project_id') + "/search",
+            dataType: "script",
+            data: {
+                search: {email: email}
             }
         })
     });
@@ -486,19 +459,19 @@ $(document).ready(function () {
         callback: function(p) {
             var category = $(this).attr('category');
             var offset = 0;
-            if(category == "current"){
+            if (category == "current") {
                 current_offset = current_offset + 15;
                 offset = current_offset;
             }
-            if(category == "icebox"){
+            if (category == "icebox") {
                 icebox_offset = icebox_offset + 15;
                 offset = icebox_offset;
             }
-            if(category == "done"){
+            if (category == "done") {
                 done_offset = done_offset + 15;
                 offset = done_offset;
             }
-            if(category == "backlog"){
+            if (category == "backlog") {
                 backlog_offset = backlog_offset + 15;
                 offset = backlog_offset;
             }

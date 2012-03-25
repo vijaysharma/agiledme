@@ -1,34 +1,50 @@
 class ProjectsController < ApplicationController
   require 'csv'
-
   before_filter :find_project, :except => :create
 
-  def import_pivotal_csv
+  def search
+    respond_to do |format|
+      if params[:search].present?
+        if params[:search][:email].present?
+          @search_term = params[:search][:email]
+          @search_result_workable_items = @project.workable_items.where(:owner => User.find_by_email(params[:search][:email]).id)
+        end
+      else
+        flash[:notice] = "Please enter some search criteria!"
+      end
+      format.js
+    end
+  end
 
+  def import_pivotal_csv
   end
 
   def upload_pivotal_csv
 
-    old_items = @project.workable_items.count
-    file = IO.read(params[:file].tempfile.path)
-
-    CSV.new(file, :headers => true).each do |row|
-      csv_type = row['Story Type']
-      #importing release is not supported as of today (22 March 2012)
-      if !csv_type.eql?("release")
-        workable_item = create_workable_item(row)
-        import_labels(row, workable_item)
-        import_comments(row, workable_item)
-        import_tasks(row, workable_item)
-        workable_item.save!
-      end
-    end
-
-    new_items = @project.workable_items.count
-
     respond_to do |format|
-      flash[:notice] = "Successfully imported #{new_items - old_items} items!!"
-      format.html { render :template => 'projects/import_pivotal_csv' }
+      if params[:file].present?
+        old_items = @project.workable_items.count
+        file = IO.read(params[:file].tempfile.path)
+
+        CSV.new(file, :headers => true).each do |row|
+          csv_type = row['Story Type']
+          #importing release is not supported as of today (22 March 2012)
+          if !csv_type.eql?("release")
+            workable_item = create_workable_item(row)
+            import_labels(row, workable_item)
+            import_comments(row, workable_item)
+            import_tasks(row, workable_item)
+            workable_item.save!
+          end
+        end
+
+        new_items = @project.workable_items.count
+        flash[:notice] = "Successfully imported #{new_items - old_items} items!!"
+        format.html { render :template => 'projects/import_pivotal_csv' }
+      else
+        flash[:notice] = "ERROR!! Please select a CSV to import!!"
+        format.html { render :template => 'projects/import_pivotal_csv' }
+      end
     end
   end
 

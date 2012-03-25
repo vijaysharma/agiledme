@@ -3,11 +3,22 @@ class ProjectsController < ApplicationController
   before_filter :find_project, :except => :create
 
   def search
+    @search_term = params[:search_term]
     respond_to do |format|
-      if params[:search].present?
-        if params[:search][:email].present?
-          @search_term = params[:search][:email]
-          @search_result_workable_items = @project.workable_items.where(:owner => User.find_by_email(params[:search][:email]).id)
+      if @search_term.present?
+        if is_search_by_owner?
+          search_for = @search_term.split(':')[1]
+          if search_for.present?
+            owner = User.where("initials = ? or name = ? or email = ?", search_for, search_for, search_for).first
+            if owner.present?
+              @search_result_workable_items = @project.workable_items.where(:owner => owner.id)
+            end
+          end
+        elsif is_search_by_label?
+          label = @search_term.split(':')[1]
+          if label.present?
+              @search_result_workable_items = @project.workable_items.select {|wi| wi.labels.map(&:name).include?(label)}
+          end
         end
       else
         flash[:notice] = "Please enter some search criteria!"
@@ -257,4 +268,16 @@ class ProjectsController < ApplicationController
       skip = !skip
     end
   end
+
+  def is_search_by_owner?
+    search_term_prefix = @search_term.split(':')[0]
+    search_term_prefix.present? and search_term_prefix.eql?("mywork")
+  end
+
+  def is_search_by_label?
+    search_term_prefix = @search_term.split(':')[0]
+    search_term_prefix.present? and search_term_prefix.eql?("label")
+  end
+
+
 end

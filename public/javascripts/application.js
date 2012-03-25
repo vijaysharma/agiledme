@@ -201,14 +201,16 @@ $(document).ready(function () {
         })
     });
 
-    $(document).delegate('.storyOwnerInitials', "click", function() {
+    $(document).delegate('.searchable', "click", function() {
         var email = $(this).attr('id');
+        var search_term = $(this).attr('value');
+        $('#searchString').val(search_term);
         $.ajax({
             type: "GET",
             url: "/projects/" + $(this).attr('project_id') + "/search",
             dataType: "script",
             data: {
-                search: {email: email}
+                search_term: search_term
             }
         })
     });

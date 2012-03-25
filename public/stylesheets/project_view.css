@@ -1018,6 +1018,13 @@ div.storyDetails .attachmentWidget .attach_files .text {
     text-decoration: none;
 }
 
+.storyLabels a, .storyLabels a:hover {
+    color: #006633;
+    font-family: arial,sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+}
+
 .stateChangeButton {
     cursor: pointer;
     width: auto;
@@ -1115,12 +1122,6 @@ div.storyDetails .attachmentWidget .attach_files .text {
     line-height: 25px;
     margin-left: 9px;
     margin-top: 0;
-}
-
-.story_content a {
-    color: #0957A4;
-    font-weight: normal;
-    text-decoration: none;
 }
 
 .storyDetailsButton a, .add_comment a, .add_task a {

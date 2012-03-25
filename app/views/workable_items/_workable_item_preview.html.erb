@@ -40,14 +40,23 @@
       <div id="<%= item_unique_id %>_content_details" class="storyPreviewText" style="<%= cursor_style %>">
         <span id="<%= item_unique_id %>_content_labels" class="storyLabels empty">
           <% workable_item.labels.each do |label| %>
-          <%= label.name %>
+              <a href="#" class="searchable"
+                 project_id="<%= @project.id %>"
+                 title="<%= label.name %>"
+                 value="label:<%= label.name %>">
+                <%= label.name %></a>
           <% end %>
         </span>
             <span>
               <%= workable_item.title %>
               <% if workable_item.owner.present? %>
                   <% owner = User.find(workable_item.owner) %>
-                  (<a href="#" id="<%= owner.email %>" project_id="<%= @project.id%>" title="<%= owner.display_name %>" class="storyOwnerInitials"><%= owner.initials_display_name %></a>)
+                  <a href="#" id="<%= owner.email %>"
+                     project_id="<%= @project.id %>"
+                      title="<%= owner.display_name %>"
+                      value="mywork:<%= owner.initials_display_name %>"
+                      class="storyOwnerInitials searchable">
+              (<%= owner.initials_display_name %>)</a>
               <% end %>
             </span>
       </div>

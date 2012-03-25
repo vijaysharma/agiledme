@@ -14,7 +14,7 @@ gem "delayed_job", "~> 2.1.4"
 gem "kaminari"
 
 gem "best_in_place", :git => 'git://github.com/proton/best_in_place.git'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'carrierwave'
 
 # Use unicorn as the web server

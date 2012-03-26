@@ -9,50 +9,57 @@ class ProjectsController < ApplicationController
       if @search_term.present? and @search_term.length > 2
         if @scope.eql?("sprint")
           @workable_items = @project.workable_items(:include => [:comments, :tasks]).where(:category => "current")
-        end
-        if is_search_by_owner?
-          @search_results = get_items_for_owner(@search_term.split(':')[1])
-        elsif is_search_by_label?
-          @search_results = get_items_for_label(@search_term.split(':')[1])
         else
-          @search_results = get_items_for(@search_term)
+          @workable_items = @project.workable_items(:include => [:comments, :tasks])
+        end
 
-          owner_results = get_items_for_owner(@search_term)
-          label_results = get_items_for_label(@search_term)
-          comment_results = get_items_for_comments(@search_term)
-          task_results = get_items_for_tasks(@search_term)
-
-          if @search_results.present?
-            if owner_results.present?
-              @search_results = @search_results + owner_results
-            end
+        if @workable_items.present?
+          if is_search_by_owner?
+            @search_results = get_items_for_owner(@search_term.split(':')[1])
+          elsif is_search_by_label?
+            @search_results = get_items_for_label(@search_term.split(':')[1])
           else
-            @search_results = get_items_for_owner(@search_term)
-          end
+            @search_results = get_items_for(@search_term)
 
-          if @search_results.present?
-            if label_results.present?
-              @search_results = @search_results + label_results
-            end
-          else
-            @search_results = label_results
-          end
+            owner_results = get_items_for_owner(@search_term)
+            label_results = get_items_for_label(@search_term)
+            comment_results = get_items_for_comments(@search_term)
+            task_results = get_items_for_tasks(@search_term)
 
-          if @search_results.present?
-            if comment_results.present?
-              @search_results = @search_results + comment_results
+            if @search_results.present?
+              if owner_results.present?
+                @search_results = @search_results + owner_results
+              end
+            else
+              @search_results = get_items_for_owner(@search_term)
             end
-          else
-            @search_results = comment_results
-          end
 
-          if @search_results.present?
-            if task_results.present?
-              @search_results = @search_results + task_results
+            if @search_results.present?
+              if label_results.present?
+                @search_results = @search_results + label_results
+              end
+            else
+              @search_results = label_results
             end
-          else
-            @search_results = task_results
+
+            if @search_results.present?
+              if comment_results.present?
+                @search_results = @search_results + comment_results
+              end
+            else
+              @search_results = comment_results
+            end
+
+            if @search_results.present?
+              if task_results.present?
+                @search_results = @search_results + task_results
+              end
+            else
+              @search_results = task_results
+            end
           end
+        else
+          @search_results = nil
         end
       else
         @error = "Please enter minimum 3 letters to search!"

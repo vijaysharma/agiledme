@@ -112,54 +112,16 @@ $(document).ready(function () {
         $("#" + close_panel_id.replace('_close', '_control_button')).removeClass('selected');
     });
 
-    $("#backlog_control_button").click(function () {
-        $("#backlog").toggle();
-        $("#backlog_control_button").toggleClass('selected');
-    });
-
-    $("#current_control_button").click(function () {
-        $("#current").toggle();
-        $("#current_control_button").toggleClass('selected');
-    });
-
-    $("#done_control_button").click(function () {
-        $("#done").toggle();
-        $("#done_control_button").toggleClass('selected');
-    });
-
-    $("#icebox_control_button").click(function () {
-        $("#icebox").toggle();
-        $("#icebox_control_button").toggleClass('selected');
-    });
-
-    $("#dev_ready_control_button").click(function () {
-        $("#dev_ready").toggle();
-        $("#dev_ready_control_button").toggleClass('selected');
-    });
-
-    $("#in_progress_control_button").click(function () {
-        $("#in_progress").toggle();
-        $("#in_progress_control_button").toggleClass('selected');
-    });
-
-    $("#dev_done_control_button").click(function () {
-        $("#dev_done").toggle();
-        $("#dev_done_control_button").toggleClass('selected');
-    });
-
-    $("#qa_ready_control_button").click(function () {
-        $("#qa_ready").toggle();
-        $("#qa_ready_control_button").toggleClass('selected');
-    });
-
-    $("#qa_done_control_button").click(function () {
-        $("#qa_done").toggle();
-        $("#qa_done_control_button").toggleClass('selected');
+    $(".control_button").click(function () {
+        var control_button_id = $(this).attr("id");
+        alert(control_button_id);
+        $("#"+ control_button_id.replace('_control_button', '')).toggle();
+        $("#"+control_button_id).toggleClass('selected');
     });
 
     $("#burndown_control_button").click(function () {
         $("#burndown").toggle();
-        $("#sprint_panels").toggle();
+        $("#panels").toggle();
         $("#burndown_control_button").toggleClass('selected');
     });
 
@@ -209,7 +171,8 @@ $(document).ready(function () {
             url: "/projects/" + $(this).attr('project_id') + "/search",
             dataType: "script",
             data: {
-                search_term: search_term
+                search_term: search_term,
+                scope: view
             }
         })
     });

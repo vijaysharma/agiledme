@@ -3,7 +3,7 @@
 <div id="all_panels" class="story_content">
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
-    <tr id="workable_item_panels">
+    <tr id="panels">
       <% WorkableItem.categories.each do |category| %>
           <% workable_items = @project.workable_items.where(:category => category).limit(15) %>
           <%= render :partial => 'projects/workable_items_panel', :locals => {:workable_items => workable_items, :category => category}  %>

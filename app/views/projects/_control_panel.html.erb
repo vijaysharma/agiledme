@@ -58,7 +58,7 @@
                     <% button_class = current_project.workable_items.where(:category => category).present? ? 'selected' : '' %>
                 <% end %>
                 <li>
-                  <a id="<%= "#{category}_control_button" %>" href="#" class="<%= "button #{button_class}" %>"><%= category.capitalize %></a>
+                  <a id="<%= "#{category}_control_button" %>" href="#" class="<%= "control_button button #{button_class}" %>"><%= category.capitalize %></a>
                 </li>
             <% end %>
 
@@ -77,37 +77,37 @@
             <% sprint_work = @project.workable_items.select { |wi| wi.category.eql? "current" } %>
             <li>
               <a id="dev_ready_control_button" href="#"
-                 class="<%= "button #{sprint_work.select { |wi| wi.not_yet_started? }.present? ? "selected" : ""}" %>">
+                 class="<%= "control_button button #{sprint_work.select { |wi| wi.not_yet_started? }.present? ? "selected" : ""}" %>">
                 Dev Ready
               </a>
             </li>
             <li>
               <a id="in_progress_control_button" href="#"
-                 class="<%= "button #{sprint_work.select { |wi| wi.started? }.present? ? "selected" : ""}" %>">
+                 class="<%= "control_button button #{sprint_work.select { |wi| wi.started? }.present? ? "selected" : ""}" %>">
                 In Progress
               </a>
             </li>
             <li>
               <a id="dev_done_control_button" href="#"
-                 class="<%= "button #{sprint_work.select { |wi| wi.finished? }.present? ? "selected" : ""}" %>">
+                 class="<%= "control_button button #{sprint_work.select { |wi| wi.finished? }.present? ? "selected" : ""}" %>">
                 Dev Done
               </a>
             </li>
             <li>
               <a id="qa_ready_control_button" href="#"
-                 class="<%= "button #{sprint_work.select { |wi| wi.delivered? }.present? ? "selected" : ""}" %>">
+                 class="<%= "control_button button #{sprint_work.select { |wi| wi.delivered? }.present? ? "selected" : ""}" %>">
                 QA Ready
               </a>
             </li>
             <li>
               <a id="qa_done_control_button" href="#"
-                 class="<%= "button #{sprint_work.select { |wi| wi.accepted? or wi.rejected? }.present? ? "selected" : ""}" %>">
+                 class="<%= "control_button button #{sprint_work.select { |wi| wi.accepted? or wi.rejected? }.present? ? "selected" : ""}" %>">
                 QA Done
               </a>
             </li>
             <li>
               <a id="burndown_control_button" href="#"
-                 class="<%= "button" %>">
+                 class="<%= "control_button button" %>">
                 Burndown
               </a>
             </li>

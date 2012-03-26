@@ -4,7 +4,7 @@
   <% sprint_work = @project.workable_items.select { |wi| wi.category.eql? "current" } %>
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
-    <tr id="sprint_panels">
+    <tr id="panels">
       <%= render :partial => 'projects/sprint_state_panel',
                  :locals => {:state => "dev_ready",
                              :workable_items_in_state => sprint_work.select { |wi| wi.not_yet_started? }} %>

@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
     @search_term = params[:search_term]
 
     respond_to do |format|
-      if @search_term.present? and @search_term.length > 3
+      if @search_term.present? and @search_term.length > 2
         @workable_items = @project.workable_items(:include => [:comments, :tasks])
         if is_search_by_owner?
           @search_results = get_items_for_owner(@search_term.split(':')[1])

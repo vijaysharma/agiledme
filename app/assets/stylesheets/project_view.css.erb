@@ -12,7 +12,7 @@
 
 .tooltip {
     display:none;
-    background: #FFFFFF url("/images/bg_gradient_comments_hover.gif") repeat-x scroll left top;
+    background: #FFFFFF url(<%= asset_path 'bg_gradient_comments_hover.gif' %>) repeat-x scroll left top;
     background-size: auto auto;
     border: 1px solid #5593D8;
     border-radius: 8px;
@@ -105,14 +105,14 @@ img {
 }
 
 .endOfList {
-    background: url("/images/dropzone_repeating_pattern.png") repeat-x scroll center top #AEB6B9;
+    background: url(<%= asset_path 'dropzone_repeating_pattern.png' %>) repeat-x scroll center top #AEB6B9;
     border-top: 1px solid #6E6E6E;
     color: #666666;
     height: 202px;
 }
 
 .list {
-    background: #FFFFFF url("/images/panel_bg_left.png") repeat-y scroll left top;
+    background: #FFFFFF url(<%= asset_path 'panel_bg_left.png' %>) repeat-y scroll left top;
     background-clip: border-box;
     background-origin: padding-box;
     background-size: auto auto;
@@ -129,7 +129,7 @@ img {
 }
 
 .list > .btm .right {
-    background: url("/images/panel_bg_btm_corners.png") right top;
+    background: url(<%= asset_path 'panel_bg_btm_corners.png' %>) right top;
     position: relative;
     width: 3px;
     z-index: 5;
@@ -138,7 +138,7 @@ img {
 }
 
 .list > .btm .left {
-    background-image: url("/images/panel_bg_btm_corners.png");
+    background-image: url(<%= asset_path 'panel_bg_btm_corners.png' %>);
     position: relative;
     width: 3px;
     z-index: 5;
@@ -151,14 +151,14 @@ img {
 }
 
 .list > .btm .mid {
-    background: url("/images/panel_bg_btm.png") repeat-x scroll 0 0 transparent;
+    background: url(<%= asset_path 'panel_bg_btm.png' %>) repeat-x scroll 0 0 transparent;
     height: 3px;
 }
 
 .items {
     height: 425px;
     position: relative;
-    background: url("/images/panel_bg_right.png") repeat-y scroll right top #FFFFFF;
+    background: url(<%= asset_path 'panel_bg_right.png' %>) repeat-y scroll right top #FFFFFF;
     background-clip: border-box;
     background-origin: padding-box;
     background-size: auto auto;
@@ -180,7 +180,7 @@ img {
 }
 
 .storySelector {
-    background: url("/images/selectbox_off.png") no-repeat scroll 5px 4px transparent;
+    background: url(<%= asset_path 'selectbox_off.png' %>) no-repeat scroll 5px 4px transparent;
     border-left: 1px dotted gray;
     cursor: pointer;
     float: right;
@@ -191,7 +191,7 @@ img {
 }
 
 .selected .storySelector {
-    background-image: url("/images/selectbox_on.png");
+    background-image: url(<%= asset_path 'selectbox_on.png' %>);
 }
 
 .story_content .item {
@@ -565,7 +565,7 @@ div.storyDetails div.labels a.remove {
 }
 
 div.storyDetails div.labels a.remove > span {
-    background: url("/images/labels_close_icon.png") no-repeat scroll 4px center transparent;
+    background: url(<%= asset_path 'labels_close_icon.png' %>) no-repeat scroll 4px center transparent;
     border-left: 1px solid #B2D165;
     display: block;
     height: 9px;
@@ -1105,7 +1105,7 @@ div.storyDetails .attachmentWidget .attach_files .text {
 }
 
 .story_content .panelLink.closePanel {
-    background: url("/images/close_panel.png") no-repeat scroll 0 0 transparent;
+    background: url(<%= asset_path 'close_panel.png' %>) no-repeat scroll 0 0 transparent;
     height: 16px;
     margin-left: 5px;
     margin-top: 5px;
@@ -1113,7 +1113,7 @@ div.storyDetails .attachmentWidget .attach_files .text {
 }
 
 .story_content .panelLink.closePanel:hover {
-    background: url("/images/close_panel_hover.png") no-repeat scroll 0 0 transparent;
+    background: url(<%= asset_path 'close_panel_hover.png' %>) no-repeat scroll 0 0 transparent;
 }
 
 .story_content a.panelLink {

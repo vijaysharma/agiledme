@@ -48,7 +48,7 @@
     <% if view.eql? "project" %>
         <ul class="clearfix" id="buttonPanel">
           <div style="margin-right: 216px; float:right">
-            <img style="display:none;" src="/images/ajax-loader.gif" class="spinner" alt="Spinner_adding">
+            <%= image_tag "ajax-loader.gif", :alt => "Spinner", :class => "ajax-loader" %>
           </div>
 
           <ul class="clearfix" id="panelList">
@@ -70,7 +70,7 @@
     <% elsif view.eql? "sprint" %>
         <ul class="clearfix" id="buttonPanel">
           <div style="margin-right: 216px; float:right">
-            <img style="display:none;" src="/images/ajax-loader.gif" class="spinner" alt="Spinner_adding">
+            <%= image_tag "ajax-loader.gif", :alt => "Spinner", :class => "ajax-loader" %>
           </div>
 
           <ul class="clearfix" id="panelList">

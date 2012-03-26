@@ -1,7 +1,7 @@
 <% item_unique_id = "#{workable_item.id}" %>
 <% if workable_item.is_unestimated? %>
     <% WorkableItem.fibonacci_estimates.each do |estimate| %>
-        <%= link_to image_tag("/images/estimate#{estimate}pt.gif",
+        <%= link_to image_tag("estimate#{estimate}pt.gif",
                               :class => "estimateButton notDblclickable",
                               :title => "Estimate: #{estimate} point"),
                     estimate_project_workable_item_path(workable_item.project, workable_item, {:estimate => estimate}),

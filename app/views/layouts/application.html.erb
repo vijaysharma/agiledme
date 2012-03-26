@@ -2,40 +2,24 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
   <title><%= content_for?(:title) ? yield(:title) + " - White Apple!!" : "You Agiled Me!!" %></title>
-  <%= stylesheet_link_tag 'application',
-                          'project_view',
-                          'project_pages',
-                          'token-input-facebook',
-                          'control_panel',
-                          'jquery-ui',
-                          'jquery.fileupload-ui',
-                          'ie9',
-                          'ie',
-                          :cache => true %>
-
-  <!--[if gte IE 9]>
-      <%= stylesheet_link_tag 'ie9' %>
-    <![endif]-->
-  <!--[if lte IE 8]>
-      <%= stylesheet_link_tag 'ie' %>
-    <![endif]-->
-  <%= javascript_include_tag "jquery-1.7.1.min",
-                             "jquery-ui-1.8.16.custom.min",
-                             "jquery.tokeninput",
-                             "jquery.tools.min",
-                             "application",
-                             "rails",
-                             'highcharts',
-                             'jquery.fileupload',
-                             'jquery.fileupload-ui',
-                             'shadowbox',
-                             'jquery.endless-scroll',
-                             'jquery.tmpl.min',
-                             :cache => true %>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
 
   <%= csrf_meta_tag %>
+  <script>
+
+    //do not move this to application.js, otherwise all the non GET ajax request
+    // will start resulting into a session logout because the WARNING: Can't verify CSRF token authenticity
+      $(document).ajaxSend(function(e, xhr, options) {
+          $(".ajax-loader").show();
+          var token = $("meta[name='csrf-token']").attr("content");
+          xhr.setRequestHeader("X-CSRF-Token", token);
+      }).ajaxComplete(function(){
+          $(".ajax-loader").hide();
+      });
+  </script>
 </head>
 <body>
 

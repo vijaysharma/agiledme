@@ -22,18 +22,27 @@
         <%= render :partial => 'workable_items/workable_item_actions', :locals => {:workable_item => workable_item} %>
       </div>
       <div class="icons">
-        <img id="<%= item_unique_id %>_editButton" class="toggleExpandedButton" src="/images/story_collapsed.png" title="Expand">
+        <%= image_tag "story_collapsed.png",
+                      :id => "#{item_unique_id}_editButton",
+                      :alt => "Expand",
+                      :title => "Expand",
+                      :class => "toggleExpandedButton" %>
 
         <div class="left">
-          <img class="storyTypeIcon" src="<%= "/images/#{workable_item.type.downcase}.png" %>">
+          <%= image_tag "#{workable_item.type.downcase}.png", :class => "storyTypeIcon" %>
           <% if workable_item.is_estimatable? and workable_item.estimate != -1 %>
-              <img width="6" class="estimateIcon" title="<%= "Estimate: #{workable_item.estimate} points" %>"
-                   src="<%= "/images/estimate#{workable_item.estimate}pt.gif" %>">
+              <%= image_tag "estimate#{workable_item.estimate}pt.gif",
+                            :width => 6,
+                            :class => "estimateIcon",
+                            :title => "Estimate: #{workable_item.estimate} points" %>
           <% else %>
-              <img width="6" class="estimateIcon" src="<%= "/images/estimate0pt.gif" %>">
+              <%= image_tag "estimate0pt.gif",
+                            :width => 6,
+                            :class => "estimateIcon",
+                            :title => "Estimate: 0 points" %>
           <% end %>
           <% if workable_item.description.present? or workable_item.comments.present? or workable_item.tasks.present? %>
-              <img class="flyoverIcon" src="/images/story_flyover_icon.png">
+              <%= image_tag "story_flyover_icon.png", :class => "flyoverIcon" %>
           <% end %>
         </div>
       </div>

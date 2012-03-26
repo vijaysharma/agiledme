@@ -14,7 +14,7 @@
       <%= f.check_box :_destroy, :id => "#{comment_id}_delete_comment_checkbox", :style => "display:none;" %>
       <% if f.object.owner.present? and f.object.owner.eql? current_user %>
           <a id="<%= "#{comment_id}_delete_comment" %>" href="#" title="Delete Comment" class="delete_comment" style="display:none;">
-            <img src="/images/delete.png">
+            <%= image_tag("delete.png", :alt => "Delete comment" ) %>
           </a>
       <% end %>
     </div>

@@ -20,13 +20,13 @@
       <ul id="<%= "#{task_id}_task_actions" %>" class="actions" style="display: none;">
         <li id="<%= "#{task_id}_edit_task" %>" class="edit_task">
           <a title="Edit Task" href="#">
-            <img src="/images/edit.png">
+            <%= image_tag("edit.png", :alt => "Edit task" ) %>
           </a>
         </li>
         <li id="<%= "#{task_id}_delete_task" %>" class="delete_task">
           <%= f.check_box :_destroy, :id => "delete_task", :style => "display:none;" %>
           <a title="Delete Task" href="#">
-            <img src="/images/delete.png">
+            <%= image_tag("delete.png", :alt => "Delete task" ) %>
           </a>
         </li>
       </ul>

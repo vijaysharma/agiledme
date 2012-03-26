@@ -35,7 +35,7 @@
                 <li>
                   <div class="secondary_details">
                     <% workable_item_type = workable_item_history.workable_item.type.downcase %>
-                    <img src=<%= "/images/#{workable_item_type}.png" %> alt=<%= workable_item_type %>>
+                    <%= image_tag("#{workable_item_type}.png", :alt => workable_item_type ) %>
                     <span class="activity_occurred_at">
                       <%= distance_of_time_in_words(Time.now, workable_item_history.created_at, true) %> ago
                     </span>

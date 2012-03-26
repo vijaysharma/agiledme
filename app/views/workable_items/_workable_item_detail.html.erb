@@ -1,11 +1,11 @@
 <% if workable_item.new_record?
        item_unique_id = "icebox_new_workable_item"
-       item_type_image_source = "/images/story.png"
-       item_estimate_image_source = "/images/estimate-1pt.gif"
+       item_type_image_source = "story.png"
+       item_estimate_image_source = "estimate-1pt.gif"
    else
        item_unique_id = "#{workable_item.id}"
-       item_type_image_source = "/images/#{workable_item.type.downcase}.png"
-       item_estimate_image_source = "/images/estimate#{workable_item.estimate}pt.gif"
+       item_type_image_source = "#{workable_item.type.downcase}.png"
+       item_estimate_image_source = "estimate#{workable_item.estimate}pt.gif"
    end
 %>
 
@@ -18,7 +18,11 @@
       <% if !workable_item.new_record? %>
           <div class="storySelector notDblclickable">&nbsp;</div>
           <div class="icons">
-            <img id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="toggleExpandedButton cancelEditButton" src="/images/story_expanded.png" title="Collapse">
+            <%= image_tag "story_expanded.png",
+                          :id => "#{item_unique_id}_cancel_edit_button",
+                          :alt => "Collapse",
+                          :title => "Collapse",
+                          :class => "toggleExpandedButton cancelEditButton" %>
           </div>
       <% end %>
       <div class="storyPreviewInput">
@@ -64,11 +68,11 @@
           </div>
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
-          <img id="<%= "#{item_unique_id}_type_image" %>" src="<%= item_type_image_source %>">
+          <%= image_tag item_type_image_source, :id => "#{item_unique_id}_type_image" %>
         </td>
         <td colspan="1" class="lastCell">
           <div id="<%= "#{item_unique_id}_help_story_types" %>">
-            <img src="/images/question_mark.gif" class="helpIcon">
+            <%= image_tag("question_mark.gif", :alt => "Story type help", :class => "helpIcon" ) %>
 
             <div class="tooltip">
               <div class="storyTitle">Story Types</div>
@@ -105,12 +109,12 @@
         </td>
         <td colspan="1" class="storyDetailsLabelIcon">
           <% if workable_item.new_record? or workable_item.is_estimatable? %>
-              <img id="<%= "#{item_unique_id}_estimate_image" %>" src="<%= item_estimate_image_source %>">
+              <%= image_tag item_estimate_image_source, :id => "#{item_unique_id}_estimate_image" %>
           <% end %>
         </td>
         <td colspan="1">
           <div id="<%= "#{item_unique_id}_help_estimates" %>">
-            <img src="/images/question_mark.gif" class="helpIcon">
+            <%= image_tag("question_mark.gif", :alt => "Story estimation help", :class => "helpIcon" ) %>
 
             <div class="tooltip">
               <div class="storyTitle">Estimates</div>
@@ -173,8 +177,7 @@
         <div class="header">
           <div class="label">Description</div>
           <div id="<%= "#{item_unique_id}_help_story_description" %>">
-            <img src="/images/question_mark.gif" class="helpIcon">
-
+            <%= image_tag("question_mark.gif", :alt => "Story description help", :class => "helpIcon" ) %>
             <div class="tooltip">
               <div class="storyTitle">Description</div>
               <div class="sectionDivider"></div>
@@ -198,7 +201,7 @@
           Tasks <span class="count">(<%= workable_item.tasks.count %>)</span>
         </div>
         <ol id="<%= "#{item_unique_id}_tasks" %>" class="task_list ui-sortable">
-          <% wi.fields_for :tasks do |task_builder| %>
+          <%= wi.fields_for :tasks do |task_builder| %>
               <%= render :partial => 'workable_items/task_fields', :locals => {:f => task_builder} %>
           <% end %>
         </ol>
@@ -219,7 +222,7 @@
         </div>
         <table class="commentsTable">
           <tbody id="<%= "#{item_unique_id}_comments" %>">
-          <% wi.fields_for :comments do |comment_builder| %>
+          <%= wi.fields_for :comments do |comment_builder| %>
               <%= render :partial => 'workable_items/comment_fields', :locals => {:f => comment_builder} %>
           <% end %>
           </tbody>
@@ -246,7 +249,7 @@
           Attachments <span class="count">(<%= workable_item.workable_item_attachments.count %>)</span>
         </div>
         <ol id="<%= "#{item_unique_id}_attachments_list" %>" class="attachments_list">
-          <% wi.fields_for :workable_item_attachments do |workable_item_attachment_builder| %>
+          <%= wi.fields_for :workable_item_attachments do |workable_item_attachment_builder| %>
               <% if !workable_item_attachment_builder.object.new_record? %>
                   <%= render :partial => 'workable_items/attachment_fields', :locals => {:f => workable_item_attachment_builder} %>
               <% end %>

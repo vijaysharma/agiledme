@@ -8,6 +8,7 @@ var current_offset = 15;
 var done_offset = 15;
 var backlog_offset = 15;
 var icebox_offset = 15;
+var notCeasedFireFor = ["current","backlog","done","icebox"];
 
 
 DraggableDroppable = function() {
@@ -102,6 +103,7 @@ function attachTokenInput(item) {
         preventDuplicates: true
     });
 }
+
 $(document).ready(function () {
     DraggableDroppable.init();
     JQueryFileUpload.init();
@@ -114,8 +116,8 @@ $(document).ready(function () {
 
     $(".control_button").click(function () {
         var control_button_id = $(this).attr("id");
-        $("#"+ control_button_id.replace('_control_button', '')).toggle();
-        $("#"+control_button_id).toggleClass('selected');
+        $("#" + control_button_id.replace('_control_button', '')).toggle();
+        $("#" + control_button_id).toggleClass('selected');
     });
 
     $("#burndown_control_button").click(function () {
@@ -417,34 +419,115 @@ $(document).ready(function () {
         predelay: 500
     });
 
-    $('.scrolling_item_list').endlessScroll({
+//    $('.scrolling_item_list').endlessScroll({
+//        fireOnce: false,
+//        ceaseFire: function() {
+//            var category = $(this).attr('category');
+//            alert("stopping scroll for : " + category + " : " + $("#" + category + "_infinite-scroll").length);
+//            return $("#" + category + "_infinite-scroll").length ? false : true;
+//        },
+//        callback: function(p) {
+//            var category = $(this).attr('category');
+//            var offset = 0;
+//            if (category == "current") {
+//                current_offset = current_offset + 15;
+//                offset = current_offset;
+//            }
+//            if (category == "icebox") {
+//                icebox_offset = icebox_offset + 15;
+//                offset = icebox_offset;
+//            }
+//            if (category == "done") {
+//                done_offset = done_offset + 15;
+//                offset = done_offset;
+//            }
+//            if (category == "backlog") {
+//                backlog_offset = backlog_offset + 15;
+//                offset = backlog_offset;
+//            }
+//            $.ajax({
+//                type: "GET",
+//                url: "/projects/" + $(this).attr('project_id') + "/show_more_items",
+//                dataType: "script",
+//                data: {
+//                    category : category,
+//                    offset : offset
+//                }
+//            });
+//        }
+//    });
+//
+    $('#icebox_scrolling_item_list').endlessScroll({
         fireOnce: false,
+        ceaseFire: function() {
+            return $("#icebox_infinite-scroll").length ? false : true;
+        },
         callback: function(p) {
-            var category = $(this).attr('category');
-            var offset = 0;
-            if (category == "current") {
-                current_offset = current_offset + 15;
-                offset = current_offset;
-            }
-            if (category == "icebox") {
                 icebox_offset = icebox_offset + 15;
-                offset = icebox_offset;
-            }
-            if (category == "done") {
-                done_offset = done_offset + 15;
-                offset = done_offset;
-            }
-            if (category == "backlog") {
-                backlog_offset = backlog_offset + 15;
-                offset = backlog_offset;
-            }
             $.ajax({
                 type: "GET",
                 url: "/projects/" + $(this).attr('project_id') + "/show_more_items",
                 dataType: "script",
                 data: {
-                    category : category,
-                    offset : offset
+                    category : "icebox",
+                    offset : icebox_offset
+                }
+            });
+        }
+    });
+
+    $('#backlog_scrolling_item_list').endlessScroll({
+        fireOnce: false,
+        ceaseFire: function() {
+            return $("#backlog_infinite-scroll").length ? false : true;
+        },
+        callback: function(p) {
+                backlog_offset = backlog_offset + 15;
+            $.ajax({
+                type: "GET",
+                url: "/projects/" + $(this).attr('project_id') + "/show_more_items",
+                dataType: "script",
+                data: {
+                    category : "backlog",
+                    offset : backlog_offset
+                }
+            });
+        }
+    });
+
+    $('#done_scrolling_item_list').endlessScroll({
+        fireOnce: false,
+        ceaseFire: function() {
+            return $("#done_infinite-scroll").length ? false : true;
+        },
+        callback: function(p) {
+                done_offset = done_offset + 15;
+            $.ajax({
+                type: "GET",
+                url: "/projects/" + $(this).attr('project_id') + "/show_more_items",
+                dataType: "script",
+                data: {
+                    category : "done",
+                    offset : done_offset
+                }
+            });
+        }
+    });
+
+    $('#current_scrolling_item_list').endlessScroll({
+        fireOnce: false,
+        ceaseFire: function() {
+            return $("#current_infinite-scroll").length ? false : true;
+        },
+        callback: function(p) {
+                current_offset = current_offset + 15;
+            $.ajax({
+                type: "GET",
+                url: "/projects/" + $(this).attr('project_id') + "/show_more_items",
+                dataType: "script",
+                data: {
+                    category : "current",
+                    offset : current_offset
                 }
             });
         }

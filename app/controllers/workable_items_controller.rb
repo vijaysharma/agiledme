@@ -1,5 +1,7 @@
 class WorkableItemsController < ApplicationController
 
+  before_filter :find_workable_item_and_set_project, :except => :create
+
   # POST /workable_items
   # POST /workable_items.xml
   def create
@@ -28,7 +30,6 @@ class WorkableItemsController < ApplicationController
   # PUT /workable_items/1
   # PUT /workable_items/1.xml
   def update
-    @workable_item = WorkableItem.find(params[:id])
     @pre_category = @workable_item.category
     params_req = params[:workable_item] || params[@workable_item.type.downcase]
     @workable_item.type = params_req[:type] || params_req[:type]
@@ -50,7 +51,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def update_category_and_priority
-    @workable_item = WorkableItem.find(params[:id])
 
     respond_to do |format|
       if @workable_item.prioritize_above(params[:item_dropped_on_id].to_i)
@@ -63,7 +63,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def start
-    @workable_item = WorkableItem.find(params[:id])
     @pre_category = @workable_item.category
 
     respond_to do |format|
@@ -79,8 +78,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def un_start
-    @workable_item = WorkableItem.find(params[:id])
-
     respond_to do |format|
       if @workable_item.un_start!
         @message = "Rolled back #{@workable_item.type} start."
@@ -95,7 +92,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def estimate
-    @workable_item = WorkableItem.find(params[:id])
     @message = "#{@workable_item.type} was estimated as #{params[:estimate]}"
 
     respond_to do |format|
@@ -112,8 +108,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def finish
-    @workable_item = WorkableItem.find(params[:id])
-
     respond_to do |format|
       if @workable_item.finish!
         format.js { render :template => 'workable_items/action_success' }
@@ -127,8 +121,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def un_finish
-    @workable_item = WorkableItem.find(params[:id])
-
     respond_to do |format|
       if @workable_item.un_finish!
         @message = "Rolled back #{@workable_item.type} finish."
@@ -143,8 +135,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def deliver
-    @workable_item = WorkableItem.find(params[:id])
-
     respond_to do |format|
       if @workable_item.deliver!
         format.js { render :template => 'workable_items/action_success' }
@@ -158,8 +148,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def un_deliver
-    @workable_item = WorkableItem.find(params[:id])
-
     respond_to do |format|
       if @workable_item.un_deliver!
         @message = "Rolled back #{@workable_item.type} deliver."
@@ -174,7 +162,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def accept
-    @workable_item = WorkableItem.find(params[:id])
     respond_to do |format|
       if @workable_item.accept!
         format.js { render :template => 'workable_items/action_success' }
@@ -188,8 +175,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def reject
-    @workable_item = WorkableItem.find(params[:id])
-
     respond_to do |format|
       if @workable_item.reject!
         format.js { render :template => 'workable_items/action_success' }
@@ -203,8 +188,6 @@ class WorkableItemsController < ApplicationController
   end
 
   def restart
-    @workable_item = WorkableItem.find(params[:id])
-
     respond_to do |format|
       if @workable_item.restart!
         format.js { render :template => 'workable_items/action_success' }
@@ -220,7 +203,6 @@ class WorkableItemsController < ApplicationController
   # DELETE /workable_items/1
   # DELETE /workable_items/1.xml
   def destroy
-    @workable_item = WorkableItem.find(params[:id])
     project = @workable_item.project
     @workable_item.destroy
 
@@ -232,6 +214,11 @@ class WorkableItemsController < ApplicationController
   end
 
   private
+
+  def find_workable_item_and_set_project
+    @workable_item = WorkableItem.find(params[:id])
+    @project = @workable_item.project
+  end
 
   def prepare_attachments
     attachments = []

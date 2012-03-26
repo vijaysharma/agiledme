@@ -10,17 +10,14 @@
                   :class => "button #{sub_page.eql?("Overview") ? "current" : ""}" %>
     </li>
     <li>
-      <a class="button" href="#">Settings</a>
-    </li>
-    <li>
       <%= link_to 'Members', project_project_users_path(project),
                   :class => "button #{sub_page.eql?("Members") ? "current" : ""}" %>
     </li>
     <li>
-      <a class="button" href="#">Reports</a>
+      <a class="button" title="Coming Soon" href="#">Reports</a>
     </li>
     <li>
-      <a class="button" href="#">Export</a>
+      <a class="button" title="Coming Soon" href="#">Export</a>
     </li>
     <li>
       <%= link_to 'Import', import_pivotal_csv_project_path(project),

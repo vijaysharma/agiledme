@@ -114,7 +114,6 @@ $(document).ready(function () {
 
     $(".control_button").click(function () {
         var control_button_id = $(this).attr("id");
-        alert(control_button_id);
         $("#"+ control_button_id.replace('_control_button', '')).toggle();
         $("#"+control_button_id).toggleClass('selected');
     });

@@ -10,7 +10,7 @@
         Project Profile
       </h2>
       <div class="markdown_content">
-        <p><%= @project.description %></p>
+        <p><%= truncate(@project.description, :length => 300) %></p>
       </div>
     </div>
     <div class="content_section">
@@ -63,7 +63,7 @@
 
   <div class="halfway_column">
     <div class="content_section velocity">
-      <h2>Velocity</h2>
+      <h2>Velocity Trend</h2>
       <div id="velocity_chart" style="width:360px; height:200px;"></div>
       <span class="heading"><span class="number"><%= @project.current_velocity %></span>velocity</span>
     </div>

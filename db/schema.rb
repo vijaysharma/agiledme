@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120122201403) do
+ActiveRecord::Schema.define(:version => 20120326043228) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20120122201403) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.integer  "sprint_length",   :default => 2
     t.integer  "velocity",        :default => 10
     t.boolean  "estimate_bugs",   :default => false

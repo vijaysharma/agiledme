@@ -82,6 +82,7 @@ JQueryFileUpload = function() {
         init : function() {
             // Initialize the jQuery File Upload widget:
             $('.fileupload').fileupload({
+                autoUpload: true,
                 maxNumberOfFiles: 10,
                 acceptFileTypes: /\.(jpg|jpeg|gif|png|JPG|JPEG|GIF|PNG)$/
             });
@@ -152,7 +153,6 @@ $(document).ready(function () {
     $(".labels").each(function () {
         attachTokenInput($(this));
     });
-
 
     $(document).delegate("#add_new_workable_control_button", "click", function () {
         $("#icebox").show();

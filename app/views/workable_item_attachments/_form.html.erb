@@ -6,11 +6,11 @@
   <%= form_for WorkableItemAttachment.new, :html => { :multipart => true } do |f| %>
       <div class="fileupload-buttonbar">
           <label class="fileinput-button">
-              <span>Add files...</span>
+              <span>Add Files...</span>
                 <%= f.file_field :image, :multiple => true %>
                 <%= f.hidden_field :workable_item_id, :value => workable_item.id %>
           </label>
-          <button type="submit" class="start">Start upload</button>
+          <button type="submit" class="start">Start Upload</button>
       </div>
   <% end %>
 

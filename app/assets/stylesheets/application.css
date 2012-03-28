@@ -484,7 +484,7 @@ li, ul, div {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#a90329', endColorstr = '#6d0019', GradientType = 0); /* IE6-9 */
 }
 
-.ui-button, .blueButton {
+.blueButton {
     display: inline-block;
     margin: 10px 0;
     background: #0c598c; /* Old browsers */
@@ -503,7 +503,7 @@ li, ul, div {
     border-radius: 5px;
 }
 
-.ui-button, .blueButton:hover {
+.blueButton:hover {
     background: #0c598c; /* Old browsers */
     background: -moz-linear-gradient(top, #0c598c 0%, #0b4c84 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0c598c), color-stop(100%, #0b4c84)); /* Chrome,Safari4+ */

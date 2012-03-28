@@ -16,6 +16,7 @@
 //= require jquery.tokeninput
 //= require jquery.tools.min
 //= require highcharts
+//= require autoresize.jquery.min
 //= require_self
 //= require_tree .
 
@@ -126,6 +127,10 @@ $(document).ready(function () {
     DraggableDroppable.init();
     JQueryFileUpload.init();
 
+    $('.autoresize').autoResize({
+        animate: false
+    });
+
     $(document).delegate(".closePanel", "click", function () {
         var close_panel_id = $(this).attr("id");
         $(this).parent().parent().parent().hide();
@@ -160,11 +165,11 @@ $(document).ready(function () {
         var id = $(this).attr('id');
         var item_type = $(this).attr('value');
 
-        if(item_type == "Bug"){
+        if (item_type == "Bug") {
             $("#" + id + "_image").attr({src: "<%= asset_path 'bug.png' %>"});
-        } else if (item_type == "Chore"){
+        } else if (item_type == "Chore") {
             $("#" + id + "_image").attr({src: "<%= asset_path 'chore.png' %>"});
-        }else if (item_type == "Story"){
+        } else if (item_type == "Story") {
             $("#" + id + "_image").attr({src: "<%= asset_path 'story.png' %>"});
         }
 
@@ -206,19 +211,19 @@ $(document).ready(function () {
 
     $(document).delegate(".workable_item_estimate_select", "change", function() {
         var id = $(this).attr('id');
-        if(id == -1){
+        if (id == -1) {
             $("#" + id + "_image").attr({src: "<%= asset_path 'estimate-1pt.gif' %>"});
-        } else if(id == 0){
+        } else if (id == 0) {
             $("#" + id + "_image").attr({src: "<%= asset_path 'estimate0pt.gif' %>"});
-        }else if(id == 1){
+        } else if (id == 1) {
             $("#" + id + "_image").attr({src: "<%= asset_path 'estimate1pt.gif' %>"});
-        }else if(id == 2){
+        } else if (id == 2) {
             $("#" + id + "_image").attr({src: "<%= asset_path 'estimate2pt.gif' %>"});
-        }else if(id == 3){
+        } else if (id == 3) {
             $("#" + id + "_image").attr({src: "<%= asset_path 'estimate3pt.gif' %>"});
-        }else if(id == 5){
+        } else if (id == 5) {
             $("#" + id + "_image").attr({src: "<%= asset_path 'estimate5pt.gif' %>"});
-        }else if(id == 8){
+        } else if (id == 8) {
             $("#" + id + "_image").attr({src: "<%= asset_path 'estimate8pt.gif' %>"});
         }
     });
@@ -503,7 +508,7 @@ $(document).ready(function () {
             return $("#icebox_infinite-scroll").length ? false : true;
         },
         callback: function(p) {
-                icebox_offset = icebox_offset + 15;
+            icebox_offset = icebox_offset + 15;
             $.ajax({
                 type: "GET",
                 url: "/projects/" + $(this).attr('project_id') + "/show_more_items",
@@ -522,7 +527,7 @@ $(document).ready(function () {
             return $("#backlog_infinite-scroll").length ? false : true;
         },
         callback: function(p) {
-                backlog_offset = backlog_offset + 15;
+            backlog_offset = backlog_offset + 15;
             $.ajax({
                 type: "GET",
                 url: "/projects/" + $(this).attr('project_id') + "/show_more_items",
@@ -541,7 +546,7 @@ $(document).ready(function () {
             return $("#done_infinite-scroll").length ? false : true;
         },
         callback: function(p) {
-                done_offset = done_offset + 15;
+            done_offset = done_offset + 15;
             $.ajax({
                 type: "GET",
                 url: "/projects/" + $(this).attr('project_id') + "/show_more_items",
@@ -560,7 +565,7 @@ $(document).ready(function () {
             return $("#current_infinite-scroll").length ? false : true;
         },
         callback: function(p) {
-                current_offset = current_offset + 15;
+            current_offset = current_offset + 15;
             $.ajax({
                 type: "GET",
                 url: "/projects/" + $(this).attr('project_id') + "/show_more_items",

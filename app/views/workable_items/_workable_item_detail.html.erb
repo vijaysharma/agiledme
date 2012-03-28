@@ -30,7 +30,7 @@
                          :cols => 1,
                          :rows => 1,
                          :id =>"#{item_unique_id}_title",
-                         :class => 'titleInputField autoresize expand17-99999' %>
+                         :class => 'titleInputField autoresize' %>
         <div class="clear">
         </div>
       </div>
@@ -191,7 +191,11 @@
           </div>
         </div>
         <div>
-          <%= wi.text_area :description, :cols => 1, :rows => 1, :class => 'textAreaFocus description_area autoresize expand17-99999' %>
+          <%= wi.text_area :description,
+                           :cols => 1,
+                           :rows => 1,
+                           :id => "#{item_unique_id}_description",
+                           :class => 'textAreaFocus description_area autoresize' %>
         </div>
       </div>
     </div>
@@ -208,7 +212,7 @@
         <div class="add_task">
           <textarea id="<%= "#{item_unique_id}_new_task_description" %>"
                     cols="1" rows="1"
-                    class="tasksTextArea autoresize expand17-99999 new_task_text">add new task</textarea>
+                    class="tasksTextArea autoresize new_task_text">add new task</textarea>
               <span id="<%= "#{item_unique_id}_new_task_add_link" %>" class="add_task" style="display:none;">
                 <%= link_to_add_task_fields "Add", wi, :tasks, item_unique_id %>
               </span>
@@ -230,7 +234,7 @@
         <div class="add_comment">
           <textarea id="<%= "#{item_unique_id}_new_comment_description" %>"
                     cols="20" rows="1"
-                    class="tasksTextArea autoresize expand17-99999 new_comment_text">add new comment</textarea>
+                    class="tasksTextArea autoresize new_comment_text">add new comment</textarea>
 
           <div class="commentText">(Format using *<b>bold</b>* and _<i>italic</i>_ text.)</div>
               <span id="<%= "#{item_unique_id}_new_comment_add_link" %>" class="add_comment" style="display:none;">

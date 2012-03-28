@@ -42,7 +42,11 @@
                             :title => "Estimate: 0 points" %>
           <% end %>
           <% if workable_item.description.present? or workable_item.comments.present? or workable_item.tasks.present? %>
+              <% if workable_item.workable_item_attachments.present? %>
+                  <%= image_tag "story_flyover_attachment_icon.png", :class => "flyoverIcon" %>
+              <% else %>
               <%= image_tag "story_flyover_icon.png", :class => "flyoverIcon" %>
+              <% end %>
           <% end %>
         </div>
       </div>
@@ -62,10 +66,10 @@
                   <% owner = User.find(workable_item.owner) %>
                   <a href="#" id="<%= owner.email %>"
                      project_id="<%= @project.id %>"
-                      title="<%= owner.display_name %>"
-                      value="mywork:<%= owner.initials_display_name %>"
-                      class="storyOwnerInitials searchable">
-              (<%= owner.initials_display_name %>)</a>
+                     title="<%= owner.display_name %>"
+                     value="mywork:<%= owner.initials_display_name %>"
+                     class="storyOwnerInitials searchable">
+                    (<%= owner.initials_display_name %>)</a>
               <% end %>
             </span>
       </div>

@@ -9,7 +9,7 @@ development:
   adapter: postgresql
   encoding: utf8
   reconnect: false
-  database: agiledme_development_non_existent
+  database: agiledme_development
   pool: 5
   username: postgres
   password: password

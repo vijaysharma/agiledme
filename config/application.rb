@@ -47,5 +47,8 @@ module Agiledme
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    #this is so that the asset precompile does not try to connect to the database on heruko
+    config.assets.initialize_on_precompile = false
   end
 end

@@ -36,7 +36,7 @@ Agiledme::Application.configure do
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
-  config.active_record.auto_explain_threshold_in_seconds = 0.1
+  config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # Just for the RubyMine IDE to get away from the segmentation fault error that I was getting.
   # Not required if you start the server form console

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120326043228) do
+ActiveRecord::Schema.define(:version => 20120329075312) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
@@ -18,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20120326043228) do
     t.integer  "posted_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["posted_by"], :name => "index_comments_on_posted_by"
+    t.index ["workable_item_id"], :name => "index_comments_on_workable_item_id"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -31,9 +34,8 @@ ActiveRecord::Schema.define(:version => 20120326043228) do
     t.string   "locked_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["priority", "run_at"], :name => "delayed_jobs_priority"
   end
-
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "epics", :force => true do |t|
     t.string   "title"
@@ -43,12 +45,15 @@ ActiveRecord::Schema.define(:version => 20120326043228) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["project_id"], :name => "index_epics_on_project_id"
+    t.index ["user_id"], :name => "index_epics_on_user_id"
   end
 
   create_table "labels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["name"], :name => "index_labels_on_name"
   end
 
   create_table "project_users", :force => true do |t|
@@ -58,6 +63,8 @@ ActiveRecord::Schema.define(:version => 20120326043228) do
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["project_id"], :name => "index_project_users_on_project_id"
+    t.index ["user_id"], :name => "index_project_users_on_user_id"
   end
 
   create_table "projects", :force => true do |t|
@@ -80,6 +87,9 @@ ActiveRecord::Schema.define(:version => 20120326043228) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["created_by"], :name => "index_tasks_on_created_by"
+    t.index ["finished_by"], :name => "index_tasks_on_finished_by"
+    t.index ["workable_item_id"], :name => "index_tasks_on_workable_item_id"
   end
 
   create_table "users", :force => true do |t|
@@ -106,12 +116,11 @@ ActiveRecord::Schema.define(:version => 20120326043228) do
     t.datetime "updated_at"
     t.string   "initials"
     t.string   "name"
+    t.index ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
+    t.index ["email"], :name => "index_users_on_email", :unique => true
+    t.index ["invitation_token"], :name => "index_users_on_invitation_token", :unique => true
+    t.index ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   end
-
-  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "workable_item_attachments", :force => true do |t|
     t.integer  "workable_item_id"
@@ -120,6 +129,8 @@ ActiveRecord::Schema.define(:version => 20120326043228) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["user_id"], :name => "index_workable_item_attachments_on_user_id"
+    t.index ["workable_item_id"], :name => "index_workable_item_attachments_on_workable_item_id"
   end
 
   create_table "workable_item_histories", :force => true do |t|
@@ -129,6 +140,9 @@ ActiveRecord::Schema.define(:version => 20120326043228) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["project_id"], :name => "index_workable_item_histories_on_project_id"
+    t.index ["user_id"], :name => "index_workable_item_histories_on_user_id"
+    t.index ["workable_item_id"], :name => "index_workable_item_histories_on_workable_item_id"
   end
 
   create_table "workable_item_labels", :force => true do |t|
@@ -136,6 +150,8 @@ ActiveRecord::Schema.define(:version => 20120326043228) do
     t.integer  "label_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["label_id"], :name => "index_workable_item_labels_on_label_id"
+    t.index ["workable_item_id"], :name => "index_workable_item_labels_on_workable_item_id"
   end
 
   create_table "workable_items", :force => true do |t|
@@ -157,6 +173,8 @@ ActiveRecord::Schema.define(:version => 20120326043228) do
     t.datetime "rejected_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["category"], :name => "index_workable_items_on_category"
+    t.index ["project_id"], :name => "index_workable_items_on_project_id"
   end
 
 end

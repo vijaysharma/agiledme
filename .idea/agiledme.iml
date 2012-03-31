@@ -90,6 +90,12 @@
     </requirement>
     <requirement>
       <requirement>
+        <dependency name="schema_plus" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source from="Gemfile" />
+    </requirement>
+    <requirement>
+      <requirement>
         <dependency name="uglifier" version="1.0.3" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
       </requirement>
       <source from="Gemfile" />
@@ -139,6 +145,7 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] actionpack (v3.2.2, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/actionpack-3.2.2)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] coffee-script (v2.2.0, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/coffee-script-2.2.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] sass (v3.1.15, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.15)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] schema_plus (v0.3.4, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/schema_plus-0.3.4)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] best_in_place (v0.1.9, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/bundler/gems/best_in_place-f101f00e2023)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rack (v1.2.5, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/rack-1.2.5)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] sprockets (v2.1.2, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/sprockets-2.1.2)" level="application" />

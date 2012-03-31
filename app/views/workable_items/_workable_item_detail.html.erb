@@ -73,27 +73,7 @@
         <td colspan="1" class="lastCell">
           <div id="<%= "#{item_unique_id}_help_story_types" %>">
             <%= image_tag("question_mark.gif", :alt => "Story type help", :class => "helpIcon" ) %>
-
-            <div class="tooltip">
-              <div class="storyTitle">Story Types</div>
-              <div class="sectionDivider">
-              </div>
-              <div class="tooltip_desc">There are 4 types of story:
-                <ul>
-                  <li>A <b>Feature</b> is a story that provides verifiable business value to the team's customer.
-                    Usually it is requested by the customer.
-                  </li>
-                  <li>A <b>Chore</b> is a story that does not provide verifiable business value to the team's customer
-                    but is deemed necessary by the team in order to keep moving forward. Usually it is not requested by
-                    the customer.
-                  </li>
-                  <li>A <b>Bug</b> is a story that describes a defect in some accepted story.</li>
-                  <li>A <b>Release marker</b> is a story that marks the end of some group of stories that constitutes a
-                    release.
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <%= render :partial => 'workable_items/story_type_tooltip' %>
           </div>
         </td>
       </tr>
@@ -115,16 +95,7 @@
         <td colspan="1">
           <div id="<%= "#{item_unique_id}_help_estimates" %>">
             <%= image_tag("question_mark.gif", :alt => "Story estimation help", :class => "helpIcon" ) %>
-
-            <div class="tooltip">
-              <div class="storyTitle">Estimates</div>
-              <div class="sectionDivider">
-              </div>
-              <div class="tooltip_desc">We estimate Features in <b>Points</b>. A Point is a team-specific measurement
-                of the effort required to implement a Feature. Estimates are used to calculate the team's
-                <b>Velocity</b>.
-              </div>
-            </div>
+            <%= render :partial => 'workable_items/story_estimate_tooltip' %>
           </div>
         </td>
       </tr>
@@ -178,14 +149,7 @@
           <div class="label">Description</div>
           <div id="<%= "#{item_unique_id}_help_story_description" %>">
             <%= image_tag("question_mark.gif", :alt => "Story description help", :class => "helpIcon" ) %>
-            <div class="tooltip">
-              <div class="storyTitle">Description</div>
-              <div class="sectionDivider"></div>
-              <div class="tooltip_desc">A story's description should contain the criteria for the acceptance of the
-                story. This may take the form of user requirements, acceptance tests, a link to an external document,
-                etc.
-              </div>
-            </div>
+            <%= render :partial => 'workable_items/story_description_tooltip' %>
           </div>
           <div class="clear">
           </div>

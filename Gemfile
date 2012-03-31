@@ -24,6 +24,7 @@ gem "kaminari"
 gem "best_in_place", :git => 'git://github.com/proton/best_in_place.git'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'schema_plus'
 
 # Use unicorn as the web server
 # gem 'unicorn'

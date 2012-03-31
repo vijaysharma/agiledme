@@ -24,6 +24,12 @@ small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, l
     outline: none;
 }
 
+.icon {
+    float: left;
+    margin-top: -8px;
+    padding-right: 10px;
+}
+
 html {
     vertical-align: baseline;
 }

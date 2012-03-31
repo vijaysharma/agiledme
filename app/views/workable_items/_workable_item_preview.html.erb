@@ -42,11 +42,9 @@
                             :title => "Estimate: 0 points" %>
           <% end %>
           <% if workable_item.description.present? or workable_item.comments.present? or workable_item.tasks.present? %>
-              <% if workable_item.workable_item_attachments.present? %>
-                  <%= image_tag "story_flyover_attachment_icon.png", :class => "flyoverIcon" %>
-              <% else %>
-              <%= image_tag "story_flyover_icon.png", :class => "flyoverIcon" %>
-              <% end %>
+              <% img = workable_item.workable_item_attachments.present? ? "story_flyover_attachment_icon.png" : "story_flyover_icon.png" %>
+              <%= image_tag(img, :alt => "Story type help", :class => "flyoverIcon helpIcon") %>
+              <%= render :partial => 'workable_items/story_type_tooltip' %>
           <% end %>
         </div>
       </div>

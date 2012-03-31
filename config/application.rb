@@ -11,6 +11,7 @@ end
 
 module Agiledme
   class Application < Rails::Application
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
@@ -50,5 +51,6 @@ module Agiledme
 
     #this is so that the asset precompile does not try to connect to the database on heruko
     config.assets.initialize_on_precompile = false
+
   end
 end

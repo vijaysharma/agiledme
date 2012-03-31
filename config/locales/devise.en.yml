@@ -50,7 +50,7 @@ en:
       failure: 'Could not authorize you from %{kind} because "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'SCRUM COOK: Confirm your WHITE APPLE account'
+        subject: 'SCRUM COOK: Confirm your SCRUM COOK account'
       reset_password_instructions:
         subject: 'SCRUM COOK: Reset password instructions'
       unlock_instructions:

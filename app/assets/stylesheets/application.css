@@ -34,6 +34,11 @@ html {
     vertical-align: baseline;
 }
 
+.center {
+    margin: 0 auto;
+    width: 960px;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
@@ -579,8 +584,9 @@ li, ul, div {
     -webkit-border-radius: 10px;
     -o-border-radius: 10px;
     border-radius: 10px;
-    margin-left: 435px;
+    margin-left: 300px;
     margin-top: 170px;
+    margin-bottom: 170px;
 }
 
 .registration label {

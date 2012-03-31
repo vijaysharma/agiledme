@@ -1,3 +1,4 @@
+<% title "Login ... Get AGILED!!" %>
 <div class="registration">
   <h3>Login ... Get AGILED!!</h3>
 
@@ -11,15 +12,13 @@
         <%= f.password_field :password %>
       </div>
 
-      <% if devise_mapping.rememberable? -%>
-          <div>
+      <div>
+        <% if devise_mapping.rememberable? -%>
             <%= f.label :remember_me %>
             <%= f.check_box :remember_me %>
-          </div>
-      <% end -%>
-
-      <span class="redButton"><input type="submit" value="Sign In"/></span>
+        <% end -%>
+        <span class="redButton"><input type="submit" value="Sign In"/></span>
+      </div>
   <% end %>
-
   <%= render :partial => "users/shared/links" %>
 </div>

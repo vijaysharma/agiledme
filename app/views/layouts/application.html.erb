@@ -10,13 +10,14 @@
   <%= csrf_meta_tag %>
   <script>
 
-    //do not move this to application.js, otherwise all the non GET ajax request
-    // will start resulting into a session logout because the WARNING: Can't verify CSRF token authenticity
-      $(document).ajaxSend(function(e, xhr, options) {
-          $(".ajax-loader").show();
-          var token = $("meta[name='csrf-token']").attr("content");
-          xhr.setRequestHeader("X-CSRF-Token", token);
-      }).ajaxComplete(function(){
+      //do not move this to application.js, otherwise all the non GET ajax request
+      // will start resulting into a session logout because the WARNING: Can't verify CSRF token authenticity
+      $(document).ajaxSend(
+              function(e, xhr, options) {
+                  $(".ajax-loader").show();
+                  var token = $("meta[name='csrf-token']").attr("content");
+                  xhr.setRequestHeader("X-CSRF-Token", token);
+              }).ajaxComplete(function() {
           $(".ajax-loader").hide();
       });
   </script>
@@ -25,7 +26,6 @@
 
 <div class="clearfix" id="header">
   <h1><a href="/">WHITE <%= image_tag 'icon_048.png', :class => "icon" %> APPLE</a></h1>
-
   <div class="navigation_area clearfix">
     <% if !user_signed_in? %>
         <div class="welcome_message">
@@ -62,7 +62,7 @@
 </div>
 
 <div class="main">
-  <div class="content">
+  <div class="<%= !user_signed_in? ? "content center" : "content" %>" >
     <%= yield %>
     <div class="clear"></div>
   </div>

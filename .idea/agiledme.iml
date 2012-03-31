@@ -141,6 +141,8 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] uglifier (v1.2.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/uglifier-1.2.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] sass-rails (v3.2.5, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/sass-rails-3.2.5)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] sass (v3.1.15, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/sass-3.1.15)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] schema_plus (v0.3.4, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/schema_plus-0.3.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] valuable (v0.9.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/valuable-0.9.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] best_in_place (v0.1.9, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/bundler/gems/best_in_place-f101f00e2023)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] erubis (v2.7.0, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/erubis-2.7.0)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] hike (v1.2.1, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/hike-1.2.1)" level="application" />

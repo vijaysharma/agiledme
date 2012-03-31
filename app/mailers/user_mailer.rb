@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
     mail(:template_path => 'users/mailer',
          :template_name => 'join_project_invitation',
          :to => user.email,
-         :subject => "WHITE APPLE : Invitation to join the Project : #{project.name}")
+         :subject => "SCRUM COOK : Invitation to join the Project : #{project.name}")
   end
 
 end

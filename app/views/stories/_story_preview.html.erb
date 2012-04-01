@@ -1,5 +1,5 @@
 <% item_unique_id = "#{story.id}"
-   class_for_item = "unscheduled"
+   class_for_item = ""
    cursor_style = "cursor: move;"
    if story.not_yet_started? and (story.is_ready?)
        class_for_item = "unstarted"
@@ -9,9 +9,10 @@
    if story.accepted?
        cursor_style = "cursor: default;"
    end
-   if (story.category == 'icebox')
+   if !story.is_a?(Epic) and story.category == 'icebox'
        class_for_item += " unscheduled"
    end
+
 %>
 
 <div id="<%= "#{item_unique_id}_preview" %>" class="item">

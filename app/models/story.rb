@@ -109,11 +109,11 @@ class Story < ActiveRecord::Base
   end
 
   def is_unestimated?
-    is_estimatable? and is_estimated?
+    is_estimatable? and !is_estimated?
   end
 
   def is_estimatable?
-    raise "wrong call"
+    raise "wrong call : #{self.inspect}"
   end
 
   def add_history(event)

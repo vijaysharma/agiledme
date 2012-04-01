@@ -6,10 +6,9 @@ class StoriesController < ApplicationController
   # POST /stories.xml
   def create
     @project = Project.find(params[:project_id])
-    @story = Story.new(params[:story])
+    @story = get_story_object(params[:story][:type])
     @story.project = @project
 
-    @story.type = params[:story][:type]
     @story.story_attachments = StoryAttachment.where(:user_id => current_user.id, :story_id => nil)
     respond_to do |format|
       if @story.save
@@ -24,6 +23,18 @@ class StoriesController < ApplicationController
         format.html { redirect_to(project_url(@story.project), :notice => @story.type + ' ERROR.') }
         format.xml { render :xml => @story.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  def get_story_object(type)
+    if type == "Feature"
+      Feature.new(params[:story])
+    elsif type == "Bug"
+      Bug.new(params[:story])
+    elsif type == "Chore"
+      Chore.new(params[:story])
+    elsif type == "Epic"
+      Epic.new(params[:story])
     end
   end
 

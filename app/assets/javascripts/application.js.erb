@@ -177,7 +177,7 @@ $(document).ready(function () {
         }
 
         var estimate_id = id.replace("type", "estimate");
-        if ((item_type == "Bug" && !estimate_bugs) || (item_type == "Chore" && !estimate_chores)) {
+        if ((item_type == "Bug" && !estimate_bugs) || (item_type == "Chore" && !estimate_chores) || (item_type == "Epic")) {
             $("#" + estimate_id).attr("disabled", true);
         } else {
             $("#" + estimate_id).attr("disabled", false);

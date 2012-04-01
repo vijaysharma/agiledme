@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
 
   MINIMUM_POSSIBLE_PRIORITY = 0
+  UN_ESTIMATED_VALUE = -1
   include AASM
 
   belongs_to :project
@@ -96,26 +97,30 @@ class Story < ActiveRecord::Base
   end
 
   def self.estimates
-    {"Unestimated" => -1, "0 Points" => 0, "1 Points" => 1, "2 Points" => 2, "3 Points" => 3, "5 Points" => 5, "8 Points" => 8}
+    {"Unestimated" => UN_ESTIMATED_VALUE, "0 Points" => 0, "1 Points" => 1, "2 Points" => 2, "3 Points" => 3, "5 Points" => 5, "8 Points" => 8}
   end
 
   def is_ready?
-    !is_estimatable? or (is_estimatable? and self.estimate != -1)
+    !is_estimatable? or (is_estimatable? and is_estimated?)
+  end
+
+  def is_estimated?
+    self.estimate.present? and self.estimate != UN_ESTIMATED_VALUE
   end
 
   def is_unestimated?
-    is_estimatable? and (self.estimate.blank? or self.estimate < MINIMUM_POSSIBLE_PRIORITY)
+    is_estimatable? and is_estimated?
   end
 
   def is_estimatable?
-    true
+    raise "wrong call"
   end
 
   def add_history(event)
     StoryHistory.new(:event => event,
-                            :user_id => User.current_user.id,
-                            :story_id => self.id,
-                            :project_id => self.project.id).save!
+                     :user_id => User.current_user.id,
+                     :story_id => self.id,
+                     :project_id => self.project.id).save!
   end
 
   def prioritize_above(other_item_id)

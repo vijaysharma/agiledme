@@ -30,7 +30,7 @@
 
         <div class="left">
           <%= image_tag "#{story.type.downcase}.png", :class => "storyTypeIcon" %>
-          <% if story.is_estimatable? and story.estimate != -1 %>
+          <% if story.is_estimatable? and story.is_estimated? %>
               <%= image_tag "estimate#{story.estimate}pt.gif",
                             :width => 6,
                             :class => "estimateIcon",

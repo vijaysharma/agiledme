@@ -1,0 +1,13 @@
+<% draggable_droppable = ""
+   if !story.accepted?
+       draggable_droppable = " draggable droppable"
+   end
+%>
+<div id="<%= "#{story.id}_item_box" %>" class="<%= draggable_droppable %>" project_id="<%= "#{story.project.id}" %>">
+  <div id="<%= "#{story.id}_preview_box" %>">
+    <%= render :partial => 'stories/story_preview', :locals => {:story => story} %>
+  </div>
+  <div id="<%= "#{story.id}_detail_box" %>">
+    <%= render :partial => 'stories/story_detail', :locals => {:story => story} %>
+  </div>
+</div>

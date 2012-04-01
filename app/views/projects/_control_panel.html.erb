@@ -52,10 +52,10 @@
           </div>
 
           <ul class="clearfix" id="panelList">
-            <% WorkableItem.categories.each do |category| %>
+            <% Story.categories.each do |category| %>
                 <% button_class = 'selected' %>
                 <% if category != 'icebox' %>
-                    <% button_class = current_project.workable_items.where(:category => category).present? ? 'selected' : '' %>
+                    <% button_class = current_project.stories.where(:category => category).present? ? 'selected' : '' %>
                 <% end %>
                 <li>
                   <a id="<%= "#{category}_control_button" %>" href="#" class="<%= "control_button button #{button_class}" %>"><%= category.capitalize %></a>
@@ -74,7 +74,7 @@
           </div>
 
           <ul class="clearfix" id="panelList">
-            <% sprint_work = @project.workable_items.select { |wi| wi.category.eql? "current" } %>
+            <% sprint_work = @project.stories.select { |wi| wi.category.eql? "current" } %>
             <li>
               <a id="dev_ready_control_button" href="#"
                  class="<%= "control_button button #{sprint_work.select { |wi| wi.not_yet_started? }.present? ? "selected" : ""}" %>">

@@ -24,13 +24,13 @@
   <%= @epic.user.email %>
 </p>
 
-<% @epic.workable_items.each do |workable_item| %>
-    <%= render :partial => 'workable_items/workable_item', :locals => {:workable_item => workable_item} %>
+<% @epic.stories.each do |story| %>
+    <%= render :partial => 'stories/story', :locals => {:story => story} %>
 <% end %>
 
 <%= link_to 'Edit', edit_epic_path(@epic) %> |
 <%= link_to 'Back', project_path(@epic.project) %>
 <% if !@epic.finished? %>
-    | <%= link_to "Break it Down", new_workable_item_path(:project => @epic.project, :epic => @epic, :type => "Feature") %>
+    | <%= link_to "Break it Down", new_story_path(:project => @epic.project, :epic => @epic, :type => "Feature") %>
     | <%= link_to "Finish Epic", finish_epic_path(@epic) %>
 <% end %>

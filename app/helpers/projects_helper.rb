@@ -3,7 +3,7 @@ module ProjectsHelper
   def link_to_add_task_fields(name, f, association, item_id)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-      render("workable_items/"+association.to_s.singularize + "_fields", :f => builder)
+      render("stories/"+association.to_s.singularize + "_fields", :f => builder)
     end
     link_to_function(name, ("add_task_fields(this, '#{association.to_s.singularize}', '#{escape_javascript(fields)}')"), :id => "#{item_id}_add_task")
   end
@@ -11,54 +11,54 @@ module ProjectsHelper
   def link_to_add_comment_fields(name, f, association, item_id)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-      render("workable_items/"+association.to_s.singularize + "_fields", :f => builder)
+      render("stories/"+association.to_s.singularize + "_fields", :f => builder)
     end
     link_to_function(name, ("add_comment_fields(this, '#{association.to_s.singularize}', '#{escape_javascript(fields)}')"), :id => "#{item_id}_add_comment")
   end
 
   def velocity_chart_series(project, start_time)
-    workable_items = nil
+    stories = nil
     if !project.estimate_bugs? and !project.estimate_chores?
-      workable_items = project.workable_items.where(" status in ('delivered', 'accepted')")
+      stories = project.stories.where(" status in ('delivered', 'accepted')")
     elsif project.estimate_bugs?
-      workable_items = project.workable_items.where(" status in ('delivered', 'accepted') and type != 'Chore'")
+      stories = project.stories.where(" status in ('delivered', 'accepted') and type != 'Chore'")
     elsif project.estimate_chores?
-      workable_items = project.workable_items.where(" status in ('delivered', 'accepted') and type != 'Bug'")
+      stories = project.stories.where(" status in ('delivered', 'accepted') and type != 'Bug'")
     end
-    if workable_items
-      workable_items_by_day = workable_items.where(:delivered_at => start_time.beginning_of_day..Time.zone.now.end_of_day).
+    if stories
+      stories_by_day = stories.where(:delivered_at => start_time.beginning_of_day..Time.zone.now.end_of_day).
           group("delivered_at, priority").
           select("priority, delivered_at, sum(estimate) as estimate")
       (start_time.to_date..Date.today).map do |date|
-        workable_item = workable_items_by_day.detect { |workable_item| workable_item.delivered_at.to_date == date }
-        workable_item && workable_item.estimate || 0
+        story = stories_by_day.detect { |story| story.delivered_at.to_date == date }
+        story && story.estimate || 0
       end.inspect
     end
   end
 
   def actual_burndown_chart_data_series(project)
-    workable_items = nil
+    stories = nil
     if !project.estimate_bugs? and !project.estimate_chores?
-      workable_items = project.workable_items.where(" status in ('delivered', 'accepted') and category = 'current'")
+      stories = project.stories.where(" status in ('delivered', 'accepted') and category = 'current'")
     elsif project.estimate_bugs?
-      workable_items = project.workable_items.where(" status in ('delivered', 'accepted') and category = 'current' and type != 'Chore'")
+      stories = project.stories.where(" status in ('delivered', 'accepted') and category = 'current' and type != 'Chore'")
     elsif project.estimate_chores?
-      workable_items = project.workable_items.where(" status in ('delivered', 'accepted') and category = 'current' and type != 'Bug'")
+      stories = project.stories.where(" status in ('delivered', 'accepted') and category = 'current' and type != 'Bug'")
     end
     start_time = project.current_sprint_start_date
-    if workable_items
-      workable_items_by_day = workable_items.where(:delivered_at => start_time.beginning_of_day..Date.today.end_of_day).
+    if stories
+      stories_by_day = stories.where(:delivered_at => start_time.beginning_of_day..Date.today.end_of_day).
           group("delivered_at, priority").
           select("delivered_at as date, sum(estimate) as estimate")
 
-      workable_items_by_day.concat workable_items.where(:accepted_at => start_time.beginning_of_day..Date.today.end_of_day).
+      stories_by_day.concat stories.where(:accepted_at => start_time.beginning_of_day..Date.today.end_of_day).
           group("accepted_at, priority").
           select("accepted_at as date, sum(estimate) as estimate")
 
       sprint_commitment = project.sprint_commitment
       (start_time..Date.today).map do |date|
-        workable_item = workable_items_by_day.detect { |workable_item| workable_item.date.to_date == date }
-        sprint_commitment = sprint_commitment - (workable_item && workable_item.estimate || 0)
+        story = stories_by_day.detect { |story| story.date.to_date == date }
+        sprint_commitment = sprint_commitment - (story && story.estimate || 0)
       end.inspect
     end
   end

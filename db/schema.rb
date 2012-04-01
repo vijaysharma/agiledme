@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120329075312) do
+ActiveRecord::Schema.define(:version => 20120401060701) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment"
-    t.integer  "workable_item_id"
+    t.integer  "story_id"
     t.integer  "posted_by"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "comments", ["posted_by"], :name => "index_comments_on_posted_by"
-  add_index "comments", ["workable_item_id"], :name => "index_comments_on_workable_item_id"
+  add_index "comments", ["story_id"], :name => "index_comments_on_workable_item_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -84,19 +84,78 @@ ActiveRecord::Schema.define(:version => 20120329075312) do
     t.datetime "updated_at",                         :null => false
   end
 
+  create_table "stories", :force => true do |t|
+    t.text     "title",        :default => "As a <role>, I want <goal/desire> so that <benefit>"
+    t.text     "description"
+    t.integer  "requester"
+    t.integer  "owner"
+    t.integer  "project_id"
+    t.integer  "epic_id"
+    t.string   "status"
+    t.integer  "estimate"
+    t.string   "type"
+    t.string   "category",     :default => "icebox"
+    t.integer  "priority",     :default => 0
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.datetime "delivered_at"
+    t.datetime "accepted_at"
+    t.datetime "rejected_at"
+    t.datetime "created_at",                                                                      :null => false
+    t.datetime "updated_at",                                                                      :null => false
+  end
+
+  add_index "stories", ["category"], :name => "index_workable_items_on_category"
+  add_index "stories", ["project_id"], :name => "index_workable_items_on_project_id"
+
+  create_table "story_attachments", :force => true do |t|
+    t.integer  "story_id"
+    t.string   "image"
+    t.string   "content_type"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "story_attachments", ["story_id"], :name => "index_workable_item_attachments_on_workable_item_id"
+  add_index "story_attachments", ["user_id"], :name => "index_workable_item_attachments_on_user_id"
+
+  create_table "story_histories", :force => true do |t|
+    t.text     "event"
+    t.integer  "user_id"
+    t.integer  "story_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "story_histories", ["project_id"], :name => "index_workable_item_histories_on_project_id"
+  add_index "story_histories", ["story_id"], :name => "index_workable_item_histories_on_workable_item_id"
+  add_index "story_histories", ["user_id"], :name => "index_workable_item_histories_on_user_id"
+
+  create_table "story_labels", :force => true do |t|
+    t.integer  "story_id"
+    t.integer  "label_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "story_labels", ["label_id"], :name => "index_workable_item_labels_on_label_id"
+  add_index "story_labels", ["story_id"], :name => "index_workable_item_labels_on_workable_item_id"
+
   create_table "tasks", :force => true do |t|
     t.text     "description"
-    t.integer  "workable_item_id"
+    t.integer  "story_id"
     t.integer  "created_by"
     t.integer  "finished_by"
     t.string   "status"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "tasks", ["created_by"], :name => "index_tasks_on_created_by"
   add_index "tasks", ["finished_by"], :name => "index_tasks_on_finished_by"
-  add_index "tasks", ["workable_item_id"], :name => "index_tasks_on_workable_item_id"
+  add_index "tasks", ["story_id"], :name => "index_tasks_on_workable_item_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                :default => "", :null => false
@@ -129,64 +188,5 @@ ActiveRecord::Schema.define(:version => 20120329075312) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "workable_item_attachments", :force => true do |t|
-    t.integer  "workable_item_id"
-    t.string   "image"
-    t.string   "content_type"
-    t.integer  "user_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  add_index "workable_item_attachments", ["user_id"], :name => "index_workable_item_attachments_on_user_id"
-  add_index "workable_item_attachments", ["workable_item_id"], :name => "index_workable_item_attachments_on_workable_item_id"
-
-  create_table "workable_item_histories", :force => true do |t|
-    t.text     "event"
-    t.integer  "user_id"
-    t.integer  "workable_item_id"
-    t.integer  "project_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  add_index "workable_item_histories", ["project_id"], :name => "index_workable_item_histories_on_project_id"
-  add_index "workable_item_histories", ["user_id"], :name => "index_workable_item_histories_on_user_id"
-  add_index "workable_item_histories", ["workable_item_id"], :name => "index_workable_item_histories_on_workable_item_id"
-
-  create_table "workable_item_labels", :force => true do |t|
-    t.integer  "workable_item_id"
-    t.integer  "label_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  add_index "workable_item_labels", ["label_id"], :name => "index_workable_item_labels_on_label_id"
-  add_index "workable_item_labels", ["workable_item_id"], :name => "index_workable_item_labels_on_workable_item_id"
-
-  create_table "workable_items", :force => true do |t|
-    t.text     "title",        :default => "As a <role>, I want <goal/desire> so that <benefit>"
-    t.text     "description"
-    t.integer  "requester"
-    t.integer  "owner"
-    t.integer  "project_id"
-    t.integer  "epic_id"
-    t.string   "status"
-    t.integer  "estimate"
-    t.string   "type"
-    t.string   "category",     :default => "icebox"
-    t.integer  "priority",     :default => 0
-    t.datetime "started_at"
-    t.datetime "finished_at"
-    t.datetime "delivered_at"
-    t.datetime "accepted_at"
-    t.datetime "rejected_at"
-    t.datetime "created_at",                                                                      :null => false
-    t.datetime "updated_at",                                                                      :null => false
-  end
-
-  add_index "workable_items", ["category"], :name => "index_workable_items_on_category"
-  add_index "workable_items", ["project_id"], :name => "index_workable_items_on_project_id"
 
 end

@@ -1,2 +1,2 @@
-class Feature < WorkableItem
+class Feature < Story
 end

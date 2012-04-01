@@ -14,20 +14,20 @@ Agiledme::Application.routes.draw do
       post :upload_pivotal_csv, :search
     end
     resources :project_users
-    resources :workable_items do
+    resources :stories do
       member do
         get :start, :finish, :deliver, :accept, :reject, :restart, :estimate, :un_start, :un_finish, :un_deliver
         put :update_category_and_priority
       end
-      resources :workable_item_histories
+      resources :story_histories
 
     end
-    resources :features, :controller => :workable_items
-    resources :bugs, :controller => :workable_items
-    resources :chores, :controller => :workable_items
+    resources :features, :controller => :stories
+    resources :bugs, :controller => :stories
+    resources :chores, :controller => :stories
   end
 
-  resources :workable_item_attachments do
+  resources :story_attachments do
     member do
       get :download_attachment
     end

@@ -1,10 +1,10 @@
 <% if @error.present? %>
     ajax_flash_notice("<%="#{@error}"%>");
 <% else %>
-    $('#panels').append('<%=escape_javascript render :partial => 'projects/workable_items_panel', :locals => {:workable_items => @search_results, :category => "search", :search_term => @search_term } %>');
+    $('#panels').append('<%=escape_javascript render :partial => 'projects/stories_panel', :locals => {:stories => @search_results, :category => "search", :search_term => @search_term } %>');
     <% if @search_results.present? %>
-        <% @search_results.each do |workable_item| %>
-        attachTokenInput($('#<%= workable_item.id %>_labels'));
+        <% @search_results.each do |story| %>
+        attachTokenInput($('#<%= story.id %>_labels'));
         <% end %>
     <% end %>
 <% end %>

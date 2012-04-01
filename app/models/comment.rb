@@ -1,8 +1,8 @@
 class Comment < ActiveRecord::Base
-  belongs_to :workable_item
+  belongs_to :story
 
   before_create :add_posted_by
-  after_create :add_workable_item_history
+  after_create :add_story_history
 
   validates_presence_of :comment
 
@@ -12,8 +12,8 @@ class Comment < ActiveRecord::Base
 
   private
 
-  def add_workable_item_history
-    self.workable_item.add_history("added comment : " + comment)
+  def add_story_history
+    self.story.add_history("added comment : " + comment)
   end
 
   def add_posted_by

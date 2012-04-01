@@ -1,0 +1,32 @@
+<% if @pre_category and !(@pre_category.eql? @story.category) %>
+$('#<%= @story.id %>_item_box').remove();
+$('#<%= @story.category %>_item_list_end').before('<%=escape_javascript render :partial => 'stories/story', :locals => {:story => @story} %>');
+$('#<%= @story.category %>').show();
+<% else %>
+if (view == "sprint") {
+    $('#<%= @story.id %>_item_box').remove();
+    <%
+    item_list = "dev_ready"
+    if @story.started?
+    item_list = "in_progress"
+    elsif @story.finished?
+     item_list = "dev_done"
+    elsif @story.delivered?
+       item_list = "qa_ready"
+    elsif @story.accepted? or @story.rejected?
+       item_list = "qa_done"
+    end %>
+    $('#<%= item_list %>_item_list_end').before('<%=escape_javascript render :partial => 'stories/story', :locals => {:story => @story} %>');
+    $('#<%= item_list %>').show();
+} else {
+    $('#<%= @story.id %>_preview_box').html('<%=escape_javascript render :partial => 'stories/story_preview', :locals => {:story => @story} %>');
+    $('#<%= @story.id %>_detail_box').html('<%=escape_javascript render :partial => 'stories/story_detail', :locals => {:story => @story} %>');
+}
+<% end %>
+attachTokenInput($('#<%= @story.id %>_labels'));
+<% if @message.present?%>
+ajax_flash_notice('<%="#{@message}"%>');
+<%else%>
+ajax_flash_notice('<%="#{@story.type} was #{@story.status}."%>');
+<%end%>
+highlight_item($('#<%= @story.id %>_content'));

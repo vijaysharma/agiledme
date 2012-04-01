@@ -1,0 +1,50 @@
+<% if stories.blank? and !(category.eql?('icebox') or category.eql?('search'))
+       category_display_class = 'display:none'
+   end
+%>
+<td id="<%= "#{category}" %>" class="<%= "#{category} panel" %>" style="<%= category_display_class %>" width="25%">
+  <div class="panelHeaderRight"></div>
+  <div class="panelHeaderLeft"></div>
+  <div class="panelHeader">
+    <div id=<%= "#{category}_title" %>>
+      <a href="#" class="closePanel panelLink" id='<%= "#{category}_close" %>' title="Close"></a>
+      <span class="panelTitle">
+        <%= category.eql?("search") ? "#{category.upcase} : #{truncate(search_term, :length => 20)} (#{stories.present? ? stories.count : 0})" : category.upcase %> </span>
+      <span class="external_icon"></span>
+    </div>
+  </div>
+  <div id="<%= "#{category}_item_list" %>" class="list">
+    <div class="btm">
+      <div class="right"></div>
+      <div class="left"></div>
+      <div class="mid"></div>
+    </div>
+    <div id="<%= "#{category}_items" %>" class="items">
+      <div id="<%= "#{category}_scrolling_item_list" %>" category="<%= "#{category}" %>" project_id="<%= "#{@project.id}" %>" class="inner scrolling_item_list">
+        <% if category.eql?('icebox') %>
+            <div id="new_story">
+              <%= render :partial => 'stories/new_story', :locals => {:project => @project} %>
+            </div>
+        <% end %>
+        <% if stories.present? %>
+            <% stories.each do |story| %>
+                <%= render :partial => 'stories/story', :locals => {:story => story} %>
+            <% end %>
+        <% else %>
+            <% if category.eql?('icebox') and @project.stories.blank? %>
+                <div id="no_stories" class="no_stories">
+                  You have not got any work to do in this project yet. Hurry, and start working!!
+                </div>
+            <% elsif category.eql?('search') and stories.blank? %>
+                <div id="no_stories" class="no_stories">
+                  Sorry no results found!!
+                  TIP: You can search by directly clicking on the Labels and user Initials.
+                </div>
+            <% end %>
+        <% end %>
+        <div id="<%= "#{category}_item_list_end" %>" class="endOfList"></div>
+        <div id="<%= "#{category}_infinite-scroll"%>"></div>
+      </div>
+    </div>
+  </div>
+</td>

@@ -1,7 +1,7 @@
 class Epic < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
-  has_many :workable_items
+  has_many :stories
 
   include AASM
 

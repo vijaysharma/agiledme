@@ -1,0 +1,7 @@
+<%
+   story = Story.new
+   story.story_attachments.build
+   story.project = project
+   story.requester = current_user.id
+%>
+<%= render :partial => 'stories/story_detail', :locals => {:story => story} %>

@@ -1,0 +1,233 @@
+<% if story.new_record?
+       item_unique_id = "icebox_new_story"
+       item_type_image_source = "feature.png"
+       item_estimate_image_source = "estimate-1pt.gif"
+   else
+       item_unique_id = "#{story.id}"
+       item_type_image_source = "#{story.type.downcase}.png"
+       item_estimate_image_source = "estimate#{story.estimate}pt.gif"
+   end
+%>
+
+<div id="<%= "#{item_unique_id}_detail" %>" class="item" style="display:none">
+<div id="<%= "#{item_unique_id}_content" %>" class="storyItem unscheduled unestimated underEdit jquery_file_upload">
+<%= form_for([story.project, story], :remote => true, :html => {:multipart => true}) do |wi| %>
+    <% @project_users ||= story.project.active_users %>
+
+    <div class="storyPreviewHeader">
+      <% if !story.new_record? %>
+          <div class="storySelector notDblclickable">&nbsp;</div>
+          <div class="icons">
+            <%= image_tag "story_expanded.png",
+                          :id => "#{item_unique_id}_cancel_edit_button",
+                          :alt => "Collapse",
+                          :title => "Collapse",
+                          :class => "toggleExpandedButton cancelEditButton" %>
+          </div>
+      <% end %>
+      <div class="storyPreviewInput">
+        <%= wi.text_area :title,
+                         :cols => 1,
+                         :rows => 1,
+                         :id =>"#{item_unique_id}_title",
+                         :class => 'titleInputField autoresize' %>
+        <div class="clear">
+        </div>
+      </div>
+      <div class="text_example">e.g. As a role, I want goal so that benefit</div>
+      <div class="error_message" id="<%= "#{item_unique_id}_story_error_message" %>" style="display:none;"></div>
+    </div>
+    <div class="storyDetailElement">
+    <div class="storyDetails">
+    <div class="buttons">
+      <div class="storyDetailsButton">
+        <%= wi.submit 'Save', :class => "story_save", :id => "#{item_unique_id}_save_button" %>
+        <input id="<%= "#{item_unique_id}_cancel_edit_button" %>" class="cancelEditButton" type="button" value="Cancel">
+        <% if !story.new_record? %>
+            <%= link_to 'Delete', project_story_path(@project, story), :confirm => "Are you sure you want to delete the #{story.type}?", :method => :delete, :remote => true %>
+        <% else %>
+            <input type="submit" value="Delete" disabled="disabled">
+            <input type="submit" value="View history" disabled="disabled">
+        <% end %>
+      </div>
+      <% if !story.new_record? %>
+          <div id="<%= item_unique_id %>_content_buttons" style="margin-left:-4px;margin-top:5px">
+            <%= render :partial => 'stories/story_actions', :locals => {:story => story} %>
+          </div>
+      <% end %>
+    </div>
+    <table class="storyDetailsTable">
+      <tbody>
+      <tr>
+        <td colspan="1" class="letContentExpand">
+          <div>
+            <%= wi.select(:type, Story.types,
+                          {:selected => story.new_record? ? 'Feature' : story.type},
+                          {:class => "storyDetailsField story_type_select",
+                           :id => "#{item_unique_id}_type"}) %>
+          </div>
+        </td>
+        <td colspan="1" class="storyDetailsLabelIcon">
+          <%= image_tag item_type_image_source, :id => "#{item_unique_id}_type_image" %>
+        </td>
+        <td colspan="1" class="lastCell">
+          <div id="<%= "#{item_unique_id}_help_story_types" %>">
+            <%= image_tag("question_mark.gif", :alt => "Story type help", :class => "helpIcon" ) %>
+            <%= render :partial => 'stories/story_type_tooltip' %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1">
+          <div>
+            <%= wi.select(:estimate, Story.estimates,
+                          {:selected => story.new_record? ? -1 : story.estimate},
+                          {:class => "storyDetailsField story_estimate_select",
+                           :id => "#{item_unique_id}_estimate",
+                           :disabled => (!story.new_record? and !story.is_estimatable?)}) %>
+          </div>
+        </td>
+        <td colspan="1" class="storyDetailsLabelIcon">
+          <% if story.new_record? or story.is_estimatable? %>
+              <%= image_tag item_estimate_image_source, :id => "#{item_unique_id}_estimate_image" %>
+          <% end %>
+        </td>
+        <td colspan="1">
+          <div id="<%= "#{item_unique_id}_help_estimates" %>">
+            <%= image_tag("question_mark.gif", :alt => "Story estimation help", :class => "helpIcon" ) %>
+            <%= render :partial => 'stories/story_estimate_tooltip' %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <%= wi.collection_select(:requester, @project_users, :id, :display_name, {}, {:class => "storyDetailsField"}) %>
+          </div>
+        </td>
+        <td colspan="3">
+          <label id="story_requester_label" for="story_requester">
+            <div>
+              <div class="emphasizedFieldLabel">requested</div>
+              <div class="fieldLabel">this story</div>
+            </div>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1">
+          <div>
+            <%= wi.collection_select(:owner, @project_users, :id, :display_name, {:prompt => "none"}, {:class => "storyDetailsField"}) %>
+          </div>
+        </td>
+        <td colspan="3">
+          <label>
+            <div>
+              <div class="emphasizedFieldLabel">owns</div>
+              <div class="fieldLabel">this story</div>
+            </div>
+          </label>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="section">
+      <div class="header">
+        <div class="label">Labels</div>
+      </div>
+      <div class="wrapper token_wrapper">
+        <%= wi.text_field :label_tokens,
+                          :class => "labels",
+                          :id => "#{item_unique_id}_labels",
+                          "data-pre" => story.labels.all.to_json,
+                          "data-url" => "/labels.json?project_id=#{story.project.id}" %>
+      </div>
+    </div>
+    <div class="section">
+      <div class="storyDescriptionTable">
+        <div class="header">
+          <div class="label">Description</div>
+          <div id="<%= "#{item_unique_id}_help_story_description" %>">
+            <%= image_tag("question_mark.gif", :alt => "Story description help", :class => "helpIcon" ) %>
+            <%= render :partial => 'stories/story_description_tooltip' %>
+          </div>
+          <div class="clear">
+          </div>
+        </div>
+        <div>
+          <%= wi.text_area :description,
+                           :cols => 1,
+                           :rows => 1,
+                           :id => "#{item_unique_id}_description",
+                           :class => 'textAreaFocus description_area autoresize' %>
+        </div>
+      </div>
+    </div>
+    <div class="taskTableDiv">
+      <div class="section">
+        <div id="<%= "#{item_unique_id}_tasks_header" %>" class="header">
+          Tasks <span class="count">(<%= story.tasks.count %>)</span>
+        </div>
+        <ol id="<%= "#{item_unique_id}_tasks" %>" class="task_list ui-sortable">
+          <%= wi.fields_for :tasks do |task_builder| %>
+              <%= render :partial => 'stories/task_fields', :locals => {:f => task_builder} %>
+          <% end %>
+        </ol>
+        <div class="add_task">
+          <textarea id="<%= "#{item_unique_id}_new_task_description" %>"
+                    cols="1" rows="1"
+                    class="tasksTextArea autoresize new_task_text">add new task</textarea>
+              <span id="<%= "#{item_unique_id}_new_task_add_link" %>" class="add_task" style="display:none;">
+                <%= link_to_add_task_fields "Add", wi, :tasks, item_unique_id %>
+              </span>
+        </div>
+      </div>
+    </div>
+    <div class="commentTableDiv">
+      <div class="section">
+        <div id="<%= "#{item_unique_id}_comments_header" %>" class="header">
+          Comments <span class="commentCount">(<%= story.comments.count %>)</span>
+        </div>
+        <table class="commentsTable">
+          <tbody id="<%= "#{item_unique_id}_comments" %>">
+          <%= wi.fields_for :comments do |comment_builder| %>
+              <%= render :partial => 'stories/comment_fields', :locals => {:f => comment_builder} %>
+          <% end %>
+          </tbody>
+        </table>
+        <div class="add_comment">
+          <textarea id="<%= "#{item_unique_id}_new_comment_description" %>"
+                    cols="20" rows="1"
+                    class="tasksTextArea autoresize new_comment_text">add new comment</textarea>
+
+          <div class="commentText">(Format using *<b>bold</b>* and _<i>italic</i>_ text.)</div>
+              <span id="<%= "#{item_unique_id}_new_comment_add_link" %>" class="add_comment" style="display:none;">
+                <%= link_to_add_comment_fields "Add", wi, :comments, item_unique_id %>
+              </span>
+        </div>
+      </div>
+    </div>
+    <%= wi.hidden_field :category %>
+    <%= wi.hidden_field :priority %>
+    <%= wi.hidden_field :epic_id %>
+    <%= wi.hidden_field :project_id, {:value => story.project.id} %>
+    <div class="attachmentWidget">
+      <div class="section attachments">
+        <div id="<%= "#{item_unique_id}_attachments_header" %>" class="header">
+          Attachments <span class="count">(<%= story.story_attachments.count %>)</span>
+        </div>
+        <ol id="<%= "#{item_unique_id}_attachments_list" %>" class="attachments_list">
+          <%= wi.fields_for :story_attachments do |story_attachment_builder| %>
+              <% if !story_attachment_builder.object.new_record? %>
+                  <%= render :partial => 'stories/attachment_fields', :locals => {:f => story_attachment_builder} %>
+              <% end %>
+          <% end %>
+        </ol>
+      </div>
+    </div>
+<% end %>
+<%= render :partial => 'story_attachments/form', :locals => {:story => story} %>
+</div>
+</div>
+</div>
+</div>

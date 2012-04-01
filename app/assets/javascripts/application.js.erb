@@ -58,7 +58,7 @@ DraggableDroppable = function() {
                     var item_dropped_id = $(ui.draggable).attr('id').split('_')[0];
                     $.ajax({
                         type: "PUT",
-                        url: "/projects/" + item_project_id + "/workable_items/" + item_dropped_id + "/update_category_and_priority",
+                        url: "/projects/" + item_project_id + "/stories/" + item_dropped_id + "/update_category_and_priority",
                         dataType: "script",
                         data: {
                             item_dropped_on_id: item_dropped_on_id
@@ -157,12 +157,12 @@ $(document).ready(function () {
 
     $(document).delegate("#add_new_workable_control_button", "click", function () {
         $("#icebox").show();
-        $("#no_workable_items").hide();
-        $("#icebox_new_workable_item_detail").show();
+        $("#no_stories").hide();
+        $("#icebox_new_story_detail").show();
         $("#icebox_control_button").addClass('selected');
     });
 
-    $(document).delegate('.workable_item_type_select', "change", function() {
+    $(document).delegate('.story_type_select', "change", function() {
         var id = $(this).attr('id');
         var item_type = $(this).attr('value');
 
@@ -210,7 +210,7 @@ $(document).ready(function () {
         })
     });
 
-    $(document).delegate(".workable_item_estimate_select", "change", function() {
+    $(document).delegate(".story_estimate_select", "change", function() {
         var id = $(this).attr('id');
         if (id == -1) {
             $("#" + id + "_image").attr({src: "<%= asset_path 'estimate-1pt.gif' %>"});
@@ -239,12 +239,12 @@ $(document).ready(function () {
         var id = $(this).attr('id');
         $("#" + id.replace('cancel_edit_button', 'preview')).show();
         $("#" + id.replace('cancel_edit_button', 'detail')).hide();
-        $("#" + id.replace('cancel_edit_button', 'workable_item_error_message')).hide();
-        $("#" + id.replace('cancel_edit_button', 'workable_item_error_message')).html('');
+        $("#" + id.replace('cancel_edit_button', 'story_error_message')).hide();
+        $("#" + id.replace('cancel_edit_button', 'story_error_message')).html('');
 
     });
 
-    $(document).delegate(".workable_item_tasks", "mouseenter", function() {
+    $(document).delegate(".story_tasks", "mouseenter", function() {
         var id = $(this).attr('id');
         var task_description_id = $(this).attr('id').replace("task", "task_description");
         if (!$("#" + id.replace("task", "task_finish")).attr('checked')) {
@@ -255,7 +255,7 @@ $(document).ready(function () {
         }
     });
 
-    $(document).delegate(".workable_item_tasks", "mouseleave", function() {
+    $(document).delegate(".story_tasks", "mouseleave", function() {
         var id = $(this).attr('id');
         $("#" + id + "_actions").hide();
     });

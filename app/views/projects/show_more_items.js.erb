@@ -1,7 +1,7 @@
-<% if @workable_items_to_append.present? %>
-<% @workable_items_to_append.each do |workable_item| %>
-$('#<%= "#{@category}" %>_item_list_end').before('<%=escape_javascript render :partial => 'workable_items/workable_item', :locals => {:workable_item => workable_item} %>');
-attachTokenInput($('#<%= workable_item.id %>_labels'));
+<% if @stories_to_append.present? %>
+<% @stories_to_append.each do |story| %>
+$('#<%= "#{@category}" %>_item_list_end').before('<%=escape_javascript render :partial => 'stories/story', :locals => {:story => story} %>');
+attachTokenInput($('#<%= story.id %>_labels'));
 <% end %>
 <% else %>
 $('#<%= "#{@category}" %>_infinite-scroll').detach();

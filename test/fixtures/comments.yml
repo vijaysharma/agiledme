@@ -2,10 +2,10 @@
 
 one:
   comment: MyString
-  workable_item_id: 1
+  story_id: 1
   posted_by: 1
 
 two:
   comment: MyString
-  workable_item_id: 1
+  story_id: 1
   posted_by: 1

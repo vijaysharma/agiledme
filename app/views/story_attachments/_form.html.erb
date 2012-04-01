@@ -1,0 +1,19 @@
+<div class="fileupload">
+  <div class="fileupload-content">
+      <table class="files"></table>
+      <div class="fileupload-progressbar"></div>
+  </div>
+  <%= form_for StoryAttachment.new, :html => { :multipart => true } do |f| %>
+      <div class="fileupload-buttonbar">
+          <label class="fileinput-button">
+              <span>Add Files...</span>
+                <%= f.file_field :image, :multiple => true %>
+                <%= f.hidden_field :story_id, :value => story.id %>
+          </label>
+      </div>
+  <% end %>
+
+</div>
+
+<%= render :partial => "story_attachments/template-upload" %>
+<%= render :partial => "story_attachments/template-download" %>

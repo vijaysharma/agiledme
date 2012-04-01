@@ -12,10 +12,10 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, :on => :create
   has_many :projects, :through => :project_users
   has_many :project_users, :dependent => :destroy
-  has_many :workable_item_histories
+  has_many :story_histories
 
-  def all_workable_item_histories_for_all_my_projects
-    WorkableItemHistory.order("created_at DESC").where("project_id in (?)", self.project_ids)
+  def all_story_histories_for_all_my_projects
+    StoryHistory.order("created_at DESC").where("project_id in (?)", self.project_ids)
   end
 
   def display_name

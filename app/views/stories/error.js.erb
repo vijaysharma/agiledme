@@ -1,0 +1,10 @@
+<% message = ""
+    @story.errors.full_messages.each do |msg |
+     message += " #{msg}"
+    end
+    id = @story.new_record? ? "icebox_new_story" : "#{@story.id}"
+%>
+
+$('#<%= id %>_title').val($('#<%= id %>_title').text());
+$('#<%= id %>_story_error_message').html("<%="#{message}"%>");
+$('#<%= id %>_story_error_message').show();

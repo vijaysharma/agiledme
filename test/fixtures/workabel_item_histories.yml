@@ -3,9 +3,9 @@
 one:
   event: MyString
   user_id: 1
-  workable_item_id: 1
+  story_id: 1
 
 two:
   event: MyString
   user_id: 1
-  workable_item_id: 1
+  story_id: 1

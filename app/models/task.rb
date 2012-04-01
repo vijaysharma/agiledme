@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  belongs_to :workable_item
+  belongs_to :story
 
   include AASM
 

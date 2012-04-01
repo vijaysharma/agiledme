@@ -1,9 +1,9 @@
 class Project < ActiveRecord::Base
   has_many :users, :through => :project_users
   has_many :project_users, :dependent => :destroy
-  has_many :workable_items, :order=>"priority DESC", :dependent => :destroy, :include => [ :comments, :tasks, :labels, :workable_item_attachments ]
+  has_many :stories, :order=>"priority DESC", :dependent => :destroy, :include => [ :comments, :tasks, :labels, :story_attachments ]
   has_many :epics, :dependent => :destroy
-  has_many :workable_item_histories, :dependent => :destroy
+  has_many :story_histories, :dependent => :destroy
   validates_presence_of :name
 
   def active_users
@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   end
 
   def labels
-    all_labels_ids = WorkableItemLabel.select(:label_id).where("workable_item_id in (?)", self.workable_item_ids).map(&:label_id)
+    all_labels_ids = StoryLabel.select(:label_id).where("story_id in (?)", self.story_ids).map(&:label_id)
     Label.where("id in (?)", all_labels_ids)
   end
 
@@ -28,16 +28,16 @@ class Project < ActiveRecord::Base
   end
 
   def sprint_commitment
-    workable_items = nil
+    stories = nil
     if !self.estimate_bugs? and !self.estimate_chores?
-      workable_items = self.workable_items.where(" category = 'current'")
+      stories = self.stories.where(" category = 'current'")
     elsif project.estimate_bugs?
-      workable_items = self.workable_items.where(" category = 'current' and type != 'Chore'")
+      stories = self.stories.where(" category = 'current' and type != 'Chore'")
     elsif project.estimate_chores?
-      workable_items = self.workable_items.where(" category = 'current' and type != 'Bug'")
+      stories = self.stories.where(" category = 'current' and type != 'Bug'")
     end
-    if workable_items.present?
-      workable_items.sum("estimate")
+    if stories.present?
+      stories.sum("estimate")
     else
       0
     end

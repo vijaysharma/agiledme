@@ -1,0 +1,78 @@
+<% item_unique_id = "#{story.id}"
+   class_for_item = "unscheduled"
+   cursor_style = "cursor: move;"
+   if story.not_yet_started? and (story.is_ready?)
+       class_for_item = "unstarted"
+   elsif story.started? or story.finished? or story.delivered? or story.rejected? or story.accepted?
+       class_for_item = story.status
+   end
+   if story.accepted?
+       cursor_style = "cursor: default;"
+   end
+   if (story.category == 'icebox')
+       class_for_item += " unscheduled"
+   end
+%>
+
+<div id="<%= "#{item_unique_id}_preview" %>" class="item">
+  <div id="<%= item_unique_id %>_content" class="<%= "storyItem #{class_for_item} notUnderEdit" %>">
+    <div class="storyPreviewHeader">
+      <div class="storySelector notDblclickable">&nbsp;</div>
+      <div class="storyPreviewButtons" id="<%= item_unique_id %>_content_buttons">
+        <%= render :partial => 'stories/story_actions', :locals => {:story => story} %>
+      </div>
+      <div class="icons">
+        <%= image_tag "story_collapsed.png",
+                      :id => "#{item_unique_id}_editButton",
+                      :alt => "Expand",
+                      :title => "Expand",
+                      :class => "toggleExpandedButton" %>
+
+        <div class="left">
+          <%= image_tag "#{story.type.downcase}.png", :class => "storyTypeIcon" %>
+          <% if story.is_estimatable? and story.estimate != -1 %>
+              <%= image_tag "estimate#{story.estimate}pt.gif",
+                            :width => 6,
+                            :class => "estimateIcon",
+                            :title => "Estimate: #{story.estimate} points" %>
+          <% else %>
+              <%= image_tag "estimate0pt.gif",
+                            :width => 6,
+                            :class => "estimateIcon",
+                            :title => "Estimate: 0 points" %>
+          <% end %>
+          <% if story.description.present? or story.comments.present? or story.tasks.present? %>
+              <% img = story.story_attachments.present? ? "story_flyover_attachment_icon.png" : "story_flyover_icon.png" %>
+              <%= image_tag(img, :alt => "Story type help", :class => "flyoverIcon helpIcon") %>
+              <%= render :partial => 'stories/story_type_tooltip' %>
+          <% end %>
+        </div>
+      </div>
+      <div id="<%= item_unique_id %>_content_details" class="storyPreviewText" style="<%= cursor_style %>">
+        <span id="<%= item_unique_id %>_content_labels" class="storyLabels empty">
+          <% story.labels.each do |label| %>
+              <a href="#" class="searchable"
+                 project_id="<%= @project.id %>"
+                 title="<%= label.name %>"
+                 value="label:<%= label.name %>">
+                <%= label.name %></a>
+          <% end %>
+        </span>
+            <span>
+              <%= story.title %>
+              <% if story.owner.present? %>
+                  <% owner = User.find(story.owner) %>
+                  <a href="#" id="<%= owner.email %>"
+                     project_id="<%= @project.id %>"
+                     title="<%= owner.display_name %>"
+                     value="mywork:<%= owner.initials_display_name %>"
+                     class="storyOwnerInitials searchable">
+                    (<%= owner.initials_display_name %>)</a>
+              <% end %>
+            </span>
+      </div>
+    </div>
+    <div class="storyDetailElement">
+    </div>
+  </div>
+</div>

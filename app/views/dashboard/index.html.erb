@@ -31,28 +31,28 @@
       </h2>
       <ul class="list">
         <% if @user_project_activities.present? %>
-            <% @user_project_activities.each do |workable_item_history| %>
+            <% @user_project_activities.each do |story_history| %>
                 <li>
                   <div class="secondary_details">
-                    <% workable_item_type = workable_item_history.workable_item.type.downcase %>
-                    <%= image_tag("#{workable_item_type}.png", :alt => workable_item_type ) %>
+                    <% story_type = story_history.story.type.downcase %>
+                    <%= image_tag("#{story_type}.png", :alt => story_type ) %>
                     <span class="activity_occurred_at">
-                      <%= distance_of_time_in_words(Time.now, workable_item_history.created_at, true) %> ago
+                      <%= distance_of_time_in_words(Time.now, story_history.created_at, true) %> ago
                     </span>
                   </div>
                   <div class="main_details">
                     <h3 class="project_name">
-                      <%= link_to workable_item_history.workable_item.project.name, workable_item_history.workable_item.project %>
+                      <%= link_to story_history.story.project.name, story_history.story.project %>
                     </h3>
-                    <span title="<%= workable_item_history.event %>" class="activity_description">
-                      <%= "#{workable_item_history.user.email} #{truncate(workable_item_history.event, :length => 23)}" %>
+                    <span title="<%= story_history.event %>" class="activity_description">
+                      <%= "#{story_history.user.email} #{truncate(story_history.event, :length => 23)}" %>
                     </span>
 
                     <p>
-                      <%= link_to truncate(workable_item_history.workable_item.title, :length => 63),
-                                  workable_item_history.workable_item.project,
+                      <%= link_to truncate(story_history.story.title, :length => 63),
+                                  story_history.story.project,
                                   :class => "story_name",
-                                  :title => workable_item_history.workable_item.title %>
+                                  :title => story_history.story.title %>
                     </p>
                   </div>
                 </li>

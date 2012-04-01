@@ -1,0 +1,2 @@
+module StoryAttachmentsHelper
+end

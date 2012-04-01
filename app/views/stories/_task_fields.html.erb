@@ -1,0 +1,34 @@
+<% task_id = f.object.new_record? ? "new" : f.object.id %>
+<li id="<%= "#{task_id}_task" %>" class="story_tasks <%= f.object.finished? ? "finished_task" : "" %>">
+  <% if !f.object.finished? %>
+      <%= f.check_box :status,
+                      {:title => "Finish Task",
+                       :class => "finish_task",
+                       :id => "#{task_id}_task_finish"},
+                      "finished", "new" %>
+  <% end %>
+  <div>
+    <%= f.text_area :description,
+                    :id=>"#{task_id}_task_description",
+                    :cols => 1,
+                    :rows => 1,
+                    :class => "autoresize",
+                    :style => 'display:none;' %>
+  </div>
+  <label id="<%= "#{task_id}_task_label" %>"><%= f.object.description %></label>
+  <% if !f.object.finished? %>
+      <ul id="<%= "#{task_id}_task_actions" %>" class="actions" style="display: none;">
+        <li id="<%= "#{task_id}_edit_task" %>" class="edit_task">
+          <a title="Edit Task" href="#">
+            <%= image_tag("edit.png", :alt => "Edit task" ) %>
+          </a>
+        </li>
+        <li id="<%= "#{task_id}_delete_task" %>" class="delete_task">
+          <%= f.check_box :_destroy, :id => "delete_task", :style => "display:none;" %>
+          <a title="Delete Task" href="#">
+            <%= image_tag("delete.png", :alt => "Delete task" ) %>
+          </a>
+        </li>
+      </ul>
+  <% end %>
+</li>

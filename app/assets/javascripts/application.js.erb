@@ -155,7 +155,7 @@ $(document).ready(function () {
         attachTokenInput($(this));
     });
 
-    $(document).delegate("#add_new_workable_control_button", "click", function () {
+    $(document).delegate("#add_new_story_control_button", "click", function () {
         $("#icebox").show();
         $("#no_stories").hide();
         $("#icebox_new_story_detail").show();
@@ -172,6 +172,8 @@ $(document).ready(function () {
             $("#" + id + "_image").attr({src: "<%= asset_path 'chore.png' %>"});
         } else if (item_type == "Feature") {
             $("#" + id + "_image").attr({src: "<%= asset_path 'feature.png' %>"});
+        } else if (item_type == "Epic") {
+            $("#" + id + "_image").attr({src: "<%= asset_path 'epic.png' %>"});
         }
 
         var estimate_id = id.replace("type", "estimate");

@@ -4,7 +4,7 @@ class Story < ActiveRecord::Base
   include AASM
 
   belongs_to :project
-  belongs_to :epic
+  belongs_to :epic, :class_name => 'Story'
 
   has_many :story_histories, :dependent => :destroy
   has_many :tasks, :order=>"updated_at DESC", :dependent => :destroy
@@ -84,7 +84,7 @@ class Story < ActiveRecord::Base
   end
 
   def self.types
-    %w[Feature Bug Chore]
+    %w[Feature Bug Chore Epic]
   end
 
   def self.fibonacci_estimates

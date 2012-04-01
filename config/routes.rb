@@ -22,6 +22,7 @@ Agiledme::Application.routes.draw do
       resources :story_histories
 
     end
+    resources :epics, :controller => :stories
     resources :features, :controller => :stories
     resources :bugs, :controller => :stories
     resources :chores, :controller => :stories

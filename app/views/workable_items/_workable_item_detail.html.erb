@@ -1,6 +1,6 @@
 <% if workable_item.new_record?
        item_unique_id = "icebox_new_workable_item"
-       item_type_image_source = "story.png"
+       item_type_image_source = "feature.png"
        item_estimate_image_source = "estimate-1pt.gif"
    else
        item_unique_id = "#{workable_item.id}"
@@ -62,7 +62,7 @@
         <td colspan="1" class="letContentExpand">
           <div>
             <%= wi.select(:type, WorkableItem.types,
-                          {:selected => workable_item.new_record? ? 'Story' : workable_item.type},
+                          {:selected => workable_item.new_record? ? 'Feature' : workable_item.type},
                           {:class => "storyDetailsField workable_item_type_select",
                            :id => "#{item_unique_id}_type"}) %>
           </div>

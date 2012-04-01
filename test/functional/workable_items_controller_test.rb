@@ -17,7 +17,7 @@ class WorkableItemsControllerTest < ActionController::TestCase
   end
 
   test "should create workable_item" do
-    assert_difference('Story.count') do
+    assert_difference('Feature.count') do
       post :create, :workable_item => @workable_item.attributes
     end
 
@@ -40,7 +40,7 @@ class WorkableItemsControllerTest < ActionController::TestCase
   end
 
   test "should destroy workable_item" do
-    assert_difference('Story.count', -1) do
+    assert_difference('Feature.count', -1) do
       delete :destroy, :id => @workable_item.to_param
     end
 

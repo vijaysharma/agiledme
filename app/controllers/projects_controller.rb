@@ -207,7 +207,7 @@ class ProjectsController < ApplicationController
                                      :priority => get_max_priority_for_category(csv_category) + 1)
 
 
-    workable_item.type = csv_type.eql?("Feature") ? "Story" : csv_type
+    workable_item.type = csv_type
 
     if row['Owned By'].present?
       workable_item.owner = get_existing_or_current_user(row['Owned By'])

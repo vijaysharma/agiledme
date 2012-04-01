@@ -84,7 +84,7 @@ class WorkableItem < ActiveRecord::Base
   end
 
   def self.types
-    %w[Story Bug Chore]
+    %w[Feature Bug Chore]
   end
 
   def self.fibonacci_estimates

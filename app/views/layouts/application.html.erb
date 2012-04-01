@@ -23,7 +23,7 @@
   </script>
 </head>
 <body>
-
+<div class="container">
 <div class="clearfix" id="header">
   <h1><a href="/"><%= image_tag 'icon_048.png', :class => "icon" %>SCRUM COOK</a></h1>
   <div class="navigation_area clearfix">
@@ -60,7 +60,6 @@
       <div class="alert"><%= alert %></div>
   <% end %>
 </div>
-
 <div class="main">
   <div class="<%= !user_signed_in? ? "content center" : "content" %>" >
     <%= yield %>
@@ -73,6 +72,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 </body>
 </html>

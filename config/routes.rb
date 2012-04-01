@@ -22,7 +22,7 @@ Agiledme::Application.routes.draw do
       resources :workable_item_histories
 
     end
-    resources :stories, :controller => :workable_items
+    resources :features, :controller => :workable_items
     resources :bugs, :controller => :workable_items
     resources :chores, :controller => :workable_items
   end

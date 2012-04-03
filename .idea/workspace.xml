@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/projects/_stories_panel.html.erb" afterPath="$PROJECT_DIR$/app/views/stories/_stories_panel.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js.erb" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/project_view.css.erb" afterPath="$PROJECT_DIR$/app/assets/stylesheets/project_view.css.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/stories_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/stories_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/search.js.erb" afterPath="$PROJECT_DIR$/app/views/projects/search.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/show.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/stories/_new_story.html.erb" afterPath="$PROJECT_DIR$/app/views/stories/_new_story.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/stories/_story.html.erb" afterPath="$PROJECT_DIR$/app/views/stories/_story.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/stories/_story_actions.html.erb" afterPath="$PROJECT_DIR$/app/views/stories/_story_actions.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/stories/_story_description_tooltip.html.erb" afterPath="$PROJECT_DIR$/app/views/stories/_story_description_tooltip.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/stories/_story_detail.html.erb" afterPath="$PROJECT_DIR$/app/views/stories/_story_detail.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/stories/_story_estimate_tooltip.html.erb" afterPath="$PROJECT_DIR$/app/views/stories/_story_estimate_tooltip.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/stories/_story_preview.html.erb" afterPath="$PROJECT_DIR$/app/views/stories/_story_preview.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/stories/_story_type_tooltip.html.erb" afterPath="$PROJECT_DIR$/app/views/stories/_story_type_tooltip.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/stories/create.js.erb" afterPath="$PROJECT_DIR$/app/views/stories/create.js.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120401060701_rename_column_workable_item_id_to_story_id.rb" afterPath="$PROJECT_DIR$/db/migrate/20120401060701_rename_column_workable_item_id_to_story_id.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120401072845_drop_table_epics.rb" afterPath="$PROJECT_DIR$/db/migrate/20120401072845_drop_table_epics.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="agiledme.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,10 +29,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_story_actions.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_story_actions.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/stories/_story_actions.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="107" selection-start="153" selection-end="171" vertical-scroll-proportion="-1.25">
+            <state line="2" column="120" selection-start="184" selection-end="184" vertical-scroll-proportion="0.045801528">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project_view.css.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/project_view.css.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="934" column="0" selection-start="19189" selection-end="19189" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,10 +74,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stories_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="stories_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/stories_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="22" selection-start="238" selection-end="238" vertical-scroll-proportion="0.18018018">
+            <state line="8" column="22" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -128,7 +120,6 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/db/migrate/20120401060701_rename_column_workable_item_id_to_story_id.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20120401072845_drop_table_epics.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/project_view.css.erb" />
         <option value="$PROJECT_DIR$/app/views/projects/search.js.erb" />
         <option value="$PROJECT_DIR$/app/views/projects/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/stories/_story.html.erb" />
@@ -136,10 +127,11 @@
         <option value="$PROJECT_DIR$/app/views/stories/_stories_panel.html.erb" />
         <option value="$PROJECT_DIR$/app/views/stories/create.js.erb" />
         <option value="$PROJECT_DIR$/app/views/projects/_control_panel.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/stories/_story_actions.html.erb" />
         <option value="$PROJECT_DIR$/app/views/stories/_story_detail.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.erb" />
         <option value="$PROJECT_DIR$/app/controllers/stories_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/stories/_story_actions.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/project_view.css.erb" />
       </list>
     </option>
   </component>
@@ -1029,13 +1021,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/project_view.css.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="988" column="41" selection-start="20640" selection-end="20640" vertical-scroll-proportion="-10.384615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/search.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="73" selection-start="152" selection-end="152" vertical-scroll-proportion="0.06965944">
@@ -1113,13 +1098,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/stories/_story_actions.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="107" selection-start="153" selection-end="171" vertical-scroll-proportion="-1.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="258" column="23" selection-start="9538" selection-end="9538" vertical-scroll-proportion="0.0">
@@ -1136,7 +1114,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/stories_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="22" selection-start="238" selection-end="238" vertical-scroll-proportion="0.18018018">
+        <state line="8" column="22" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/project_view.css.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="934" column="0" selection-start="19189" selection-end="19189" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/stories/_story_actions.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="120" selection-start="184" selection-end="184" vertical-scroll-proportion="0.045801528">
           <folding />
         </state>
       </provider>

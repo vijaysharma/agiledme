@@ -1,6 +1,6 @@
 <% item_unique_id = "#{story.id}" %>
 <% if story.is_a?(Epic) %>
-    <a href="#" id="<%= story.id %>_epic" class="stateChangeButton notDblclickable start add_new_epic_story">Break</a>
+    <a href="#" id="<%= story.id %>_epic" class="stateChangeButton notDblclickable start add_new_epic_story">Add Story +</a>
 <% else %>
     <% if story.is_unestimated? %>
         <% Story.fibonacci_estimates.each do |estimate| %>

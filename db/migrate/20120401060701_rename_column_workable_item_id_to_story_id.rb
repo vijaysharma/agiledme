@@ -8,5 +8,10 @@ class RenameColumnWorkableItemIdToStoryId < ActiveRecord::Migration
   end
 
   def down
+    rename_column :story_histories, :story_id, :workable_item_id
+    rename_column :story_labels, :story_id, :workable_item_id
+    rename_column :story_attachments, :story_id, :workable_item_id
+    rename_column :tasks, :story_id, :workable_item_id
+    rename_column :comments, :story_id, :workable_item_id
   end
 end

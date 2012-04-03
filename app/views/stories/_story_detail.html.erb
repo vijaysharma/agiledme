@@ -1,5 +1,5 @@
 <% if story.new_record?
-       item_unique_id = "icebox_new_story"
+       item_unique_id = story.epic.present? ? "#{story.epic.id}_epic_new_story" : "icebox_new_story"
        item_type_image_source = "feature.png"
        item_estimate_image_source = "estimate-1pt.gif"
    else
@@ -72,8 +72,8 @@
         </td>
         <td colspan="1" class="lastCell">
           <div id="<%= "#{item_unique_id}_help_story_types" %>">
-            <%= image_tag("question_mark.gif", :alt => "Story type help", :class => "helpIcon" ) %>
-            <%= render :partial => 'stories/story_type_tooltip' %>
+            <%= image_tag("question_mark.gif", :alt => "Story type help", :class => "helpIcon") %>
+            <%= render :partial => 'stories/story_type_tooltip', :locals => {:id => item_unique_id} %>
           </div>
         </td>
       </tr>
@@ -94,8 +94,8 @@
         </td>
         <td colspan="1">
           <div id="<%= "#{item_unique_id}_help_estimates" %>">
-            <%= image_tag("question_mark.gif", :alt => "Story estimation help", :class => "helpIcon" ) %>
-            <%= render :partial => 'stories/story_estimate_tooltip' %>
+            <%= image_tag("question_mark.gif", :alt => "Story estimation help", :class => "helpIcon") %>
+            <%= render :partial => 'stories/story_estimate_tooltip', :locals => {:id => item_unique_id} %>
           </div>
         </td>
       </tr>
@@ -129,6 +129,15 @@
           </label>
         </td>
       </tr>
+      <% if story.epic_id.present? %>
+          <tr>
+            <td colspan="4">
+              <div>
+                <%= "Epic is : #{story.epic.title}" %>
+              </div>
+            </td>
+          </tr>
+      <% end %>
       </tbody>
     </table>
     <div class="section">
@@ -148,8 +157,8 @@
         <div class="header">
           <div class="label">Description</div>
           <div id="<%= "#{item_unique_id}_help_story_description" %>">
-            <%= image_tag("question_mark.gif", :alt => "Story description help", :class => "helpIcon" ) %>
-            <%= render :partial => 'stories/story_description_tooltip' %>
+            <%= image_tag("question_mark.gif", :alt => "Story description help", :class => "helpIcon") %>
+            <%= render :partial => 'stories/story_description_tooltip', :locals => {:id => item_unique_id} %>
           </div>
           <div class="clear">
           </div>

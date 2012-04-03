@@ -5,8 +5,8 @@
     <tbody>
     <tr id="panels">
       <% Story.categories.each do |category| %>
-          <% stories = @project.stories.where(:category => category).limit(15) %>
-          <%= render :partial => 'projects/stories_panel', :locals => {:stories => stories, :category => category}  %>
+          <% stories = @project.stories.where(:category => category).limit(30) %>
+          <%= render :partial => 'stories/stories_panel', :locals => {:stories => stories, :category => category}  %>
       <% end %>
     </tr>
     </tbody>

@@ -24,10 +24,10 @@
 var estimate_bugs = false;
 var view = "project";
 var estimate_chores = false;
-var current_offset = 15;
-var done_offset = 15;
-var backlog_offset = 15;
-var icebox_offset = 15;
+var current_offset = 0;
+var done_offset = 0;
+var backlog_offset = 0;
+var icebox_offset = 0;
 var notCeasedFireFor = ["current","backlog","done","icebox"];
 
 
@@ -239,11 +239,24 @@ $(document).ready(function () {
 
     $(document).delegate(".cancelEditButton", "click", function() {
         var id = $(this).attr('id');
+        if (id.indexOf('epic') != -1) {
+            $("#" + id.replace('epic_new_story_cancel_edit_button', 'content_buttons')).show();
+        }
         $("#" + id.replace('cancel_edit_button', 'preview')).show();
         $("#" + id.replace('cancel_edit_button', 'detail')).hide();
         $("#" + id.replace('cancel_edit_button', 'story_error_message')).hide();
         $("#" + id.replace('cancel_edit_button', 'story_error_message')).html('');
+    });
 
+    $(document).delegate(".add_new_epic_story", "click", function () {
+        var epic_id = $(this).attr('id');
+        $("#" + epic_id.replace('epic', 'content_buttons')).hide();
+        $("#" + epic_id.replace('epic', 'epic_new_story_detail')).show();
+        $("#" + epic_id.replace('epic', 'detail')).hide();
+        $("#" + epic_id.replace('epic', 'preview')).show();
+        $("#" + epic_id.replace('epic', 'detail')).hide();
+        $("#" + epic_id.replace('epic', 'story_error_message')).hide();
+        $("#" + epic_id.replace('epic', 'story_error_message')).html('');
     });
 
     $(document).delegate(".story_tasks", "mouseenter", function() {
@@ -461,10 +474,10 @@ $(document).ready(function () {
     $(".helpIcon").tooltip({
         effect: 'slide',
         relative: true,
-        offset: [15,15],
+        offset: [65,15],
         position: 'center, right',
-        delay: 500,
-        predelay: 500
+//        delay: 500,
+//        predelay: 500
     });
 
     $('#icebox_scrolling_item_list, #backlog_scrolling_item_list, #done_scrolling_item_list, #current_scrolling_item_list').endlessScroll({

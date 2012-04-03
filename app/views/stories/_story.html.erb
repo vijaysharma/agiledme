@@ -10,4 +10,9 @@
   <div id="<%= "#{story.id}_detail_box" %>">
     <%= render :partial => 'stories/story_detail', :locals => {:story => story} %>
   </div>
+  <% if story.is_a?(Epic) %>
+      <div id="<%= "#{story.id}_new_story_box" %>">
+        <%= render :partial => 'stories/new_story', :locals => {:project => @project, :epic_id => story.id} %>
+      </div>
+  <% end %>
 </div>

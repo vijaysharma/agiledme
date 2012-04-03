@@ -1,52 +1,56 @@
 <% item_unique_id = "#{story.id}" %>
-<% if story.is_unestimated? %>
-    <% Story.fibonacci_estimates.each do |estimate| %>
-        <%= link_to image_tag("estimate#{estimate}pt.gif",
-                              :class => "estimateButton notDblclickable",
-                              :title => "Estimate: #{estimate} point"),
-                    estimate_project_story_path(story.project, story, {:estimate => estimate}),
-                    :id => "#{item_unique_id}_estimate#{estimate}Button",
+<% if story.is_a?(Epic) %>
+    <a href="#" id="<%= story.id %>_epic" class="stateChangeButton notDblclickable start add_new_epic_story">Break</a>
+<% else %>
+    <% if story.is_unestimated? %>
+        <% Story.fibonacci_estimates.each do |estimate| %>
+            <%= link_to image_tag("estimate#{estimate}pt.gif",
+                                  :class => "estimateButton notDblclickable",
+                                  :title => "Estimate: #{estimate} point"),
+                        estimate_project_story_path(story.project, story, {:estimate => estimate}),
+                        :id => "#{item_unique_id}_estimate#{estimate}Button",
+                        :remote => true %>
+        <% end %>
+    <% elsif story.not_yet_started? and story.is_ready? %>
+        <%= link_to "Start", start_project_story_path(story.project, story),
+                    :id => "#{item_unique_id}_start_button",
+                    :class => "stateChangeButton notDblclickable start",
+                    :remote => true %>
+    <% elsif story.started? %>
+        <%= link_to "Finish", finish_project_story_path(story.project, story),
+                    :id => "#{item_unique_id}_finish_button",
+                    :class => "stateChangeButton notDblclickable finish",
+                    :remote => true %>
+        <%= link_to "Un-Start", un_start_project_story_path(story.project, story),
+                    :id => "#{item_unique_id}_finish_button",
+                    :class => "stateChangeButton notDblclickable unstart",
+                    :remote => true %>
+    <% elsif story.finished? %>
+        <%= link_to "Deliver", deliver_project_story_path(story.project, story),
+                    :id => "#{item_unique_id}_deliver_button",
+                    :class => "stateChangeButton notDblclickable deliver",
+                    :remote => true %>
+        <%= link_to "Un-Finish", un_finish_project_story_path(story.project, story),
+                    :id => "#{item_unique_id}_deliver_button",
+                    :class => "stateChangeButton notDblclickable unfinish",
+                    :remote => true %>
+    <% elsif story.delivered? %>
+        <%= link_to "Accept", accept_project_story_path(story.project, story),
+                    :id => "#{item_unique_id}_accept_button",
+                    :class => "stateChangeButton notDblclickable accept",
+                    :remote => true %>
+        <%= link_to "Reject", reject_project_story_path(story.project, story),
+                    :id => "#{item_unique_id}_reject_button",
+                    :class => "stateChangeButton notDblclickable reject",
+                    :remote => true %>
+        <%= link_to "Un-Deliver", un_deliver_project_story_path(story.project, story),
+                    :id => "#{item_unique_id}_reject_button",
+                    :class => "stateChangeButton notDblclickable undeliver",
+                    :remote => true %>
+    <% elsif story.rejected? %>
+        <%= link_to "Restart", restart_project_story_path(story.project, story),
+                    :id => "#{item_unique_id}_restart_button",
+                    :class => "stateChangeButton notDblclickable restart",
                     :remote => true %>
     <% end %>
-<% elsif story.not_yet_started? and story.is_ready? %>
-    <%= link_to "Start", start_project_story_path(story.project, story),
-                :id => "#{item_unique_id}_start_button",
-                :class => "stateChangeButton notDblclickable start",
-                :remote => true %>
-<% elsif story.started? %>
-    <%= link_to "Finish", finish_project_story_path(story.project, story),
-                :id => "#{item_unique_id}_finish_button",
-                :class => "stateChangeButton notDblclickable finish",
-                :remote => true %>
-    <%= link_to "Un-Start", un_start_project_story_path(story.project, story),
-                :id => "#{item_unique_id}_finish_button",
-                :class => "stateChangeButton notDblclickable unstart",
-                :remote => true %>
-<% elsif story.finished? %>
-    <%= link_to "Deliver", deliver_project_story_path(story.project, story),
-                :id => "#{item_unique_id}_deliver_button",
-                :class => "stateChangeButton notDblclickable deliver",
-                :remote => true %>
-    <%= link_to "Un-Finish", un_finish_project_story_path(story.project, story),
-                :id => "#{item_unique_id}_deliver_button",
-                :class => "stateChangeButton notDblclickable unfinish",
-                :remote => true %>
-<% elsif story.delivered? %>
-    <%= link_to "Accept", accept_project_story_path(story.project, story),
-                :id => "#{item_unique_id}_accept_button",
-                :class => "stateChangeButton notDblclickable accept",
-                :remote => true %>
-    <%= link_to "Reject", reject_project_story_path(story.project, story),
-                :id => "#{item_unique_id}_reject_button",
-                :class => "stateChangeButton notDblclickable reject",
-                :remote => true %>
-    <%= link_to "Un-Deliver", un_deliver_project_story_path(story.project, story),
-                :id => "#{item_unique_id}_reject_button",
-                :class => "stateChangeButton notDblclickable undeliver",
-                :remote => true %>
-<% elsif story.rejected? %>
-    <%= link_to "Restart", restart_project_story_path(story.project, story),
-                :id => "#{item_unique_id}_restart_button",
-                :class => "stateChangeButton notDblclickable restart",
-                :remote => true %>
 <% end %>

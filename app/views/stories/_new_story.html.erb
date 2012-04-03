@@ -3,5 +3,9 @@
    story.story_attachments.build
    story.project = project
    story.requester = current_user.id
+   if epic_id.present?
+       story.epic_id = epic_id
+   end
+
 %>
 <%= render :partial => 'stories/story_detail', :locals => {:story => story} %>

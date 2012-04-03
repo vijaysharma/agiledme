@@ -1,6 +1,6 @@
 $('#icebox_new_story_story_error_message').html('');
 $('#icebox_new_story_story_error_message').hide();
-$('#new_story').html('<%=escape_javascript render :partial => 'stories/new_story', :locals => {:project => @story.project} %>');
+$('#new_story').html('<%=escape_javascript render :partial => 'stories/new_story', :locals => {:project => @story.project, :epic_id => ""} %>');
 $('#new_story').after('<%=escape_javascript render :partial => 'stories/story', :locals => {:story => @story} %>');
 ajax_flash_notice('<%="#{@story.type} was added."%>');
 attachTokenInput($('#<%= @story.id %>_labels'));

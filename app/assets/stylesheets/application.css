@@ -319,7 +319,7 @@ select, input, textarea {
     margin-top: 11px;
 }
 
-#header ul.nav_links > li a.current {
+#header ul.nav_links > li a.current, #header ul.nav_links > li a:hover {
     -moz-text-blink: none;
     -moz-text-decoration-color: -moz-use-text-color;
     -moz-text-decoration-line: none;

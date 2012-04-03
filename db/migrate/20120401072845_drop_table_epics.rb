@@ -13,5 +13,9 @@ class DropTableEpics < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :epics, :project_id
+    add_index :epics, :user_id
+
   end
 end

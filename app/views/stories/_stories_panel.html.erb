@@ -23,7 +23,7 @@
       <div id="<%= "#{category}_scrolling_item_list" %>" category="<%= "#{category}" %>" project_id="<%= "#{@project.id}" %>" class="inner scrolling_item_list">
         <% if category.eql?('icebox') %>
             <div id="new_story">
-              <%= render :partial => 'stories/new_story', :locals => {:project => @project} %>
+              <%= render :partial => 'stories/new_story', :locals => {:project => @project, :epic_id => ""} %>
             </div>
         <% end %>
         <% if stories.present? %>

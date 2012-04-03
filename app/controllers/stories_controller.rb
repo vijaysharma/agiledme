@@ -12,9 +12,6 @@ class StoriesController < ApplicationController
     @story.story_attachments = StoryAttachment.where(:user_id => current_user.id, :story_id => nil)
     respond_to do |format|
       if @story.save
-        if @story.epic.present? and !@story.epic.split_in_progress?
-          @story.epic.start_splitting!
-        end
         format.js
         format.html { redirect_to(project_url(@story.project), :notice => @story.type + ' was successfully created.') }
         format.xml { render :xml => @story, :status => :created, :location => @story }

@@ -45,7 +45,7 @@
           <% if story.description.present? or story.comments.present? or story.tasks.present? %>
               <% img = story.story_attachments.present? ? "story_flyover_attachment_icon.png" : "story_flyover_icon.png" %>
               <%= image_tag(img, :alt => "Story type help", :class => "flyoverIcon helpIcon") %>
-              <%= render :partial => 'stories/story_type_tooltip' %>
+              <%= render :partial => 'stories/story_type_tooltip', :locals => {:id => item_unique_id} %>
           <% end %>
         </div>
       </div>

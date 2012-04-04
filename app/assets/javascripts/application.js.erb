@@ -111,6 +111,7 @@ $(document).ajaxStart(
         }).ajaxStop(function() {
     DraggableDroppable.init();
     JQueryFileUpload.init();
+    adjust_items_height();
     $(".ajax-loader").hide();
 });
 
@@ -124,9 +125,21 @@ function attachTokenInput(item) {
     });
 }
 
-$(document).ready(function () {
+$(window).resize(function() {
+    $(".items").css({
+        'height' : (($(window).height()) - 220) + 'px'
+    });
+});
+
+function adjust_items_height() {
+    $(".items").css({
+        'height' : (($(window).height()) - 220) + 'px'
+    });
+} $(document).ready(function () {
     DraggableDroppable.init();
     JQueryFileUpload.init();
+
+    adjust_items_height();
 
     $('.autoresize').autoResize({
         animate: false
@@ -145,7 +158,6 @@ $(document).ready(function () {
     });
 
     $("#burndown_control_button").click(function () {
-        alert("clicked");
         $("#burndown").toggle();
         $("#panels").toggle();
         $("#burndown_control_button").toggleClass('selected');

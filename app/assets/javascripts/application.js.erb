@@ -488,8 +488,6 @@ function adjust_items_height() {
         relative: true,
         offset: [65,15],
         position: 'center, right',
-//        delay: 500,
-//        predelay: 500
     });
 
     $('#icebox_scrolling_item_list, #backlog_scrolling_item_list, #done_scrolling_item_list, #current_scrolling_item_list').endlessScroll({
@@ -605,7 +603,7 @@ function draw_velocity_trend_chart(project_start_year, project_start_month, proj
             xAxis: {
                 maxZoom: 1, // one sprint
                 title: {
-                    text: "Sprint"
+                    text: "Sprints"
                 }
             },
             yAxis: {
@@ -672,6 +670,7 @@ function draw_chart(sprints, chores, bugs, features) {
     var average = [sprints.length];
     var total_bugs = 0;
     var total_features = 0;
+    var total_stories = 0;
 
     for (var index in chores) {
         total_chores += chores[index];
@@ -690,7 +689,7 @@ function draw_chart(sprints, chores, bugs, features) {
         total_features += features[value];
     }
 
-    alert(average);
+    total_stories = total_bugs + total_chores + total_features;
 
     $(document).ready(function() {
         chart = new Highcharts.Chart({
@@ -703,20 +702,20 @@ function draw_chart(sprints, chores, bugs, features) {
             xAxis: {
                 categories: sprints,
                 title: {
-                    text: "Sprint"
+                    text: "Sprints"
                 }
             },
             yAxis: {
                 title: {
-                    text: 'No Of Stories'
+                    text: 'Stories'
                 }
             },
             tooltip: {
                 formatter: function() {
                     var s;
-                    if (this.point.name) { // the pie chart
+                    if (this.point.name) {
                         s = '' +
-                                this.point.name + ': ' + this.y;
+                                this.point.name + ': ' + this.y + '%';
                     } else {
                         s = '<b>Sprint</b> : ' + this.x + '<br/>'
                                 + '<b>' + this.series.name + '</b> : ' + this.y;
@@ -763,17 +762,17 @@ function draw_chart(sprints, chores, bugs, features) {
                     data: [
                         {
                             name: 'Chores',
-                            y: total_chores,
+                            y: Math.round (total_chores / total_stories * 100),
                             color: '#4572A7'
                         },
                         {
                             name: 'Bugs',
-                            y: total_bugs,
+                            y: Math.round(total_bugs / total_stories * 100),
                             color: '#AA4643'
                         },
                         {
                             name: 'Features',
-                            y: total_features,
+                            y: Math.round(total_features / total_stories * 100),
                             color: '#89A54E'
                         }
                     ],

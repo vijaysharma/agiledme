@@ -1,29 +1,10 @@
 <% title "Project Reports" %>
-<div class="project_pages members_page">
+<div class="project_pages project_reports_page">
   <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Reports"} %>
   <div class="halfway_column has_right_spacer">
-    <div class="content_section">
-      <h2>Points Breakdown</h2>
-    </div>
+    <%= render :partial => 'projects/points_break_down_section' %>
   </div>
   <div class="halfway_column">
-    <div class="content_section velocity">
-      <h2>Velocity Trend</h2>
-      <span class="heading"><span class="number"><%= @project.velocity %></span>velocity</span>
-
-      <div id="velocity_chart" style="height:250px;"></div>
-    </div>
-    <div class="content_section">
-      <h2>Members Report</h2>
-    </div>
+    <%= render :partial => 'projects/velocity_trend_section' %>
   </div>
 </div>
-
-<script type="text/javascript" charset="utf-8">
-    var velocity_trend = <%= @project.velocity_trend %>;
-    var project_start_year = <%= @project.start_date.year %>;
-    var project_start_month = <%= @project.start_date.month %>;
-    var project_start_date = <%= @project.start_date.day %>;
-    var sprint_length = <%= @project.sprint_length * 7 %>;
-    draw_velocity_trend_chart(project_start_year, project_start_month, project_start_date, sprint_length, velocity_trend);
-</script>

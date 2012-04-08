@@ -1,0 +1,12 @@
+<div class="content_section velocity">
+  <h2>Velocity Trend</h2>
+  <div id="velocity_chart"></div>
+  <script type="text/javascript" charset="utf-8">
+      var velocity_trend = <%= @project.velocity_trend %>;
+      var project_start_year = <%= @project.start_date.year %>;
+      var project_start_month = <%= @project.start_date.month %>;
+      var project_start_date = <%= @project.start_date.day %>;
+      var sprint_length = <%= @project.sprint_length * 7 %>;
+      draw_velocity_trend_chart(project_start_year, project_start_month, project_start_date, sprint_length, velocity_trend);
+  </script>
+</div>

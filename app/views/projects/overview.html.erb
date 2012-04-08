@@ -43,11 +43,7 @@
   </div>
 
   <div class="halfway_column">
-    <div class="content_section velocity">
-      <h2>Velocity Trend</h2>
-      <span class="heading"><span class="number"><%= @project.velocity %></span>velocity</span>
-      <div id="velocity_chart" style="height:250px;"></div>
-    </div>
+    <%= render :partial => 'projects/velocity_trend_section' %>
     <div class="content_section">
       <h2>
         <div class="right_link">
@@ -78,12 +74,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript" charset="utf-8">
-  var velocity_trend = <%= @project.velocity_trend %>;
-  var project_start_year = <%= @project.start_date.year %>;
-  var project_start_month = <%= @project.start_date.month %>;
-  var project_start_date = <%= @project.start_date.day %>;
-  var sprint_length = <%= @project.sprint_length * 7 %>;
-  draw_velocity_trend_chart(project_start_year, project_start_month, project_start_date, sprint_length, velocity_trend);
-</script>

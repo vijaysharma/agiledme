@@ -1,5 +1,5 @@
 <% title "#{@project.name.camelcase} : Sprint" %>
-<%= render :partial => 'projects/control_panel', :locals => {:current_project => @project, :view => "sprint"} %>
+<%= render :partial => 'projects/control_panel', :locals => {:view => "sprint"} %>
 <div id="all_panels" class="story_content">
   <% sprint_work = @project.stories.select { |wi| wi.category.eql? "current" } %>
   <table id="layout" class="layout" cellspacing="16px">

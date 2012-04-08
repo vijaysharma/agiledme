@@ -3,7 +3,7 @@
     <div class="projectName" id="project_tabs">
       <ul>
         <% current_user.projects.each do |project| %>
-            <% if project.eql?(current_project) %>
+            <% if project.eql?(@project) %>
                 <li class="current">
                   <span><%= project.name %></span>
                 </li>
@@ -36,7 +36,7 @@
           <tr>
             <td class="velocityLabel">velocity</td>
             <td>
-              <div class="projectVelocity" id="velocity_projectVelocity"><%= current_project.velocity %></div>
+              <div class="projectVelocity" id="velocity_projectVelocity"><%= @project.velocity %></div>
             </td>
           </tr>
           </tbody>
@@ -55,7 +55,7 @@
             <% Story.categories.each do |category| %>
                 <% button_class = 'selected' %>
                 <% if category != 'icebox' %>
-                    <% button_class = current_project.stories.where(:category => category).present? ? 'selected' : '' %>
+                    <% button_class = @project.stories.where(:category => category).present? ? 'selected' : '' %>
                 <% end %>
                 <li>
                   <a id="<%= "#{category}_control_button" %>" href="#" class="<%= "control_button button #{button_class}" %>"><%= category.capitalize %></a>

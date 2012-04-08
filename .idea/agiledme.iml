@@ -159,6 +159,8 @@
     <orderEntry type="library" scope="PROVIDED" name="[gem] polyglot (v0.3.3, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/polyglot-0.3.3)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] mime-types (v1.18, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/mime-types-1.18)" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="[gem] rack-ssl (v1.3.2, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/rack-ssl-1.3.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] carrierwave (v0.6.0, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/carrierwave-0.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] uglifier (v1.2.4, /Users/sanjeev/.rvm/gems/ruby-1.9.3-p125/gems/uglifier-1.2.4)" level="application" />
   </component>
 </module>
 

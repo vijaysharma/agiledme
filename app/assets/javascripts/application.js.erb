@@ -584,48 +584,85 @@ function draw_burndown_chart(chart_point_start, chart_point_interval, actual_cha
     });
 }
 
-function draw_velocity_trend_chart(chart_point_start, chart_point_interval, chart_data_series) {
-    new Highcharts.Chart({
-        chart: {
-            renderTo: 'velocity_chart',
-            defaultSeriesType: 'column'
-        },
-        title: {
-            text: 'Velocity Trend'
-        },
-        xAxis: {
-            type: "datetime",
+function draw_velocity_trend_chart(project_start_year, project_start_month, project_start_date, sprint_length, velocity_trend) {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'velocity_chart',
+                zoomType: 'x',
+                defaultSeriesType: 'line',
+                spacingRight: 20
+            },
             title: {
-                text: 'Sprint'
-            }
-        },
-        yAxis: {
-            title: {
-                text: 'Velocity'
-            }
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'top',
-            floating: true,
-            shadow: true
-        },
+                text: 'Velocity Trend'
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' :
+                        'Drag your finger over the plot to zoom in'
+            },
+            xAxis: {
+                maxZoom: 1, // one sprint
+                title: {
+                    text: "Sprint"
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'Velocity'
+                },
+                min: 0,
+                startOnTick: false,
+                showFirstLabel: false
+            },
+            tooltip: {
+                enabled: true,
+                formatter: function() {
+                    return '<b>' + 'Sprint : ' + this.x + '</b><br/>' +
+                    '<b>' + this.series.name +' : '+ this.y + '</b>';
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: [0, 0, 0, 300],
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, 'rgba(2,0,0,0)']
+                        ]
+                    },
+                    lineWidth: 1,
+                    marker: {
+                        enabled: false,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                radius: 5
+                            }
+                        }
+                    },
+                    shadow: false,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    }
+                }
+            },
 
-        plotOptions: {
-            column: {
-                pointPadding: 0.0,
-                borderWidth: 0
-            }
-        },
-        series: [
-            {
-                name: "Points",
-                pointStart: chart_point_start,
-                pointInterval: chart_point_interval,
-                data: chart_data_series
-            }
-        ]
+            series: [
+                {
+                    name: 'Velocity',
+                    pointInterval: 1,
+                    pointStart: 1,
+                    data: velocity_trend
+                }
+            ]
+        });
     });
 }
 

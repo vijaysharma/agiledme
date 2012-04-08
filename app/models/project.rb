@@ -14,12 +14,24 @@ class Project < ActiveRecord::Base
     velocity_trend_between_sprints(1, no_of_sprints_passed)
   end
 
+  def chores_trend
+    stories_trend_between_sprints(1, no_of_sprints_passed, 'Chore')
+  end
+
+  def bugs_trend
+    stories_trend_between_sprints(1, no_of_sprints_passed, 'Bug')
+  end
+
+  def features_trend
+    stories_trend_between_sprints(1, no_of_sprints_passed, 'Feature')
+  end
+
   def inactive_users
     my_users(false)
   end
 
   def velocity
-    velocity_trend_between_sprints(no_of_sprints_passed , no_of_sprints_passed).first
+    velocity_trend_between_sprints(no_of_sprints_passed, no_of_sprints_passed).first
   end
 
   def labels
@@ -55,14 +67,14 @@ class Project < ActiveRecord::Base
     sprint_length * 7
   end
 
+  def no_of_sprints_passed
+    no_of_days_in_project / sprint_length_in_days
+  end
+
   private
 
   def days_passed_in_current_sprint
     no_of_days_in_project % sprint_length_in_days
-  end
-
-  def no_of_sprints_passed
-    no_of_days_in_project / sprint_length_in_days
   end
 
   def no_of_days_in_project
@@ -74,8 +86,8 @@ class Project < ActiveRecord::Base
   end
 
   def velocity_trend_between_sprints(from_sprint, to_sprint)
-    beginning_of_from_sprint = (start_date.to_date + ((from_sprint - 1) * sprint_length_in_days).days).beginning_of_day
-    end_of_to_sprint = (beginning_of_from_sprint + (to_sprint * sprint_length_in_days).days).end_of_day
+    beginning_of_from_sprint = beginning_of_sprint(from_sprint)
+    end_of_to_sprint = end_of_sprint(to_sprint)
 
     stories_between_sprints = nil
 
@@ -92,8 +104,7 @@ class Project < ActiveRecord::Base
       (from_sprint..to_sprint.to_i).each do |sprint|
         beginning_of_sprint = (start_date.to_date + ((sprint - 1) * sprint_length_in_days).days).beginning_of_day
         end_of_sprint = (beginning_of_sprint + sprint_length_in_days.days).end_of_day
-        sprint_stories = stories_between_sprints.select {|story| story.delivered_at >= beginning_of_sprint and story.delivered_at <= end_of_sprint}
-
+        sprint_stories = stories_between_sprints.select { |story| story.delivered_at >= beginning_of_sprint and story.delivered_at <= end_of_sprint }
 
         if sprint_stories.present?
           velocities << sprint_stories.sum(&:estimate)
@@ -107,6 +118,41 @@ class Project < ActiveRecord::Base
       end
     end
     velocities
+  end
+
+  def stories_trend_between_sprints(from_sprint, to_sprint, story_type)
+    beginning_of_from_sprint = beginning_of_sprint(from_sprint)
+    end_of_to_sprint = end_of_sprint(to_sprint)
+
+    stories_between_sprints = stories.where(" status in ('delivered', 'accepted') and type = ? ", story_type).where(:delivered_at => beginning_of_from_sprint..end_of_to_sprint)
+
+    chores = []
+    if stories_between_sprints.present?
+      (from_sprint..to_sprint.to_i).each do |sprint|
+        beginning_of_sprint = (start_date.to_date + ((sprint - 1) * sprint_length_in_days).days).beginning_of_day
+        end_of_sprint = (beginning_of_sprint + sprint_length_in_days.days).end_of_day
+        sprint_stories = stories_between_sprints.select { |story| story.delivered_at >= beginning_of_sprint and story.delivered_at <= end_of_sprint }
+
+        if sprint_stories.present?
+          chores << sprint_stories.count
+        else
+          chores << 0
+        end
+      end
+    else
+      (from_sprint..to_sprint.to_i).each do
+        chores << 0
+      end
+    end
+    chores
+  end
+
+  def beginning_of_sprint(sprint)
+    (start_date.to_date + ((sprint - 1) * sprint_length_in_days).days).beginning_of_day
+  end
+
+  def end_of_sprint(sprint)
+    (beginning_of_sprint(sprint) + (sprint * sprint_length_in_days).days).end_of_day
   end
 
 end

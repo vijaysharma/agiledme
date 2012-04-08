@@ -666,8 +666,32 @@ function draw_velocity_trend_chart(project_start_year, project_start_month, proj
     });
 }
 
-function draw_chart() {
+function draw_chart(sprints, chores, bugs, features) {
     var chart;
+    var total_chores = 0;
+    var average = [sprints.length];
+    var total_bugs = 0;
+    var total_features = 0;
+
+    for (var index in chores) {
+        total_chores += chores[index];
+        average[index] = Math.round ((chores[index] + bugs[index] + features[index]) / 3)
+    }
+
+    for (var index in bugs) {
+        total_bugs += bugs[index];
+    }
+
+    for (var index in features) {
+        total_features += features[index];
+    }
+
+    for (var value in features) {
+        total_features += features[value];
+    }
+
+    alert(average);
+
     $(document).ready(function() {
         chart = new Highcharts.Chart({
             chart: {
@@ -677,17 +701,25 @@ function draw_chart() {
                 text: 'Story Trend'
             },
             xAxis: {
-                categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
+                categories: sprints,
+                title: {
+                    text: "Sprint"
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'No Of Stories'
+                }
             },
             tooltip: {
                 formatter: function() {
                     var s;
                     if (this.point.name) { // the pie chart
                         s = '' +
-                                this.point.name + ': ' + this.y + ' fruits';
+                                this.point.name + ': ' + this.y;
                     } else {
-                        s = '' +
-                                this.x + ': ' + this.y;
+                        s = '<b>Sprint</b> : ' + this.x + '<br/>'
+                                + '<b>' + this.series.name + '</b> : ' + this.y;
                     }
                     return s;
                 }
@@ -695,7 +727,7 @@ function draw_chart() {
             labels: {
                 items: [
                     {
-                        html: 'Stories Breakup',
+                        html: 'Breakup',
                         style: {
                             left: '40px',
                             top: '8px',
@@ -707,42 +739,42 @@ function draw_chart() {
             series: [
                 {
                     type: 'column',
-                    name: 'Jane',
-                    data: [3, 2, 1, 3, 4]
+                    name: 'Chores',
+                    data: chores
                 },
                 {
                     type: 'column',
-                    name: 'John',
-                    data: [2, 3, 5, 7, 6]
+                    name: 'Bugs',
+                    data: bugs
                 },
                 {
                     type: 'column',
-                    name: 'Joe',
-                    data: [4, 3, 3, 9, 0]
+                    name: 'Features',
+                    data: features
                 },
                 {
                     type: 'spline',
                     name: 'Average',
-                    data: [3, 2.67, 3, 6.33, 3.33]
+                    data: average
                 },
                 {
                     type: 'pie',
                     name: 'Total consumption',
                     data: [
                         {
-                            name: 'Jane',
-                            y: 13,
-                            color: '#4572A7' // Jane's color
+                            name: 'Chores',
+                            y: total_chores,
+                            color: '#4572A7'
                         },
                         {
-                            name: 'John',
-                            y: 23,
-                            color: '#AA4643' // John's color
+                            name: 'Bugs',
+                            y: total_bugs,
+                            color: '#AA4643'
                         },
                         {
-                            name: 'Joe',
-                            y: 19,
-                            color: '#89A54E' // Joe's color
+                            name: 'Features',
+                            y: total_features,
+                            color: '#89A54E'
                         }
                     ],
                     center: [100, 80],

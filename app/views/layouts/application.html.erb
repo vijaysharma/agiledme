@@ -24,56 +24,59 @@
 </head>
 <body>
 <div class="container">
-<div class="clearfix" id="header">
-  <h1><a href="/"><%= image_tag 'icon_048.png', :class => "icon" %>SCRUM COOK</a></h1>
-  <div class="navigation_area clearfix">
-    <% if !user_signed_in? %>
-        <div class="welcome_message">
-          Call Us: +91-80-42414300
-        </div>
-        <ul class="nav_links">
-          <li><%= link_to 'Sign In', new_user_session_path, :class => (current_page?(new_user_session_path) ? 'current' : '') %></li>
-          <li><%= link_to 'Register', new_user_registration_path, :class => (current_page?(new_user_registration_path) ? 'current' : '') %></li>
-          <li>
-        </ul>
-    <% else %>
-        <div class="welcome_message">
-          Welcome, <%= current_user.display_name %>
-        </div>
-        <ul class="nav_links">
-          <% %>
-          <li><%= link_to "Dashboard", root_path, :class => (current_page?(root_path) ? 'current' : '') %></li>
-          <li><%= project = @project || current_user.projects.first
-                  link_to "Reports", reports_project_path(project), :class => (current_page?(reports_project_path(project)) ? 'current' : '') %></li>
-          <li><a title="Coming Soon" href="#">Profile</a></li>
-          <li><a title="Coming Soon" href="#">Help</a></li>
-          <li><%= link_to 'Sign Out', destroy_user_session_path %></li>
-          <li>
-        </ul>
+  <div class="clearfix" id="header">
+    <h1><a href="/"><%= image_tag 'icon_048.png', :class => "icon" %>SCRUM COOK</a></h1>
+
+    <div class="navigation_area clearfix">
+      <% project = nil %>
+      <% if !user_signed_in? %>
+          <div class="welcome_message">
+            Call Us: +91-9591379609
+          </div>
+          <ul class="nav_links">
+            <li><%= link_to 'Sign In', new_user_session_path, :class => (current_page?(new_user_session_path) ? 'current' : '') %></li>
+            <li><%= link_to 'Register', new_user_registration_path, :class => (current_page?(new_user_registration_path) ? 'current' : '') %></li>
+            <li>
+          </ul>
+      <% else %>
+          <div class="welcome_message">
+            Welcome, <%= current_user.display_name %>
+          </div>
+          <ul class="nav_links">
+            <% %>
+            <li><%= link_to "Dashboard", root_path, :class => (current_page?(root_path) ? 'current' : '') %></li>
+            <li><%= project = @project || current_user.projects.first
+                    link_to "Reports", reports_project_path(project), :class => (current_page?(reports_project_path(project)) ? 'current' : '') %></li>
+            <li><a title="Coming Soon" href="#">Profile</a></li>
+            <li><a title="Coming Soon" href="#">Help</a></li>
+            <li><%= link_to 'Sign Out', destroy_user_session_path %></li>
+            <li>
+          </ul>
+      <% end %>
+    </div>
+
+    <div class="notice" style="display:none;"></div>
+    <% if notice.present? %>
+        <div class="notice"><%= notice %></div>
+    <% end %>
+    <% if alert.present? %>
+        <div class="alert"><%= alert %></div>
     <% end %>
   </div>
-
-  <div class="notice" style="display:none;"></div>
-  <% if notice.present? %>
-      <div class="notice"><%= notice %></div>
-  <% end %>
-  <% if alert.present? %>
-      <div class="alert"><%= alert %></div>
-  <% end %>
-</div>
-<div class="main">
-  <div class="<%= !user_signed_in? ? "content center" : "content" %>" >
-    <%= yield %>
-    <div class="clear"></div>
-  </div>
-  <div class="footerWrapper">
-    <div class="footer">
-      <div class="footerContent">
-        <p class="copyright">© 2011 SCRUM COOK Pvt. Ltd. All Rights Reserved</p>
+  <div class="main">
+    <% auto_width = user_signed_in? && (current_page?(sprint_project_path(project)) || current_page?(project_path(project))) %>
+    <div class="<%= auto_width ? "content auto_width" : "content" %>">
+      <%= yield %>
+      <div class="clear"></div>
+    </div>
+    <div class="footerWrapper">
+      <div class="footer">
+        <div class="footerContent">
+          <p class="copyright">© 2011 SCRUM COOK Pvt. Ltd. All Rights Reserved</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 </body>
 </html>

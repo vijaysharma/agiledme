@@ -5,11 +5,11 @@
         <% current_user.projects.each do |project| %>
             <% if project.eql?(@project) %>
                 <li class="current">
-                  <span><%= project.name %></span>
+                  <span><%= truncate(project.name, :length => 20) %></span>
                 </li>
             <% else %>
                 <li originalwidth="132">
-                  <%= link_to project.name, project_path(project) %>
+                  <%= link_to truncate(project.name, :length => 20), project_path(project) %>
                   <span></span>
                 </li>
             <% end %>

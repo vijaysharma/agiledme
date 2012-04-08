@@ -2,7 +2,7 @@ class EpicsController < ApplicationController
   # GET /epics
   # GET /epics.xml
   def index
-    @project = Project.find(params[:project])
+    @project = current_user.projects.find(params[:project])
     @epics = @project.epics
 
     respond_to do |format|
@@ -26,7 +26,7 @@ class EpicsController < ApplicationController
   # GET /epics/new.xml
   def new
     @epic = Epic.new
-    @epic.project = Project.find(params[:project])
+    @epic.project = current_user.projects.find(params[:project])
     @epic.user_id = current_user.id
 
     respond_to do |format|

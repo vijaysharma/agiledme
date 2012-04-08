@@ -1,6 +1,6 @@
 class ProjectUsersController < ApplicationController
   def index
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
     @project_users = @project.project_users.order('updated_at').page(params[:page]).per(10)
 
     respond_to do |format|
@@ -9,7 +9,7 @@ class ProjectUsersController < ApplicationController
   end
 
   def create
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
     invitee_details = get_invitee_details(params[:project_user][:invitee_details])
 
     if @error.blank?

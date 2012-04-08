@@ -1,5 +1,7 @@
 .contentWrapper{border:1px solid #c5c5c5;border-bottom:0;}
-.footerWrapper{border-top:1px solid #c5c5c5;}
+.footerWrapper{border-top:1px solid #c5c5c5;
+    padding: 0 2px;
+}
 .grayToWhiteRoundBlocks{zoom:1;}
 .registration,.blueBlock{filter:none;}
 form .redButton{padding:0 0 6px 0;}

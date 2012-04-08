@@ -113,6 +113,9 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def reports
+  end
+
   def sprint
     respond_to do |format|
       format.html # show.html.erb
@@ -190,7 +193,7 @@ class ProjectsController < ApplicationController
   private
 
   def find_project
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
   def create_story(row)

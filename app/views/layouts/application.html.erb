@@ -42,8 +42,9 @@
         </div>
         <ul class="nav_links">
           <% %>
-          <li class="dashboard"><%= link_to "Dashboard", root_path, :class => (current_page?(root_path) ? 'current' : '') %></li>
-          <li><a title="Coming Soon" href="#">Reports</a></li>
+          <li><%= link_to "Dashboard", root_path, :class => (current_page?(root_path) ? 'current' : '') %></li>
+          <li><%= project = @project || current_user.projects.first
+                  link_to "Reports", reports_project_path(project), :class => (current_page?(reports_project_path(project)) ? 'current' : '') %></li>
           <li><a title="Coming Soon" href="#">Profile</a></li>
           <li><a title="Coming Soon" href="#">Help</a></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path %></li>

@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.xml
   def create
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
     @story = get_story_object(params[:story][:type])
     @story.project = @project
 
@@ -211,12 +211,11 @@ class StoriesController < ApplicationController
   # DELETE /stories/1
   # DELETE /stories/1.xml
   def destroy
-    project = @story.project
     @story.destroy
 
     respond_to do |format|
       format.js
-      format.html { redirect_to(project_url(project), :notice => @story.type + ' was successfully deleted.') }
+      format.html { redirect_to(project_url(@project), :notice => @story.type + ' was successfully deleted.') }
       format.xml { head :ok }
     end
   end

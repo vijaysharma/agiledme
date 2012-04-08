@@ -1,4 +1,4 @@
-<h1><%= truncate(project.name.capitalize, :length => 45) %> : <%= sub_page %>
+<h1><%= truncate(project.name.capitalize, :length => 40) %> : <%= sub_page %>
   <div class="right_link">
     <%= link_to "View Stories", project_path(project) %>
   </div>
@@ -14,7 +14,8 @@
                   :class => "button #{sub_page.eql?("Members") ? "current" : ""}" %>
     </li>
     <li>
-      <a class="button" title="Coming Soon" href="#">Reports</a>
+      <%= link_to 'Reports', reports_project_path(project),
+                  :class => "button #{sub_page.eql?("Reports") ? "current" : ""}" %>
     </li>
     <li>
       <a class="button" title="Coming Soon" href="#">Export</a>

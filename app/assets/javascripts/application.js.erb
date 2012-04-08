@@ -196,6 +196,12 @@ function adjust_items_height() {
         }
     });
 
+    $(document).delegate('.project_select', "change", function() {
+        var pathname = window.location.pathname;
+        var projects_page = pathname.substring(pathname.lastIndexOf('/'), pathname.length);
+        location.href = "/projects/" + $(this).val() + projects_page;
+    });
+
     $(document).delegate('.member_role', "change", function() {
         var id = $(this).attr('id');
         var project_id = $("#" + id + "_project").val();
@@ -674,7 +680,7 @@ function draw_chart(sprints, chores, bugs, features) {
 
     for (var index in chores) {
         total_chores += chores[index];
-        average[index] = Math.round ((chores[index] + bugs[index] + features[index]) / 3)
+        average[index] = Math.round((chores[index] + bugs[index] + features[index]) / 3)
     }
 
     for (var index in bugs) {
@@ -762,7 +768,7 @@ function draw_chart(sprints, chores, bugs, features) {
                     data: [
                         {
                             name: 'Chores',
-                            y: Math.round (total_chores / total_stories * 100),
+                            y: Math.round(total_chores / total_stories * 100),
                             color: '#4572A7'
                         },
                         {

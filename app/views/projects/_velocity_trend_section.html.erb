@@ -1,5 +1,9 @@
 <div class="content_section velocity">
-  <h2>Velocity Trend</h2>
+  <h2>Velocity Trend
+    <div class="right_link">
+      <%= collection_select(:project, :id, current_user.projects, :id, :truncated_name, {:prompt => true}, {:id => "#{@project.id}_velocity_trend"}) %>
+    </div>
+  </h2>
   <div id="velocity_chart"></div>
   <script type="text/javascript" charset="utf-8">
       var velocity_trend = <%= @project.velocity_trend %>;

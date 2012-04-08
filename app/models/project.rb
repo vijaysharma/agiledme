@@ -71,6 +71,10 @@ class Project < ActiveRecord::Base
     no_of_days_in_project / sprint_length_in_days
   end
 
+  def truncated_name
+    name.slice(0, 40)
+  end
+
   private
 
   def days_passed_in_current_sprint

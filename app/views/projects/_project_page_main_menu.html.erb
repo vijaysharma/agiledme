@@ -1,6 +1,10 @@
 <h1><%= truncate(project.name.capitalize, :length => 40) %> : <%= sub_page %>
   <div class="right_link">
-    <%= link_to "View Stories", project_path(project) %>
+    <%= collection_select(:project, :id, current_user.projects, :id,
+                          :truncated_name,
+                          {:prompt => true},
+                          {:id => project.id, :class => "project_select"}) %>
+    <%= link_to "View Stories", project_path(project), :id => "view_stories" %>
   </div>
 </h1>
 <div class="subnav clearfix">

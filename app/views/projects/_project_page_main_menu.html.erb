@@ -1,4 +1,4 @@
-<h1><%= project.name %> : <%= sub_page %>
+<h1><%= truncate(project.name.capitalize, :length => 45) %> : <%= sub_page %>
   <div class="right_link">
     <%= link_to "View Stories", project_path(project) %>
   </div>

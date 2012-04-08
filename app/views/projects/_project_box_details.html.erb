@@ -1,4 +1,4 @@
-<div class="project_title"><%= project.name.capitalize %></div>
+<div class="project_title"><%= truncate(project.name.capitalize, :length => 45) %></div>
 <div class="project_box_hover_links">
   <% if current_user.belongs_to_project?(project) %>
 

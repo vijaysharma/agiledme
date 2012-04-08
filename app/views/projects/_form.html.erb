@@ -63,7 +63,7 @@
             <%= f.label :start_date %>
           </td>
           <td class="field_column">
-            <%= f.date_select :start_date, :start_year => DateTime.now.year, :order => [:day, :month, :year] %>
+            <%= f.date_select :start_date, :start_year => DateTime.now.year - 5 , :order => [:day, :month, :year] %>
             <br>
           </td>
         </tr>

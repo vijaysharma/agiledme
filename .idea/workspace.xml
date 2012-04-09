@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b9945f82-bf38-4f48-bac0-0462151823ac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/projects_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/projects_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/_story_trend_section.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/_story_trend_section.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/_velocity_trend_section.html.erb" afterPath="$PROJECT_DIR$/app/views/projects/_velocity_trend_section.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/update_story_trend_report.js.erb" afterPath="$PROJECT_DIR$/app/views/projects/update_story_trend_report.js.erb" />
     </list>
     <ignored path="agiledme.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,10 +31,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="projects_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="projects_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="75" selection-start="3879" selection-end="3879" vertical-scroll-proportion="0.40640393">
+            <state line="143" column="0" selection-start="4364" selection-end="4364" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reports.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/projects/reports.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="42" selection-start="290" selection-end="290" vertical-scroll-proportion="-2.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_velocity_trend_section.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/projects/_velocity_trend_section.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="95" selection-start="268" selection-end="268" vertical-scroll-proportion="-2.5">
               <folding />
             </state>
           </provider>
@@ -39,16 +61,16 @@
       <file leaf-file-name="project.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/project.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="6" selection-start="3687" selection-end="3687" vertical-scroll-proportion="0.0">
+            <state line="17" column="76" selection-start="542" selection-end="562" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update_story_trend_report.js.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="update_story_trend_report.js.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/projects/update_story_trend_report.js.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="30" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0">
+            <state line="0" column="31" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -57,25 +79,7 @@
       <file leaf-file-name="_story_trend_section.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/projects/_story_trend_section.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="25" selection-start="428" selection-end="428" vertical-scroll-proportion="-5.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update_velocity_trend_report.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/projects/update_velocity_trend_report.js.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="26" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.js.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="673" column="20" selection-start="23349" selection-end="23349" vertical-scroll-proportion="0.0">
+            <state line="13" column="37" selection-start="566" selection-end="582" vertical-scroll-proportion="-8.125">
               <folding />
             </state>
           </provider>
@@ -102,12 +106,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/projects/_control_panel.html.erb" />
         <option value="$PROJECT_DIR$/app/views/projects/overview.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/project_pages.css.erb" />
         <option value="$PROJECT_DIR$/app/views/projects/_project_page_main_menu.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/project.rb" />
         <option value="$PROJECT_DIR$/app/views/projects/update_velocity_trend_reports.js.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
@@ -115,9 +117,11 @@
         <option value="$PROJECT_DIR$/app/views/projects/reports.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.erb" />
         <option value="$PROJECT_DIR$/app/views/projects/update_velocity_trend_report.js.erb" />
+        <option value="$PROJECT_DIR$/app/models/project.rb" />
         <option value="$PROJECT_DIR$/app/views/projects/_velocity_trend_section.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/projects/update_story_trend_report.js.erb" />
+        <option value="$PROJECT_DIR$/app/views/projects/_story_trend_section.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/projects_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/projects/update_story_trend_report.js.erb" />
       </list>
     </option>
   </component>
@@ -995,13 +999,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/reports.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="42" selection-start="290" selection-end="290" vertical-scroll-proportion="-2.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="98" selection-start="333" selection-end="358" vertical-scroll-proportion="0.28718704">
@@ -1009,51 +1006,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/_velocity_trend_section.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/models/project.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="32" selection-start="559" selection-end="559" vertical-scroll-proportion="-7.5">
+        <state line="17" column="76" selection-start="542" selection-end="562" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="673" column="20" selection-start="23349" selection-end="23349" vertical-scroll-proportion="0.0">
+        <state line="591" column="9" selection-start="20805" selection-end="20805" vertical-scroll-proportion="-2.5098522">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/update_velocity_trend_report.js.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="26" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0">
+        <state line="0" column="25" selection-start="25" selection-end="25" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/reports.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="42" selection-start="290" selection-end="290" vertical-scroll-proportion="-2.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/_velocity_trend_section.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="95" selection-start="268" selection-end="268" vertical-scroll-proportion="-2.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/_story_trend_section.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="428" selection-end="428" vertical-scroll-proportion="-5.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/project.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="6" selection-start="3687" selection-end="3687" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/update_story_trend_report.js.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="30" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0">
+        <state line="13" column="37" selection-start="566" selection-end="582" vertical-scroll-proportion="-8.125">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="75" selection-start="3879" selection-end="3879" vertical-scroll-proportion="0.40640393">
+        <state line="143" column="0" selection-start="4364" selection-end="4364" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/update_story_trend_report.js.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="31" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

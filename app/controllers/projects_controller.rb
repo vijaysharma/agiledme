@@ -114,8 +114,14 @@ class ProjectsController < ApplicationController
   end
 
   def reports
-    @sprints = (@project.no_of_sprints_passed).times.collect { |v| (v + 1) }
+    @sprints_select = (@project.no_of_sprints_passed).times.collect { |v| (v + 1) }
+
     @from_sprint = @project.default_from_sprint
+    @to_sprint = @project.no_of_sprints_passed
+
+    @sprints_from_to = []
+    (@from_sprint..@to_sprint.to_i).each { |v| @sprints_from_to << v }
+
     @chores_trend = @project.chores_trend
     @bugs_trend = @project.bugs_trend
     @features_trend = @project.features_trend
@@ -141,8 +147,9 @@ class ProjectsController < ApplicationController
 
     @from_sprint = from_sprint
     @to_sprint = to_sprint
-    @sprints = []
-    (@from_sprint..@to_sprint.to_i).each { |v| @sprints << v }
+    @sprints_from_to = []
+    (@from_sprint..@to_sprint.to_i).each { |v| @sprints_from_to << v }
+
     @chores_trend = @project.stories_trend_between_sprints(from_sprint, to_sprint, 'Chore')
     @bugs_trend = @project.stories_trend_between_sprints(from_sprint, to_sprint, 'Bug')
     @features_trend = @project.stories_trend_between_sprints(from_sprint, to_sprint, 'Feature')

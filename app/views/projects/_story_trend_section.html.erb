@@ -2,8 +2,8 @@
   <h2>Story Trend
     <div class="right_link">
       <%= form_tag update_story_trend_report_project_path, :remote => true do %>
-          <b>Sprints</b> From: <%= select_tag "from_sprint", options_for_select(@sprints, @from_sprint) %>
-          To : <%= select_tag "to_sprint", options_for_select(@sprints, @to_sprint) %>
+          <b>Sprints</b> From: <%= select_tag "from_sprint", options_for_select(@sprints_select, @from_sprint) %>
+          To : <%= select_tag "to_sprint", options_for_select(@sprints_select, @to_sprint) %>
           <%= submit_tag "Show Trend" %>
       <% end %>
     </div>
@@ -11,6 +11,6 @@
 
   <div id="points_break_down_chart"></div>
   <script type="text/javascript" charset="utf-8">
-      draw_chart(<%= @sprints %>, <%= @chores_trend %>, <%= @bugs_trend %>, <%= @features_trend %>);
+      draw_chart(<%= @sprints_from_to %>, <%= @chores_trend %>, <%= @bugs_trend %>, <%= @features_trend %>);
   </script>
 </div>

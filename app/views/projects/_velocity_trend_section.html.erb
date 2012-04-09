@@ -2,8 +2,8 @@
   <h2>Velocity Trend
     <div class="right_link">
       <%= form_tag update_velocity_trend_report_project_path, :remote => true do %>
-          <b>Sprints</b> From: <%= select_tag "from_sprint", options_for_select(@sprints, @from_sprint) %>
-          To : <%= select_tag "to_sprint", options_for_select(@sprints, @to_sprint) %>
+          <b>Sprints</b> From: <%= select_tag "from_sprint", options_for_select(@sprints_select, @from_sprint) %>
+          To : <%= select_tag "to_sprint", options_for_select(@sprints_select, @to_sprint) %>
           <%= submit_tag "Show Trend" %>
       <% end %>
     </div>

@@ -1,0 +1,16 @@
+<div class="content_section">
+  <h2>Burndown
+    <div class="right_link">
+      <%= form_tag update_burndown_chart_project_path, :remote => true do %>
+          <b>For </b><%= all_sprints = @sprints_select << @sprint
+                                select_tag "sprint", options_for_select(all_sprints.map{|i|["Sprint #{i}", i]}, @sprint) %>
+          <%= submit_tag "Show" %>
+      <% end %>
+    </div>
+  </h2>
+  <div id="burndown_chart"></div>
+  <script type="text/javascript" charset="utf-8">
+      draw_burndown_chart(<%= @burndown_chart_point_start %>, <%= @burndown_chart_point_interval %>,
+              <%= @actual_burndown_chart_data_series %>, <%= @idle_burndown_chart_data_series %>);
+  </script>
+</div>

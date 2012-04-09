@@ -114,18 +114,24 @@ class ProjectsController < ApplicationController
   end
 
   def reports
-    @sprints_select = (@project.no_of_sprints_passed).times.collect { |v| (v + 1) }
+    @sprints_select = @project.no_of_sprints_passed.times.collect { |v| (v + 1) }
+    @sprint = @project.current_sprint
 
     @from_sprint = @project.default_from_sprint
     @to_sprint = @project.no_of_sprints_passed
 
-    @sprints_from_to = []
-    (@from_sprint..@to_sprint.to_i).each { |v| @sprints_from_to << v }
+    @sprints_from_to = (@from_sprint..@to_sprint.to_i).to_a
 
     @chores_trend = @project.chores_trend
     @bugs_trend = @project.bugs_trend
     @features_trend = @project.features_trend
     @velocity_trend = @project.velocity_trend
+
+    @actual_burndown_chart_data_series = @project.actual_burndown_data_series
+    @idle_burndown_chart_data_series = @project.idle_burndown_data_series
+    @burndown_chart_point_start = @project.current_sprint_start_date.at_midnight.to_i * 1000
+    @burndown_chart_point_interval = 1.day * 1000
+
   end
 
   def update_velocity_trend_report
@@ -138,7 +144,19 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
 
+  def update_burndown_chart
+    @sprint = params[:sprint].to_i
+
+    @actual_burndown_chart_data_series = @project.actual_burndown_data_series_for_sprint(@sprint)
+    @idle_burndown_chart_data_series = @project.idle_burndown_data_series_for_sprint(@sprint)
+    @burndown_chart_point_start = @project.beginning_of_sprint(@sprint).at_midnight.to_i * 1000
+    @burndown_chart_point_interval = 1.day * 1000
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update_story_trend_report

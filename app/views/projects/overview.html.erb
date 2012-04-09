@@ -5,12 +5,12 @@
     <div class="content_section">
       <h2>
         <div class="right_link">
-          <%= link_to "Edit", edit_project_path(@project) %>
+          <%= link_to "Update", edit_project_path(@project) %>
         </div>
         Project Profile
       </h2>
       <div class="markdown_content">
-        <p><%= truncate(@project.description, :length => 300) %></p>
+        <p><%= @project.description.present? ? truncate(@project.description, :length => 300) : "Profile not updated yet!!" %></p>
       </div>
     </div>
     <div class="content_section">

@@ -545,33 +545,17 @@ function draw_burndown_chart(chart_point_start, chart_point_interval, actual_cha
             text: 'Burndown Chart'
         },
         xAxis: {
-            gridLineWidth: 1,
-            lineColor: '#000',
-            tickColor: '#000',
             type: "datetime",
             title: {
                 text: 'Sprint'
             }
         },
         yAxis: {
-            minorTickInterval: 'auto',
-            lineColor: '#000',
-            lineWidth: 1,
-            tickWidth: 1,
-            tickColor: '#000',
             min: 0,
             title: {
                 text: 'Velocity'
             }
         },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'top',
-            floating: true,
-            shadow: true
-        },
-
         series: [
             {
                 name: "Actual",
@@ -671,7 +655,7 @@ function draw_velocity_trend_chart(velocity_trend, from_sprint) {
     });
 }
 
-function draw_chart(sprints, chores, bugs, features) {
+function draw_story_trend_chart(sprints, chores, bugs, features) {
     var chart;
     var total_chores = 0;
     var average = [sprints.length];

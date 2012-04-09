@@ -55,8 +55,8 @@
     estimate_chores = <%= @project.estimate_chores? %>;
     view = "sprint";
 
-    var actual_burndown_chart_data_series = <%= actual_burndown_chart_data_series(@project) %>;
-    var idle_burndown_chart_data_series = <%= idle_burndown_chart_data_series(@project) %>;
+    var actual_burndown_chart_data_series = <%= @project.actual_burndown_data_series %>;
+    var idle_burndown_chart_data_series = <%= @project.idle_burndown_data_series %>;
     var burndown_chart_point_start = <%= @project.current_sprint_start_date.at_midnight.to_i * 1000 %>;
     var burndown_chart_point_interval = <%= 1.day * 1000 %>;
     draw_burndown_chart(burndown_chart_point_start,

@@ -1,9 +1,9 @@
-<div class="content_section velocity">
+<div class="content_section">
   <h2>Velocity Trend
     <div class="right_link">
       <%= form_tag update_velocity_trend_report_project_path, :remote => true do %>
-          <b>Sprints</b> From: <%= select_tag "from_sprint", options_for_select(@sprints_select, @from_sprint) %>
-          To : <%= select_tag "to_sprint", options_for_select(@sprints_select, @to_sprint) %>
+          From: <%= select_tag "from_sprint", options_for_select(@sprints_select.map{|i|["Sprint #{i}", i]}, @from_sprint) %>
+          To : <%= select_tag "to_sprint", options_for_select(@sprints_select.map{|i|["Sprint #{i}", i]}, @to_sprint) %>
           <%= submit_tag "Show Trend" %>
       <% end %>
     </div>

@@ -16,41 +16,4 @@ module ProjectsHelper
     link_to_function(name, ("add_comment_fields(this, '#{association.to_s.singularize}', '#{escape_javascript(fields)}')"), :id => "#{item_id}_add_comment")
   end
 
-  def actual_burndown_chart_data_series(project)
-    stories = nil
-    if !project.estimate_bugs? and !project.estimate_chores?
-      stories = project.stories.where(" status in ('delivered', 'accepted') and category = 'current'")
-    elsif project.estimate_bugs?
-      stories = project.stories.where(" status in ('delivered', 'accepted') and category = 'current' and type != 'Chore'")
-    elsif project.estimate_chores?
-      stories = project.stories.where(" status in ('delivered', 'accepted') and category = 'current' and type != 'Bug'")
-    end
-    start_time = project.current_sprint_start_date
-    if stories
-      stories_by_day = stories.where(:delivered_at => start_time.beginning_of_day..Date.today.end_of_day).
-          group("delivered_at, priority").
-          select("delivered_at as date, sum(estimate) as estimate")
-
-      stories_by_day.concat stories.where(:accepted_at => start_time.beginning_of_day..Date.today.end_of_day).
-          group("accepted_at, priority").
-          select("accepted_at as date, sum(estimate) as estimate")
-
-      sprint_commitment = project.sprint_commitment
-      (start_time..Date.today).map do |date|
-        story = stories_by_day.detect { |story| story.date.to_date == date }
-        sprint_commitment = sprint_commitment - (story && story.estimate || 0)
-      end.inspect
-    end
-  end
-
-  def idle_burndown_chart_data_series(project)
-    start_time = project.current_sprint_start_date
-    end_time = project.current_sprint_end_date
-    sprint_commitment = project.sprint_commitment
-    points_to_burn_per_day = sprint_commitment.to_f / (project.sprint_length_in_days)
-    (start_time..end_time).map do |day|
-      sprint_commitment - (points_to_burn_per_day * (day - start_time).to_i)
-    end.inspect
-  end
-
 end

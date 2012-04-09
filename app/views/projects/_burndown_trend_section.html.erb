@@ -1,11 +1,11 @@
 <div class="content_section">
-  <h2>Burndown
+  <h2>Sprint Burndown
     <div class="right_link">
-      <%= form_tag update_burndown_chart_project_path, :remote => true do %>
-          <b>For </b><%= all_sprints = @sprints_select << @sprint
-                                select_tag "sprint", options_for_select(all_sprints.map{|i|["Sprint #{i}", i]}, @sprint) %>
-          <%= submit_tag "Show" %>
-      <% end %>
+      <b>For </b><%= all_sprints = @sprints_select << @sprint
+                     select_tag "sprint",
+                                options_for_select(all_sprints.map { |i| ["Sprint #{i}", i] }, @sprint),
+                                :id => @project.id, :class => "burndown_sprint_select" %>
+
     </div>
   </h2>
   <div id="burndown_chart"></div>

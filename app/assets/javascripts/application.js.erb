@@ -203,6 +203,17 @@ function adjust_items_height() {
         location.href = "/projects/" + $(this).val() + projects_page;
     });
 
+    $(document).delegate('.burndown_sprint_select', "change", function() {
+        $.ajax({
+            type: "POST",
+            url: "/projects/" + $(this).attr('id') + "/update_burndown_chart",
+            dataType: "script",
+            data: {
+                sprint: $(this).val()
+            }
+        })
+    });
+
     $(document).delegate('.member_role', "change", function() {
         var id = $(this).attr('id');
         var project_id = $("#" + id + "_project").val();
@@ -494,7 +505,7 @@ function adjust_items_height() {
         effect: 'slide',
         relative: true,
         offset: [65,15],
-        position: 'center, right',
+        position: 'center, right'
     });
 
     $('#icebox_scrolling_item_list, #backlog_scrolling_item_list, #done_scrolling_item_list, #current_scrolling_item_list').endlessScroll({

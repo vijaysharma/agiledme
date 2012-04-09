@@ -120,21 +120,32 @@ class ProjectsController < ApplicationController
     @bugs_trend = @project.bugs_trend
     @features_trend = @project.features_trend
     @velocity_trend = @project.velocity_trend
-    @project_start_year = @project.start_date.year
-    @project_start_month = @project.start_date.month
-    @project_start_date = @project.start_date.day
-    @sprint_length = @project.sprint_length_in_days
   end
 
-  def update_velocity_trend_reports
+  def update_velocity_trend_report
     from_sprint = params[:from_sprint].to_i
     to_sprint = params[:to_sprint].to_i
     @from_sprint = from_sprint
+    @to_sprint = to_sprint
     @velocity_trend = @project.velocity_trend_between_sprints(from_sprint, to_sprint)
-    @project_start_year = @project.start_date.year
-    @project_start_month = @project.start_date.month
-    @project_start_date = @project.start_date.day
-    @sprint_length = @project.sprint_length_in_days
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
+  def update_story_trend_report
+    from_sprint = params[:from_sprint].to_i
+    to_sprint = params[:to_sprint].to_i
+
+    @from_sprint = from_sprint
+    @to_sprint = to_sprint
+    @sprints = []
+    (@from_sprint..@to_sprint.to_i).each { |v| @sprints << v }
+    @chores_trend = @project.stories_trend_between_sprints(from_sprint, to_sprint, 'Chore')
+    @bugs_trend = @project.stories_trend_between_sprints(from_sprint, to_sprint, 'Bug')
+    @features_trend = @project.stories_trend_between_sprints(from_sprint, to_sprint, 'Feature')
 
     respond_to do |format|
       format.js

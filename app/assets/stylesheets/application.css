@@ -669,6 +669,7 @@ li, ul, div {
 
 input[type="submit"]:hover, input[type="button"]:hover {
     cursor: pointer;
+    background-color: #e6e4e4
 }
 
 span.redButton {

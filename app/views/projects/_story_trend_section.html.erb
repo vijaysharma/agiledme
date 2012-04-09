@@ -1,15 +1,16 @@
 <div class="content_section velocity">
-  <h2>Velocity Trend
+  <h2>Story Trend
     <div class="right_link">
-      <%= form_tag update_velocity_trend_report_project_path, :remote => true do %>
+      <%= form_tag update_story_trend_report_project_path, :remote => true do %>
           <b>Sprints</b> From: <%= select_tag "from_sprint", options_for_select(@sprints, @from_sprint) %>
           To : <%= select_tag "to_sprint", options_for_select(@sprints, @to_sprint) %>
           <%= submit_tag "Show Trend" %>
       <% end %>
     </div>
   </h2>
-  <div id="velocity_chart"></div>
+
+  <div id="points_break_down_chart"></div>
   <script type="text/javascript" charset="utf-8">
-      draw_velocity_trend_chart(<%= @velocity_trend %>, <%= @from_sprint %>);
+      draw_chart(<%= @sprints %>, <%= @chores_trend %>, <%= @bugs_trend %>, <%= @features_trend %>);
   </script>
 </div>

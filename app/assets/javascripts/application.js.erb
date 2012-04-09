@@ -135,6 +135,7 @@ function adjust_items_height() {
     $(".items").css({
         'height' : (($(window).height()) - 220) + 'px'
     });
+
 } $(document).ready(function () {
     DraggableDroppable.init();
     JQueryFileUpload.init();
@@ -588,7 +589,7 @@ function draw_burndown_chart(chart_point_start, chart_point_interval, actual_cha
     });
 }
 
-function draw_velocity_trend_chart(project_start_year, project_start_month, project_start_date, sprint_length, velocity_trend, from_sprint) {
+function draw_velocity_trend_chart(velocity_trend, from_sprint) {
     var chart;
     $(document).ready(function() {
         chart = new Highcharts.Chart({

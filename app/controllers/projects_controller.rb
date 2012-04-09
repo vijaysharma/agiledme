@@ -114,6 +114,32 @@ class ProjectsController < ApplicationController
   end
 
   def reports
+    @sprints = (@project.no_of_sprints_passed).times.collect { |v| (v + 1) }
+    @from_sprint = @project.default_from_sprint
+    @chores_trend = @project.chores_trend
+    @bugs_trend = @project.bugs_trend
+    @features_trend = @project.features_trend
+    @velocity_trend = @project.velocity_trend
+    @project_start_year = @project.start_date.year
+    @project_start_month = @project.start_date.month
+    @project_start_date = @project.start_date.day
+    @sprint_length = @project.sprint_length_in_days
+  end
+
+  def update_velocity_trend_reports
+    from_sprint = params[:from_sprint].to_i
+    to_sprint = params[:to_sprint].to_i
+    @from_sprint = from_sprint
+    @velocity_trend = @project.velocity_trend_between_sprints(from_sprint, to_sprint)
+    @project_start_year = @project.start_date.year
+    @project_start_month = @project.start_date.month
+    @project_start_date = @project.start_date.day
+    @sprint_length = @project.sprint_length_in_days
+
+    respond_to do |format|
+      format.js
+    end
+
   end
 
   def sprint
@@ -201,13 +227,13 @@ class ProjectsController < ApplicationController
     csv_category = parse_category(csv_state)
     csv_type = row['Story Type'].camelize
     story = Story.new(:project_id => @project.id,
-                                     :title => row['Story'],
-                                     :description => row['Description'],
-                                     :requester => row['Requested By'].present? ? get_existing_or_current_user(row['Requested By']) : current_user.id,
-                                     :status => (csv_state.eql?('unstarted') || csv_state.eql?('unscheduled')) ? "not_yet_started" : row['Current State'],
-                                     :category => csv_category,
-                                     :estimate => (csv_type.eql?("Feature") and row['Estimate'].present?) ? row['Estimate'].to_i : -1,
-                                     :priority => get_max_priority_for_category(csv_category) + 1)
+                      :title => row['Story'],
+                      :description => row['Description'],
+                      :requester => row['Requested By'].present? ? get_existing_or_current_user(row['Requested By']) : current_user.id,
+                      :status => (csv_state.eql?('unstarted') || csv_state.eql?('unscheduled')) ? "not_yet_started" : row['Current State'],
+                      :category => csv_category,
+                      :estimate => (csv_type.eql?("Feature") and row['Estimate'].present?) ? row['Estimate'].to_i : -1,
+                      :priority => get_max_priority_for_category(csv_category) + 1)
 
 
     story.type = csv_type
@@ -285,8 +311,8 @@ class ProjectsController < ApplicationController
           posted_by_user_name = posted_by_details.split('-')[0].strip!
           created_at = DateTime.parse(posted_by_details.split('-')[1].strip!)
           story.comments << Comment.new(:comment => comment,
-                                                :posted_by => get_existing_or_current_user(posted_by_user_name),
-                                                :created_at => created_at)
+                                        :posted_by => get_existing_or_current_user(posted_by_user_name),
+                                        :created_at => created_at)
         end
       end
     end

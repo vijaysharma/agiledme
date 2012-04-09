@@ -588,7 +588,7 @@ function draw_burndown_chart(chart_point_start, chart_point_interval, actual_cha
     });
 }
 
-function draw_velocity_trend_chart(project_start_year, project_start_month, project_start_date, sprint_length, velocity_trend) {
+function draw_velocity_trend_chart(project_start_year, project_start_month, project_start_date, sprint_length, velocity_trend, from_sprint) {
     var chart;
     $(document).ready(function() {
         chart = new Highcharts.Chart({
@@ -662,7 +662,7 @@ function draw_velocity_trend_chart(project_start_year, project_start_month, proj
                 {
                     name: 'Velocity',
                     pointInterval: 1,
-                    pointStart: 1,
+                    pointStart: from_sprint,
                     data: velocity_trend
                 }
             ]

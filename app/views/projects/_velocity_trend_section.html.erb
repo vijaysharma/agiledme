@@ -1,16 +1,19 @@
 <div class="content_section velocity">
   <h2>Velocity Trend
     <div class="right_link">
-      <%= collection_select(:project, :id, current_user.projects, :id, :truncated_name, {:prompt => true}, {:id => "#{@project.id}_velocity_trend"}) %>
+      <%= form_tag update_velocity_trend_reports_project_path, :remote => true do %>
+          Sprints From: <%= select_tag "from_sprint", options_for_select(@sprints) %>
+          To : <%= select_tag "to_sprint", options_for_select(@sprints) %>
+          <%= submit_tag "Show" %>
+      <% end %>
     </div>
   </h2>
   <div id="velocity_chart"></div>
   <script type="text/javascript" charset="utf-8">
-      var velocity_trend = <%= @project.velocity_trend %>;
-      var project_start_year = <%= @project.start_date.year %>;
-      var project_start_month = <%= @project.start_date.month %>;
-      var project_start_date = <%= @project.start_date.day %>;
-      var sprint_length = <%= @project.sprint_length * 7 %>;
-      draw_velocity_trend_chart(project_start_year, project_start_month, project_start_date, sprint_length, velocity_trend);
+      draw_velocity_trend_chart(<%= @project_start_year %>,
+              <%= @project_start_month %>,
+              <%= @project_start_date %>,
+              <%= @sprint_length %>,
+              <%= @velocity_trend %>, <%= @from_sprint %>);
   </script>
 </div>

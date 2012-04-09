@@ -10,20 +10,24 @@ class Project < ActiveRecord::Base
     my_users(true)
   end
 
+  def default_from_sprint
+    no_of_sprints_passed >= 10 ? no_of_sprints_passed - 5 : 1
+  end
+
   def velocity_trend
-    velocity_trend_between_sprints(1, no_of_sprints_passed)
+    velocity_trend_between_sprints(default_from_sprint, no_of_sprints_passed)
   end
 
   def chores_trend
-    stories_trend_between_sprints(1, no_of_sprints_passed, 'Chore')
+    stories_trend_between_sprints(default_from_sprint, no_of_sprints_passed, 'Chore')
   end
 
   def bugs_trend
-    stories_trend_between_sprints(1, no_of_sprints_passed, 'Bug')
+    stories_trend_between_sprints(default_from_sprint, no_of_sprints_passed, 'Bug')
   end
 
   def features_trend
-    stories_trend_between_sprints(1, no_of_sprints_passed, 'Feature')
+    stories_trend_between_sprints(default_from_sprint, no_of_sprints_passed, 'Feature')
   end
 
   def inactive_users
@@ -73,20 +77,6 @@ class Project < ActiveRecord::Base
 
   def truncated_name
     name.slice(0, 40)
-  end
-
-  private
-
-  def days_passed_in_current_sprint
-    no_of_days_in_project % sprint_length_in_days
-  end
-
-  def no_of_days_in_project
-    (Date.today - start_date.to_date).to_i
-  end
-
-  def my_users(status)
-    self.project_users.where(:active => status).collect { |project_user| project_user.user }
   end
 
   def velocity_trend_between_sprints(from_sprint, to_sprint)
@@ -151,12 +141,26 @@ class Project < ActiveRecord::Base
     chores
   end
 
+  private
+
+  def days_passed_in_current_sprint
+    no_of_days_in_project % sprint_length_in_days
+  end
+
+  def no_of_days_in_project
+    (Date.today - start_date.to_date).to_i
+  end
+
+  def my_users(status)
+    self.project_users.where(:active => status).collect { |project_user| project_user.user }
+  end
+
   def beginning_of_sprint(sprint)
     (start_date.to_date + ((sprint - 1) * sprint_length_in_days).days).beginning_of_day
   end
 
   def end_of_sprint(sprint)
-    (beginning_of_sprint(sprint) + (sprint * sprint_length_in_days).days).end_of_day
+    (beginning_of_sprint(sprint) + sprint_length_in_days.days).end_of_day
   end
 
 end

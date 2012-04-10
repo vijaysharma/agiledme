@@ -1,10 +1,10 @@
 <div class="content_section">
   <h2>Sprint Burndown
     <div class="right_link">
-      <b>For </b><%= all_sprints = @sprints_select << @sprint
-                     select_tag "sprint",
-                                options_for_select(all_sprints.map { |i| ["Sprint #{i}", i] }, @sprint),
-                                :id => @project.id, :class => "burndown_sprint_select" %>
+      <%= all_sprints = @sprints_select << @sprint
+          select_tag "sprint",
+                     options_for_select(all_sprints.reverse.map { |i| i == @sprint ? ["Current", i] : ["Sprint #{i}", i] }, @sprint),
+                     :id => @project.id, :class => "burndown_sprint_select" %>
     </div>
   </h2>
   <div id="burndown_chart"></div>

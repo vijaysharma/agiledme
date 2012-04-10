@@ -2,8 +2,8 @@
   <h2>Story Trend
     <div class="right_link">
       <%= form_tag update_story_trend_report_project_path, :remote => true do %>
-          From: <%= select_tag "from_sprint", options_for_select(@sprints_select.map{|i|["Sprint #{i}", i]}, @from_sprint) %>
-          To : <%= select_tag "to_sprint", options_for_select(@sprints_select.map{|i|["Sprint #{i}", i]}, @to_sprint) %>
+          <%= select_tag "from_sprint", options_for_select(@sprints_select.reverse.map{|i|["Sprint #{i}", i]}, @from_sprint) %>
+          To : <%= select_tag "to_sprint", options_for_select(@sprints_select.reverse.map{|i|["Sprint #{i}", i]}, @to_sprint) %>
           <%= submit_tag "Show Trend" %>
       <% end %>
     </div>

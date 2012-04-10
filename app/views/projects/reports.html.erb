@@ -1,8 +1,8 @@
 <% title "Project Reports" %>
 <div class="project_pages project_reports_page">
   <%= render :partial => 'projects/project_page_main_menu', :locals => {:project => @project, :sub_page => "Reports"} %>
+  <%= render :partial => 'projects/story_trend_section' %>
   <div class="halfway_column has_right_spacer">
-    <%= render :partial => 'projects/story_trend_section' %>
     <%= render :partial => 'projects/burndown_trend_section' %>
   </div>
   <div class="halfway_column">

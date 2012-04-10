@@ -1,7 +1,7 @@
 <% title "#{@project.name.camelcase} : Sprint" %>
 <%= render :partial => 'projects/control_panel', :locals => {:view => "sprint"} %>
 <div id="all_panels" class="story_content">
-  <% sprint_work = @project.stories.select { |wi| wi.category.eql? "current" } %>
+  <% sprint_work = @project.stories.includes([ :comments, :tasks, :labels, :story_attachments ]).select { |wi| wi.category.eql? "current" } %>
   <table id="layout" class="layout" cellspacing="16px">
     <tbody>
     <tr id="panels">

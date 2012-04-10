@@ -5,7 +5,7 @@
     <tbody>
     <tr id="panels">
       <% Story.categories.each do |category| %>
-          <% stories = @project.stories.where(:category => category).limit(30) %>
+          <% stories = @project.stories.includes([ :comments, :tasks, :labels, :story_attachments ]).where(:category => category).limit(30) %>
           <%= render :partial => 'stories/stories_panel', :locals => {:stories => stories, :category => category}  %>
       <% end %>
     </tr>
